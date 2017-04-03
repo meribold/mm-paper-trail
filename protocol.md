@@ -1,16 +1,17 @@
-# [CHARMM][]
+% [Molecular modelling][] [practicum][]
+  Protocol
+% Lukas Waymann
 
-[CHARMM]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/index.html
+[Molecular modelling]: http://www.bisb.uni-bayreuth.de/Lecture/
+[practicum]: http://www.bisb.uni-bayreuth.de/Lecture/practical/practical.html
 
-## [Theoretical Background - Molecular Dynamics simulations][theory]
+# CHARMM^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/index.html>]
 
-[theory]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node1.html
+## Theoretical Background - Molecular Dynamics simulations^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node1.html>]
 
-### [Time evolution][]
+### Time evolution^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node8.html>]
 
-[Time evolution]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node8.html
-
-#### [The Verlet algorithm][]
+#### The Verlet algorithm^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html>]
 
 **Questions and answers.**
 
@@ -18,18 +19,18 @@
 
 There are five components:
 
-*   Bond stretching
+*   [Bond stretching](http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node3.html)
     *   Represents covalent bonds between atoms.
     *   Energy is based on the deviation from the ideal distance between atoms.
     *   Usually sufficient to use harmonic approximation.
-*   Angle bending
+*   [Angle bending](http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node4.html)
     *   Energy resulting from the angle between any two atoms bound to the same atom.
-*   Torsion angles
-    *   Rotation of atom groups around a given bond
-*   Van-der-Walls terms
+*   [Torsion angles](http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node5.html)
+    *   Rotation of atom groups around a given bond.
+*   [Van-der-Walls terms](http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node6.html)
     *   Forces not based on covalent or ionic bonds.
     *   Can be approximated by a Lennard-Jones 12-6 potential.
-*   Electrostatic term
+*   [Electrostatic term](http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node7.html)
     *   Non-bonded interactions.
     *   Number of terms is $O(n^2)$ for $n$ atoms.
     *   Cutoff distance can be used to bound computational complexity.
@@ -38,8 +39,8 @@ There are five components:
 
 *   Steepest Descent
     *   Start with some coordinates on the energy landscape.
-    *   Successively move a discrete amount along the local downhill gradient
-        (steepest descent).
+    *   Successively move a discrete amount along the local downhill gradient (the
+        steepest descent).
     *   Finds a local minimum.
 *   Newton
     *   TODO.
@@ -93,39 +94,72 @@ There are five components:
 
 >   How many atom types are there in an alanine residue?
 
-*   The definition of the alanine residue in the [topology file][top_all27_prot_lipid.rtf]
-    is
+The definition of the alanine residue in the [topology file][top_all27_prot_lipid.rtf]
+is
 
-        ...
-        GROUP
-        ATOM CB   CT3    -0.27
-        ATOM HB1  HA      0.09
-        ATOM HB2  HA      0.09
-        ATOM HB3  HA      0.09
-        GROUP
-        ...
-    Thus, there are two atom types: `CT3` and `HA`.
+    ...
+    GROUP
+    ATOM CB   CT3    -0.27
+    ATOM HB1  HA      0.09
+    ATOM HB2  HA      0.09
+    ATOM HB3  HA      0.09
+    GROUP
+    ...
+Thus, there are two atom types: `CT3` and `HA`.
 
 >   What is the partial charge of the hydrogen (HS/HG1) atom and the sulfur atom (S/SG)?
 
-*   "First, an atom type is assigned to each atom of the residue. The numerical value
-    in the same line defines the partial charge of that atom."  ([1][]).
+In the [topology file][top_all27_prot_lipid.rtf] we find:
 
-[1]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node11.html
+    RESI CYS          0.00
+    ...
+    ATOM SG   S      -0.23
+    ATOM HG1  HS      0.16
+    ...
 
-*   In [top_all27_prot_lipid.rtf][] we find:
+Knowing that "[t]he numerical value [...] defines the partial charge"[^node11], we see
+that the sought after values are `0.16` and `-0.23`, respectively.
 
-        RESI CYS          0.00
-        ...
-        ATOM SG   S      -0.23
-        ATOM HG1  HS      0.16
-        ...
-
-    Thus, the partial charges are `0.16` and `-0.23`, respectively.
+[^node11]: <http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node11.html>
 
 >   What are the parameters for the sulfur-hydrogen bond (S-HS)?
 
-TODO.
+    $ grep BONDS -A 7 par_all27_prot_lipid.prm; grep '^S.*HS' par_all27_prot_lipid.prm
+    BONDS
+    !
+    !V(bond) = Kb(b - b0)**2
+    !
+    !Kb: kcal/mole/A**2
+    !b0: A
+    !
+    !atom type Kb          b0
+    S    HS    275.000     1.3250 ! ALLOW   SUL ION
+
+Thus, the force constant $K_b$ for [equation 1][node3] is
+$275\ \frac{kcal}{mole\cdot Å^2}$ and $r_{eq}$ for equation 1, which corresponds to `b0`,
+is $1.325\ Å$.
+
+[node3]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node3.html
+<!--
+The relevant lines in the topology file are
+
+    BOND CB HB2  SG HG1
+which tells us that a sulfur-hydrogen bond exists, and
+
+    IC CA   CB   SG   HG1   1.5584 113.8700  176.9600  97.1500  1.3341
+which tells us the parameters:
+
+*   `1.5584` is the bond length between the carbon atoms.
+*   `113.8700` is the angle of the carbon-carbon bond relative to the carbon-sulfur bond.
+*   `176.9600` is the torsion angle between the planes defined by the first 3 atoms and
+    atoms 2 to 4.
+
+None of those were about the sulfur-hydrogen bond, but the last two are:
+
+*   `97.1500` is the angle between the last 3 atoms, i.e., between the outer carbon-sulfur
+    bond and the sulfur-hydrogen bond.
+*   `1.3341` is the bond length between the last two atoms: sulfur and hydrogen.
+-->
 
 >   What are the parameters for the sulfur-sulfur bond (SM-SM)?
 
@@ -137,11 +171,10 @@ TODO.
 
 [Running CHARMM]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node13.html
 
-## [Initialization][]
+## Initialization^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node14.html>]
 
-[Initialization]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node14.html
+### Structure preparation^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node15.html>]
 
-### [Structure preparation]
 
 **Questions and answers.**
 
@@ -151,7 +184,8 @@ TODO.
 
 >   Are there other methods to determine experimentally the structure of a protein?
 
-TODO.
+Other methods include [NMR spectroscopy and electron
+microscopy](http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-intro.pdf#page=23).
 
 >   How many cysteines?  What are their residue numbers?
 
@@ -166,11 +200,10 @@ TODO.
 
 Yes:
 
-    ...
+    $ grep '^SSBOND' 1bpi.pdb
     SSBOND   1 CYS A    5    CYS A   55                          1555   1555  2.01
     SSBOND   2 CYS A   14    CYS A   38                          1555   1555  2.03
     SSBOND   3 CYS A   30    CYS A   51                          1555   1555  2.02
-    ...
 
 >   Which temperature was used for the measurements?
 
@@ -178,11 +211,10 @@ Yes:
 
 >   Why are the hydrogen atoms missing?
 
-TODO.  Less visual clutter?
+<!-- TODO -->
+Less visual clutter?  They can be inferred from the incomplete structure?
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
-
-[Structure preparation]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node15.html
 
 [top_all27_prot_lipid.rtf]: top_all27_prot_lipid.rtf
 [par_all27_prot_lipid.prm]: par_all27_prot_lipid.prm
