@@ -167,9 +167,9 @@ TODO.
 Yes:
 
     ...
-    SSBOND   1 CYS A    5    CYS A   55                          1555   1555  2.01  
-    SSBOND   2 CYS A   14    CYS A   38                          1555   1555  2.03  
-    SSBOND   3 CYS A   30    CYS A   51                          1555   1555  2.02  
+    SSBOND   1 CYS A    5    CYS A   55                          1555   1555  2.01
+    SSBOND   2 CYS A   14    CYS A   38                          1555   1555  2.03
+    SSBOND   3 CYS A   30    CYS A   51                          1555   1555  2.02
     ...
 
 >   Which temperature was used for the measurements?
@@ -184,7 +184,7 @@ TODO.  Less visual clutter?
 
 [Structure preparation]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node15.html
 
-[top_all27_prot_lipid.rtf]: top_all27_prot_lipid.rtf 
+[top_all27_prot_lipid.rtf]: top_all27_prot_lipid.rtf
 [par_all27_prot_lipid.prm]: par_all27_prot_lipid.prm
 
 <!-- vim: set tw=90 sts=-1 sw=4 et spell: -->
