@@ -71,7 +71,7 @@ After getting a file describing the structure of a molecule (for example from th
         *   <http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-md.pdf#page=19>
     *   Add water?
     *   Molecule's initial coordinates cause high energies and forces.
-    *   
+    *
 
 [.pdb]: https://en.wikipedia.org/wiki/Protein_Data_Bank_(file_format)
 
@@ -232,19 +232,19 @@ Less visual clutter?  They can be inferred from the incomplete structure?
 
 **Questions and answers.**
 
->   Why are there high-energy interactions in the crystal structure? 
+>   Why are there high-energy interactions in the crystal structure?
 
 The molecule may not be in the ideal conformation with respect to minimizing the internal
 energy.
 
->   Why do they have to be removed? 
+>   Why do they have to be removed?
 
 *   Minima of the energy landscape correspond to stable conformations.
 *   Should reduce vibrations in the dynamics simulation.
 *   Should get us closer to naturally occuring conformations.
 *   <http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-mini-nma.pdf#page=16>
 
->   How much would you expect the atomic coordinates to change during the minimization? 
+>   How much would you expect the atomic coordinates to change during the minimization?
 
 *   Depends on how close the conformation of the downloaded molecule structure is to an
     energy minimum.
@@ -286,6 +286,34 @@ energy.
 #### Plot after minimization with 500 SD and 1000 ABNR steps
 
 ![Energy minimization 2](mini2.png)\ 
+
+**Questions and answers.**
+
+>   Compare the tow energy minimizations using XMGRACE.
+
+See above.
+
+>   Examine the pdb file before and after energy minimization using vmd before and after
+>   energy minimization.  Notice any differences?
+
+*   Hydrogen atoms were added by CHARMM.
+*   The molecule without the added hydrogens alongside the not minimized one:
+
+    ![Comparison](vmd-before-after.png)\ 
+
+>   Calculate the RMSD using vmd or check the CHARMM output file for the RMSD.  How does
+>   it compare to the resolution of your crystal?  What does RMSD mean?  Why is the RMSD
+>   used to examine structures?
+
+RMSD: $1.9818568887848576$.  That's about twice the resolution of the crystal.
+RMSD stands for root-mean-square deviation.
+
+>   What is the largest gradient during any of the minimizations?
+
+>   Plot the van-der-Waals and the electrostatic energy against the minimization steps
+>   (grep 'MINI EXTERN$>$' name.out $>$name.dat; look in the CHARMM output for the
+>   corresponding columns.). Compare the change of these energies to the change of the
+>   total energy during the minimization.
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
 
