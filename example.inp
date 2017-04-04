@@ -48,10 +48,9 @@ close unit 02
 !! protein
 open read unit 12 card name protres.pdb
 read sequ pdb unit 12
-close unit 12
 
 generate PRTA  first nter last cter setup
-
+close unit 12
 
 !! water
 open read unit 12 card name water.pdb
@@ -59,11 +58,7 @@ read sequ pdb unit 12
 
 generate TIP3 setup nodihedral noangle
 
-
-
-open write unit 1 card name 1bpi-disu.psf
-write psf card unit 1
-close unit 1
+close unit 12
 
 
 
@@ -195,11 +190,11 @@ MINI abnr nstep 1000 nprint 10
 !! finalt: Temperature you want to heat up to. Change 
 !! to your temperature
 
-dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
-    iprfrq 100 ihtfrq 300 teminc 5.0  -
-    nprint 100 iunwri 1 iunrea -1 iuncrd -1 nsavc 100 -
-    firstt 0.0 finalt 300.0 -
-    iasors 0 iasvel 1 iscvel 0 ichecw 0 
+! dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
+!     iprfrq 100 ihtfrq 300 teminc 5.0  -
+!     nprint 100 iunwri 1 iunrea -1 iuncrd -1 nsavc 100 -
+!     firstt 0.0 finalt 300.0 -
+!     iasors 0 iasvel 1 iscvel 0 ichecw 0 
 
 
 
@@ -212,6 +207,10 @@ dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
 !open write unit 1 card name %filename.crd
 !write coor card unit 1
 !close unit 1
+
+open write unit 1 card name 1bpi-disu.psf
+write psf card unit 1
+close unit 1
 
 !pdb format
 open write unit 1 card name min-disu.pdb
