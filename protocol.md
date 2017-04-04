@@ -270,23 +270,14 @@ energy.
     MINI>       30   -911.70797     16.28816      0.68017      0.02692
     MINI>       40   -919.90921      8.20124      0.64534      0.02607
     MINI>       50   -927.86086      7.95165      1.20517      0.03741
-    $ head -6 mini.dat > mini-prot.dat
-    $ tail -6 mini.dat > mini-watr.dat
-    $ xmgrace mini-prot.dat
-    $ xmgrace mini-watr.dat
+    $ # Edit step numbers in mini.dat (add 50 in ABNR lines).
+    $ xmgrace mini.dat
     $ # Modify example.inp:
     $ # Increase the number of minimization steps to 500 SD and 1000 ABNR.
-    $ charmm < example.inp > charmm-more-steps.out
 
-#### Plots after minimization with 50 SD and 50 ABNR steps
+#### Plot after minimization with 50 SD and 50 ABNR steps
 
-##### Protein
-
-![Protein](mini-prot.png "Protein")\ 
-
-##### Water
-
-![Water](mini-watr.png "Water")\ 
+![Protein](mini.png "Energy minimization")\ 
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
 
