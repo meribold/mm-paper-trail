@@ -2,3 +2,4 @@ ATOM      1  OH2 TIP3A  60      33.450   4.286  10.777  1.00  5.37      TIP3 O
 ATOM      2  OH2 TIP3A  61      32.579   7.506   4.391  1.00  5.08      TIP3 O  
 ATOM      3  OH2 TIP3A  62      31.767   7.215   1.777  1.00  7.28      TIP3 O  
 ATOM      4  OH2 TIP3A  73      33.312   6.677  -0.313  1.00  9.06      TIP3 O  
+END
