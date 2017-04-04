@@ -147,8 +147,8 @@ ENERgy atom elec cdiel eps 1.0 fshift vdw vshift -
 !! nstep: number of minimization steps
 !! nprint: every 10th step the energy is printed
 
-MINI sd   nstep 50 nprint 10
-MINI abnr nstep 50 nprint 10 
+MINI sd   nstep 500 nprint 10
+MINI abnr nstep 1000 nprint 10 
 
 
 
@@ -204,7 +204,7 @@ dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
 !close unit 1
 
 !pdb format
-open write unit 1 card name min.pdb
+open write unit 1 card name min2.pdb
 write coor pdb unit 1
 close unit 1
 

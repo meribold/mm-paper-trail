@@ -274,6 +274,9 @@ energy.
     $ tail -6 mini.dat > mini-watr.dat
     $ xmgrace mini-prot.dat
     $ xmgrace mini-watr.dat
+    $ # Modify example.inp:
+    $ # Increase the number of minimization steps to 500 SD and 1000 ABNR.
+    $ charmm < example.inp > charmm-more-steps.out
 
 #### Plots after minimization with 50 SD and 50 ABNR steps
 
