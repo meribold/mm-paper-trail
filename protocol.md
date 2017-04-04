@@ -66,10 +66,11 @@ After getting a file describing the structure of a molecule (for example from th
     *   Split the structure into connected segments (partition the [.pdb] file into
         several ones).
     *   Adjust atom names to match those found in the [topology
-        file][top_all27_prot_lipid.rtf]
+        file][top_all27_prot_lipid.rtf].
         *   Edit one or the other file.
         *   <http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-md.pdf#page=19>
-    *   Add water?
+    *   Add non-standard covalent bonds.
+    *   Add water.
     *   Molecule's initial coordinates cause high energies and forces.
     *
 
@@ -203,7 +204,7 @@ microscopy](http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-intro.pdf#pag
 
 >   How many cysteines?  What are their residue numbers?
 
-6 cysteines with residue numbers 5, 14, 30, 38, 51, 55
+6 cysteines with residue numbers 5, 14, 30, 38, 51, and 55.
 
 >   What is the resolution of this structure of BPTI?
 
@@ -242,7 +243,7 @@ energy.
 *   Minima of the energy landscape correspond to stable conformations.
 *   Should reduce vibrations in the dynamics simulation.
 *   Should get us closer to naturally occuring conformations.
-*   <http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-mini-nma.pdf#page=16>
+<!-- http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-mini-nma.pdf#page=16 -->
 
 >   How much would you expect the atomic coordinates to change during the minimization?
 
@@ -252,89 +253,121 @@ energy.
 
 <!-- http://pandoc.org/MANUAL.html#ending-a-list -->
 
-    $ cp /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/example.inp .
-    $ # Copy new parameter and topology files.
-    $ # Modify example.inp.
-    $ charmm < example.inp > charmm.out
-    $ grep 'MINI>' charmm.out > mini.dat
-    $ cat mini.dat
-    MINI>        0  22814.35962      0.00000    503.70666      0.02000
-    MINI>       10    283.03855  22531.32107     94.21325      0.02150
-    MINI>       20   -610.28235    893.32089      6.14155      0.00401
-    MINI>       30   -685.00044     74.71810      6.92729      0.00431
-    MINI>       40   -742.50682     57.50638      1.95547      0.00193
-    MINI>       50   -765.12952     22.62270      0.95290      0.00087
-    MINI>        0   -765.12952     22.62270      0.95290      0.00000
-    MINI>       10   -854.10369     88.97418      1.13469      0.04783
-    MINI>       20   -895.41981     41.31612      1.06149      0.04633
-    MINI>       30   -911.70797     16.28816      0.68017      0.02692
-    MINI>       40   -919.90921      8.20124      0.64534      0.02607
-    MINI>       50   -927.86086      7.95165      1.20517      0.03741
-    $ # Edit step numbers in mini.dat (add 50 in ABNR lines).
-    $ xmgrace mini.dat
-    $ # Modify example.inp:
-    $ # Increase the number of minimization steps to 500 SD and 1000 ABNR.
-    $ charmm < example.inp > charmm-more-steps.out
-    $ grep 'MINI>' charmm-more-steps.out > mini2.dat
-    $ # Edit step numbers in mini2.dat.
-    $ xmgrace mini2.dat
+**Steps performed:**
 
-#### Plot after minimization with 50 SD and 50 ABNR steps
+1.  Copied (one of) the example input script(s) (`6b30b77`):
 
+        $ cp /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/example.inp .
+2.  CHARMM failed to run with the provided parameter and topology files.  Apparently they
+    are incompatible to the version we use.  `f21042d` adds compatible versions of both
+    files called `par_all27_prot_na.inp` and `top_all27_prot_na.inp`, respectively.
+3.  Modified `example.inp`.
+4.  Ran:
+
+        $ charmm < example.inp > charmm.out
+        $ grep 'MINI>' charmm.out > mini.dat
+        $ cat mini.dat
+        MINI>        0  22814.35962      0.00000    503.70666      0.02000
+        MINI>       10    283.03855  22531.32107     94.21325      0.02150
+        MINI>       20   -610.28235    893.32089      6.14155      0.00401
+        MINI>       30   -685.00044     74.71810      6.92729      0.00431
+        MINI>       40   -742.50682     57.50638      1.95547      0.00193
+        MINI>       50   -765.12952     22.62270      0.95290      0.00087
+        MINI>        0   -765.12952     22.62270      0.95290      0.00000
+        MINI>       10   -854.10369     88.97418      1.13469      0.04783
+        MINI>       20   -895.41981     41.31612      1.06149      0.04633
+        MINI>       30   -911.70797     16.28816      0.68017      0.02692
+        MINI>       40   -919.90921      8.20124      0.64534      0.02607
+        MINI>       50   -927.86086      7.95165      1.20517      0.03741
+5.  Edited the step numbers in `mini.dat` to get a continuous plot (and removed the first
+    line from ABNR minimization):
+
+        $ cat mini.dat
+        MINI>        0  22814.35962      0.00000    503.70666      0.02000
+        MINI>       10    283.03855  22531.32107     94.21325      0.02150
+        MINI>       20   -610.28235    893.32089      6.14155      0.00401
+        MINI>       30   -685.00044     74.71810      6.92729      0.00431
+        MINI>       40   -742.50682     57.50638      1.95547      0.00193
+        MINI>       50   -765.12952     22.62270      0.95290      0.00087
+        MINI>       60   -854.10369     88.97418      1.13469      0.04783
+        MINI>       70   -895.41981     41.31612      1.06149      0.04633
+        MINI>       80   -911.70797     16.28816      0.68017      0.02692
+        MINI>       90   -919.90921      8.20124      0.64534      0.02607
+        MINI>      100   -927.86086      7.95165      1.20517      0.03741
+6.  Plotted `mini.dat` with Grace:
+
+        $ xmgrace mini.dat
 ![Energy minimization 1](mini.png)\ 
 
-#### Plot after minimization with 500 SD and 1000 ABNR steps
+7.  Increased the number of minimization steps in `example.inp` to 500 [SD][] and 1000
+    ABNR (`78072be`), ran CHARMM again, `grep`ed its output, adjusted the step numbers,
+    and plotted with Grace:
 
+        $ charmm < example.inp > charmm-more-steps.out
+        $ grep 'MINI>' charmm-more-steps.out > mini2.dat
+        $ # Edit step numbers in mini2.dat
+        $ xmgrace mini2.dat
 ![Energy minimization 2](mini2.png)\ 
+
+[SD]: http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-mini-nma.pdf#page=10
+
+<!-- http://pandoc.org/MANUAL.html#ending-a-list -->
 
 **Questions and answers.**
 
->   Compare the tow energy minimizations using XMGRACE.
+>   Compare the tow [sic] energy minimizations using XMGRACE.
 
-See above.
+See above.  TODO: use the same axis ranges in both plots.
 
 >   Examine the pdb file before and after energy minimization using vmd before and after
 >   energy minimization.  Notice any differences?
 
 *   Hydrogen atoms were added by CHARMM.
-*   The molecule without the added hydrogens alongside the not minimized one:
+*   The conformation changed considerably.
 
-    ![Comparison](vmd-before-after.png)\ 
+The minimized molecule (with hydrogens atoms hidden) alongside the not minimized one:
+![Comparison](vmd-before-after.png)\ 
 
 >   Calculate the RMSD using vmd or check the CHARMM output file for the RMSD.  How does
 >   it compare to the resolution of your crystal?  What does RMSD mean?  Why is the RMSD
 >   used to examine structures?
 
-RMSD: $1.9818568887848576$.  That's about twice the resolution of the crystal.
-RMSD stands for root-mean-square deviation.
+The RMSD is about $1.98$.  That's roughly twice the resolution of the crystal.  RMSD
+stands for root-mean-square deviation.  **TODO**: why is it used?
+<!-- Exact value: 1.9818568887848576 -->
 
 >   What is the largest gradient during any of the minimizations?
 
+**TODO.**
+
 >   Plot the van-der-Waals and the electrostatic energy against the minimization steps
->   (grep 'MINI EXTERN$>$' name.out $>$name.dat; look in the CHARMM output for the
+>   (`grep 'MINI EXTERN$>$' name.out $>$name.dat`; look in the CHARMM output for the
 >   corresponding columns.). Compare the change of these energies to the change of the
 >   total energy during the minimization.
+
+**TODO.**
 
 ### Changing the topology of a protein^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node17.html>]
 
     $ grep 'MINI>' charmm-disu.out > mini-disu.dat
     $ charmm < example.inp  > charm-disu.out
-    $ charmm < int-energy.inp 
+    $ charmm < int-energy.inp
 
 **Questions and answers.**
 
->   Look in data/top.inp for the PATCH DISU. What does it do? 
+>   Look in data/top.inp for the PATCH DISU. What does it do?
 
->   Change the example input script! The PATCH command should look like: PATCH DISU 1BPI
->   residue x 1BPI residue y.  Replace x and y with the residue numbers of the cysteine
->   residues forming a disulfide bridge. You need to write a new psf file, which will be
->   used in the following.
+**TODO.**
 
->   What effect do the disulfide bridges have on the total energy? 
- 
+>   What effect do the disulfide bridges have on the total energy?
+
+They decrease it.
+
 >   Can you explain this effect? (It might be helpful to compare the energy decomposition,
 >   the van-der-Waals and electrostatic energy, for the minimization with and without
->   disulfide-bridges) 
+>   disulfide-bridges)
+
+**TODO.**
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
 
