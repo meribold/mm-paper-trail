@@ -61,6 +61,16 @@ generate TIP3 setup nodihedral noangle
 
 
 
+open write unit 1 card name 1bpi-disu.psf
+write psf card unit 1
+close unit 1
+
+
+
+!! If you have a suitable psf file already
+! open read card unit 1 name %psffile
+! read psf card unit 1
+! close unit 1
 
 
 
@@ -108,9 +118,9 @@ hbuild
 !! Charmm offers some commands to change the structure of your system.
 !! For example you can link two cystein residues via a disulfide bridge.
 
-! PATCH DISU 1BPI ? 1BPI ?
-! PATCH DISU 1BPI ? 1BPI ?
-! PATCH DISU 1BPI ? 1BPI ?
+PATCH DISU PRTA 51 PRTA 30
+PATCH DISU PRTA 5 PRTA 55
+PATCH DISU PRTA 38 PRTA 14
 
 
 
