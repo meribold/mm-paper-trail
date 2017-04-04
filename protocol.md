@@ -277,10 +277,15 @@ energy.
     $ charmm < example.inp > charmm-more-steps.out
     $ grep 'MINI>' charmm-more-steps.out > mini2.dat
     $ # Edit step numbers in mini2.dat.
+    $ xmgrace mini2.dat
 
 #### Plot after minimization with 50 SD and 50 ABNR steps
 
-![Protein](mini.png "Energy minimization")\ 
+![Energy minimization 1](mini.png)\ 
+
+#### Plot after minimization with 500 SD and 1000 ABNR steps
+
+![Energy minimization 2](mini2.png)\ 
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
 
