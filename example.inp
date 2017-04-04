@@ -21,12 +21,12 @@ BOMBlev 0
 !! See the manual for more information on these files 
 
 
-open read unit 10 card name topologyfilename
+open read unit 10 card name top_all27_prot_na.inp
 read RTF unit 10 card
 close unit 10
  
 
-open read unit 02 card name parameterfilename
+open read unit 02 card name par_all27_prot_na.inp
 read para unit 02 card
 close unit 02
 
@@ -46,31 +46,21 @@ close unit 02
  
 
 !! protein
-open read unit 12 card name %pdbfile
+open read unit 12 card name protres.pdb
 read sequ pdb unit 12
 close unit 12
 
-generate %segmentname  first nter last cter setup
+generate PRTA  first nter last cter setup
 
 
 !! water
-open read unit 12 card name %pdbfile
+open read unit 12 card name water.pdb
 read sequ pdb unit 12
 
-generate %segmentname setup nodihedral noangle
+generate TIP3 setup nodihedral noangle
 
 
 
-open write unit 1 card name %psffile
-write psf card unit 1
-close unit 1
-
-
-
-!! If you have a suitable psf file already
-open read card unit 1 name %psffile
-read psf card unit 1
-close unit 1
 
 
 
@@ -84,12 +74,12 @@ close unit 1
 !! information stored in the topology file
 
 !protein
-open read unit 12 card name %pdbfile
+open read unit 12 card name protres.pdb
 read coor pdb unit 12
 close unit 12
 
 !water
-open read unit 12 card name %pdbfile
+open read unit 12 card name water.pdb
 read coor pdb unit 12  !append
 close unit 12
 
@@ -118,9 +108,9 @@ hbuild
 !! Charmm offers some commands to change the structure of your system.
 !! For example you can link two cystein residues via a disulfide bridge.
 
-PATCH DISU 1BPI ? 1BPI ?
-PATCH DISU 1BPI ? 1BPI ?
-PATCH DISU 1BPI ? 1BPI ?
+! PATCH DISU 1BPI ? 1BPI ?
+! PATCH DISU 1BPI ? 1BPI ?
+! PATCH DISU 1BPI ? 1BPI ?
 
 
 
@@ -171,10 +161,10 @@ MINI abnr nstep 50 nprint 10
 
 !! Charmm offers the possibility to write a restart file in case you 
 !! want to continue the simulation.
-open write unit 1 card name %restartfile
+! open write unit 1 card name %restartfile
 
 !! In case you continue a previous simulation.    
-open read unit 2 card name %restart
+! open read unit 2 card name %restart
 
 
 !! Keywords important for this dynamics simulation:
@@ -213,10 +203,10 @@ dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
 !write coor card unit 1
 !close unit 1
 
-!!pdb format
-!open write unit 1 card name %filename.pdb
-!write coor pdb unit 1
-!close unit 1
+!pdb format
+open write unit 1 card name min.pdb
+write coor pdb unit 1
+close unit 1
 
 stop
 
