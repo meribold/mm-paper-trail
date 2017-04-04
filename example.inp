@@ -214,7 +214,7 @@ dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
 !close unit 1
 
 !pdb format
-open write unit 1 card name min2.pdb
+open write unit 1 card name min-disu.pdb
 write coor pdb unit 1
 close unit 1
 
