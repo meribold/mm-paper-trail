@@ -318,6 +318,23 @@ RMSD stands for root-mean-square deviation.
 ### Changing the topology of a protein^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node17.html>]
 
     $ grep 'MINI>' charmm-disu.out > mini-disu.dat
+    $ charmm < example.inp  > charm-disu.out
+    $ charmm < int-energy.inp 
+
+**Questions and answers.**
+
+>   Look in data/top.inp for the PATCH DISU. What does it do? 
+
+>   Change the example input script! The PATCH command should look like: PATCH DISU 1BPI
+>   residue x 1BPI residue y.  Replace x and y with the residue numbers of the cysteine
+>   residues forming a disulfide bridge. You need to write a new psf file, which will be
+>   used in the following.
+
+>   What effect do the disulfide bridges have on the total energy? 
+ 
+>   Can you explain this effect? (It might be helpful to compare the energy decomposition,
+>   the van-der-Waals and electrostatic energy, for the minimization with and without
+>   disulfide-bridges) 
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
 
