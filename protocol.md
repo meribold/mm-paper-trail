@@ -274,6 +274,8 @@ energy.
     $ xmgrace mini.dat
     $ # Modify example.inp:
     $ # Increase the number of minimization steps to 500 SD and 1000 ABNR.
+    $ charmm < example.inp > charmm-more-steps.out
+    $ grep 'MINI>' charmm-more-steps.out > mini2.dat
 
 #### Plot after minimization with 50 SD and 50 ABNR steps
 
