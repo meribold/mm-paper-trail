@@ -56,9 +56,24 @@ There are five components:
 >   A typical MD Simulation protocol follows four steps: Initialization, Heating,
 >   Equilibration and Production.  What is done in these steps and why is that necessary?
 
-*   Initialization
+After getting a file describing the structure of a molecule (for example from the
+[Protein Data Bank][PDB]), these steps may be performed:
 
-    TODO
+[PDB]: http://www.rcsb.org/pdb
+
+*   Initialization
+    *   Add missing hydrogen atoms.
+    *   Split the structure into connected segments (partition the [.pdb] file into
+        several ones).
+    *   Adjust atom names to match those found in the [topology
+        file][top_all27_prot_lipid.rtf]
+        *   Edit one or the other file.
+        *   <http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-md.pdf#page=19>
+    *   Add water?
+    *   Molecule's initial coordinates cause high energies and forces.
+    *   
+
+[.pdb]: https://en.wikipedia.org/wiki/Protein_Data_Bank_(file_format)
 
 *   Heating
 
@@ -175,7 +190,6 @@ TODO.
 
 ### Structure preparation^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node15.html>]
 
-
 **Questions and answers.**
 
 >   Which method was used to determine the structure `1BPI.pdb` experimentally?
@@ -213,6 +227,63 @@ Yes:
 
 <!-- TODO -->
 Less visual clutter?  They can be inferred from the incomplete structure?
+
+### Minimization^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node16.html>]
+
+**Questions and answers.**
+
+>   Why are there high-energy interactions in the crystal structure? 
+
+The molecule may not be in the ideal conformation with respect to minimizing the internal
+energy.
+
+>   Why do they have to be removed? 
+
+*   Minima of the energy landscape correspond to stable conformations.
+*   Should reduce vibrations in the dynamics simulation.
+*   Should get us closer to naturally occuring conformations.
+*   <http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-mini-nma.pdf#page=16>
+
+>   How much would you expect the atomic coordinates to change during the minimization? 
+
+*   Depends on how close the conformation of the downloaded molecule structure is to an
+    energy minimum.
+*   Having removed the external water may cause considerable changes.
+
+<!-- http://pandoc.org/MANUAL.html#ending-a-list -->
+
+    $ cp /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/example.inp .
+    $ # Copy new parameter and topology files.
+    $ # Modify example.inp.
+    $ charmm < example.inp > charmm.out
+    $ grep 'MINI>' charmm.out > mini.dat
+    $ cat mini.dat
+    MINI>        0  22814.35962      0.00000    503.70666      0.02000
+    MINI>       10    283.03855  22531.32107     94.21325      0.02150
+    MINI>       20   -610.28235    893.32089      6.14155      0.00401
+    MINI>       30   -685.00044     74.71810      6.92729      0.00431
+    MINI>       40   -742.50682     57.50638      1.95547      0.00193
+    MINI>       50   -765.12952     22.62270      0.95290      0.00087
+    MINI>        0   -765.12952     22.62270      0.95290      0.00000
+    MINI>       10   -854.10369     88.97418      1.13469      0.04783
+    MINI>       20   -895.41981     41.31612      1.06149      0.04633
+    MINI>       30   -911.70797     16.28816      0.68017      0.02692
+    MINI>       40   -919.90921      8.20124      0.64534      0.02607
+    MINI>       50   -927.86086      7.95165      1.20517      0.03741
+    $ head -6 mini.dat > mini-prot.dat
+    $ tail -6 mini.dat > mini-watr.dat
+    $ xmgrace mini-prot.dat
+    $ xmgrace mini-watr.dat
+
+#### Plots after minimization with 50 SD and 50 ABNR steps
+
+##### Protein
+
+![Protein](mini-prot.png "Protein")\ 
+
+##### Water
+
+![Water](mini-watr.png "Water")\ 
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
 
