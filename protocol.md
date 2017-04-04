@@ -315,6 +315,10 @@ RMSD stands for root-mean-square deviation.
 >   corresponding columns.). Compare the change of these energies to the change of the
 >   total energy during the minimization.
 
+### Changing the topology of a protein^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node17.html>]
+
+    $ grep 'MINI>' charmm-disu.out > mini-disu.dat
+
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
 
 [top_all27_prot_lipid.rtf]: top_all27_prot_lipid.rtf
