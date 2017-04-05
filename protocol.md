@@ -1,6 +1,29 @@
-% [Molecular modelling][] [practicum][]
+% [Molecular modelling][] [practicum][]  
   Protocol
 % Lukas Waymann
+
+---
+documentclass: scrreprt
+colorlinks: no
+papersize: A4
+subparagraph: yes
+geometry:
+    - margin=1in
+header-includes:
+    - \usepackage{fancyhdr}
+    - \pagestyle{fancy}
+    - \fancyhead[R]{}
+    # From <http://tex.stackexchange.com/a/180400>.
+    - \usepackage{framed}
+    - \usepackage{xcolor}
+    - \let\oldquote=\quote
+    - \let\endoldquote=\endquote
+    - \colorlet{shadecolor}{lightgray}
+    - \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+monofont: Ubuntu Mono
+---
+
+<!-- http://tex.stackexchange.com/a/139205 -->
 
 [Molecular modelling]: http://www.bisb.uni-bayreuth.de/Lecture/
 [practicum]: http://www.bisb.uni-bayreuth.de/Lecture/practical/practical.html
@@ -11,7 +34,13 @@
 
 ### Time evolution^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node8.html>]
 
-#### The Verlet algorithm^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html>]
+<!--
+#### The Verlet algorithm
+
+<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html>
+-->
+
+#### The Verlet algorithm[^node9]
 
 **Questions and answers.**
 
@@ -38,10 +67,10 @@ There are five components:
 >   Explain the basic ideas underlying the Steepest Descent and Newton Raphson algorithms.
 
 *   Steepest Descent
+    *   Finds a local minimum.
     *   Start with some coordinates on the energy landscape.
     *   Successively move a discrete amount along the local downhill gradient (the
         steepest descent).
-    *   Finds a local minimum.
 *   Newton
     *   TODO.
 
@@ -87,8 +116,6 @@ After getting a file describing the structure of a molecule (for example from th
 *   Production
 
     TODO
-
-[The Verlet algorithm]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 ### [Running CHARMM][]
 
@@ -140,16 +167,18 @@ that the sought after values are `0.16` and `-0.23`, respectively.
 
 >   What are the parameters for the sulfur-hydrogen bond (S-HS)?
 
-    $ grep BONDS -A 7 par_all27_prot_lipid.prm; grep '^S.*HS' par_all27_prot_lipid.prm
-    BONDS
-    !
-    !V(bond) = Kb(b - b0)**2
-    !
-    !Kb: kcal/mole/A**2
-    !b0: A
-    !
-    !atom type Kb          b0
-    S    HS    275.000     1.3250 ! ALLOW   SUL ION
+```bash
+$ grep BONDS -A 7 par_all27_prot_lipid.prm; grep '^S.*HS' par_all27_prot_lipid.prm
+BONDS
+!
+!V(bond) = Kb(b - b0)**2
+!
+!Kb: kcal/mole/A**2
+!b0: A
+!
+!atom type Kb          b0
+S    HS    275.000     1.3250 ! ALLOW   SUL ION
+```
 
 Thus, the force constant $K_b$ for [equation 1][node3] is
 $275\ \frac{kcal}{mole\cdot Å^2}$ and $r_{eq}$ for equation 1, which corresponds to `b0`,
@@ -215,10 +244,12 @@ microscopy](http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-intro.pdf#pag
 
 Yes:
 
-    $ grep '^SSBOND' 1bpi.pdb
-    SSBOND   1 CYS A    5    CYS A   55                          1555   1555  2.01
-    SSBOND   2 CYS A   14    CYS A   38                          1555   1555  2.03
-    SSBOND   3 CYS A   30    CYS A   51                          1555   1555  2.02
+```bash
+$ grep '^SSBOND' 1bpi.pdb
+SSBOND   1 CYS A    5    CYS A   55                          1555   1555  2.01
+SSBOND   2 CYS A   14    CYS A   38                          1555   1555  2.03
+SSBOND   3 CYS A   30    CYS A   51                          1555   1555  2.02
+```
 
 >   Which temperature was used for the measurements?
 
@@ -264,49 +295,57 @@ energy.
 3.  Modified `example.inp`.
 4.  Ran:
 
-        $ charmm < example.inp > charmm.out
-        $ grep 'MINI>' charmm.out > mini.dat
-        $ cat mini.dat
-        MINI>        0  22814.35962      0.00000    503.70666      0.02000
-        MINI>       10    283.03855  22531.32107     94.21325      0.02150
-        MINI>       20   -610.28235    893.32089      6.14155      0.00401
-        MINI>       30   -685.00044     74.71810      6.92729      0.00431
-        MINI>       40   -742.50682     57.50638      1.95547      0.00193
-        MINI>       50   -765.12952     22.62270      0.95290      0.00087
-        MINI>        0   -765.12952     22.62270      0.95290      0.00000
-        MINI>       10   -854.10369     88.97418      1.13469      0.04783
-        MINI>       20   -895.41981     41.31612      1.06149      0.04633
-        MINI>       30   -911.70797     16.28816      0.68017      0.02692
-        MINI>       40   -919.90921      8.20124      0.64534      0.02607
-        MINI>       50   -927.86086      7.95165      1.20517      0.03741
+    ```bash
+    $ charmm < example.inp > charmm.out
+    $ grep 'MINI>' charmm.out > mini.dat
+    $ cat mini.dat
+    MINI>        0  22814.35962      0.00000    503.70666      0.02000
+    MINI>       10    283.03855  22531.32107     94.21325      0.02150
+    MINI>       20   -610.28235    893.32089      6.14155      0.00401
+    MINI>       30   -685.00044     74.71810      6.92729      0.00431
+    MINI>       40   -742.50682     57.50638      1.95547      0.00193
+    MINI>       50   -765.12952     22.62270      0.95290      0.00087
+    MINI>        0   -765.12952     22.62270      0.95290      0.00000
+    MINI>       10   -854.10369     88.97418      1.13469      0.04783
+    MINI>       20   -895.41981     41.31612      1.06149      0.04633
+    MINI>       30   -911.70797     16.28816      0.68017      0.02692
+    MINI>       40   -919.90921      8.20124      0.64534      0.02607
+    MINI>       50   -927.86086      7.95165      1.20517      0.03741
+    ```
 5.  Edited the step numbers in `mini.dat` to get a continuous plot (and removed the first
     line from ABNR minimization):
 
-        $ cat mini.dat
-        MINI>        0  22814.35962      0.00000    503.70666      0.02000
-        MINI>       10    283.03855  22531.32107     94.21325      0.02150
-        MINI>       20   -610.28235    893.32089      6.14155      0.00401
-        MINI>       30   -685.00044     74.71810      6.92729      0.00431
-        MINI>       40   -742.50682     57.50638      1.95547      0.00193
-        MINI>       50   -765.12952     22.62270      0.95290      0.00087
-        MINI>       60   -854.10369     88.97418      1.13469      0.04783
-        MINI>       70   -895.41981     41.31612      1.06149      0.04633
-        MINI>       80   -911.70797     16.28816      0.68017      0.02692
-        MINI>       90   -919.90921      8.20124      0.64534      0.02607
-        MINI>      100   -927.86086      7.95165      1.20517      0.03741
+    ```bash
+    $ cat mini.dat
+    MINI>        0  22814.35962      0.00000    503.70666      0.02000
+    MINI>       10    283.03855  22531.32107     94.21325      0.02150
+    MINI>       20   -610.28235    893.32089      6.14155      0.00401
+    MINI>       30   -685.00044     74.71810      6.92729      0.00431
+    MINI>       40   -742.50682     57.50638      1.95547      0.00193
+    MINI>       50   -765.12952     22.62270      0.95290      0.00087
+    MINI>       60   -854.10369     88.97418      1.13469      0.04783
+    MINI>       70   -895.41981     41.31612      1.06149      0.04633
+    MINI>       80   -911.70797     16.28816      0.68017      0.02692
+    MINI>       90   -919.90921      8.20124      0.64534      0.02607
+    MINI>      100   -927.86086      7.95165      1.20517      0.03741
+    ```
 6.  Plotted `mini.dat` with Grace:
 
-        $ xmgrace mini.dat
+    ```bash
+    $ xmgrace mini.dat
+    ```
 ![Energy minimization 1](mini.png)\ 
 
 7.  Increased the number of minimization steps in `example.inp` to 500 [SD][] and 1000
     ABNR (`78072be`), ran CHARMM again, `grep`ed its output, adjusted the step numbers,
     and plotted with Grace:
 
-        $ charmm < example.inp > charmm-more-steps.out
-        $ grep 'MINI>' charmm-more-steps.out > mini2.dat
-        $ # Edit step numbers in mini2.dat
-        $ xmgrace mini2.dat
+    ```bash
+    $ charmm < example.inp > charmm-more-steps.out
+    $ grep 'MINI>' charmm-more-steps.out > mini2.dat
+    $ # Edit step numbers in mini2.dat
+    $ xmgrace mini2.dat
+    ```
 ![Energy minimization 2](mini2.png)\ 
 
 [SD]: http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-mini-nma.pdf#page=10
@@ -324,9 +363,10 @@ See above.  TODO: use the same axis ranges in both plots.
 
 *   Hydrogen atoms were added by CHARMM.
 *   The conformation changed considerably.
+*   See below for the minimized molecule (with hydrogens atoms hidden) alongside the not
+    minimized one.
 
-The minimized molecule (with hydrogens atoms hidden) alongside the not minimized one:
-![Comparison](vmd-before-after.png)\ 
+![Comparison of 1BPI before and after energy minimization](vmd-before-after.png)
 
 >   Calculate the RMSD using vmd or check the CHARMM output file for the RMSD.  How does
 >   it compare to the resolution of your crystal?  What does RMSD mean?  Why is the RMSD
@@ -368,6 +408,8 @@ They decrease it.
 >   disulfide-bridges)
 
 **TODO.**
+
+[^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
 

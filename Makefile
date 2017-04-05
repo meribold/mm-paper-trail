@@ -7,7 +7,7 @@ protocol.html: protocol.md pandoc.css
 	pandoc -o protocol.html protocol.md --css pandoc.css --toc --toc-depth=4 --mathjax
 
 protocol.pdf: protocol.md pandoc.css
-	pandoc -o protocol.pdf protocol.md --css pandoc.css --toc --toc-depth=4
+	pandoc -o protocol.pdf protocol.md --latex-engine xelatex --toc --toc-depth=4 --highlight-style haddock
 
 .PHONY: clean
 
