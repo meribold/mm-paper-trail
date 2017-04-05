@@ -417,6 +417,15 @@ They decrease it.
 
 **TODO.**
 
+### Interaction Energies^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node18.html>]
+
+>   Explain what the `sele` (select) and the `sele .not.` command selects.
+
+1.  The 3 atoms of one of the H~2~O molecules.
+2.  All other atoms.
+
+>   Which water molecule has the most favorable interaction energy?
+
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
