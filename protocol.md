@@ -1,4 +1,4 @@
-% [Molecular modelling][] [practicum][]  
+% [Molecular Modelling][] [Practicum][]  
   Protocol
 % Lukas Waymann
 
@@ -90,43 +90,51 @@ After getting a file describing the structure of a molecule (for example from th
 
 [PDB]: http://www.rcsb.org/pdb
 
-*   Initialization
+*   Initialization^[<http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-md.pdf#page=19>]
     *   Add missing hydrogen atoms.
     *   Split the structure into connected segments (partition the [.pdb] file into
         several ones).
     *   Adjust atom names to match those found in the [topology
         file][top_all27_prot_lipid.rtf].
         *   Edit one or the other file.
-        *   <http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-md.pdf#page=19>
     *   Add non-standard covalent bonds.
     *   Add water.
     *   Molecule's initial coordinates cause high energies and forces.
-    *
 
 [.pdb]: https://en.wikipedia.org/wiki/Protein_Data_Bank_(file_format)
 
 *   Heating
 
-    TODO
+    *   The molecule should have a realistic temperature (based on its natural
+        environment).
 
 *   Equilibration
 
-    TODO
+    *   The atoms' velocities are rescaled until the system is thermodynamic
+        equilibrium, while keeping the temperature constant.
+    *   This ensures that the temperature won't change when simulating the system.
 
 *   Production
 
-    TODO
+    *   This is the actual simulation.
+    *   The observed trajectories are analysed; for example to learn about the molecules
+        flexibility.
 
 ### [Running CHARMM][]
 
 >   Explain briefly which informations are stored in the parameter and topology file.
 
 *   [Parameter file][par_all27_prot_lipid.prm]
-    *   From `/sw/sci/app/charmm/c32b1/toppar/par_all27_prot_lipid.prm`.
-    *   TODO.
+    *   Bond force constants and equilibrium geometries.
+    *   Binding angles.
+    *   Dihedral angles (torsion angles).
+    *   All other numerical constants needed to evaluate forces and energies.
+    *   We use `/sw/sci/app/charmm/c32b1/toppar/par_all27_prot_lipid.prm`.
 *   [Topology file][top_all27_prot_lipid.rtf]
-    *   From `/sw/sci/app/charmm/c32b1/toppar/top_all27_prot_lipid.rtf`.
-    *   Contains definitions of biomolecules.
+    *   Definitions of biomolecules.
+        *   [Structural formuae](https://en.wikipedia.org/wiki/Structural_formula).
+        *   Atom types.
+    *   We use `/sw/sci/app/charmm/c32b1/toppar/top_all27_prot_lipid.rtf`.
 
 >   Explain briefly what atom types are and why they are needed?
 
@@ -363,8 +371,8 @@ See above.  TODO: use the same axis ranges in both plots.
 
 *   Hydrogen atoms were added by CHARMM.
 *   The conformation changed considerably.
-*   See below for the minimized molecule (with hydrogens atoms hidden) alongside the not
-    minimized one.
+*   See the image below for the minimized molecule (with hydrogens atoms hidden) alongside
+    the not minimized one.
 
 ![Comparison of 1BPI before and after energy minimization](vmd-before-after.png)
 
