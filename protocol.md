@@ -426,6 +426,38 @@ They decrease it.
 
 >   Which water molecule has the most favorable interaction energy?
 
+The one with `resid` 62.
+
+*   $-31.30 \frac{kcal}{mole}$.
+
+## Heating^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node19.html>]
+
+*   Create `dyna/` and copy files (02380b8 and d4ef929).
+*   `$ cd dyna`
+*   Edit `dyna/heat.inp` (f7d4fee).
+*   `$ charmm < heat.inp  > heat.out`
+*   `$ grep 'DYNA>' heat.out > heat.dat`
+*
+```bash
+$ awk '{print $3"    "$4}' heat.dat > time-total.dat
+$ awk '{print $3"    "$5}' heat.dat > time-kinetic.dat
+$ awk '{print $3"    "$6}' heat.dat > time-potential.dat
+$ awk '{print $3"    "$7}' heat.dat > time-temp.dat
+```
+
+>   Plot the total, potential and kinetic energy and the temperature versus simulation
+    time (Remark: use grep 'DYNA$>$' name.out $>$ name.dat). 
+
+![Energies](dyna/time-energy-plot.png)\ 
+
+![Temperatures](dyna/time-temp-plot.png)\ 
+
+>   Explain the shape of the temperature curve.
+
+The curve is linear (as expected) but has lots of small fluctuations.  These arise because
+the system isn't in thermodynamic equilibrium, and kinetic energy is constantly converted
+into potential energy.
+
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
