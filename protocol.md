@@ -516,7 +516,21 @@ These are the results for heating to 300K.
 
 >   Are temperature and energy stable? 
 
-Yes.
+Yes, mostly.
+
+### Equilibration without rescaling velocities^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node22.html>]
+
+```bash
+$ pwd
+/home/student10/practicum/equi2
+```
+
+>   Why are the two equilibration steps necessary? 
+
+>   Plot the total, potential and kinetic energy and the temperature versus simulation
+>   time. 
+
+>   Are temperature and energy stable? 
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
