@@ -574,6 +574,15 @@ $ awk '{print $3"    "$7}' prod.dat > time-temp.dat
 >   Analyze the output from the final run as before, i.e., plot total, potential and
 >   kinetic energy, and temperature versus time. 
 
+```bash
+$ xmgrace time-total.dat time-kinetic.dat time-potential.dat 
+$ xmgrace time-temp.dat
+```
+
+![Energies](prod/time-energy-plot.png)\ 
+
+![Temperatures](prod/time-temp-plot.png)\ 
+
 >   Was the system stable during the entire run?
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
