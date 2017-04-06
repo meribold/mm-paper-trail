@@ -543,7 +543,18 @@ The second step ensures that the temperature won't change when simulating the sy
 >   Plot the total, potential and kinetic energy and the temperature versus simulation
 >   time. 
 
+```bash
+$ xmgrace time-total.dat time-kinetic.dat time-potential.dat 
+$ xmgrace time-temp.dat
+```
+
+![Energies](equi2/time-energy-plot.png)\ 
+
+![Temperatures](equi2/time-temp-plot.png)\ 
+
 >   Are temperature and energy stable? 
+
+Yeah, I guess.
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
