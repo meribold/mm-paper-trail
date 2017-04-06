@@ -530,10 +530,10 @@ $ git show -q | head -1
 commit 3ff307b006f9fd1035aadfe6d566b72068c24bfa
 $ charmm < equi2.inp > equi2.out
 $ grep 'DYNA>' equi2.out > equi2.dat
-$ awk '{print $3"    "$4}' equi.dat > time-total.dat
-$ awk '{print $3"    "$5}' equi.dat > time-kinetic.dat
-$ awk '{print $3"    "$6}' equi.dat > time-potential.dat
-$ awk '{print $3"    "$7}' equi.dat > time-temp.dat
+$ awk '{print $3"    "$4}' equi2.dat > time-total.dat
+$ awk '{print $3"    "$5}' equi2.dat > time-kinetic.dat
+$ awk '{print $3"    "$6}' equi2.dat > time-potential.dat
+$ awk '{print $3"    "$7}' equi2.dat > time-temp.dat
 ```
 
 >   Why are the two equilibration steps necessary? 
@@ -557,6 +557,19 @@ $ xmgrace time-temp.dat
 Yeah, I guess.
 
 ## Production^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node23.html>]
+
+```bash
+$ pwd
+/home/student10/practicum/prod
+$ git show -q | head -1
+commit b64037a75fa7c09fea240e909be4a2a71dceb096
+$ charmm < prod.inp > prod.out
+$ grep 'DYNA>' prod.out > prod.dat
+$ awk '{print $3"    "$4}' prod.dat > time-total.dat
+$ awk '{print $3"    "$5}' prod.dat > time-kinetic.dat
+$ awk '{print $3"    "$6}' prod.dat > time-potential.dat
+$ awk '{print $3"    "$7}' prod.dat > time-temp.dat
+```
 
 >   Analyze the output from the final run as before, i.e., plot total, potential and
 >   kinetic energy, and temperature versus time. 
