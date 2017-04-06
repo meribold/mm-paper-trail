@@ -2,7 +2,7 @@ REMARK  THIS IS A TEMPLATE INPUT FILE FOR THE CHARMM PROGRAM
 REMARK  UNQUOTE AND CHANGE THOSE PARTS THAT YOU NEED.                                 
 REMARK  A TITLE LIKE THIS WITH A LAST LINE CONTAINING ONLY A *                        
 REMARK  IS MANDATORY.                                                                 
-REMARK   DATE:     4/ 6/17     13: 6:53      CREATED BY USER: student10               
+REMARK   DATE:     4/ 6/17     13:14:20      CREATED BY USER: student10               
 ATOM      1  N   ARG     1      32.099  12.722 -13.344  1.00 18.79      PRTA
 ATOM      2  H1  ARG     1      31.123  12.917 -13.471  1.00  0.00      PRTA
 ATOM      3  H2  ARG     1      32.563  12.041 -13.968  1.00  0.00      PRTA
