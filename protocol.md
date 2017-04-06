@@ -585,6 +585,8 @@ $ xmgrace time-temp.dat
 
 >   Was the system stable during the entire run?
 
+Yes.
+
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
