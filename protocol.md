@@ -485,7 +485,7 @@ The structure changed slightly.  Some residues turned.
 
 ## Equilibration^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node20.html>]
 
-### Equilibration with rescaling velocities^[http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node21.html]
+### Equilibration with rescaling velocities^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node21.html>]
 
 ```bash
 $ pwd
@@ -520,12 +520,25 @@ Yes, mostly.
 
 ### Equilibration without rescaling velocities^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node22.html>]
 
+*   Copied the required files to `equi2`.
+*   Modified the input script.
+
 ```bash
 $ pwd
 /home/student10/practicum/equi2
+$ git show -q | head -1
+commit 3ff307b006f9fd1035aadfe6d566b72068c24bfa
+$ charmm < equi2.inp > equi2.out
+$ grep 'DYNA>' equi2.out > equi2.dat
+$ awk '{print $3"    "$4}' equi.dat > time-total.dat
+$ awk '{print $3"    "$5}' equi.dat > time-kinetic.dat
+$ awk '{print $3"    "$6}' equi.dat > time-potential.dat
+$ awk '{print $3"    "$7}' equi.dat > time-temp.dat
 ```
 
 >   Why are the two equilibration steps necessary? 
+
+The second step ensures that the temperature won't change when simulating the system.
 
 >   Plot the total, potential and kinetic energy and the temperature versus simulation
 >   time. 
