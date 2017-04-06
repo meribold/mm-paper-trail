@@ -587,6 +587,28 @@ $ xmgrace time-temp.dat
 
 Yes.
 
+### Analysis of Trajectories^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node24.html>]
+
+>   Plot out all time series vs time. The output files will consist of: column 1 =
+>   trajectory time steps, column 2 = RMSD. 
+
+>   How do the RMSD of the backbone and sidechains compare to the RMSD of the whole
+>   protein? 
+
+>   Compare with the results of the other students. How do the results vary with
+>   temperature? 
+
+>   Which parts of the protein are more flexible? Use the vmd movie mode. 
+
+>   Plot out all time series vs time. The output files will consist of: column 1 =
+>   simulation time (in ps), column 2 = time series of S-S distance, column 3 = time
+>   series of C-S-S angle, column 4 = time series of C-S-S-C dihedral. 
+
+>   What is the average value and standard deviation of the S-S distance, the C-S-S angle,
+>   and the C-S-S-C dihedral angle? How may these values be interpreted ? 
+
+>   Why is the standard derivation `S-S` < `C-S-S` < `C-S-S-C`?
+   
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
