@@ -4,7 +4,7 @@
        Copyright(c) 1984,1992  President and Fellows of Harvard College
                               All Rights Reserved
       Current operating system: Linux-4.4.0-71-generic(x86_64)@krusty.fronte
-                 Created on  4/ 6/17 at 11: 3:34 by user: student10   
+                 Created on  4/ 6/17 at 12:36:35 by user: student10   
 
             Maximum number of ATOMS:    240480, and RESidues:       72000
             Current HEAP size:        10240000, and STACK size:   2000000
@@ -572,7 +572,10 @@ ENER EXTERN>     -158.66195  -1532.90868      0.00000      0.00000      0.00000
   
  CHARMM>    !! Charmm offers the possibility to write a restart file in case you
  CHARMM>    !! want to continue the simulation.
- CHARMM>    ! open write unit 1 card name %restartfile
+ CHARMM>    open write unit 1 card name heat.rst
+ VOPEN> Attempting to open::heat.rst::
+ OPNLGU> Unit  1 opened for WRITE access to heat.rst
+  
  CHARMM>     
   
  CHARMM>    !! In case you continue a previous simulation.
@@ -11230,9 +11233,9 @@ LFLC PRESS>         0.00000    295.32698      0.00000      0.00000      0.00000
  CHARMM>     
   
  CHARMM>    !pdb format
- CHARMM>    open write unit 1 card name heated.pdb
- VOPEN> Attempting to open::heated.pdb::
- OPNLGU> Unit  1 opened for WRITE access to heated.pdb
+ CHARMM>    open write unit 1 card name heated-300k.pdb
+ VOPEN> Attempting to open::heated-300k.pdb::
+ OPNLGU> Unit  1 opened for WRITE access to heated-300k.pdb
   
  CHARMM>    write coor pdb unit 1
  RDTITL> CLOSE UNIT 1
@@ -11246,14 +11249,14 @@ LFLC PRESS>         0.00000    295.32698      0.00000      0.00000      0.00000
  CHARMM>    stop
 $$$$$$  New timer profile $$$$$
      First List              0.00800 Other:    0.00000
-               Nonbond force         203.06001 Other:    0.00000
-               List time               8.61600 Other:    0.00000
-               Bond energy             0.63595 Other:    0.00000
-               Angle energy            5.46012 Other:    0.00000
-               Dihedral energy         7.54796 Other:    0.00000
-          Energy time           225.32003 Other:    0.00000
-     Dynamics total        226.42400 Other:    1.10397
- Total time            227.30000 Other:    0.86800
+               Nonbond force         199.91563 Other:    0.00000
+               List time               8.43622 Other:    0.00000
+               Bond energy             0.70405 Other:    0.00000
+               Angle energy            5.33593 Other:    0.00000
+               Dihedral energy         7.66011 Other:    0.00000
+          Energy time           222.05194 Other:    0.00000
+     Dynamics total        223.13200 Other:    1.08006
+ Total time            223.95599 Other:    0.81600
 
                     NORMAL TERMINATION BY NORMAL STOP
                     MAXIMUM STACK SPACE USED IS   47528
@@ -11267,5 +11270,5 @@ $$$$$$  New timer profile $$$$$
             PRINHP> ADDRESS:   9964251 LENGTH:    275750 NEXT:         0
 
                     $$$$$ JOB ACCOUNTING INFORMATION $$$$$
-                     ELAPSED TIME:     3.79  MINUTES 
-                         CPU TIME:     3.79  MINUTES 
+                     ELAPSED TIME:     3.73  MINUTES 
+                         CPU TIME:     3.73  MINUTES 

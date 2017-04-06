@@ -165,7 +165,7 @@ ENERgy atom elec cdiel eps 1.0 fshift vdw vshift -
 
 !! Charmm offers the possibility to write a restart file in case you 
 !! want to continue the simulation.
-! open write unit 1 card name %restartfile
+open write unit 1 card name heat.rst
 
 !! In case you continue a previous simulation.    
 ! open read unit 2 card name %restart
