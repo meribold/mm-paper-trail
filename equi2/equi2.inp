@@ -31,7 +31,7 @@ read para unit 02 card
 close unit 02
 
 !! If you have a suitable psf file already
-open read unit 11 card name 1bpi-disu.psf
+open read unit 11 card name ../1bpi-disu.psf
 read psf card unit 11
 close unit 11
 
@@ -49,7 +49,7 @@ close unit 11
  
 
 !! protein
-open read unit 12 card name heated-300k.pdb
+open read unit 12 card name equi-300k.pdb
 read sequ pdb unit 12
 
 ! generate PRTA  first nter last cter setup
@@ -78,7 +78,7 @@ close unit 12
 !! information stored in the topology file
 
 !protein
-open read unit 12 card name heated-300k.pdb
+open read unit 12 card name equi-300k.pdb
 read coor pdb unit 12
 close unit 12
 
@@ -165,10 +165,10 @@ ENERgy atom elec cdiel eps 1.0 fshift vdw vshift -
 
 !! Charmm offers the possibility to write a restart file in case you 
 !! want to continue the simulation.
-open write unit 1 card name equi.rst
+open write unit 1 card name equi2.rst
 
 !! In case you continue a previous simulation.    
-open read unit 2 card name heat.rst
+open read unit 2 card name equi.rst
 
 
 !! Keywords important for this dynamics simulation:
@@ -193,7 +193,7 @@ dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
     iprfrq 100 ihtfrq 0 ieqfrq 1000 teminc 5.0  -
     nprint 100 iunwri 1 iunrea 2 iuncrd -1 nsavc 100 -
     firstt 300.0 finalt 300.0 -
-    iasors 0 iasvel 1 iscvel 0 ichecw 0 
+    iasors 0 iasvel 1 iscvel 1 ichecw 0 
 
 
 
@@ -212,7 +212,7 @@ dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
 !close unit 1
 
 !pdb format
-open write unit 1 card name equi-300k.pdb
+open write unit 1 card name equi2-300k.pdb
 write coor pdb unit 1
 close unit 1
 
