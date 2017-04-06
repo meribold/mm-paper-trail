@@ -48,8 +48,8 @@ close unit 11
 !! this psf file instead of created the molecule again in a follow up run.
  
 
-!! protein (min-disu.pdb includes the 4 water molecules)
-open read unit 12 card name min-disu.pdb
+!! protein
+open read unit 12 card name heated-300k.pdb
 read sequ pdb unit 12
 
 ! generate PRTA  first nter last cter setup
@@ -78,7 +78,7 @@ close unit 12
 !! information stored in the topology file
 
 !protein
-open read unit 12 card name min-disu.pdb
+open read unit 12 card name heated-300k.pdb
 read coor pdb unit 12
 close unit 12
 
@@ -165,10 +165,10 @@ ENERgy atom elec cdiel eps 1.0 fshift vdw vshift -
 
 !! Charmm offers the possibility to write a restart file in case you 
 !! want to continue the simulation.
-open write unit 1 card name heat.rst
+open write unit 1 card name equi.rst
 
 !! In case you continue a previous simulation.    
-! open read unit 2 card name %restart
+open read unit 2 card name heat.rst
 
 
 !! Keywords important for this dynamics simulation:
@@ -190,9 +190,9 @@ open write unit 1 card name heat.rst
 !! to your temperature
 
 dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
-    iprfrq 100 ihtfrq 300 teminc 5.0  -
-    nprint 100 iunwri 1 iunrea -1 iuncrd -1 nsavc 100 -
-    firstt 0.0 finalt 300.0 -
+    iprfrq 100 ihtfrq 0 ieqfrq 1000 teminc 5.0  -
+    nprint 100 iunwri 1 iunrea 2 iuncrd -1 nsavc 100 -
+    firstt 300.0 finalt 300.0 -
     iasors 0 iasvel 1 iscvel 0 ichecw 0 
 
 
@@ -212,7 +212,7 @@ dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
 !close unit 1
 
 !pdb format
-open write unit 1 card name heated-300k.pdb
+open write unit 1 card name equi-300k.pdb
 write coor pdb unit 1
 close unit 1
 
