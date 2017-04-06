@@ -1,0 +1,225 @@
+* This is a template input file for the charmm program
+* unquote and change those parts that you need. 
+* A title like this with a last line containing only a *
+* is mandatory.
+*
+
+
+!######################### bomblevel
+!! This value determines how severe an error has to be before charmm stops. 
+!! The higher the value the faster charmm stops; 
+!! negativ values are mainly for debugging and
+!! should not be used in the final run.
+
+BOMBlev 0
+
+
+!######################### Topology and Parameter
+!! Charmm provides standard topology and parameter files for common 
+!! biochemical compounds like amino-acids, nucleotides etc. 
+!! These files have to be read in before doing any calculations
+!! See the manual for more information on these files 
+
+
+open read unit 10 card name ../top_all27_prot_na.inp
+read RTF unit 10 card
+close unit 10
+ 
+
+open read unit 02 card name ../par_all27_prot_na.inp
+read para unit 02 card
+close unit 02
+
+!! If you have a suitable psf file already
+open read unit 11 card name 1bpi-disu.psf
+read psf card unit 11
+close unit 11
+
+
+!################## Create the molecule -- Protein Structure File (psf)
+!! Before doing any calculations you have to create a computer model
+!! of your system.
+!! A protein, for example, can be created from its amino acid sequence.
+!! This sequence can be read from the pdb file directly. 
+!! You can devide your system into several 'segments'.
+!! Once you succefully generated a segment, this part of the your system is 
+!! 'known' to Charmm.
+!! You can store your created system in a psf file. This allows you to read in 
+!! this psf file instead of created the molecule again in a follow up run.
+ 
+
+!! protein (min-disu.pdb includes the 4 water molecules)
+open read unit 12 card name min-disu.pdb
+read sequ pdb unit 12
+
+! generate PRTA  first nter last cter setup
+! close unit 12
+
+!! water
+!open read unit 12 card name water.pdb
+!read sequ pdb unit 12
+
+! generate TIP3 setup nodihedral noangle
+
+close unit 12
+
+
+
+
+
+
+
+
+
+!##################### Reading in a molecule -- Coordinates
+!! To do any calculation you need coordinates for each atom in your system.
+!! Usually these coordinates will be read from a pdb or crd file.
+!! Coordinates missing in the pdb file might be created by Charmm using 
+!! information stored in the topology file
+
+!protein
+open read unit 12 card name min-disu.pdb
+read coor pdb unit 12
+close unit 12
+
+!water
+!open read unit 12 card name water.pdb
+!read coor pdb unit 12  !append
+!close unit 12
+
+
+
+
+
+
+!! If necessary generate missing coordinates
+
+ic fill pres
+ic parameters
+ic build
+
+
+!! If necessary generate hydrogens          
+! coord init sele type h* end
+! hbuild
+
+
+
+
+
+
+!##########################  Manipulating the Structure
+!! Charmm offers some commands to change the structure of your system.
+!! For example you can link two cystein residues via a disulfide bridge.
+
+!PATCH DISU PRTA 51 PRTA 30
+!PATCH DISU PRTA 5 PRTA 55
+!PATCH DISU PRTA 38 PRTA 14
+
+
+
+
+
+
+
+!!#################### ENERGY
+!! Charmm has several options that control how the energy function is 
+!! is calculated. This allows the user to define a suitable compromis 
+!! between accuracy and computational cost.
+!! The setup used in this practical: 
+!! atom: interactions are computed between all atoms
+!! fshift, vshift, cutofnb: non-bonded interaction energy is shifted 
+!! and cutoff at 13.0 A
+!! cdiel eps 1: a constant dielectric of eps=1 is used  
+!! vdw: calculate Van der Waals interactions
+!! elec: calculate electrostatic energy
+!! cutnb: non-bonded interaction neighbour list is cut off at 14.0 A.
+
+
+ENERgy atom elec cdiel eps 1.0 fshift vdw vshift -
+       cutnb 14.0 ctofnb 13.0             
+
+
+!##########################  Minimization
+!! Several Methods exist to minimize the energy of a molecular system.
+!! Implemented in Charmm are, for instance a steepest descent (sd), 
+!! a conjugate gradient (conj) and a Newton-Raphson (abnr) algorithm.
+
+
+!!Keywords: 
+!! sd, abnr: Method to use
+!! nstep: number of minimization steps
+!! nprint: every 10th step the energy is printed
+
+!MINI sd   nstep 500 nprint 10
+!MINI abnr nstep 1000 nprint 10 
+
+
+
+
+!###########################  Dynamics
+!! To solve the equations of motion for the system again several 
+!! algorithms can be chosen. In this practical you will use a verlet 
+!! algorithm. 
+
+
+!! Charmm offers the possibility to write a restart file in case you 
+!! want to continue the simulation.
+open write unit 1 card name heat.rst
+
+!! In case you continue a previous simulation.    
+! open read unit 2 card name %restart
+
+
+!! Keywords important for this dynamics simulation:
+!! start (restart): defines whether you start a new simulation or continue 
+!! from previous one.
+!! nstep: Number of timesteps  
+!! tstep: Timestep (0.001 = 1fs) 
+!! iprfrq ??: Print out results every ?? steps
+!! ihtfrq ??: Heat up system every ?? steps
+!! teminc ??: Heat in temperature increments of ?? K
+!! nprint ??: Print out average values every ?? steps
+!! iunwri 1: File unit number to write restart file to. = 1  
+!! iunrea -1: File unit numer to read restart file from. -1 = don't write 
+!! iuncrd -1: File unit numer to write trajectories to. -1 = don't write  
+!! nsavc 100: save coordinates to trajectory file every 100 steps
+!! is only active when writing trajectory file       
+!! firstt: Starting temperature of 0.0 K after minimisation
+!! finalt: Temperature you want to heat up to. Change 
+!! to your temperature
+
+dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
+    iprfrq 100 ihtfrq 300 teminc 5.0  -
+    nprint 100 iunwri 1 iunrea -1 iuncrd -1 nsavc 100 -
+    firstt 0.0 finalt 300.0 -
+    iasors 0 iasvel 1 iscvel 0 ichecw 0 
+
+
+
+
+!###################   Saving final coordinates
+!======================================================================
+
+
+!!crd format
+!open write unit 1 card name %filename.crd
+!write coor card unit 1
+!close unit 1
+
+!open write unit 1 card name 1bpi-disu.psf
+!write psf card unit 1
+!close unit 1
+
+!pdb format
+open write unit 1 card name heated-300k.pdb
+write coor pdb unit 1
+close unit 1
+
+stop
+
+
+
+
+
+

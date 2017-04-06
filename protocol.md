@@ -483,6 +483,15 @@ Plus.
 
 The structure changed slightly.  Some residues turned.
 
+## Equilibration^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node20.html>]
+
+### Equilibration with rescaling velocities^[http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node21.html]
+
+>   Plot the total, potential and kinetic energy and the temperature versus simulation
+    time. 
+
+>   Are temperature and energy stable? 
+
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
