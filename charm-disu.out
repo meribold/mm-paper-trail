@@ -1,0 +1,2331 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+                   (CHARMM) - Developmental Version 28a3     August 15, 2000   
+       Copyright(c) 1984,1992  President and Fellows of Harvard College
+                              All Rights Reserved
+      Current operating system: Linux-4.4.0-71-generic(x86_64)@krusty.fronte
+                 Created on  4/ 4/17 at 15:55:50 by user: student10   
+
+            Maximum number of ATOMS:    240480, and RESidues:       72000
+            Current HEAP size:        10240000, and STACK size:   2000000
+
+ RDTITL> * THIS IS A TEMPLATE INPUT FILE FOR THE CHARMM PROGRAM
+ RDTITL> * UNQUOTE AND CHANGE THOSE PARTS THAT YOU NEED.
+ RDTITL> * A TITLE LIKE THIS WITH A LAST LINE CONTAINING ONLY A *
+ RDTITL> * IS MANDATORY.
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !######################### bomblevel
+ CHARMM>    !! This value determines how severe an error has to be before charmm stops.
+ CHARMM>    !! The higher the value the faster charmm stops;
+ CHARMM>    !! negativ values are mainly for debugging and
+ CHARMM>    !! should not be used in the final run.
+ CHARMM>     
+  
+ CHARMM>    BOMBlev 0
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !######################### Topology and Parameter
+ CHARMM>    !! Charmm provides standard topology and parameter files for common
+ CHARMM>    !! biochemical compounds like amino-acids, nucleotides etc.
+ CHARMM>    !! These files have to be read in before doing any calculations
+ CHARMM>    !! See the manual for more information on these files
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    open read unit 10 card name top_all27_prot_na.inp
+ VOPEN> Attempting to open::top_all27_prot_na.inp::
+ OPNLGU> Unit 10 opened for READONLY access to top_all27_prot_na.inp
+  
+ CHARMM>    read RTF unit 10 card
+ MAINIO> Residue topology file being read from unit  10.
+ TITLE> *>>>>>> COMBINED CHARMM ALL-HYDROGEN TOPOLOGY FILE FOR <<<<<<<<<
+ TITLE> *>>>>>>> CHARMM22 PROTEINS AND CHARMM27 NUCLEIC ACIDS <<<<<<<<<<
+ TITLE> *FROM
+ TITLE> *>>>> CHARMM22 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>> AUGUST 1999 <<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> *>>>>>>> DIRECT COMMENTS TO ALEXANDER D. MACKERELL JR. <<<<<<<<<
+ TITLE> *>>>>>> 410-706-7442 OR EMAIL: ALEX,MMIRIS.AB.UMD.EDU  <<<<<<<<<
+ TITLE> *AND
+ TITLE> *  \\\\ CHARMM27 ALL-HYDROGEN NUCLEIC ACID TOPOLOGY FILE ////
+ TITLE> *  \\\\\\\\\\\\\\\\\\ DEVELOPMENTAL ////////////////////////
+ TITLE> *        ALEXANDER D. MACKERELL JR. AND NICOLAS FOLOPPE
+ TITLE> *                        AUGUST 1999
+ TITLE> *     ALL COMMENTS TO ADM JR.  EMAIL: ALEX,MMIRIS.AB.UMD.EDU
+ TITLE> *                 TELEPHONE: 410-706-7442
+ TITLE> * .
+ TITLE> * CHANGES: GMU JULY 2002
+ TITLE> *          ILE CD --> ILE CD1 AND ALSO ASSOCIATED HYDROGENS (PDB CONVENTION)
+ TITLE> *          CTER OT1, OT2 --> OXT, O (PDB CONVENTION)
+ TITLE> *          NTER HT* --> H* (PDB CONVENTION)
+ TITLE> *          HSP --> HIS
+ TITLE> *          NADP ---> NAP (PDB CONVENTION)
+ TITLE> *          COPY TIP --> HOH (PDB CONVENTION)
+ TITLE> *          MOVE CAL --> CA
+ TITLE> *          ADDED TYPES NO, ON FOR NO2*          BACKBONE HN --> H (PDB CONVENTION)
+ TITLE> *
+ **** WARNING from RTFRDR **** The total charge of the residue, CYSR,  -0.0700000,
+ does not equal the expected charge,   0.0000000.
+*** WARNING **** residue HSD  already exists (old one deleted)
+          RESI HSD          0.00
+*** WARNING **** residue DUM  already exists (old one deleted)
+          RESI DUM       0.00
+ There were   3 warning(s) from RTFRDR.
+  
+ CHARMM>    close unit 10
+ VCLOSE: Closing unit   10 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    open read unit 02 card name par_all27_prot_na.inp
+ VOPEN> Attempting to open::par_all27_prot_na.inp::
+ OPNLGU> Unit  2 opened for READONLY access to par_all27_prot_na.inp
+  
+ CHARMM>    read para unit 02 card
+
+          PARAMETER FILE BEING READ FROM UNIT  2
+ TITLE> *>>>>>> COMBINED CHARMM ALL-HYDROGEN PARAMETER FILE FOR <<<<<<<<<
+ TITLE> *>>>>>>> CHARMM22 PROTEINS AND CHARMM27 NUCLEIC ACIDS <<<<<<<<<<
+ TITLE> *FROM
+ TITLE> *>>>> CHARMM22 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>> AUGUST 1999 <<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> *>>>>>>> DIRECT COMMENTS TO ALEXANDER D. MACKERELL JR. <<<<<<<<<
+ TITLE> *>>>>>> 410-706-7442 OR EMAIL: ALEX,MMIRIS.AB.UMD.EDU  <<<<<<<<<
+ TITLE> *AND
+ TITLE> *  \\\\ CHARMM27 ALL-HYDROGEN NUCLEIC ACID PARAMETER FILE ////
+ TITLE> *  \\\\\\\\\\\\\\\\\\ DEVELOPMENTAL ////////////////////////
+ TITLE> *       ALEXANDER D. MACKERELL JR. AND NICOLAS FOLOPPE
+ TITLE> *                       AUGUST 1999
+ TITLE> *    ALL COMMENTS TO ADM JR.  EMAIL: ALEX,MMIRIS.AB.UMD.EDU
+ TITLE> *            TELEPHONE: 410-706-7442
+ TITLE> *
+ PARRDR> Multiple terms for dihedral type: INDEX 1049 CODE********     ON3 -P2  -ON2 -P2  
+ PARRDR> Multiple terms for dihedral type: INDEX 1047 CODE********     ON3 -P   -ON2 -P2  
+ PARRDR> Multiple terms for dihedral type: INDEX 1045 CODE********     ON2 -P2  -ON2 -P2  
+ PARRDR> Multiple terms for dihedral type: INDEX 1043 CODE********     ON2 -P   -ON2 -P2  
+ PARRDR> Multiple terms for dihedral type: INDEX 1041 CODE********     ON3 -P2  -ON2 -P   
+ PARRDR> Multiple terms for dihedral type: INDEX 1039 CODE********     ON3 -P   -ON2 -P   
+ PARRDR> Multiple terms for dihedral type: INDEX 1037 CODE********     ON2 -P2  -ON2 -P   
+ PARRDR> Multiple terms for dihedral type: INDEX 1035 CODE********     ON2 -P   -ON2 -P   
+ PARRDR> Multiple terms for dihedral type: INDEX 1031 CODE********     CN5 -NN2B-CN7B-ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX 1022 CODE********     CN1T-NN2B-CN7B-ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX 1011 CODE********     CN5 -NN2B-CN7B-ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX 1002 CODE********     CN1T-NN2B-CN7B-ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  993 CODE********     CN7B-CN8 -CN7 -ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  992 CODE********     CN7B-CN8 -CN7 -ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  990 CODE********     CN7B-CN7C-CN7 -ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  989 CODE********     CN7B-CN7C-CN7 -ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  987 CODE********     CN7B-CN7B-CN7 -ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  986 CODE********     CN7B-CN7B-CN7 -ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  980 CODE********     CN7B-CN8 -CN7 -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  979 CODE********     CN7B-CN8 -CN7 -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  977 CODE********     CN7B-CN7C-CN7 -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  976 CODE********     CN7B-CN7C-CN7 -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  974 CODE********     CN7B-CN7B-CN7 -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  973 CODE********     CN7B-CN7B-CN7 -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  963 CODE********     CN8 -CN3 -CN1A-ON1 
+ PARRDR> Multiple terms for dihedral type: INDEX  962 CODE********     CN8 -CN3 -CN1A-ON1 
+ PARRDR> Multiple terms for dihedral type: INDEX  958 CODE********     CN3C-CN3 -CN1A-ON1 
+ PARRDR> Multiple terms for dihedral type: INDEX  885 CODE********     CN8 -CN3 -CN1A-NN1 
+ PARRDR> Multiple terms for dihedral type: INDEX  884 CODE********     CN8 -CN3 -CN1A-NN1 
+ PARRDR> Multiple terms for dihedral type: INDEX  879 CODE********     CN3C-CN3 -CN1A-NN1 
+ PARRDR> Multiple terms for dihedral type: INDEX  877 CODE********     CN3B-CN3 -CN1A-NN1 
+ PARRDR> Multiple terms for dihedral type: INDEX  875 CODE********     CN3A-CN3 -CN1A-NN1 
+ PARRDR> Multiple terms for dihedral type: INDEX  853 CODE********     HN5 -ON5 -CN7 -CN8 
+ PARRDR> Multiple terms for dihedral type: INDEX  852 CODE********     HN5 -ON5 -CN7 -CN8 
+ PARRDR> Multiple terms for dihedral type: INDEX  841 CODE********     HN5 -ON5 -CN7 -CN7C
+ PARRDR> Multiple terms for dihedral type: INDEX  827 CODE********     HN5 -ON5 -CN7B-CN7B
+ PARRDR> Multiple terms for dihedral type: INDEX  826 CODE********     HN5 -ON5 -CN7B-CN7B
+ PARRDR> Multiple terms for dihedral type: INDEX  825 CODE********     HN5 -ON5 -CN7B-CN7B
+ PARRDR> Multiple terms for dihedral type: INDEX  823 CODE********     HN5 -ON5 -CN7 -CN7B
+ PARRDR> Multiple terms for dihedral type: INDEX  813 CODE********     HN5 -ON5 -CN8B-CN7 
+ PARRDR> Multiple terms for dihedral type: INDEX  812 CODE********     HN5 -ON5 -CN8B-CN7 
+ PARRDR> Multiple terms for dihedral type: INDEX  809 CODE********     HN5 -ON5 -CN7B-CN7 
+ PARRDR> Multiple terms for dihedral type: INDEX  807 CODE********     HN5 -ON5 -CN7 -CN7 
+ PARRDR> Multiple terms for dihedral type: INDEX  806 CODE********     HN5 -ON5 -CN7 -CN7 
+ PARRDR> Multiple terms for dihedral type: INDEX  759 CODE********     CT3 -OS  -CD  -OB  
+ PARRDR> Multiple terms for dihedral type: INDEX  757 CODE********     CT2 -OS  -CD  -OB  
+ PARRDR> Multiple terms for dihedral type: INDEX  750 CODE********     CP3 -N   -C   -O   
+ PARRDR> Multiple terms for dihedral type: INDEX  748 CODE********     CP2 -CP1 -C   -O   
+ PARRDR> Multiple terms for dihedral type: INDEX  746 CODE********     CP1 -N   -C   -O   
+ PARRDR> Multiple terms for dihedral type: INDEX  737 CODE********     HB  -CP1 -C   -O   
+ PARRDR> Multiple terms for dihedral type: INDEX  722 CODE********     N   -CP1 -C   -NH1 
+ PARRDR> Multiple terms for dihedral type: INDEX  720 CODE********     CP2 -CP1 -C   -NH1 
+ PARRDR> Multiple terms for dihedral type: INDEX  714 CODE********     HB  -CP1 -C   -NH1 
+ PARRDR> Multiple terms for dihedral type: INDEX  703 CODE********     CP2 -CP1 -C   -N   
+ PARRDR> Multiple terms for dihedral type: INDEX  697 CODE********     HB  -CP1 -C   -N   
+ PARRDR> Multiple terms for dihedral type: INDEX  669 CODE********     CT3 -NH1 -C   -CP1 
+ PARRDR> Multiple terms for dihedral type: INDEX  667 CODE********     CT2 -NH1 -C   -CP1 
+ PARRDR> Multiple terms for dihedral type: INDEX  665 CODE********     CT1 -NH1 -C   -CP1 
+ PARRDR> Multiple terms for dihedral type: INDEX  650 CODE********     CT2 -NH1 -C   -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  648 CODE********     CT1 -NH1 -C   -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  642 CODE********     HS  -S   -CT2 -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  641 CODE********     HS  -S   -CT2 -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  639 CODE********     H   -OH1 -CT2 -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  638 CODE********     H   -OH1 -CT2 -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  636 CODE********     H   -OH1 -CT1 -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  635 CODE********     H   -OH1 -CT1 -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  627 CODE********     CT1 -NH1 -C   -CT2 
+ PARRDR> Multiple terms for dihedral type: INDEX  622 CODE********     H   -OH1 -CT2 -CT2 
+ PARRDR> Multiple terms for dihedral type: INDEX  621 CODE********     H   -OH1 -CT2 -CT2 
+ PARRDR> Multiple terms for dihedral type: INDEX  611 CODE********     HS  -S   -CT2 -CT1 
+ PARRDR> Multiple terms for dihedral type: INDEX  610 CODE********     HS  -S   -CT2 -CT1 
+ PARRDR> Multiple terms for dihedral type: INDEX  608 CODE********     H   -OH1 -CT2 -CT1 
+ PARRDR> Multiple terms for dihedral type: INDEX  607 CODE********     H   -OH1 -CT2 -CT1 
+ PARRDR> Multiple terms for dihedral type: INDEX  605 CODE********     H   -OH1 -CT1 -CT1 
+ PARRDR> Multiple terms for dihedral type: INDEX  604 CODE********     H   -OH1 -CT1 -CT1 
+ PARRDR> Multiple terms for dihedral type: INDEX  570 CODE********     CN7 -CN7 -ON2 -P   
+ PARRDR> Multiple terms for dihedral type: INDEX  569 CODE********     CN7 -CN7 -ON2 -P   
+ PARRDR> Multiple terms for dihedral type: INDEX  568 CODE********     CN7 -CN7 -ON2 -P   
+ PARRDR> Multiple terms for dihedral type: INDEX  567 CODE********     CN7 -CN7 -ON2 -P   
+ PARRDR> Multiple terms for dihedral type: INDEX  560 CODE********     CA  -CA  -ON2B-P   
+ PARRDR> Multiple terms for dihedral type: INDEX  555 CODE********     ON5 -CN7 -CN7 -ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX  554 CODE********     ON5 -CN7 -CN7 -ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX  553 CODE********     ON5 -CN7 -CN7 -ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX  551 CODE********     ON2 -CN7B-CN7B-ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX  550 CODE********     ON2 -CN7B-CN7B-ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX  549 CODE********     ON2 -CN7B-CN7B-ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX  547 CODE********     ON2 -CN7 -CN7 -ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX  546 CODE********     ON2 -CN7 -CN7 -ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX  545 CODE********     ON2 -CN7 -CN7 -ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX  538 CODE********     CPH1-NR1 -CN7B-ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX  537 CODE********     CPH1-NR1 -CN7B-ON6B
+ PARRDR> Multiple terms for dihedral type: INDEX  534 CODE********     ON5 -CN7 -CN7 -ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  533 CODE********     ON5 -CN7 -CN7 -ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  532 CODE********     ON5 -CN7 -CN7 -ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  530 CODE********     ON2 -CN7 -CN7B-ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  529 CODE********     ON2 -CN7 -CN7B-ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  528 CODE********     ON2 -CN7 -CN7B-ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  526 CODE********     ON2 -CN7 -CN7 -ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  525 CODE********     ON2 -CN7 -CN7 -ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  524 CODE********     ON2 -CN7 -CN7 -ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  514 CODE********     CPH1-NR1 -CN7B-ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  513 CODE********     CPH1-NR1 -CN7B-ON6 
+ PARRDR> Multiple terms for dihedral type: INDEX  504 CODE********     CN8B-CN7 -CN7 -ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  502 CODE********     CN7 -CN7 -CN8B-ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  501 CODE********     CN7 -CN7 -CN8B-ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  500 CODE********     CN7 -CN7 -CN8B-ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  496 CODE********     CN7 -CN7 -CN7 -ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  495 CODE********     CN7 -CN7 -CN7 -ON5 
+ PARRDR> Multiple terms for dihedral type: INDEX  486 CODE********     CN9 -ON2 -P   -ON4 
+ PARRDR> Multiple terms for dihedral type: INDEX  484 CODE********     CN8B-ON2 -P   -ON4 
+ PARRDR> Multiple terms for dihedral type: INDEX  482 CODE********     CN8 -ON2 -P   -ON4 
+ PARRDR> Multiple terms for dihedral type: INDEX  480 CODE********     CN7B-ON2 -P   -ON4 
+ PARRDR> Multiple terms for dihedral type: INDEX  478 CODE********     CN7 -ON2 -P   -ON4 
+ PARRDR> Multiple terms for dihedral type: INDEX  476 CODE********     CA  -ON2B-P   -ON4 
+ PARRDR> Multiple terms for dihedral type: INDEX  467 CODE********     CN9 -ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  466 CODE********     CN9 -ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  465 CODE********     CN9 -ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  463 CODE********     CN8B-ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  462 CODE********     CN8B-ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  461 CODE********     CN8B-ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  459 CODE********     CN8B-CN7 -CN7 -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  457 CODE********     CN8 -ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  456 CODE********     CN8 -ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  455 CODE********     CN8 -ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  453 CODE********     CN7 -ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  452 CODE********     CN7 -ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  451 CODE********     CN7 -ON2 -P   -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  449 CODE********     CN7 -CN7 -CN8B-ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  448 CODE********     CN7 -CN7 -CN8B-ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  447 CODE********     CN7 -CN7 -CN8B-ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  445 CODE********     CN7 -CN7 -CN7B-ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  444 CODE********     CN7 -CN7 -CN7B-ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  442 CODE********     CN7 -CN7 -CN7 -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  441 CODE********     CN7 -CN7 -CN7 -ON2 
+ PARRDR> Multiple terms for dihedral type: INDEX  401 CODE********     CPH2-NR1 -CN7B-CN8 
+ PARRDR> Multiple terms for dihedral type: INDEX  400 CODE********     CPH2-NR1 -CN7B-CN8 
+ PARRDR> Multiple terms for dihedral type: INDEX  375 CODE********     CPH2-NR1 -CN7B-CN7B
+ PARRDR> Multiple terms for dihedral type: INDEX  374 CODE********     CPH2-NR1 -CN7B-CN7B
+ PARRDR> Multiple terms for dihedral type: INDEX  285 CODE46724475     CP2 -CP1 -CC  -O   
+ PARRDR> Multiple terms for dihedral type: INDEX  283 CODE46265835     HB  -CP1 -CC  -O   
+ PARRDR> Multiple terms for dihedral type: INDEX  269 CODE29334375     N   -CP1 -CC  -NH2 
+ PARRDR> Multiple terms for dihedral type: INDEX  267 CODE28952175     CP2 -CP1 -CC  -NH2 
+ PARRDR> Multiple terms for dihedral type: INDEX  265 CODE28493535     HB  -CP1 -CC  -NH2 
+ PARRDR> Multiple terms for dihedral type: INDEX  232 CODE24365676     N   -C   -CP1 -N   
+ PARRDR> Multiple terms for dihedral type: INDEX  224 CODE 9441585     CP1 -C   -N   -CP3 
+ PARRDR> Multiple terms for dihedral type: INDEX  222 CODE 9346035     CT3 -C   -N   -CP3 
+ PARRDR> Multiple terms for dihedral type: INDEX  220 CODE 9326925     CT2 -C   -N   -CP3 
+ PARRDR> Multiple terms for dihedral type: INDEX  218 CODE 9307815     CT1 -C   -N   -CP3 
+ PARRDR> Multiple terms for dihedral type: INDEX  212 CODE 8314095     CP1 -C   -N   -CP1 
+ PARRDR> Multiple terms for dihedral type: INDEX  210 CODE 8218545     CT3 -C   -N   -CP1 
+ PARRDR> Multiple terms for dihedral type: INDEX  208 CODE 8199435     CT2 -C   -N   -CP1 
+ PARRDR> Multiple terms for dihedral type: INDEX  206 CODE 8180325     CT1 -C   -N   -CP1 
+ PARRDR> Multiple terms for dihedral type: INDEX  175 CODE 6191963     CT3 -CT2 -CPH1-CPH1
+ PARRDR> Multiple terms for dihedral type: INDEX  174 CODE 6191963     CT3 -CT2 -CPH1-CPH1
+ PARRDR> Multiple terms for dihedral type: INDEX  171 CODE 6153743     CT1 -CT2 -CPH1-CPH1
+ PARRDR> Multiple terms for dihedral type: INDEX  170 CODE 6153743     CT1 -CT2 -CPH1-CPH1
+ PARRDR> Multiple terms for dihedral type: INDEX  163 CODE 5736403     CT3 -SM  -SM  -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  162 CODE 5736403     CT3 -SM  -SM  -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  160 CODE 5736263     CT3 -CT2 -S   -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  158 CODE 5734451     CT3 -C   -NH1 -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  155 CODE 5717153     CT2 -CT2 -S   -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  153 CODE 5715341     CT2 -C   -NH1 -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  150 CODE 5696231     CT1 -C   -NH1 -CT3 
+ PARRDR> Multiple terms for dihedral type: INDEX  142 CODE 5277763     CT2 -SM  -SM  -CT2 
+ PARRDR> Multiple terms for dihedral type: INDEX  141 CODE 5277763     CT2 -SM  -SM  -CT2 
+ PARRDR> Multiple terms for dihedral type: INDEX  139 CODE 5275811     CT2 -C   -NH1 -CT2 
+ PARRDR> Multiple terms for dihedral type: INDEX  136 CODE 5256701     CT1 -C   -NH1 -CT2 
+ PARRDR> Multiple terms for dihedral type: INDEX  126 CODE 4836281     CT1 -C   -NH1 -CT1 
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    close unit 02
+ VCLOSE: Closing unit    2 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !################## Create the molecule -- Protein Structure File (psf)
+ CHARMM>    !! Before doing any calculations you have to create a computer model
+ CHARMM>    !! of your system.
+ CHARMM>    !! A protein, for example, can be created from its amino acid sequence.
+ CHARMM>    !! This sequence can be read from the pdb file directly.
+ CHARMM>    !! You can devide your system into several 'segments'.
+ CHARMM>    !! Once you succefully generated a segment, this part of the your system is
+ CHARMM>    !! 'known' to Charmm.
+ CHARMM>    !! You can store your created system in a psf file. This allows you to read in
+ CHARMM>    !! this psf file instead of created the molecule again in a follow up run.
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !! protein
+ CHARMM>    open read unit 12 card name protres.pdb
+ VOPEN> Attempting to open::protres.pdb::
+ OPNLGU> Unit 12 opened for READONLY access to protres.pdb
+  
+ CHARMM>    read sequ pdb unit 12
+ MAINIO> Sequence information being read from unit  12.
+ TITLE>  *
+
+          RESIDUE SEQUENCE --    58 RESIDUES
+          ARG PRO ASP PHE CYS LEU GLU PRO PRO TYR THR GLY PRO CYS LYS ALA ARG ILE ILE ARG 
+          TYR PHE TYR ASN ALA LYS ALA GLY LEU CYS GLN THR PHE VAL TYR GLY GLY CYS ARG ALA 
+          LYS ARG ASN ASN PHE LYS SER ALA GLU ASP CYS MET ARG THR CYS GLY GLY ALA 
+ ***** Message from SEQRDR ***** THE SYSTEM CONTAINS 12 TITRATABLE GROUPS
+ THE USER MUST PREDETERMINE THE PROTONATION STATE THROUGH THE SEQUENCE AND RTF
+ HIS -  0  ASP -  2  GLU -  2  LYS -  4  TYR -  4
+  
+ CHARMM>     
+  
+ CHARMM>    generate PRTA  first nter last cter setup
+ THE PATCH 'NTER  ' WILL BE USED FOR THE FIRST RESIDUE
+ THE PATCH 'CTER  ' WILL BE USED FOR THE LAST  RESIDUE
+ GENPSF> Segment   1 has been generated. Its identifier is PRTA.
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        1   Number of residues   =       58
+         Number of atoms         =      898   Number of groups     =      273
+         Number of bonds         =      909   Number of angles     =     1627
+         Number of dihedrals     =     2388   Number of impropers  =      142
+         Number of HB acceptors  =       80   Number of HB donors  =      120
+         Number of NB exclusions =        0   Total charge =    6.00000
+  
+ CHARMM>    close unit 12
+ VCLOSE: Closing unit   12 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    !! water
+ CHARMM>    open read unit 12 card name water.pdb
+ VOPEN> Attempting to open::water.pdb::
+ OPNLGU> Unit 12 opened for READONLY access to water.pdb
+  
+ CHARMM>    read sequ pdb unit 12
+ MAINIO> Sequence information being read from unit  12.
+ TITLE>  *
+
+          RESIDUE SEQUENCE --     4 RESIDUES
+          TIP3TIP3TIP3TIP3
+  
+ CHARMM>     
+  
+ CHARMM>    generate TIP3 setup nodihedral noangle
+ NO PATCHING WILL BE DONE ON THE FIRST RESIDUE
+ NO PATCHING WILL BE DONE ON THE LAST  RESIDUE
+ GENPSF> Segment   2 has been generated. Its identifier is TIP3.
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        2   Number of residues   =       62
+         Number of atoms         =      910   Number of groups     =      277
+         Number of bonds         =      921   Number of angles     =     1631
+         Number of dihedrals     =     2388   Number of impropers  =      142
+         Number of HB acceptors  =       84   Number of HB donors  =      120
+         Number of NB exclusions =        0   Total charge =    6.00000
+  
+ CHARMM>     
+  
+ CHARMM>    close unit 12
+ VCLOSE: Closing unit   12 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !! If you have a suitable psf file already
+ CHARMM>    ! open read card unit 1 name %psffile
+ CHARMM>    ! read psf card unit 1
+ CHARMM>    ! close unit 1
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !##################### Reading in a molecule -- Coordinates
+ CHARMM>    !! To do any calculation you need coordinates for each atom in your system.
+ CHARMM>    !! Usually these coordinates will be read from a pdb or crd file.
+ CHARMM>    !! Coordinates missing in the pdb file might be created by Charmm using
+ CHARMM>    !! information stored in the topology file
+ CHARMM>     
+  
+ CHARMM>    !protein
+ CHARMM>    open read unit 12 card name protres.pdb
+ VOPEN> Attempting to open::protres.pdb::
+ OPNLGU> Unit 12 opened for READONLY access to protres.pdb
+  
+ CHARMM>    read coor pdb unit 12
+          SPATIAL COORDINATES BEING READ FROM UNIT 12
+ TITLE>  *
+ ** WARNING ** After reading, there are no coordinates for selected atom:     2     1 ARG  H1  
+ ** WARNING ** After reading, there are no coordinates for selected atom:     3     1 ARG  H2  
+ ** WARNING ** After reading, there are no coordinates for selected atom:     4     1 ARG  H3  
+ ** WARNING ** After reading, there are no coordinates for selected atom:     6     1 ARG  HA  
+ ** WARNING ** After reading, there are no coordinates for selected atom:     8     1 ARG  HB1 
+ ** WARNING ** After reading, there are no coordinates for selected atom:     9     1 ARG  HB2 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    11     1 ARG  HG1 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    12     1 ARG  HG2 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    14     1 ARG  HD1 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    15     1 ARG  HD2 
+
+ ** A total of   456 selected atoms have no coordinates
+
+ ** WARNING ** Coordinates were overwritten for     2 atoms.
+ *** LEVEL  2 WARNING *** BOMLEV IS    0
+  
+ CHARMM>    close unit 12
+ VCLOSE: Closing unit   12 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    !water
+ CHARMM>    open read unit 12 card name water.pdb
+ VOPEN> Attempting to open::water.pdb::
+ OPNLGU> Unit 12 opened for READONLY access to water.pdb
+  
+ CHARMM>    read coor pdb unit 12  !append
+          SPATIAL COORDINATES BEING READ FROM UNIT 12
+ TITLE>  *
+ ** WARNING ** After reading, there are no coordinates for selected atom:     2     1 ARG  H1  
+ ** WARNING ** After reading, there are no coordinates for selected atom:     3     1 ARG  H2  
+ ** WARNING ** After reading, there are no coordinates for selected atom:     4     1 ARG  H3  
+ ** WARNING ** After reading, there are no coordinates for selected atom:     6     1 ARG  HA  
+ ** WARNING ** After reading, there are no coordinates for selected atom:     8     1 ARG  HB1 
+ ** WARNING ** After reading, there are no coordinates for selected atom:     9     1 ARG  HB2 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    11     1 ARG  HG1 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    12     1 ARG  HG2 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    14     1 ARG  HD1 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    15     1 ARG  HD2 
+
+ ** A total of   452 selected atoms have no coordinates
+ *** LEVEL  2 WARNING *** BOMLEV IS    0
+  
+ CHARMM>    close unit 12
+ VCLOSE: Closing unit   12 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !! If necessary generate missing coordinates
+ CHARMM>     
+  
+ CHARMM>    ic fill pres
+  
+ CHARMM>    ic parameters
+  
+ CHARMM>    ic build
+ ALL POSSIBLE COORDINATES HAVE BEEN PLACED
+ ****  WARNING  ****    8 COORDINATES ARE STILL UNDEFINED
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !! If necessary generate hydrogens
+ CHARMM>    coord init sele type h* end
+ SELRPN>    452 atoms have been selected out of    910
+ SELECTED COORDINATES INITIALIZED IN THE MAIN SET.
+
+  
+ CHARMM>    hbuild
+ PRNHBD: CUToff Hydrogen Bond  distance =    0.5000   Angle =   90.0000
+         CuT switching ON HB dist. =     3.5000  OFf HB dist. =    4.0000
+         CuT switching ON Hb Angle =    50.0000  OFf Hb Angle =   70.0000
+         ACCEptor antecedents included
+         All hydrogen bonds for each hydrogen will be found
+         Hydrogen bonds between excluded atoms will be kept
+
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  SHIFt    VATOm    VSWItch 
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found   2547 exclusions and   2344 interactions(1-4)
+ <MAKGRP> found    809 group exclusions.
+
+ CUToff Hydrogen Bond  distance =    0.5000           Angle =   90.0000
+ CuT switching ON HB dist. =     3.5000 OFf HB dist. =    4.0000
+ CuT switching ON Hb Angle =    50.0000 OFf Hb Angle =   70.0000
+ ACCEptor antecedents included
+ dihedral PHI STePs for spin =   10.0000
+ cutoff for water acceptor search CUTWat=    7.5000
+
+ Place: HA  ,    ,    , constructed for donor PRTA 1    ARG  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 1    ARG  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 1    ARG  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 1    ARG  CD  .
+ Place: HE  ,    ,    , constructed for donor PRTA 1    ARG  NE  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 2    PRO  CD  .
+ Place: HA  ,    ,    , constructed for donor PRTA 2    PRO  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 2    PRO  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 2    PRO  CG  .
+ Place: H   ,    ,    , constructed for donor PRTA 3    ASP  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 3    ASP  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 3    ASP  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 4    PHE  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 4    PHE  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 4    PHE  CB  .
+ Place: HD1 ,    ,    , constructed for donor PRTA 4    PHE  CD1 .
+ Place: HE1 ,    ,    , constructed for donor PRTA 4    PHE  CE1 .
+ Place: HZ  ,    ,    , constructed for donor PRTA 4    PHE  CZ  .
+ Place: HD2 ,    ,    , constructed for donor PRTA 4    PHE  CD2 .
+ Place: HE2 ,    ,    , constructed for donor PRTA 4    PHE  CE2 .
+ Place: H   ,    ,    , constructed for donor PRTA 5    CYS  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 5    CYS  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 5    CYS  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 6    LEU  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 6    LEU  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 6    LEU  CB  .
+ Place: HG  ,    ,    , constructed for donor PRTA 6    LEU  CG  .
+ Place: H   ,    ,    , constructed for donor PRTA 7    GLU  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 7    GLU  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 7    GLU  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 7    GLU  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 8    PRO  CD  .
+ Place: HA  ,    ,    , constructed for donor PRTA 8    PRO  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 8    PRO  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 8    PRO  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 9    PRO  CD  .
+ Place: HA  ,    ,    , constructed for donor PRTA 9    PRO  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 9    PRO  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 9    PRO  CG  .
+ Place: H   ,    ,    , constructed for donor PRTA 10   TYR  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 10   TYR  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 10   TYR  CB  .
+ Place: HD1 ,    ,    , constructed for donor PRTA 10   TYR  CD1 .
+ Place: HE1 ,    ,    , constructed for donor PRTA 10   TYR  CE1 .
+ Place: HD2 ,    ,    , constructed for donor PRTA 10   TYR  CD2 .
+ Place: HE2 ,    ,    , constructed for donor PRTA 10   TYR  CE2 .
+ Place: H   ,    ,    , constructed for donor PRTA 11   THR  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 11   THR  CA  .
+ Place: HB  ,    ,    , constructed for donor PRTA 11   THR  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 12   GLY  N   .
+ Place: HA1 ,HA2 ,    , constructed for donor PRTA 12   GLY  CA  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 13   PRO  CD  .
+ Place: HA  ,    ,    , constructed for donor PRTA 13   PRO  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 13   PRO  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 13   PRO  CG  .
+ Place: H   ,    ,    , constructed for donor PRTA 14   CYS  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 14   CYS  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 14   CYS  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 15   LYS  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 15   LYS  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 15   LYS  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 15   LYS  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 15   LYS  CD  .
+ Place: HE1 ,HE2 ,    , constructed for donor PRTA 15   LYS  CE  .
+ Place: H   ,    ,    , constructed for donor PRTA 16   ALA  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 16   ALA  CA  .
+ Place: H   ,    ,    , constructed for donor PRTA 17   ARG  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 17   ARG  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 17   ARG  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 17   ARG  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 17   ARG  CD  .
+ Place: HE  ,    ,    , constructed for donor PRTA 17   ARG  NE  .
+ Place: H   ,    ,    , constructed for donor PRTA 18   ILE  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 18   ILE  CA  .
+ Place: HB  ,    ,    , constructed for donor PRTA 18   ILE  CB  .
+ Place: HG11,HG12,    , constructed for donor PRTA 18   ILE  CG1 .
+ Place: H   ,    ,    , constructed for donor PRTA 19   ILE  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 19   ILE  CA  .
+ Place: HB  ,    ,    , constructed for donor PRTA 19   ILE  CB  .
+ Place: HG11,HG12,    , constructed for donor PRTA 19   ILE  CG1 .
+ Place: H   ,    ,    , constructed for donor PRTA 20   ARG  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 20   ARG  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 20   ARG  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 20   ARG  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 20   ARG  CD  .
+ Place: HE  ,    ,    , constructed for donor PRTA 20   ARG  NE  .
+ Place: H   ,    ,    , constructed for donor PRTA 21   TYR  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 21   TYR  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 21   TYR  CB  .
+ Place: HD1 ,    ,    , constructed for donor PRTA 21   TYR  CD1 .
+ Place: HE1 ,    ,    , constructed for donor PRTA 21   TYR  CE1 .
+ Place: HD2 ,    ,    , constructed for donor PRTA 21   TYR  CD2 .
+ Place: HE2 ,    ,    , constructed for donor PRTA 21   TYR  CE2 .
+ Place: H   ,    ,    , constructed for donor PRTA 22   PHE  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 22   PHE  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 22   PHE  CB  .
+ Place: HD1 ,    ,    , constructed for donor PRTA 22   PHE  CD1 .
+ Place: HE1 ,    ,    , constructed for donor PRTA 22   PHE  CE1 .
+ Place: HZ  ,    ,    , constructed for donor PRTA 22   PHE  CZ  .
+ Place: HD2 ,    ,    , constructed for donor PRTA 22   PHE  CD2 .
+ Place: HE2 ,    ,    , constructed for donor PRTA 22   PHE  CE2 .
+ Place: H   ,    ,    , constructed for donor PRTA 23   TYR  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 23   TYR  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 23   TYR  CB  .
+ Place: HD1 ,    ,    , constructed for donor PRTA 23   TYR  CD1 .
+ Place: HE1 ,    ,    , constructed for donor PRTA 23   TYR  CE1 .
+ Place: HD2 ,    ,    , constructed for donor PRTA 23   TYR  CD2 .
+ Place: HE2 ,    ,    , constructed for donor PRTA 23   TYR  CE2 .
+ Place: H   ,    ,    , constructed for donor PRTA 24   ASN  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 24   ASN  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 24   ASN  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 25   ALA  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 25   ALA  CA  .
+ Place: H   ,    ,    , constructed for donor PRTA 26   LYS  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 26   LYS  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 26   LYS  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 26   LYS  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 26   LYS  CD  .
+ Place: HE1 ,HE2 ,    , constructed for donor PRTA 26   LYS  CE  .
+ Place: H   ,    ,    , constructed for donor PRTA 27   ALA  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 27   ALA  CA  .
+ Place: H   ,    ,    , constructed for donor PRTA 28   GLY  N   .
+ Place: HA1 ,HA2 ,    , constructed for donor PRTA 28   GLY  CA  .
+ Place: H   ,    ,    , constructed for donor PRTA 29   LEU  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 29   LEU  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 29   LEU  CB  .
+ Place: HG  ,    ,    , constructed for donor PRTA 29   LEU  CG  .
+ Place: H   ,    ,    , constructed for donor PRTA 30   CYS  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 30   CYS  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 30   CYS  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 31   GLN  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 31   GLN  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 31   GLN  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 31   GLN  CG  .
+ Place: H   ,    ,    , constructed for donor PRTA 32   THR  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 32   THR  CA  .
+ Place: HB  ,    ,    , constructed for donor PRTA 32   THR  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 33   PHE  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 33   PHE  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 33   PHE  CB  .
+ Place: HD1 ,    ,    , constructed for donor PRTA 33   PHE  CD1 .
+ Place: HE1 ,    ,    , constructed for donor PRTA 33   PHE  CE1 .
+ Place: HZ  ,    ,    , constructed for donor PRTA 33   PHE  CZ  .
+ Place: HD2 ,    ,    , constructed for donor PRTA 33   PHE  CD2 .
+ Place: HE2 ,    ,    , constructed for donor PRTA 33   PHE  CE2 .
+ Place: H   ,    ,    , constructed for donor PRTA 34   VAL  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 34   VAL  CA  .
+ Place: HB  ,    ,    , constructed for donor PRTA 34   VAL  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 35   TYR  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 35   TYR  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 35   TYR  CB  .
+ Place: HD1 ,    ,    , constructed for donor PRTA 35   TYR  CD1 .
+ Place: HE1 ,    ,    , constructed for donor PRTA 35   TYR  CE1 .
+ Place: HD2 ,    ,    , constructed for donor PRTA 35   TYR  CD2 .
+ Place: HE2 ,    ,    , constructed for donor PRTA 35   TYR  CE2 .
+ Place: H   ,    ,    , constructed for donor PRTA 36   GLY  N   .
+ Place: HA1 ,HA2 ,    , constructed for donor PRTA 36   GLY  CA  .
+ Place: H   ,    ,    , constructed for donor PRTA 37   GLY  N   .
+ Place: HA1 ,HA2 ,    , constructed for donor PRTA 37   GLY  CA  .
+ Place: H   ,    ,    , constructed for donor PRTA 38   CYS  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 38   CYS  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 38   CYS  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 39   ARG  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 39   ARG  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 39   ARG  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 39   ARG  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 39   ARG  CD  .
+ Place: HE  ,    ,    , constructed for donor PRTA 39   ARG  NE  .
+ Place: H   ,    ,    , constructed for donor PRTA 40   ALA  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 40   ALA  CA  .
+ Place: H   ,    ,    , constructed for donor PRTA 41   LYS  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 41   LYS  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 41   LYS  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 41   LYS  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 41   LYS  CD  .
+ Place: HE1 ,HE2 ,    , constructed for donor PRTA 41   LYS  CE  .
+ Place: H   ,    ,    , constructed for donor PRTA 42   ARG  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 42   ARG  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 42   ARG  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 42   ARG  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 42   ARG  CD  .
+ Place: HE  ,    ,    , constructed for donor PRTA 42   ARG  NE  .
+ Place: H   ,    ,    , constructed for donor PRTA 43   ASN  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 43   ASN  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 43   ASN  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 44   ASN  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 44   ASN  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 44   ASN  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 45   PHE  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 45   PHE  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 45   PHE  CB  .
+ Place: HD1 ,    ,    , constructed for donor PRTA 45   PHE  CD1 .
+ Place: HE1 ,    ,    , constructed for donor PRTA 45   PHE  CE1 .
+ Place: HZ  ,    ,    , constructed for donor PRTA 45   PHE  CZ  .
+ Place: HD2 ,    ,    , constructed for donor PRTA 45   PHE  CD2 .
+ Place: HE2 ,    ,    , constructed for donor PRTA 45   PHE  CE2 .
+ Place: H   ,    ,    , constructed for donor PRTA 46   LYS  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 46   LYS  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 46   LYS  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 46   LYS  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 46   LYS  CD  .
+ Place: HE1 ,HE2 ,    , constructed for donor PRTA 46   LYS  CE  .
+ Place: H   ,    ,    , constructed for donor PRTA 47   SER  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 47   SER  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 47   SER  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 48   ALA  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 48   ALA  CA  .
+ Place: H   ,    ,    , constructed for donor PRTA 49   GLU  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 49   GLU  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 49   GLU  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 49   GLU  CG  .
+ Place: H   ,    ,    , constructed for donor PRTA 50   ASP  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 50   ASP  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 50   ASP  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 51   CYS  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 51   CYS  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 51   CYS  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 52   MET  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 52   MET  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 52   MET  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 52   MET  CG  .
+ Place: H   ,    ,    , constructed for donor PRTA 53   ARG  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 53   ARG  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 53   ARG  CB  .
+ Place: HG1 ,HG2 ,    , constructed for donor PRTA 53   ARG  CG  .
+ Place: HD1 ,HD2 ,    , constructed for donor PRTA 53   ARG  CD  .
+ Place: HE  ,    ,    , constructed for donor PRTA 53   ARG  NE  .
+ Place: H   ,    ,    , constructed for donor PRTA 54   THR  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 54   THR  CA  .
+ Place: HB  ,    ,    , constructed for donor PRTA 54   THR  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 55   CYS  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 55   CYS  CA  .
+ Place: HB1 ,HB2 ,    , constructed for donor PRTA 55   CYS  CB  .
+ Place: H   ,    ,    , constructed for donor PRTA 56   GLY  N   .
+ Place: HA1 ,HA2 ,    , constructed for donor PRTA 56   GLY  CA  .
+ Place: H   ,    ,    , constructed for donor PRTA 57   GLY  N   .
+ Place: HA1 ,HA2 ,    , constructed for donor PRTA 57   GLY  CA  .
+ Place: H   ,    ,    , constructed for donor PRTA 58   ALA  N   .
+ Place: HA  ,    ,    , constructed for donor PRTA 58   ALA  CA  .
+
+ NBONDX:       849 atom and      0 group interactions within 14.00 A.
+ Spin: H1  ,H2  ,H3  , constructed for donor PRTA 1    ARG  N   .
+
+ NBONDX:       542 atom and      0 group interactions within 14.00 A.
+ Spin: HH11,HH12,    , constructed for donor PRTA 1    ARG  NH1 .
+
+ NBONDX:       600 atom and      0 group interactions within 14.00 A.
+ Spin: HH21,HH22,    , constructed for donor PRTA 1    ARG  NH2 .
+
+ NBONDX:       493 atom and      0 group interactions within 14.00 A.
+ Spin: HG1 ,    ,    , constructed for donor PRTA 5    CYS  SG  .
+
+ NBONDX:       930 atom and      0 group interactions within 14.00 A.
+ Spin: HD11,HD12,HD13, constructed for donor PRTA 6    LEU  CD1 .
+
+ NBONDX:      1131 atom and      0 group interactions within 14.00 A.
+ Spin: HD21,HD22,HD23, constructed for donor PRTA 6    LEU  CD2 .
+
+ NBONDX:       288 atom and      0 group interactions within 14.00 A.
+ Spin: HH  ,    ,    , constructed for donor PRTA 10   TYR  OH  .
+
+ NBONDX:       423 atom and      0 group interactions within 14.00 A.
+ Spin: HG1 ,    ,    , constructed for donor PRTA 11   THR  OG1 .
+
+ NBONDX:      1128 atom and      0 group interactions within 14.00 A.
+ Spin: HG21,HG22,HG23, constructed for donor PRTA 11   THR  CG2 .
+
+ NBONDX:       243 atom and      0 group interactions within 14.00 A.
+ Spin: HG1 ,    ,    , constructed for donor PRTA 14   CYS  SG  .
+
+ NBONDX:       636 atom and      0 group interactions within 14.00 A.
+ Spin: HZ1 ,HZ2 ,HZ3 , constructed for donor PRTA 15   LYS  NZ  .
+
+ NBONDX:       867 atom and      0 group interactions within 14.00 A.
+ Spin: HB1 ,HB2 ,HB3 , constructed for donor PRTA 16   ALA  CB  .
+
+ NBONDX:       324 atom and      0 group interactions within 14.00 A.
+ Spin: HH11,HH12,    , constructed for donor PRTA 17   ARG  NH1 .
+
+ NBONDX:       322 atom and      0 group interactions within 14.00 A.
+ Spin: HH21,HH22,    , constructed for donor PRTA 17   ARG  NH2 .
+
+ NBONDX:      1197 atom and      0 group interactions within 14.00 A.
+ Spin: HG21,HG22,HG23, constructed for donor PRTA 18   ILE  CG2 .
+
+ NBONDX:      1086 atom and      0 group interactions within 14.00 A.
+ Spin: HD11,HD12,HD13, constructed for donor PRTA 18   ILE  CD1 .
+
+ NBONDX:      1152 atom and      0 group interactions within 14.00 A.
+ Spin: HG21,HG22,HG23, constructed for donor PRTA 19   ILE  CG2 .
+
+ NBONDX:      1050 atom and      0 group interactions within 14.00 A.
+ Spin: HD11,HD12,HD13, constructed for donor PRTA 19   ILE  CD1 .
+
+ NBONDX:      1004 atom and      0 group interactions within 14.00 A.
+ Spin: HH11,HH12,    , constructed for donor PRTA 20   ARG  NH1 .
+
+ NBONDX:       842 atom and      0 group interactions within 14.00 A.
+ Spin: HH21,HH22,    , constructed for donor PRTA 20   ARG  NH2 .
+
+ NBONDX:       352 atom and      0 group interactions within 14.00 A.
+ Spin: HH  ,    ,    , constructed for donor PRTA 21   TYR  OH  .
+
+ NBONDX:       411 atom and      0 group interactions within 14.00 A.
+ Spin: HH  ,    ,    , constructed for donor PRTA 23   TYR  OH  .
+
+ NBONDX:       708 atom and      0 group interactions within 14.00 A.
+ Spin: HD21,HD22,    , constructed for donor PRTA 24   ASN  ND2 .
+
+ NBONDX:      1251 atom and      0 group interactions within 14.00 A.
+ Spin: HB1 ,HB2 ,HB3 , constructed for donor PRTA 25   ALA  CB  .
+
+ NBONDX:       390 atom and      0 group interactions within 14.00 A.
+ Spin: HZ1 ,HZ2 ,HZ3 , constructed for donor PRTA 26   LYS  NZ  .
+
+ NBONDX:       939 atom and      0 group interactions within 14.00 A.
+ Spin: HB1 ,HB2 ,HB3 , constructed for donor PRTA 27   ALA  CB  .
+
+ NBONDX:       822 atom and      0 group interactions within 14.00 A.
+ Spin: HD11,HD12,HD13, constructed for donor PRTA 29   LEU  CD1 .
+
+ NBONDX:       948 atom and      0 group interactions within 14.00 A.
+ Spin: HD21,HD22,HD23, constructed for donor PRTA 29   LEU  CD2 .
+
+ NBONDX:       549 atom and      0 group interactions within 14.00 A.
+ Spin: HG1 ,    ,    , constructed for donor PRTA 30   CYS  SG  .
+
+ NBONDX:       660 atom and      0 group interactions within 14.00 A.
+ Spin: HE21,HE22,    , constructed for donor PRTA 31   GLN  NE2 .
+
+ NBONDX:       391 atom and      0 group interactions within 14.00 A.
+ Spin: HG1 ,    ,    , constructed for donor PRTA 32   THR  OG1 .
+
+ NBONDX:      1248 atom and      0 group interactions within 14.00 A.
+ Spin: HG21,HG22,HG23, constructed for donor PRTA 32   THR  CG2 .
+
+ NBONDX:      1182 atom and      0 group interactions within 14.00 A.
+ Spin: HG11,HG12,HG13, constructed for donor PRTA 34   VAL  CG1 .
+
+ NBONDX:      1149 atom and      0 group interactions within 14.00 A.
+ Spin: HG21,HG22,HG23, constructed for donor PRTA 34   VAL  CG2 .
+
+ NBONDX:       423 atom and      0 group interactions within 14.00 A.
+ Spin: HH  ,    ,    , constructed for donor PRTA 35   TYR  OH  .
+
+ NBONDX:       279 atom and      0 group interactions within 14.00 A.
+ Spin: HG1 ,    ,    , constructed for donor PRTA 38   CYS  SG  .
+
+ NBONDX:       344 atom and      0 group interactions within 14.00 A.
+ Spin: HH11,HH12,    , constructed for donor PRTA 39   ARG  NH1 .
+
+ NBONDX:       298 atom and      0 group interactions within 14.00 A.
+ Spin: HH21,HH22,    , constructed for donor PRTA 39   ARG  NH2 .
+
+ NBONDX:      1461 atom and      0 group interactions within 14.00 A.
+ Spin: HB1 ,HB2 ,HB3 , constructed for donor PRTA 40   ALA  CB  .
+
+ NBONDX:      1008 atom and      0 group interactions within 14.00 A.
+ Spin: HZ1 ,HZ2 ,HZ3 , constructed for donor PRTA 41   LYS  NZ  .
+
+ NBONDX:       560 atom and      0 group interactions within 14.00 A.
+ Spin: HH11,HH12,    , constructed for donor PRTA 42   ARG  NH1 .
+
+ NBONDX:       624 atom and      0 group interactions within 14.00 A.
+ Spin: HH21,HH22,    , constructed for donor PRTA 42   ARG  NH2 .
+
+ NBONDX:      1298 atom and      0 group interactions within 14.00 A.
+ Spin: HD21,HD22,    , constructed for donor PRTA 43   ASN  ND2 .
+
+ NBONDX:      1200 atom and      0 group interactions within 14.00 A.
+ Spin: HD21,HD22,    , constructed for donor PRTA 44   ASN  ND2 .
+
+ NBONDX:       855 atom and      0 group interactions within 14.00 A.
+ Spin: HZ1 ,HZ2 ,HZ3 , constructed for donor PRTA 46   LYS  NZ  .
+
+ NBONDX:       354 atom and      0 group interactions within 14.00 A.
+ Spin: HG1 ,    ,    , constructed for donor PRTA 47   SER  OG  .
+
+ NBONDX:      1176 atom and      0 group interactions within 14.00 A.
+ Spin: HB1 ,HB2 ,HB3 , constructed for donor PRTA 48   ALA  CB  .
+
+ NBONDX:       629 atom and      0 group interactions within 14.00 A.
+ Spin: HG1 ,    ,    , constructed for donor PRTA 51   CYS  SG  .
+
+ NBONDX:      1080 atom and      0 group interactions within 14.00 A.
+ Spin: HE1 ,HE2 ,HE3 , constructed for donor PRTA 52   MET  CE  .
+
+ NBONDX:       478 atom and      0 group interactions within 14.00 A.
+ Spin: HH11,HH12,    , constructed for donor PRTA 53   ARG  NH1 .
+
+ NBONDX:       582 atom and      0 group interactions within 14.00 A.
+ Spin: HH21,HH22,    , constructed for donor PRTA 53   ARG  NH2 .
+
+ NBONDX:       475 atom and      0 group interactions within 14.00 A.
+ Spin: HG1 ,    ,    , constructed for donor PRTA 54   THR  OG1 .
+
+ NBONDX:      1497 atom and      0 group interactions within 14.00 A.
+ Spin: HG21,HG22,HG23, constructed for donor PRTA 54   THR  CG2 .
+
+ NBONDX:       601 atom and      0 group interactions within 14.00 A.
+ Spin: HG1 ,    ,    , constructed for donor PRTA 55   CYS  SG  .
+
+ NBONDX:       438 atom and      0 group interactions within 14.00 A.
+ Spin: HB1 ,HB2 ,HB3 , constructed for donor PRTA 58   ALA  CB  .
+
+ NBONDX:      1212 atom and      0 group interactions within 14.00 A.
+ Spin:H1  ,H2  ,    ,     constructed for water TIP3 61   TIP3 OH2 .
+ Minimum distance between this water and protein is  1.99444 A.
+
+ NBONDX:      1318 atom and      0 group interactions within 14.00 A.
+ Spin:H1  ,H2  ,    ,     constructed for water TIP3 62   TIP3 OH2 .
+ Minimum distance between this water and protein is  2.02417 A.
+
+ NBONDX:       788 atom and      0 group interactions within 14.00 A.
+ Spin:H1  ,H2  ,    ,     constructed for water TIP3 60   TIP3 OH2 .
+ Minimum distance between this water and protein is  2.03662 A.
+
+ NBONDX:      1192 atom and      0 group interactions within 14.00 A.
+ Spin:H1  ,H2  ,    ,     constructed for water TIP3 73   TIP3 OH2 .
+ Minimum distance between this water and protein is  2.52744 A.
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !##########################  Manipulating the Structure
+ CHARMM>    !! Charmm offers some commands to change the structure of your system.
+ CHARMM>    !! For example you can link two cystein residues via a disulfide bridge.
+ CHARMM>     
+  
+ CHARMM>    PATCH DISU PRTA 51 PRTA 30
+ ATOM  PRTA 51   CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+ ATOM  PRTA 30   CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+
+ Message from MAPIC: Atom numbers are changed.
+ DELTIC:    2 bonds deleted
+ DELTIC:    2 angles deleted
+ DELTIC:    6 dihedrals deleted
+ DELTIC:    2 donors deleted
+ DUPLICATE ACCEPTOR FOUND FOR  PRTA 58   ALA  O   
+ ACCEPTOR ANTECEDENT  PRTA 58   ALA  C    REMOVED.
+ ACCEPTOR ANTECEDENT  PRTA 58   ALA  C    REMOVED.
+ DUPLICATE ENTRY REMOVED.
+ DELTIC:    1 acceptors deleted
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        2   Number of residues   =       62
+         Number of atoms         =      908   Number of groups     =      277
+         Number of bonds         =      920   Number of angles     =     1631
+         Number of dihedrals     =     2389   Number of impropers  =      142
+         Number of HB acceptors  =       83   Number of HB donors  =      118
+         Number of NB exclusions =        0   Total charge =    6.00000
+  
+ CHARMM>    PATCH DISU PRTA 5 PRTA 55
+ ATOM  PRTA 5    CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+ ATOM  PRTA 55   CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+
+ Message from MAPIC: Atom numbers are changed.
+ DELTIC:    2 bonds deleted
+ DELTIC:    2 angles deleted
+ DELTIC:    6 dihedrals deleted
+ DELTIC:    2 donors deleted
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        2   Number of residues   =       62
+         Number of atoms         =      906   Number of groups     =      277
+         Number of bonds         =      919   Number of angles     =     1631
+         Number of dihedrals     =     2390   Number of impropers  =      142
+         Number of HB acceptors  =       83   Number of HB donors  =      116
+         Number of NB exclusions =        0   Total charge =    6.00000
+  
+ CHARMM>    PATCH DISU PRTA 38 PRTA 14
+ ATOM  PRTA 38   CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+ ATOM  PRTA 14   CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+
+ Message from MAPIC: Atom numbers are changed.
+ DELTIC:    2 bonds deleted
+ DELTIC:    2 angles deleted
+ DELTIC:    6 dihedrals deleted
+ DELTIC:    2 donors deleted
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        2   Number of residues   =       62
+         Number of atoms         =      904   Number of groups     =      277
+         Number of bonds         =      918   Number of angles     =     1631
+         Number of dihedrals     =     2391   Number of impropers  =      142
+         Number of HB acceptors  =       83   Number of HB donors  =      114
+         Number of NB exclusions =        0   Total charge =    6.00000
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !!#################### ENERGY
+ CHARMM>    !! Charmm has several options that control how the energy function is
+ CHARMM>    !! is calculated. This allows the user to define a suitable compromis
+ CHARMM>    !! between accuracy and computational cost.
+ CHARMM>    !! The setup used in this practical:
+ CHARMM>    !! atom: interactions are computed between all atoms
+ CHARMM>    !! fshift, vshift, cutofnb: non-bonded interaction energy is shifted
+ CHARMM>    !! and cutoff at 13.0 A
+ CHARMM>    !! cdiel eps 1: a constant dielectric of eps=1 is used
+ CHARMM>    !! vdw: calculate Van der Waals interactions
+ CHARMM>    !! elec: calculate electrostatic energy
+ CHARMM>    !! cutnb: non-bonded interaction neighbour list is cut off at 14.0 A.
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    ENERgy atom elec cdiel eps 1.0 fshift vdw vshift -
+ CHARMM>           cutnb 14.0 ctofnb 13.0
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VSHIft  
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 11.000 CTOFNB = 13.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found   2544 exclusions and   2347 interactions(1-4)
+ <MAKGRP> found    818 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195368 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7873 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ENER ENR:  Eval#     ENERgy      Delta-E         GRMS
+ENER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+ENER>        0  17925.85104      0.00000    207.47878
+ENER INTERN>    17212.31929    563.09499    564.67461    282.33880    131.09250
+ENER EXTERN>      131.32962   -958.99878      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !##########################  Minimization
+ CHARMM>    !! Several Methods exist to minimize the energy of a molecular system.
+ CHARMM>    !! Implemented in Charmm are, for instance a steepest descent (sd),
+ CHARMM>    !! a conjugate gradient (conj) and a Newton-Raphson (abnr) algorithm.
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !!Keywords:
+ CHARMM>    !! sd, abnr: Method to use
+ CHARMM>    !! nstep: number of minimization steps
+ CHARMM>    !! nprint: every 10th step the energy is printed
+ CHARMM>     
+  
+ CHARMM>    MINI sd   nstep 500 nprint 10
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VSHIft  
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 11.000 CTOFNB = 13.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ There are   195368 atom  pairs and     4891 atom  exclusions.
+ There are        0 group pairs and      818 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195368 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7873 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+
+
+ STEEPD> An energy minimization has been requested.
+
+ NSTEP  =          500   NPRINT =           10
+ STEP   =    0.0200000   TOLFUN =    0.0000000
+ TOLGRD =    0.0000000   TOLSTP =    0.0000000
+
+MINI MIN: Cycle      ENERgy      Delta-E         GRMS    Step-size
+MINI INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+MINI EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>        0  17925.85104      0.00000    207.47878      0.02000
+MINI INTERN>    17212.31929    563.09499    564.67461    282.33880    131.09250
+MINI EXTERN>      131.32962   -958.99878      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step         2
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195366 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7854 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ UPDECI: Nonbond update at step         3
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195358 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7841 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ UPDECI: Nonbond update at step         4
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195353 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7837 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ UPDECI: Nonbond update at step         7
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195343 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7836 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ UPDECI: Nonbond update at step         8
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195338 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7833 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>       10     69.36043  17856.49061     62.81001      0.02150
+MINI INTERN>      230.08080    267.78818    109.66263    276.20319     40.03522
+MINI EXTERN>      155.01258  -1009.42217      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step        12
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195289 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7819 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>       20   -676.34922    745.70965      2.49010      0.00401
+MINI INTERN>       45.96884    152.11627     20.11726    267.33602      9.11379
+MINI EXTERN>     -132.42112  -1038.58028      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step        21
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195183 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7805 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>       30   -749.36005     73.01082      2.00170      0.00180
+MINI INTERN>       44.08864    130.73731     13.00479    262.17381      7.31742
+MINI EXTERN>     -149.15212  -1057.52990      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       40   -775.81762     26.45758      2.96228      0.00193
+MINI INTERN>       45.68315    126.35421     11.93176    259.55460      6.21150
+MINI EXTERN>     -156.77368  -1068.77916      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step        45
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195025 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7820 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>       50   -797.01325     21.19563      0.91543      0.00087
+MINI INTERN>       43.04593    123.45102     11.65035    257.75357      5.69760
+MINI EXTERN>     -161.43050  -1077.18123      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       60   -810.84535     13.83210      0.94823      0.00093
+MINI INTERN>       43.54041    122.46833     11.49182    256.25074      5.42531
+MINI EXTERN>     -165.41224  -1084.60972      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       70   -821.52442     10.67907      0.69782      0.00100
+MINI INTERN>       43.70907    122.11943     11.39987    255.09122      5.28957
+MINI EXTERN>     -168.45846  -1090.67512      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       80   -830.11797      8.59355      1.51664      0.00107
+MINI INTERN>       45.21837    121.83983     11.33469    254.02192      5.18787
+MINI EXTERN>     -171.13498  -1096.58568      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       90   -837.84006      7.72208      1.71955      0.00116
+MINI INTERN>       45.78517    122.03561     11.28212    253.12194      5.14058
+MINI EXTERN>     -173.30259  -1101.90288      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       100
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194827 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7821 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      100   -845.34758      7.50752      0.56561      0.00052
+MINI INTERN>       44.75180    122.23973     11.25066    252.39924      5.11941
+MINI EXTERN>     -175.08749  -1106.02091      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      110   -849.74117      4.39359      1.98472      0.00133
+MINI INTERN>       47.22755    122.29850     11.21550    251.70840      5.06942
+MINI EXTERN>     -176.64761  -1110.61292      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      120   -856.48674      6.74557      0.52454      0.00060
+MINI INTERN>       45.40938    122.58512     11.20516    251.13108      5.07565
+MINI EXTERN>     -177.94338  -1113.94975      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      130   -861.30766      4.82092      0.52756      0.00064
+MINI INTERN>       45.67349    122.80887     11.19240    250.58320      5.06228
+MINI EXTERN>     -179.11974  -1117.50815      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      140   -865.87846      4.57080      0.92793      0.00069
+MINI INTERN>       46.14458    123.28651     11.17905    250.02644      5.05757
+MINI EXTERN>     -180.29174  -1121.28087      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      150   -869.88912      4.01065      1.01093      0.00074
+MINI INTERN>       46.30872    123.53877     11.18079    249.56707      5.05193
+MINI EXTERN>     -181.21134  -1124.32506      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      160   -873.31253      3.42342      1.39841      0.00080
+MINI INTERN>       47.19073    123.81347     11.16806    249.15162      5.04239
+MINI EXTERN>     -182.07255  -1127.60624      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      170   -877.27721      3.96468      0.42699      0.00036
+MINI INTERN>       46.68114    123.61394     11.16894    248.82151      5.02598
+MINI EXTERN>     -182.69162  -1129.89710      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      180   -880.36275      3.08554      0.48613      0.00038
+MINI INTERN>       46.82165    123.85524     11.17003    248.48595      5.02455
+MINI EXTERN>     -183.33440  -1132.38576      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      190   -883.07653      2.71378      0.38040      0.00041
+MINI INTERN>       46.96064    124.07618     11.17087    248.19951      5.02375
+MINI EXTERN>     -183.88282  -1134.62465      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       200
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194570 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7847 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      200   -885.86316      2.78663      0.76153      0.00044
+MINI INTERN>       47.17502    124.31357     11.17981    247.88967      5.02333
+MINI EXTERN>     -184.45020  -1136.99436      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      210   -888.58220      2.71904      0.48486      0.00048
+MINI INTERN>       47.25647    124.52080     11.17778    247.62219      5.02289
+MINI EXTERN>     -184.94861  -1139.23372      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      220   -890.92569      2.34349      0.90672      0.00051
+MINI INTERN>       47.51196    124.75170     11.18889    247.36024      5.02395
+MINI EXTERN>     -185.41255  -1141.34988      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      230   -893.39571      2.47002      0.98803      0.00055
+MINI INTERN>       47.69027    124.97957     11.19529    247.10714      5.02545
+MINI EXTERN>     -185.86131  -1143.53212      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      240   -895.62622      2.23051      1.03838      0.00059
+MINI INTERN>       47.83776    125.18413     11.20121    246.88327      5.02722
+MINI EXTERN>     -186.24933  -1145.51048      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      250   -897.92399      2.29778      1.11672      0.00064
+MINI INTERN>       48.01115    125.40884     11.20731    246.65482      5.02988
+MINI EXTERN>     -186.63854  -1147.59746      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      260   -899.98876      2.06476      1.22093      0.00069
+MINI INTERN>       48.19232    125.61736     11.21491    246.44921      5.03279
+MINI EXTERN>     -186.97915  -1149.51621      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      270   -902.14548      2.15672      1.29979      0.00074
+MINI INTERN>       48.37499    125.83997     11.22212    246.24140      5.03659
+MINI EXTERN>     -187.31694  -1151.54360      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      280   -904.92518      2.77971      0.45027      0.00033
+MINI INTERN>       48.17881    126.03115     11.20760    246.03488      5.03868
+MINI EXTERN>     -187.65252  -1153.76379      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      290   -906.89753      1.97234      0.32334      0.00035
+MINI INTERN>       48.20432    126.20848     11.21566    245.86313      5.04311
+MINI EXTERN>     -187.91120  -1155.52102      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      300   -909.06437      2.16685      0.61558      0.00038
+MINI INTERN>       48.44910    126.46179     11.22078    245.65818      5.04787
+MINI EXTERN>     -188.20377  -1157.69832      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      310   -911.12660      2.06222      0.40751      0.00041
+MINI INTERN>       48.43334    126.63688     11.22872    245.48995      5.05332
+MINI EXTERN>     -188.43169  -1159.53713      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      320   -913.25343      2.12683      0.45517      0.00044
+MINI INTERN>       48.54315    126.84759     11.23666    245.30687      5.05904
+MINI EXTERN>     -188.65884  -1161.58789      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       324
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194476 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7833 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      330   -915.12640      1.87297      0.79873      0.00047
+MINI INTERN>       48.79793    127.07553     11.24422    245.13027      5.06437
+MINI EXTERN>     -188.84996  -1163.58877      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      340   -917.20141      2.07500      0.84730      0.00051
+MINI INTERN>       48.93230    127.24505     11.25499    244.95394      5.06997
+MINI EXTERN>     -189.01431  -1165.64335      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      350   -919.19511      1.99370      0.97854      0.00055
+MINI INTERN>       49.16676    127.39251     11.26642    244.77932      5.07496
+MINI EXTERN>     -189.13971  -1167.73537      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      360   -921.17839      1.98328      0.96270      0.00059
+MINI INTERN>       49.29794    127.53694     11.27576    244.62142      5.08002
+MINI EXTERN>     -189.21071  -1169.77975      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      370   -923.11298      1.93459      1.02483      0.00063
+MINI INTERN>       49.50446    127.68849     11.28493    244.46164      5.08459
+MINI EXTERN>     -189.22344  -1171.91363      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      380   -925.59084      2.47787      0.32832      0.00028
+MINI INTERN>       49.06845    128.12158     11.28316    244.32356      5.09606
+MINI EXTERN>     -189.13592  -1174.34772      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      390   -927.04713      1.45629      1.17147      0.00073
+MINI INTERN>       49.95552    128.03261     11.30164    244.12967      5.09216
+MINI EXTERN>     -188.98804  -1176.57069      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      400   -929.57265      2.52552      0.40131      0.00033
+MINI INTERN>       49.30893    128.58606     11.29405    243.99229      5.10537
+MINI EXTERN>     -188.67344  -1179.18591      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      410   -931.30010      1.72745      0.28748      0.00035
+MINI INTERN>       49.43457    128.70886     11.30023    243.83593      5.10626
+MINI EXTERN>     -188.33847  -1181.34748      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      420   -933.08310      1.78300      0.37139      0.00038
+MINI INTERN>       49.54934    128.96967     11.30222    243.66558      5.11056
+MINI EXTERN>     -187.87906  -1183.80141      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      430   -934.72157      1.63847      0.42156      0.00041
+MINI INTERN>       49.66819    129.18835     11.30443    243.49615      5.11391
+MINI EXTERN>     -187.39932  -1186.09328      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      440   -936.09933      1.37775      0.69263      0.00044
+MINI INTERN>       49.83155    129.48026     11.30385    243.33538      5.11858
+MINI EXTERN>     -186.91771  -1188.25124      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      450   -937.49721      1.39788      0.82237      0.00047
+MINI INTERN>       49.98859    129.71078     11.30495    243.16325      5.12147
+MINI EXTERN>     -186.42827  -1190.35798      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       455
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194413 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7847 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      460   -938.80562      1.30842      0.80541      0.00050
+MINI INTERN>       50.06976    129.86054     11.30741    243.00197      5.12131
+MINI EXTERN>     -185.99932  -1192.16729      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      470   -940.01164      1.20602      0.87972      0.00054
+MINI INTERN>       50.19408    130.04381     11.30875    242.83773      5.11933
+MINI EXTERN>     -185.57047  -1193.94487      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      480   -941.18525      1.17362      0.94776      0.00058
+MINI INTERN>       50.32278    130.21958     11.31022    242.66907      5.11431
+MINI EXTERN>     -185.15666  -1195.66455      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      490   -942.60579      1.42053      0.22619      0.00026
+MINI INTERN>       50.22518    130.01732     11.32474    242.50617      5.09959
+MINI EXTERN>     -184.90327  -1196.87553      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      500   -943.72916      1.12337      0.22510      0.00028
+MINI INTERN>       50.29582    130.16028     11.32788    242.34231      5.08887
+MINI EXTERN>     -184.58900  -1198.35531      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+ STEEPD> Minimization exiting with number of steps limit (       500) exceeded.
+
+STPD MIN: Cycle      ENERgy      Delta-E         GRMS    Step-size
+STPD INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+STPD EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+STPD>      500   -943.72916      1.12337      0.22510      0.00034
+STPD INTERN>       50.29582    130.16028     11.32788    242.34231      5.08887
+STPD EXTERN>     -184.58900  -1198.35531      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>    MINI abnr nstep 1000 nprint 10
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VSHIft  
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 11.000 CTOFNB = 13.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ There are   194413 atom  pairs and     4891 atom  exclusions.
+ There are        0 group pairs and      818 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194389 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7852 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+
+
+ ABNER> An energy minimization has been requested.
+
+ EIGRNG =    0.0005000   MINDIM =            5
+ NPRINT =           10   NSTEP  =         1000
+ PSTRCT =    0.0000000   SDSTP  =    0.0200000
+ STPLIM =    1.0000000   STRICT =    0.1000000
+ TOLFUN =    0.0000000   TOLGRD =    0.0000000
+ TOLITR =          100   TOLSTP =    0.0000000
+ FMEM   =    0.0000000
+MINI MIN: Cycle      ENERgy      Delta-E         GRMS    Step-size
+MINI INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+MINI EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>        0   -943.72916      1.12337      0.22510      0.00000
+MINI INTERN>       50.29582    130.16028     11.32788    242.34231      5.08887
+MINI EXTERN>     -184.58900  -1198.35531      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step         7
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194289 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7866 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>       10   -962.34226     18.61311      1.37631      0.05905
+MINI INTERN>       54.08802    139.91642     11.90216    238.75441      4.64354
+MINI EXTERN>     -174.85482  -1236.79200      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step        18
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194270 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7834 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>       20   -973.97020     11.62794      1.66352      0.05719
+MINI INTERN>       52.69180    141.96437     11.73952    239.98252      4.29800
+MINI EXTERN>     -178.02106  -1246.62535      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       30   -981.77829      7.80809      0.50054      0.01994
+MINI INTERN>       52.94546    138.40073     12.06098    241.39027      4.28224
+MINI EXTERN>     -178.92401  -1251.93396      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       40   -983.82517      2.04688      0.32456      0.01159
+MINI INTERN>       52.21087    136.94554     11.81348    240.88205      4.22516
+MINI EXTERN>     -178.95755  -1250.94473      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       50   -987.37398      3.54881      0.41478      0.01871
+MINI INTERN>       52.26655    135.08731     11.90179    241.43657      4.25292
+MINI EXTERN>     -176.91080  -1255.40833      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step        52
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194299 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7813 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>       60   -993.59381      6.21982      0.41855      0.01812
+MINI INTERN>       51.69135    132.57595     11.79420    242.55973      4.54962
+MINI EXTERN>     -178.93812  -1257.82654      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step        66
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194403 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7785 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>       70   -998.18532      4.59151      0.47469      0.01755
+MINI INTERN>       50.43004    131.26841     11.68742    243.94254      4.44435
+MINI EXTERN>     -178.00198  -1261.95610      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       80  -1004.82724      6.64192      0.80631      0.02833
+MINI INTERN>       51.59406    134.24005     12.01675    243.66342      4.44179
+MINI EXTERN>     -177.64056  -1273.14275      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step        86
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194399 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7773 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>       90  -1014.84459     10.01735      0.64133      0.02744
+MINI INTERN>       52.03277    138.47452     11.99215    243.31953      4.45798
+MINI EXTERN>     -180.02946  -1285.09207      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step        93
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194386 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7792 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      100  -1021.94906      7.10447      0.67442      0.02657
+MINI INTERN>       52.30169    140.15948     12.05146    242.51359      4.60740
+MINI EXTERN>     -178.09835  -1295.48434      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       104
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194396 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7788 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      110  -1029.66530      7.71624      0.70130      0.02574
+MINI INTERN>       51.98621    142.31135     12.17745    242.12218      4.85595
+MINI EXTERN>     -174.59647  -1308.52198      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      120  -1040.52335     10.85805      0.67419      0.02493
+MINI INTERN>       51.87053    142.75919     12.24165    241.75161      4.25098
+MINI EXTERN>     -176.14879  -1317.24852      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       121
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194376 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7778 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      130  -1044.89944      4.37609      0.31203      0.01449
+MINI INTERN>       51.68207    140.68826     12.25474    241.68082      4.50702
+MINI EXTERN>     -174.32085  -1321.39150      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      140  -1048.80928      3.90983      0.36932      0.01403
+MINI INTERN>       51.68521    138.31121     12.26127    241.52479      4.73790
+MINI EXTERN>     -173.46425  -1323.86540      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       147
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194322 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7790 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      150  -1052.73559      3.92631      0.65794      0.02265
+MINI INTERN>       52.10218    139.48073     12.43547    242.39649      4.72908
+MINI EXTERN>     -173.66434  -1330.21519      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      160  -1055.07778      2.34219      0.21370      0.00790
+MINI INTERN>       51.81399    140.12361     12.37011    242.16007      4.63004
+MINI EXTERN>     -174.57974  -1331.59586      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      170  -1057.96580      2.88802      0.43566      0.02125
+MINI INTERN>       52.08376    142.07405     12.54978    242.57981      4.53340
+MINI EXTERN>     -174.23176  -1337.55484      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       174
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194327 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7767 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      180  -1066.65921      8.69342      0.78013      0.02058
+MINI INTERN>       54.08031    149.25870     13.14048    246.92178      4.63740
+MINI EXTERN>     -169.48839  -1365.20950      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       182
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194287 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7779 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ UPDECI: Nonbond update at step       188
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194188 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7761 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      190  -1081.42071     14.76150      1.07554      0.03691
+MINI INTERN>       54.54506    146.16429     12.93313    247.56022      4.77957
+MINI EXTERN>     -166.00229  -1381.40069      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      200  -1086.56155      5.14083      0.62142      0.02145
+MINI INTERN>       53.67246    144.22982     12.59725    247.33489      4.61670
+MINI EXTERN>     -169.46000  -1379.55267      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      210  -1089.61638      3.05483      0.34279      0.01247
+MINI INTERN>       53.23887    145.12366     12.54395    247.59408      4.57877
+MINI EXTERN>     -169.11013  -1383.58557      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      220  -1091.09426      1.47789      0.30864      0.01207
+MINI INTERN>       53.29219    144.38026     12.46371    247.35664      4.53503
+MINI EXTERN>     -169.03630  -1384.08579      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      230  -1093.11343      2.01916      0.22109      0.01169
+MINI INTERN>       53.13554    143.44077     12.37325    247.07793      4.62239
+MINI EXTERN>     -168.91186  -1384.85144      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       238
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194336 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7741 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      240  -1095.06099      1.94756      0.50348      0.01888
+MINI INTERN>       52.92075    143.44734     12.30268    246.88442      4.65047
+MINI EXTERN>     -168.15642  -1387.11023      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       246
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194534 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7743 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      250  -1100.55407      5.49308      0.55336      0.01828
+MINI INTERN>       52.88120    143.10071     12.28017    246.06051      4.61311
+MINI EXTERN>     -165.61206  -1393.87770      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      260  -1103.11835      2.56429      0.27337      0.01063
+MINI INTERN>       52.65578    143.06473     12.19796    246.35853      4.63064
+MINI EXTERN>     -164.87041  -1397.15558      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      270  -1105.33970      2.22135      0.49336      0.01715
+MINI INTERN>       52.91095    142.89822     12.31699    247.01168      4.54820
+MINI EXTERN>     -165.22550  -1399.80024      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      280  -1106.52008      1.18037      0.29428      0.00997
+MINI INTERN>       52.72744    142.39384     12.12611    246.76306      4.56027
+MINI EXTERN>     -165.83536  -1399.25542      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      290  -1107.27792      0.75784      0.29370      0.00965
+MINI INTERN>       52.86763    142.71167     12.23131    247.00246      4.52193
+MINI EXTERN>     -166.36580  -1400.24712      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       293
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194570 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7736 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      300  -1109.08383      1.80591      0.50024      0.01558
+MINI INTERN>       53.19095    141.67770     12.11873    247.96132      4.53323
+MINI EXTERN>     -167.92137  -1400.64439      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      310  -1109.90420      0.82037      0.15671      0.00543
+MINI INTERN>       53.32491    142.26910     12.15646    248.02074      4.57176
+MINI EXTERN>     -167.71989  -1402.52729      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      320  -1110.13730      0.23310      0.14298      0.00526
+MINI INTERN>       53.20977    142.29638     12.17398    247.98888      4.56773
+MINI EXTERN>     -167.54513  -1402.82891      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       326
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194628 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7746 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      330  -1112.31491      2.17761      0.41013      0.01416
+MINI INTERN>       53.63180    142.55487     12.31814    248.16567      4.64903
+MINI EXTERN>     -167.43407  -1406.20036      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       338
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194701 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7740 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      340  -1114.40525      2.09034      0.40207      0.01371
+MINI INTERN>       53.46638    143.31237     12.36944    248.48954      4.78790
+MINI EXTERN>     -167.10735  -1409.72353      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      350  -1116.25958      1.85433      0.38290      0.01328
+MINI INTERN>       53.28486    142.08714     12.28956    248.22353      4.73756
+MINI EXTERN>     -165.95831  -1410.92392      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       354
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194759 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7735 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      360  -1118.26328      2.00370      0.27523      0.01286
+MINI INTERN>       53.23318    142.52625     12.36543    249.14810      4.79522
+MINI EXTERN>     -165.02622  -1415.30525      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       364
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194882 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7735 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      370  -1121.14278      2.87949      0.26904      0.01246
+MINI INTERN>       53.31008    142.14349     12.29180    250.48208      4.74562
+MINI EXTERN>     -163.07910  -1421.03675      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       372
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194882 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7729 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ UPDECI: Nonbond update at step       379
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194965 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7735 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      380  -1124.45839      3.31561      0.57797      0.02011
+MINI INTERN>       53.41746    141.29239     12.27441    252.01447      4.54962
+MINI EXTERN>     -161.98873  -1426.01800      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       387
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194976 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7743 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      390  -1129.22934      4.77095      0.69507      0.03247
+MINI INTERN>       54.14036    142.54240     12.32615    252.37195      4.52115
+MINI EXTERN>     -164.31427  -1430.81708      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       391
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194950 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7739 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ UPDECI: Nonbond update at step       395
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194951 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7727 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      400  -1140.76487     11.53553      1.96763      0.05824
+MINI INTERN>       56.46552    145.96742     12.58926    251.36351      4.38486
+MINI EXTERN>     -168.20718  -1443.32826      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       401
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194894 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7714 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      410  -1145.39352      4.62866      4.19135      0.09170
+MINI INTERN>       63.22773    144.10008     12.74605    252.04703      4.43938
+MINI EXTERN>     -167.02692  -1454.92687      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      420  -1157.59477     12.20125      0.86222      0.03249
+MINI INTERN>       54.81204    144.84392     12.43708    252.01303      4.53594
+MINI EXTERN>     -162.21892  -1464.01786      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       424
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   194938 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7710 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      430  -1161.11399      3.51922      0.50142      0.01888
+MINI INTERN>       54.05154    141.29741     12.41762    251.73374      4.43831
+MINI EXTERN>     -161.52053  -1463.53207      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      440  -1163.03798      1.92400      0.28872      0.01097
+MINI INTERN>       53.93375    142.01905     12.38498    251.79982      4.50304
+MINI EXTERN>     -162.09447  -1465.58415      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       447
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195029 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7713 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      450  -1165.70786      2.66988      1.84607      0.03280
+MINI INTERN>       57.96904    141.17703     12.62844    250.69278      4.61265
+MINI EXTERN>     -157.30735  -1475.48045      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       457
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195079 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7717 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      460  -1171.17764      5.46977      0.62251      0.02905
+MINI INTERN>       53.52425    140.48771     12.33138    250.95778      4.57337
+MINI EXTERN>     -159.51787  -1473.53425      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      470  -1172.38290      1.20527      0.58327      0.01928
+MINI INTERN>       53.73779    139.48430     12.29685    250.74352      4.57198
+MINI EXTERN>     -160.06211  -1473.15523      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       480
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195077 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7700 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      480  -1177.85139      5.46849      0.51899      0.02124
+MINI INTERN>       53.76737    139.68294     12.64228    249.68140      4.52866
+MINI EXTERN>     -161.19634  -1476.95769      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       486
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195058 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7705 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      490  -1185.77179      7.92041      0.53494      0.02058
+MINI INTERN>       55.15737    141.62694     13.08511    247.72551      4.62357
+MINI EXTERN>     -165.74884  -1482.24147      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       495
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195083 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7700 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      500  -1193.09746      7.32567      0.79013      0.03321
+MINI INTERN>       54.42858    143.83092     12.75706    248.04880      4.69814
+MINI EXTERN>     -167.06900  -1489.79195      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      510  -1197.42103      4.32357      0.61633      0.01930
+MINI INTERN>       54.25370    142.26082     12.85230    248.72940      4.68786
+MINI EXTERN>     -163.41954  -1496.78556      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       519
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195109 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7704 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      520  -1199.50699      2.08596      0.34816      0.01122
+MINI INTERN>       53.62906    141.02623     12.51163    249.48423      4.67549
+MINI EXTERN>     -161.53096  -1499.30268      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      530  -1200.08688      0.57989      0.16545      0.00652
+MINI INTERN>       53.69596    140.94689     12.56724    249.25089      4.70079
+MINI EXTERN>     -162.20919  -1499.03946      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      540  -1201.70837      1.62149      0.32033      0.01052
+MINI INTERN>       53.80999    140.42062     12.49046    249.25678      4.69704
+MINI EXTERN>     -162.27608  -1500.10718      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      550  -1202.78045      1.07208      0.46271      0.01699
+MINI INTERN>       53.69896    141.07395     12.53927    249.51609      4.74085
+MINI EXTERN>     -160.51379  -1503.83577      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       553
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195206 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7695 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      560  -1203.36273      0.58228      0.11657      0.00592
+MINI INTERN>       53.20108    141.16052     12.45967    249.63696      4.74108
+MINI EXTERN>     -158.94653  -1505.61550      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      570  -1203.74146      0.37873      0.20612      0.00574
+MINI INTERN>       53.23238    140.75825     12.43813    249.67221      4.70704
+MINI EXTERN>     -160.44461  -1504.10486      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      580  -1204.17693      0.43548      0.10280      0.00556
+MINI INTERN>       53.21927    140.90427     12.43793    249.82949      4.74743
+MINI EXTERN>     -159.98585  -1505.32946      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      590  -1204.76446      0.58752      0.23827      0.00897
+MINI INTERN>       53.11189    140.36620     12.41680    250.88746      4.71578
+MINI EXTERN>     -161.47789  -1504.78469      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      600  -1205.05768      0.29322      0.14096      0.00521
+MINI INTERN>       53.13897    140.57907     12.39627    250.80479      4.73454
+MINI EXTERN>     -161.40577  -1505.30554      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      610  -1205.41280      0.35512      0.10059      0.00505
+MINI INTERN>       53.12442    141.17119     12.39970    250.63322      4.73728
+MINI EXTERN>     -160.90931  -1506.56930      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       613
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195319 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7705 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      620  -1205.99402      0.58122      0.21239      0.00815
+MINI INTERN>       53.13874    141.30206     12.44670    250.90383      4.72461
+MINI EXTERN>     -159.82029  -1508.68966      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       627
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195437 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7707 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      630  -1207.81408      1.82006      0.35127      0.01315
+MINI INTERN>       53.76251    140.48281     12.57170    252.63159      4.77537
+MINI EXTERN>     -163.29786  -1508.74020      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       631
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195606 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7727 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      640  -1211.65231      3.83823      0.47687      0.02589
+MINI INTERN>       53.57956    141.50141     12.49138    253.96828      4.81753
+MINI EXTERN>     -163.42374  -1514.58673      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       641
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195701 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7731 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      650  -1213.97145      2.31914      0.31680      0.01486
+MINI INTERN>       53.76361    140.63994     12.41351    255.26307      4.89526
+MINI EXTERN>     -160.04668  -1520.90016      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      660  -1215.24095      1.26950      0.23759      0.00864
+MINI INTERN>       53.37863    140.49220     12.44746    255.40335      4.88399
+MINI EXTERN>     -159.61470  -1522.23187      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      670  -1215.73573      0.49477      0.26298      0.00836
+MINI INTERN>       53.32695    140.14424     12.32533    255.28658      4.87662
+MINI EXTERN>     -160.90605  -1520.78940      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      680  -1217.24827      1.51254      0.33979      0.01350
+MINI INTERN>       53.04371    140.64783     12.46360    256.06335      4.87477
+MINI EXTERN>     -160.05352  -1524.28800      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       685
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195734 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7723 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      690  -1219.04286      1.79459      0.37733      0.01308
+MINI INTERN>       53.00357    140.90848     12.31320    256.53988      4.97114
+MINI EXTERN>     -159.23595  -1527.54318      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       700
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195770 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7718 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      700  -1221.96030      2.91744      0.55108      0.02111
+MINI INTERN>       52.79010    139.59586     12.24233    256.99792      4.90851
+MINI EXTERN>     -156.24718  -1532.24786      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      710  -1225.01099      3.05069      0.44313      0.02045
+MINI INTERN>       52.54635    138.80748     12.40970    254.89190      4.83302
+MINI EXTERN>     -156.31720  -1532.18224      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       716
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195742 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7725 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      720  -1226.49334      1.48235      0.37144      0.01188
+MINI INTERN>       52.40771    139.33783     12.26645    253.30288      4.77823
+MINI EXTERN>     -157.36410  -1531.22233      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      730  -1227.41704      0.92371      0.39781      0.01151
+MINI INTERN>       52.59190    139.88567     12.42241    252.46805      4.78609
+MINI EXTERN>     -158.11702  -1531.45415      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      740  -1228.03730      0.62025      0.17904      0.00669
+MINI INTERN>       52.64907    140.46822     12.44774    251.89826      4.78143
+MINI EXTERN>     -158.18786  -1532.09416      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      750  -1229.18305      1.14576      0.15562      0.00648
+MINI INTERN>       52.97045    141.46500     12.46155    250.15140      4.79199
+MINI EXTERN>     -158.77883  -1532.24461      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ UPDECI: Nonbond update at step       753
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   259765 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   195674 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     7713 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+MINI>      760  -1229.35927      0.17622      0.10907      0.00376
+MINI INTERN>       52.88930    140.99896     12.39993    250.42107      4.77903
+MINI EXTERN>     -158.80891  -1532.03864      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      770  -1229.46311      0.10385      0.10358      0.00365
+MINI INTERN>       52.88659    141.17030     12.39917    250.19239      4.79045
+MINI EXTERN>     -158.78732  -1532.11469      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      780  -1229.54559      0.08248      0.05620      0.00212
+MINI INTERN>       52.93318    140.88445     12.41197    250.31786      4.78503
+MINI EXTERN>     -158.66556  -1532.21253      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      790  -1229.68428      0.13869      0.09618      0.00342
+MINI INTERN>       52.81841    140.61169     12.41441    250.58206      4.81123
+MINI EXTERN>     -158.68533  -1532.23676      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      800  -1229.77799      0.09371      0.10773      0.00331
+MINI INTERN>       52.79534    140.50359     12.37810    250.68045      4.80857
+MINI EXTERN>     -158.38052  -1532.56352      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      810  -1229.85709      0.07910      0.09682      0.00321
+MINI INTERN>       52.90908    140.78046     12.40090    250.47711      4.81539
+MINI EXTERN>     -158.37845  -1532.86158      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      820  -1230.03873      0.18164      0.08359      0.00311
+MINI INTERN>       52.95820    140.71186     12.38891    250.34624      4.83229
+MINI EXTERN>     -158.45193  -1532.82430      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      830  -1230.18447      0.14574      0.08436      0.00301
+MINI INTERN>       52.95836    141.00254     12.41528    250.24324      4.85861
+MINI EXTERN>     -158.50394  -1533.15856      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      840  -1230.20667      0.02220      0.02987      0.00105
+MINI INTERN>       52.92419    140.98552     12.39008    250.22496      4.84666
+MINI EXTERN>     -158.43631  -1533.14177      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      850  -1230.22885      0.02218      0.04409      0.00169
+MINI INTERN>       52.93492    141.05629     12.39795    250.12188      4.84250
+MINI EXTERN>     -158.37532  -1533.20707      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      860  -1230.25199      0.02314      0.02250      0.00098
+MINI INTERN>       52.89967    140.90395     12.38584    250.20067      4.82860
+MINI EXTERN>     -158.57201  -1532.89871      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      870  -1230.28166      0.02967      0.04672      0.00159
+MINI INTERN>       52.88512    140.79662     12.38797    250.19944      4.81539
+MINI EXTERN>     -158.83374  -1532.53245      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      880  -1230.29271      0.01106      0.02656      0.00092
+MINI INTERN>       52.89790    140.86508     12.38553    250.18883      4.81945
+MINI EXTERN>     -158.71533  -1532.73417      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      890  -1230.32035      0.02764      0.07932      0.00248
+MINI INTERN>       52.93783    140.80562     12.37548    250.24741      4.82498
+MINI EXTERN>     -159.03106  -1532.48062      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      900  -1230.34967      0.02932      0.09261      0.00241
+MINI INTERN>       52.92592    140.86072     12.37397    250.21152      4.81743
+MINI EXTERN>     -158.92895  -1532.61027      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      910  -1230.35936      0.00969      0.02418      0.00084
+MINI INTERN>       52.90336    140.80712     12.38303    250.19952      4.81698
+MINI EXTERN>     -158.71788  -1532.75151      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      920  -1230.39397      0.03461      0.03000      0.00135
+MINI INTERN>       52.88982    140.83106     12.38020    250.15867      4.84061
+MINI EXTERN>     -158.61752  -1532.87682      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      930  -1230.40216      0.00819      0.01799      0.00079
+MINI INTERN>       52.89283    140.82466     12.38527    250.16718      4.83903
+MINI EXTERN>     -158.58374  -1532.92739      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      940  -1230.41024      0.00808      0.02171      0.00076
+MINI INTERN>       52.88468    140.83376     12.37593    250.12469      4.83819
+MINI EXTERN>     -158.53754  -1532.92995      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      950  -1230.45365      0.04342      0.03058      0.00123
+MINI INTERN>       52.89006    140.75655     12.37414    249.96400      4.86979
+MINI EXTERN>     -158.23147  -1533.07672      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      960  -1230.46781      0.01415      0.03403      0.00119
+MINI INTERN>       52.88518    140.80829     12.37363    249.96133      4.86492
+MINI EXTERN>     -158.26930  -1533.09186      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      970  -1230.47809      0.01028      0.02235      0.00115
+MINI INTERN>       52.90479    140.82295     12.38574    249.96959      4.86362
+MINI EXTERN>     -158.30633  -1533.11845      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      980  -1230.49451      0.01642      0.02578      0.00112
+MINI INTERN>       52.90083    140.84374     12.38401    250.04126      4.83979
+MINI EXTERN>     -158.51144  -1532.99270      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      990  -1230.50682      0.01231      0.02369      0.00108
+MINI INTERN>       52.88061    140.81474     12.36571    250.03396      4.84343
+MINI EXTERN>     -158.62888  -1532.81639      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>     1000  -1230.54878      0.04196      0.04417      0.00175
+MINI INTERN>       52.87387    140.73247     12.35418    250.05104      4.83649
+MINI EXTERN>     -158.64315  -1532.75368      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+ ABNER> Minimization exiting with number of steps limit ( 1000) exceeded.
+
+ABNR MIN: Cycle      ENERgy      Delta-E         GRMS    Step-size
+ABNR INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+ABNR EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+ABNR>     1000  -1230.54878      0.04196      0.04417      0.00157
+ABNR INTERN>       52.87387    140.73247     12.35418    250.05104      4.83649
+ABNR EXTERN>     -158.64315  -1532.75368      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !###########################  Dynamics
+ CHARMM>    !! To solve the equations of motion for the system again several
+ CHARMM>    !! algorithms can be chosen. In this practical you will use a verlet
+ CHARMM>    !! algorithm.
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !! Charmm offers the possibility to write a restart file in case you
+ CHARMM>    !! want to continue the simulation.
+ CHARMM>    ! open write unit 1 card name %restartfile
+ CHARMM>     
+  
+ CHARMM>    !! In case you continue a previous simulation.
+ CHARMM>    ! open read unit 2 card name %restart
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !! Keywords important for this dynamics simulation:
+ CHARMM>    !! start (restart): defines whether you start a new simulation or continue
+ CHARMM>    !! from previous one.
+ CHARMM>    !! nstep: Number of timesteps
+ CHARMM>    !! tstep: Timestep (0.001 = 1fs)
+ CHARMM>    !! iprfrq ??: Print out results every ?? steps
+ CHARMM>    !! ihtfrq ??: Heat up system every ?? steps
+ CHARMM>    !! teminc ??: Heat in temperature increments of ?? K
+ CHARMM>    !! nprint ??: Print out average values every ?? steps
+ CHARMM>    !! iunwri 1: File unit number to write restart file to. = 1
+ CHARMM>    !! iunrea -1: File unit numer to read restart file from. -1 = don't write
+ CHARMM>    !! iuncrd -1: File unit numer to write trajectories to. -1 = don't write
+ CHARMM>    !! nsavc 100: save coordinates to trajectory file every 100 steps
+ CHARMM>    !! is only active when writing trajectory file
+ CHARMM>    !! firstt: Starting temperature of 0.0 K after minimisation
+ CHARMM>    !! finalt: Temperature you want to heat up to. Change
+ CHARMM>    !! to your temperature
+ CHARMM>     
+  
+ CHARMM>    ! dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
+ CHARMM>    !     iprfrq 100 ihtfrq 300 teminc 5.0  -
+ CHARMM>    !     nprint 100 iunwri 1 iunrea -1 iuncrd -1 nsavc 100 -
+ CHARMM>    !     firstt 0.0 finalt 300.0 -
+ CHARMM>    !     iasors 0 iasvel 1 iscvel 0 ichecw 0
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !###################   Saving final coordinates
+ CHARMM>    !======================================================================
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    !!crd format
+ CHARMM>    !open write unit 1 card name %filename.crd
+ CHARMM>    !write coor card unit 1
+ CHARMM>    !close unit 1
+ CHARMM>     
+  
+ CHARMM>    open write unit 1 card name 1bpi-disu.psf
+ VOPEN> Attempting to open::1bpi-disu.psf::
+ OPNLGU> Unit  1 opened for WRITE access to 1bpi-disu.psf
+  
+ CHARMM>    write psf card unit 1
+ RDTITL> CLOSE UNIT 1
+ RDTITL> No title read.
+  
+ CHARMM>    close unit 1
+ VCLOSE: Closing unit    1 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    !pdb format
+ CHARMM>    open write unit 1 card name min-disu.pdb
+ VOPEN> Attempting to open::min-disu.pdb::
+ OPNLGU> Unit  1 opened for WRITE access to min-disu.pdb
+  
+ CHARMM>    write coor pdb unit 1
+ RDTITL> CLOSE UNIT 1
+ RDTITL> No title read.
+  
+ CHARMM>    close unit 1
+ VCLOSE: Closing unit    1 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+$$$$$$  New timer profile $$$$$
+               Nonbond force          14.90000 Other:    0.00000
+               Bond energy             0.04000 Other:    0.00000
+               Angle energy            0.37600 Other:    0.00000
+               Dihedral energy         0.55600 Other:    0.00000
+          Energy time            15.91600 Other:    0.04400
+     Dynamics total         15.91600 Other:    0.00000
+ Total time             17.58800 Other:    1.67200
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    MAXIMUM STACK SPACE USED IS   84024
+                    STACK CURRENTLY IN USE IS         0
+                    MOST SEVERE WARNING WAS AT LEVEL  2
+                    HEAP PRINTOUT-  HEAP SIZE  10240000
+                    SPACE CURRENTLY IN USE IS      5632
+                    MAXIMUM SPACE USED IS        466532
+                    FREE LIST
+            PRINHP> ADDRESS:         1 LENGTH:   9943616 NEXT:   9949249
+            PRINHP> ADDRESS:   9949249 LENGTH:    290752 NEXT:         0
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:    17.62  SECONDS 
+                         CPU TIME:    17.58  SECONDS 
