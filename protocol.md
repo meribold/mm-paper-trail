@@ -487,10 +487,36 @@ The structure changed slightly.  Some residues turned.
 
 ### Equilibration with rescaling velocities^[http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node21.html]
 
+```bash
+$ pwd
+/home/student10/practicum/equi
+$ git show -q | head -1
+commit 77220dd5f078a4bba7cb9330a27416abb647dbe4
+$ charmm < equi.inp > equi.out
+$ grep 'DYNA>' equi.out > equi.dat
+$ awk '{print $3"    "$4}' equi.dat > time-total.dat
+$ awk '{print $3"    "$5}' equi.dat > time-kinetic.dat
+$ awk '{print $3"    "$6}' equi.dat > time-potential.dat
+$ awk '{print $3"    "$7}' equi.dat > time-temp.dat
+```
+
 >   Plot the total, potential and kinetic energy and the temperature versus simulation
     time. 
 
+```bash
+$ xmgrace time-total.dat time-kinetic.dat time-potential.dat 
+$ xmgrace time-temp.dat
+```
+
+These are the results for heating to 300K.
+
+![Energies](equi/time-energy-plot.png)\ 
+
+![Temperatures](equi/time-temp-plot.png)\ 
+
 >   Are temperature and energy stable? 
+
+Yes.
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
