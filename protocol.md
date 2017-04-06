@@ -556,6 +556,13 @@ $ xmgrace time-temp.dat
 
 Yeah, I guess.
 
+## Production^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node23.html>]
+
+>   Analyze the output from the final run as before, i.e., plot total, potential and
+>   kinetic energy, and temperature versus time. 
+
+>   Was the system stable during the entire run?
+
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
