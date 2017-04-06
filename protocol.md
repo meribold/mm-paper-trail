@@ -446,17 +446,42 @@ $ awk '{print $3"    "$7}' heat.dat > time-temp.dat
 ```
 
 >   Plot the total, potential and kinetic energy and the temperature versus simulation
-    time (Remark: use grep 'DYNA$>$' name.out $>$ name.dat). 
+    time (Remark: use `grep 'DYNA$>$' name.out $>$ name.dat`). 
 
 ![Energies](dyna/time-energy-plot.png)\ 
 
 ![Temperatures](dyna/time-temp-plot.png)\ 
 
+The results for heating 250K, 273K and 400K are very similar.
+
 >   Explain the shape of the temperature curve.
 
-The curve is linear (as expected) but has lots of small fluctuations.  These arise because
-the system isn't in thermodynamic equilibrium, and kinetic energy is constantly converted
-into potential energy.
+The curve is roughly linear until reaching 300K (as expected) but has lots of small
+fluctuations.  These arise because:
+
+1.  The system is heated in discrete steps.
+2.  The system isn't in thermodynamic equilibrium: kinetic energy is constantly converted
+    into potential energy.
+3.  Potential energy comes not only from temperature but also from physical force fields
+    within the system, which one contributes how much varies as the system's confirmation
+    changes.
+
+>   What is the relation between the total, potential and kinetic energy? 
+
+Plus.
+
+>   Calculate the RMSD between the hot and the cold protein. 
+
+| Temperature | RMSD   |
+|-------------+--------|
+| 250K        | 1.5662 |
+| 273K        | 1.5662 |
+| 300K        | 1.3909 |
+| 400K        | 1.3019 |
+
+>   Compare the hot with the cold protein structure.
+
+The structure changed slightly.  Some residues turned.
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
