@@ -613,8 +613,11 @@ $ xmgrace prot-rms.dat bbone-rms.dat schain-rms.dat
 >   How do the RMSD of the backbone and sidechains compare to the RMSD of the whole
 >   protein? 
 
+*   The RMSDs of the backbone are smaller than those of the whole protein.
+*   The RMSDs of the side chains are bigger than those of the whole protein.
+
 >   Compare with the results of the other students. How do the results vary with
->   temperature? 
+>   temperature?
 
 >   Which parts of the protein are more flexible? Use the vmd movie mode. 
 
