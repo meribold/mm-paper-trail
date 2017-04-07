@@ -90,7 +90,7 @@
 @timestamp rot 0
 @timestamp font 0
 @timestamp char size 1.000000
-@timestamp def "Fri Apr  7 11:26:21 2017"
+@timestamp def "Fri Apr  7 11:33:22 2017"
 @r0 off
 @link r0 to g0
 @r0 type above
@@ -141,7 +141,7 @@
 @    stack world 0, 0, 0, 0
 @    znorm 1
 @    view 0.150000, 0.150000, 1.150000, 0.850000
-@    title "RMSD"
+@    title "RMSD (300K)"
 @    title font 0
 @    title size 1.500000
 @    title color 1
