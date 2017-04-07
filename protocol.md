@@ -605,7 +605,10 @@ $ cp /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/dyna/*.inp ana/
 $ charmm < prot-rms.charmm.inp > prot-rms.charmm.out
 $ charmm < bbone-rms.charmm.inp > bbone-rms.charmm.out
 $ charmm < schain-rms.charmm.inp > schain-rms.charmm.out
+$ xmgrace prot-rms.dat bbone-rms.dat schain-rms.dat 
 ```
+
+![RMSD](prod/ana/rmsd-plot.png)\ 
 
 >   How do the RMSD of the backbone and sidechains compare to the RMSD of the whole
 >   protein? 
