@@ -603,6 +603,8 @@ $ cp /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/dyna/*.inp ana/
 
 ```bash
 $ charmm < prot-rms.charmm.inp > prot-rms.charmm.out
+$ charmm < bbone-rms.charmm.inp > bbone-rms.charmm.out
+$ charmm < schain-rms.charmm.inp > schain-rms.charmm.out
 ```
 
 >   How do the RMSD of the backbone and sidechains compare to the RMSD of the whole
@@ -621,7 +623,7 @@ $ charmm < prot-rms.charmm.inp > prot-rms.charmm.out
 >   and the C-S-S-C dihedral angle? How may these values be interpreted ? 
 
 >   Why is the standard derivation `S-S` < `C-S-S` < `C-S-S-C`?
-   
+
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
