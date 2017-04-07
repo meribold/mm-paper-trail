@@ -688,7 +688,37 @@ $ awk '{print $1"    "$4}' correl.dat > time-cssc.dat
 >   What is the average value and standard deviation of the S-S distance, the C-S-S angle,
 >   and the C-S-S-C dihedral angle? How may these values be interpreted ? 
 
+|                  | Average           | SD           |
+|------------------+-------------------+--------------|
+| S-S distance     | 2.03466044  Å     | 0.0365230212 |
+| C-S-S angle      | 104.76354781 deg  | 3.6009645854 |
+| C-S-S-C dihedral | 104.729799352 deg | 7.8910220214 |
+
+Table:  Averages and SDs of disulfide bridge properties
+
 >   Why is the standard derivation `S-S` < `C-S-S` < `C-S-S-C`?
+
+The length of the disulfide bridge is not very flexible.  Binding angles are more
+flexible.  Dihedrals (rotation of atom groups around a bond) are even more flexible.
+
+## Theoretical Background - Solvation^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node25.html>]
+
+>   Explain the different water models (implicit and explicit).
+
+Implicit:
+
+*   Approximate forces caused by water without actually simulating individual H~2~O
+    molecules.
+
+Explicit:
+
+*   Simulate water molecules.
+
+<!-- <http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-md.pdf#page=20> -->
+
+>   What are the advantages and disadvantages of the two water models?
+
+>   What means periodic boundaries?
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
