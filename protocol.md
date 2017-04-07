@@ -718,7 +718,38 @@ Explicit:
 
 >   What are the advantages and disadvantages of the two water models?
 
+Implicit:
+
+*   Cheap but less accurate.
+
+Explicit:
+
+*   Accurate but expensive.
+
 >   What means periodic boundaries?
+
+Define a *periodic cell* surrounded by copies of itself.  Atoms leaving one side of the
+cell re-enter on the opposite side.
+
+## Parallel Computing^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node26.html>]
+
+<!-- x4 doesn't exist anymore -->
+
+<!-- x3, x5, x2 -->
+
+## Initialization^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node27.html>]
+
+### Preparation of the water box^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node28.html>]
+
+#### Generation of the water box^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node29.html>]
+
+```bash
+$ pwd
+/home/student10/practicum/water
+$ cp /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/inputs/make_Wbox.pl .
+```
+
+>   What is the density of your water box?
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
