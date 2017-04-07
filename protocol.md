@@ -30,6 +30,37 @@ monofont: Ubuntu Mono
 
 # CHARMM^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/index.html>]
 
+```
+                            /---------\
+                           /           \
+                          /             \
+                         /               \
+                         !  XXXX   XXXX  !
+                         !  XXXX   XXXX  !
+                         !  XXX     XXX  !
+                         !       X       !
+                          --\   XXX   /--
+                           ! !  XXX  ! !
+                           ! !       ! !
+                           ! I I I I I !
+                           !  I I I I  !
+                            \         /
+                             --     --
+                               \---/
+                        XXX             XXX
+                       XXXX             XXXX
+                       XXXXX           XXXXX
+                          XXX         XXX
+                            XXX     XXX
+                               XXXXX
+                              XXX XXX
+                            XXX     XXX
+                          XXX         XXX
+                       XXXXX           XXXXX
+                       XXXX             XXXX
+                        XXX             XXX
+```
+
 ## Theoretical Background - Molecular Dynamics simulations^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node1.html>]
 
 ### Time evolution^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node8.html>]
@@ -608,7 +639,7 @@ $ charmm < schain-rms.charmm.inp > schain-rms.charmm.out
 $ xmgrace prot-rms.dat bbone-rms.dat schain-rms.dat 
 ```
 
-![RMSD](prod/ana/rmsd-plot.png)\ 
+![RMSD (300K)](prod/ana/rmsd-plot.png)\ 
 
 >   How do the RMSD of the backbone and sidechains compare to the RMSD of the whole
 >   protein? 
@@ -619,7 +650,19 @@ $ xmgrace prot-rms.dat bbone-rms.dat schain-rms.dat
 >   Compare with the results of the other students. How do the results vary with
 >   temperature?
 
+```bash
+$ cp /home/student10/practicum/andi/CharmmCourse/dyna/RMSD_400K.png .
+```
+
+![RMSD (400K)](prod/ana/RMSD_400K.png)\ 
+
+*   At 400K, the RMSDs are bigger.
+
+![foo](http://www.reactiongifs.com/wp-content/uploads/2013/10/tim-and-eric-mind-blown.gif)\ 
+
 >   Which parts of the protein are more flexible? Use the vmd movie mode. 
+
+The side chains are more flexible.
 
 >   Plot out all time series vs time. The output files will consist of: column 1 =
 >   simulation time (in ps), column 2 = time series of S-S distance, column 3 = time
