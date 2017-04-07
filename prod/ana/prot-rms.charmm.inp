@@ -1,0 +1,46 @@
+* rms of the whole protein
+*
+bomlev -1
+open read unit 1 card name ../data/top.inp
+read rtf card unit 1
+
+open read unit 1 card name ../data/par.inp
+read param card unit 1
+
+! You are comparing with the crystal structure with disulfide bridges
+open read card unit 1 name .psf
+read psf card unit 1
+
+! the .crd file read in here, gives the reference coordinates
+! corresponding to which charmm calculates the rmsd
+! Use e.g. the coordinates you wrote after equilibration
+! or those you wrote after the production run
+open read card unit 3 name .crd
+read coor card unit 3
+
+! read in the trajectory file
+! the trajectory contains information about e.g. rmsd
+open read unit 1 file name prod.dcd
+trajectory iread 1 nread 1 skip 100 
+
+! output file of this analysis:
+open write unit 10 form name prot-rms.dat
+write title unit 10
+*#RMS diff of the whole protein
+*
+	
+! loop over the number of lines in the trajectory file
+set 1 0
+label loop
+  traj read comp
+! orient your coordinates with the cofm again and do the rms on 
+! the whole protein without hydrogen atoms. They just vibrate 
+! and add too much noise to our results.
+  COOR ORIE MASS RMS sele segi 1BPI .and. .not. type h* end
+  incr 1 by 1
+  write title unit 10
+* @1 ?rms
+*
+if 1 lt 	499.5 goto loop
+
+stop

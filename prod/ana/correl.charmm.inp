@@ -1,0 +1,61 @@
+* This Charmm command file uses a precalculated molecular dynamics
+* trajectory file and analyizes it with the CHARMm correlation 
+* (CORREL) commands.
+* ...
+* 
+bomlev -1
+open read unit 1 card name top.inp
+read rtf card unit 1
+
+open read unit 1 card name par.inp
+read param card unit 1
+
+open read card unit 1 name .psf
+read psf card unit 1
+
+! Choose the same coordinates as for prot-rms.charmm.inp
+open read card unit 3 name .crd
+read coor card unit 3
+                                
+! read in the trajectory file
+open read unit 1 file name prod.dcd
+trajectory iread 1 nread 1 skip 100  
+
+! Enter the correlation facility; specify a maximum of
+! 500 dynamics coordinate files and a maximum of 4
+! time series (1 for the dihedral + 1 for distance + 1 for angle) 
+! The following correl will allocate memory for the time series.
+
+CORREL MAXTIM 500 MAXSERIES 10 MAXATOMS 30
+
+! Time series for the correlation in the disulfide bridge between 
+! CYS 14 - CYS 38 of S-S distance, C-S-S angle,
+! C-S-S-C dihedral angle
+
+
+ENTER SSDI DIST 1BPI 14 SG 1BPI 38 SG GEOMETRY
+ENTER CSSA ANGL 1BPI 14 CB 1BPI 14 SG 1BPI 38 SG GEOMETRY
+ENTER CSSC DIHE 1BPI 14 CB 1BPI 14 SG 1BPI 38 SG 1BPI 38 CB GEOMETRY
+
+! Fill the time series with data from the dynamics
+! trajectory
+
+TRAJECTORY FIRSTU 1 NUNIT 1 skip 100 
+
+! Report on statistics
+
+SHOW ALL
+
+
+! The following command will write the correlation data of 
+! time series to an external file "correl.dat"
+
+ 
+OPEN WRITE UNIT 22 CARD NAME correl.dat
+
+	iWRITE ALL UNIT 22 DUMB TIME
+*
+
+END
+
+STOP

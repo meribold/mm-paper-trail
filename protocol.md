@@ -589,6 +589,15 @@ Yes.
 
 ### Analysis of Trajectories^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node24.html>]
 
+Copied provided input scripts:
+
+```bash
+$ pwd
+/home/student10/practicum/prod
+$ mkdir ana
+$ cp /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/dyna/*.inp ana/
+```
+
 >   Plot out all time series vs time. The output files will consist of: column 1 =
 >   trajectory time steps, column 2 = RMSD. 
 
