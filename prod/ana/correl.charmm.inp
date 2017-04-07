@@ -4,22 +4,28 @@
 * ...
 * 
 bomlev -1
-open read unit 1 card name top.inp
+open read unit 1 card name ../../top_all27_prot_na.inp
 read rtf card unit 1
+close unit 1
 
-open read unit 1 card name par.inp
-read param card unit 1
+open read unit 20 card name ../../par_all27_prot_na.inp
+read param card unit 20
+close unit 20
 
-open read card unit 1 name .psf
-read psf card unit 1
+open read card unit 21 name ../../1bpi-disu.psf
+read psf card unit 21
+close unit 21
+
+open read unit 3 card name ../equi2-300k.pdb
+read coor pdb unit 3
 
 ! Choose the same coordinates as for prot-rms.charmm.inp
-open read card unit 3 name .crd
-read coor card unit 3
+!open read card unit 3 name .crd
+!read coor card unit 3
                                 
 ! read in the trajectory file
-open read unit 1 file name prod.dcd
-trajectory iread 1 nread 1 skip 100  
+open read unit 1 file name ../prod.dcd
+trajectory iread 1 nread 1 skip 100 
 
 ! Enter the correlation facility; specify a maximum of
 ! 500 dynamics coordinate files and a maximum of 4
@@ -33,9 +39,9 @@ CORREL MAXTIM 500 MAXSERIES 10 MAXATOMS 30
 ! C-S-S-C dihedral angle
 
 
-ENTER SSDI DIST 1BPI 14 SG 1BPI 38 SG GEOMETRY
-ENTER CSSA ANGL 1BPI 14 CB 1BPI 14 SG 1BPI 38 SG GEOMETRY
-ENTER CSSC DIHE 1BPI 14 CB 1BPI 14 SG 1BPI 38 SG 1BPI 38 CB GEOMETRY
+ENTER SSDI DIST PRTA 14 SG PRTA 38 SG GEOMETRY
+ENTER CSSA ANGL PRTA 14 CB PRTA 14 SG PRTA 38 SG GEOMETRY
+ENTER CSSC DIHE PRTA 14 CB PRTA 14 SG PRTA 38 SG PRTA 38 CB GEOMETRY
 
 ! Fill the time series with data from the dynamics
 ! trajectory
