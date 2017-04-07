@@ -601,6 +601,10 @@ $ cp /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/dyna/*.inp ana/
 >   Plot out all time series vs time. The output files will consist of: column 1 =
 >   trajectory time steps, column 2 = RMSD. 
 
+```bash
+$ charmm < prot-rms.charmm.inp > prot-rms.charmm.out
+```
+
 >   How do the RMSD of the backbone and sidechains compare to the RMSD of the whole
 >   protein? 
 
