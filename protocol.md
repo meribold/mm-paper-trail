@@ -662,11 +662,28 @@ $ cp /home/student10/practicum/andi/CharmmCourse/dyna/RMSD_400K.png .
 
 >   Which parts of the protein are more flexible? Use the vmd movie mode. 
 
-The side chains are more flexible.
+The side chains are more flexible.  See the GIF at 400K.
+
+![GIF at 400K](prod/ana/Trajectories_400K_2.gif)
 
 >   Plot out all time series vs time. The output files will consist of: column 1 =
 >   simulation time (in ps), column 2 = time series of S-S distance, column 3 = time
 >   series of C-S-S angle, column 4 = time series of C-S-S-C dihedral. 
+
+```bash
+$ git show -q | head -1
+commit 54b354a04fa01d1e35b362d96e4a04cb8d15d4c4
+$ charmm < correl.charmm.inp  > correl.charmm.out
+$ awk '{print $1"    "$2}' correl.dat > time-ss.dat
+$ awk '{print $1"    "$3}' correl.dat > time-css.dat
+$ awk '{print $1"    "$4}' correl.dat > time-cssc.dat
+```
+
+![S-S distance](prod/ana/time-ss-plot.png)\ 
+
+![C-S-S angle](prod/ana/time-css-plot.png)\ 
+
+![C-S-S-C dihedral](prod/ana/time-cssc-plot.png)\ 
 
 >   What is the average value and standard deviation of the S-S distance, the C-S-S angle,
 >   and the C-S-S-C dihedral angle? How may these values be interpreted ? 
