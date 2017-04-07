@@ -1,0 +1,29 @@
+*
+
+BOMBlev 0
+
+open read unit 10 card name ../top_all27_prot_na.inp
+read RTF unit 10 card
+close unit 10
+
+open read unit 02 card name ../par_all27_prot_na.inp
+read para unit 02 card
+close unit 02
+
+open read unit 11 card name ../1bpi-disu.psf
+read psf card unit 11
+close unit 11
+
+open read unit 12 card name min-disu.pdb
+read sequ pdb unit 12
+read coor pdb unit 12
+close unit 12
+
+!! If necessary generate missing coordinates
+ic fill pres
+ic parameters
+ic build
+
+coor stat
+
+stop

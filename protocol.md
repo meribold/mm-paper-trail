@@ -278,7 +278,6 @@ microscopy](http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-intro.pdf#pag
 
 [1.09 Å][1BPI].
 
-
 >   Are there disulfide-bridges in BPTI?
 
 Yes:
@@ -747,9 +746,25 @@ cell re-enter on the opposite side.
 $ pwd
 /home/student10/practicum/water
 $ cp /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/inputs/make_Wbox.pl .
+$ cp ../min-disu.pdb .
+$ # Created `coor-stat.inp`.
+$ charmm < coor-stat.inp | grep 'coor stat' -A 4
+ CHARMM>    coor stat
+ STATISTICS FOR  904 SELECTED ATOMS:
+    XMIN =   16.825000 XMAX =   44.009000 XAVE =   28.534252
+    YMIN =   -3.790000 YMAX =   23.421000 YAVE =    9.399907
+    ZMIN =  -16.222000 ZMAX =   16.720000 ZAVE =    0.529814
+$ ./make_Wbox.pl 50 29 22 > box.pdb # x_dim=50, y_dim=29, z_dim=22
 ```
 
 >   What is the density of your water box?
+
+```bash
+$ head -1 box.pdb 
+placed 1008 in box instead of 1101 molecules. Error : 8.425 %
+```
+
+#### Periodic boundary conditions^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node30.html>]
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
