@@ -296,7 +296,7 @@ SSBOND   3 CYS A   30    CYS A   51                          1555   1555  2.02
 >   Why are the hydrogen atoms missing?
 
 <!-- TODO -->
-Less visual clutter?  They can be inferred from the incomplete structure?
+Recuces visual clutter and they can be inferred from the incomplete structure easily?
 
 ### Minimization^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node16.html>]
 
@@ -392,9 +392,13 @@ energy.
 
 **Questions and answers.**
 
+>   Has the energy converged?
+
+Yes.
+
 >   Compare the tow [sic] energy minimizations using XMGRACE.
 
-See above.  TODO: use the same axis ranges in both plots.
+See the plots above.  Minimizing with more steps still reduced the energy considerably.
 
 >   Examine the pdb file before and after energy minimization using vmd before and after
 >   energy minimization.  Notice any differences?
@@ -410,44 +414,67 @@ See above.  TODO: use the same axis ranges in both plots.
 >   it compare to the resolution of your crystal?  What does RMSD mean?  Why is the RMSD
 >   used to examine structures?
 
-The RMSD is about $1.98$.  That's roughly twice the resolution of the crystal.  RMSD
-stands for root-mean-square deviation.  **TODO**: why is it used?
-<!-- Exact value: 1.9818568887848576 -->
+The RMSD is about 1.98 <!-- Exact value: 1.9818568887848576 -->. That's roughly twice the
+resolution of the crystal.  RMSD stands for root-mean-square deviation; it serves as a
+one-number metric for how much the structure changed.
 
 >   What is the largest gradient during any of the minimizations?
 
-**TODO.**
+The largest gradient occurs during the first 10 steps in both minimizations.  It's about
+$2253 \frac{kcal}{mole}$ per step for both.
 
 >   Plot the van-der-Waals and the electrostatic energy against the minimization steps
->   (`grep 'MINI EXTERN$>$' name.out $>$name.dat`; look in the CHARMM output for the
+>   (`grep 'MINI EXTERN>' name.out > name.dat`; look in the CHARMM output for the
 >   corresponding columns.). Compare the change of these energies to the change of the
 >   total energy during the minimization.
 
-**TODO.**
+```bash
+$ grep 'MINI EXTERN>' charmm-more-steps.out > mini-extern.dat
+$ # Merge the lines of mini2.dat and mini-extern.dat (after deleting line 52),
+$ # and select 4 columns: step number, total energy, van der Waals energy, and
+$ # electrostatic energy:
+$ paste mini2.dat <(sed 52d mini-extern.dat) | awk '{print $2,$3,$9,$10}' > mini-merged.dat
+$ xmgrace
+```
+
+![Energy minimization 3](mini-merged-plot.png)\ 
 
 ### Changing the topology of a protein^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node17.html>]
 
-    $ grep 'MINI>' charmm-disu.out > mini-disu.dat
-    $ charmm < example.inp  > charm-disu.out
-    $ charmm < int-energy.inp
+```bash
+$ charmm < example.inp > charm-disu.out
+$ grep 'MINI>' charm-disu.out > mini-disu.dat
+```
 
 **Questions and answers.**
 
 >   Look in data/top.inp for the PATCH DISU. What does it do?
 
-**TODO.**
+The `patch disu` command adds disulfide bridges.  It modifies the PSF (Protein Structure
+File).
 
 >   What effect do the disulfide bridges have on the total energy?
 
-They decrease it.
+They decrease it slightly:
+
+```bash
+$ tail -1 mini2.dat
+MINI>     1500  -1194.80087      0.05653      0.04954      0.00167
+$ tail -1 mini-disu.dat
+MINI>     1500  -1230.54878      0.04196      0.04417      0.00175
+```
 
 >   Can you explain this effect? (It might be helpful to compare the energy decomposition,
 >   the van-der-Waals and electrostatic energy, for the minimization with and without
 >   disulfide-bridges)
 
-**TODO.**
+The disulfide bridges stabilize the molecule.
 
 ### Interaction Energies^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node18.html>]
+
+```bash
+$ charmm < int-energy.inp
+```
 
 >   Explain what the `sele` (select) and the `sele .not.` command selects.
 
@@ -476,7 +503,7 @@ $ awk '{print $3"    "$7}' heat.dat > time-temp.dat
 ```
 
 >   Plot the total, potential and kinetic energy and the temperature versus simulation
-    time (Remark: use `grep 'DYNA$>$' name.out $>$ name.dat`). 
+    time (Remark: use `grep 'DYNA>' name.out > name.dat`).
 
 ![Energies](dyna/time-energy-plot.png)\ 
 
@@ -496,11 +523,11 @@ fluctuations.  These arise because:
     within the system, which one contributes how much varies as the system's confirmation
     changes.
 
->   What is the relation between the total, potential and kinetic energy? 
+>   What is the relation between the total, potential and kinetic energy?
 
 Plus.
 
->   Calculate the RMSD between the hot and the cold protein. 
+>   Calculate the RMSD between the hot and the cold protein.
 
 | Temperature | RMSD   |
 |-------------+--------|
@@ -508,6 +535,8 @@ Plus.
 | 273K        | 1.5662 |
 | 300K        | 1.3909 |
 | 400K        | 1.3019 |
+
+Table: RMSDs
 
 >   Compare the hot with the cold protein structure.
 
@@ -531,10 +560,10 @@ $ awk '{print $3"    "$7}' equi.dat > time-temp.dat
 ```
 
 >   Plot the total, potential and kinetic energy and the temperature versus simulation
-    time. 
+    time.
 
 ```bash
-$ xmgrace time-total.dat time-kinetic.dat time-potential.dat 
+$ xmgrace time-total.dat time-kinetic.dat time-potential.dat
 $ xmgrace time-temp.dat
 ```
 
@@ -544,7 +573,7 @@ These are the results for heating to 300K.
 
 ![Temperatures](equi/time-temp-plot.png)\ 
 
->   Are temperature and energy stable? 
+>   Are temperature and energy stable?
 
 Yes, mostly.
 
@@ -566,15 +595,15 @@ $ awk '{print $3"    "$6}' equi2.dat > time-potential.dat
 $ awk '{print $3"    "$7}' equi2.dat > time-temp.dat
 ```
 
->   Why are the two equilibration steps necessary? 
+>   Why are the two equilibration steps necessary?
 
 The second step ensures that the temperature won't change when simulating the system.
 
 >   Plot the total, potential and kinetic energy and the temperature versus simulation
->   time. 
+>   time.
 
 ```bash
-$ xmgrace time-total.dat time-kinetic.dat time-potential.dat 
+$ xmgrace time-total.dat time-kinetic.dat time-potential.dat
 $ xmgrace time-temp.dat
 ```
 
@@ -582,7 +611,7 @@ $ xmgrace time-temp.dat
 
 ![Temperatures](equi2/time-temp-plot.png)\ 
 
->   Are temperature and energy stable? 
+>   Are temperature and energy stable?
 
 Yeah, I guess.
 
@@ -602,10 +631,10 @@ $ awk '{print $3"    "$7}' prod.dat > time-temp.dat
 ```
 
 >   Analyze the output from the final run as before, i.e., plot total, potential and
->   kinetic energy, and temperature versus time. 
+>   kinetic energy, and temperature versus time.
 
 ```bash
-$ xmgrace time-total.dat time-kinetic.dat time-potential.dat 
+$ xmgrace time-total.dat time-kinetic.dat time-potential.dat
 $ xmgrace time-temp.dat
 ```
 
@@ -629,19 +658,19 @@ $ cp /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/dyna/*.inp ana/
 ```
 
 >   Plot out all time series vs time. The output files will consist of: column 1 =
->   trajectory time steps, column 2 = RMSD. 
+>   trajectory time steps, column 2 = RMSD.
 
 ```bash
 $ charmm < prot-rms.charmm.inp > prot-rms.charmm.out
 $ charmm < bbone-rms.charmm.inp > bbone-rms.charmm.out
 $ charmm < schain-rms.charmm.inp > schain-rms.charmm.out
-$ xmgrace prot-rms.dat bbone-rms.dat schain-rms.dat 
+$ xmgrace prot-rms.dat bbone-rms.dat schain-rms.dat
 ```
 
 ![RMSD (300K)](prod/ana/rmsd-plot.png)\ 
 
 >   How do the RMSD of the backbone and sidechains compare to the RMSD of the whole
->   protein? 
+>   protein?
 
 *   The RMSDs of the backbone are smaller than those of the whole protein.
 *   The RMSDs of the side chains are bigger than those of the whole protein.
@@ -659,7 +688,7 @@ $ cp /home/student10/practicum/andi/CharmmCourse/dyna/RMSD_400K.png .
 
 ![foo](http://www.reactiongifs.com/wp-content/uploads/2013/10/tim-and-eric-mind-blown.gif)\ 
 
->   Which parts of the protein are more flexible? Use the vmd movie mode. 
+>   Which parts of the protein are more flexible? Use the vmd movie mode.
 
 The side chains are more flexible.  See the GIF at 400K.
 
@@ -667,7 +696,7 @@ The side chains are more flexible.  See the GIF at 400K.
 
 >   Plot out all time series vs time. The output files will consist of: column 1 =
 >   simulation time (in ps), column 2 = time series of S-S distance, column 3 = time
->   series of C-S-S angle, column 4 = time series of C-S-S-C dihedral. 
+>   series of C-S-S angle, column 4 = time series of C-S-S-C dihedral.
 
 ```bash
 $ git show -q | head -1
@@ -685,7 +714,7 @@ $ awk '{print $1"    "$4}' correl.dat > time-cssc.dat
 ![C-S-S-C dihedral](prod/ana/time-cssc-plot.png)\ 
 
 >   What is the average value and standard deviation of the S-S distance, the C-S-S angle,
->   and the C-S-S-C dihedral angle? How may these values be interpreted ? 
+>   and the C-S-S-C dihedral angle? How may these values be interpreted ?
 
 |                  | Average           | SD           |
 |------------------+-------------------+--------------|
@@ -693,7 +722,7 @@ $ awk '{print $1"    "$4}' correl.dat > time-cssc.dat
 | C-S-S angle      | 104.76354781 deg  | 3.6009645854 |
 | C-S-S-C dihedral | 104.729799352 deg | 7.8910220214 |
 
-Table:  Averages and SDs of disulfide bridge properties
+Table: Averages and SDs of disulfide bridge properties
 
 >   Why is the standard derivation `S-S` < `C-S-S` < `C-S-S-C`?
 
@@ -760,7 +789,7 @@ $ ./make_Wbox.pl 50 29 22 > box.pdb # x_dim=50, y_dim=29, z_dim=22
 >   What is the density of your water box?
 
 ```bash
-$ head -1 box.pdb 
+$ head -1 box.pdb
 placed 1008 in box instead of 1101 molecules. Error : 8.425 %
 ```
 

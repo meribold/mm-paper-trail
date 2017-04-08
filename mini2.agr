@@ -1,0 +1,449 @@
+# Grace project file
+#
+@version 50125
+@page size 792, 612
+@page scroll 5%
+@page inout 5%
+@link page off
+@map font 0 to "Times-Roman", "Times-Roman"
+@map font 1 to "Times-Italic", "Times-Italic"
+@map font 2 to "Times-Bold", "Times-Bold"
+@map font 3 to "Times-BoldItalic", "Times-BoldItalic"
+@map font 4 to "Helvetica", "Helvetica"
+@map font 5 to "Helvetica-Oblique", "Helvetica-Oblique"
+@map font 6 to "Helvetica-Bold", "Helvetica-Bold"
+@map font 7 to "Helvetica-BoldOblique", "Helvetica-BoldOblique"
+@map font 8 to "Courier", "Courier"
+@map font 9 to "Courier-Oblique", "Courier-Oblique"
+@map font 10 to "Courier-Bold", "Courier-Bold"
+@map font 11 to "Courier-BoldOblique", "Courier-BoldOblique"
+@map font 12 to "Symbol", "Symbol"
+@map font 13 to "ZapfDingbats", "ZapfDingbats"
+@map color 0 to (255, 255, 255), "white"
+@map color 1 to (0, 0, 0), "black"
+@map color 2 to (255, 0, 0), "red"
+@map color 3 to (0, 255, 0), "green"
+@map color 4 to (0, 0, 255), "blue"
+@map color 5 to (255, 255, 0), "yellow"
+@map color 6 to (188, 143, 143), "brown"
+@map color 7 to (220, 220, 220), "grey"
+@map color 8 to (148, 0, 211), "violet"
+@map color 9 to (0, 255, 255), "cyan"
+@map color 10 to (255, 0, 255), "magenta"
+@map color 11 to (255, 165, 0), "orange"
+@map color 12 to (114, 33, 188), "indigo"
+@map color 13 to (103, 7, 72), "maroon"
+@map color 14 to (64, 224, 208), "turquoise"
+@map color 15 to (0, 139, 0), "green4"
+@reference date 0
+@date wrap off
+@date wrap year 1950
+@default linewidth 1.0
+@default linestyle 1
+@default color 1
+@default pattern 1
+@default font 0
+@default char size 1.000000
+@default symbol size 1.000000
+@default sformat "%.8g"
+@background color 0
+@page background fill on
+@timestamp off
+@timestamp 0.03, 0.03
+@timestamp color 1
+@timestamp rot 0
+@timestamp font 0
+@timestamp char size 1.000000
+@timestamp def "Sat Apr  8 17:54:04 2017"
+@r0 off
+@link r0 to g0
+@r0 type above
+@r0 linestyle 1
+@r0 linewidth 1.0
+@r0 color 1
+@r0 line 0, 0, 0, 0
+@r1 off
+@link r1 to g0
+@r1 type above
+@r1 linestyle 1
+@r1 linewidth 1.0
+@r1 color 1
+@r1 line 0, 0, 0, 0
+@r2 off
+@link r2 to g0
+@r2 type above
+@r2 linestyle 1
+@r2 linewidth 1.0
+@r2 color 1
+@r2 line 0, 0, 0, 0
+@r3 off
+@link r3 to g0
+@r3 type above
+@r3 linestyle 1
+@r3 linewidth 1.0
+@r3 color 1
+@r3 line 0, 0, 0, 0
+@r4 off
+@link r4 to g0
+@r4 type above
+@r4 linestyle 1
+@r4 linewidth 1.0
+@r4 color 1
+@r4 line 0, 0, 0, 0
+@g0 on
+@g0 hidden false
+@g0 type XY
+@g0 stacked false
+@g0 bar hgap 0.000000
+@g0 fixedpoint off
+@g0 fixedpoint type 0
+@g0 fixedpoint xy 0.000000, 0.000000
+@g0 fixedpoint format general general
+@g0 fixedpoint prec 6, 6
+@with g0
+@    world 0, -5000, 1500, 25000
+@    stack world 0, 0, 0, 0
+@    znorm 1
+@    view 0.150000, 0.150000, 1.150000, 0.850000
+@    title "Energy minimization"
+@    title font 0
+@    title size 1.500000
+@    title color 1
+@    subtitle ""
+@    subtitle font 0
+@    subtitle size 1.000000
+@    subtitle color 1
+@    xaxes scale Normal
+@    yaxes scale Normal
+@    xaxes invert off
+@    yaxes invert off
+@    xaxis  on
+@    xaxis  type zero false
+@    xaxis  offset 0.000000 , 0.000000
+@    xaxis  bar on
+@    xaxis  bar color 1
+@    xaxis  bar linestyle 1
+@    xaxis  bar linewidth 1.0
+@    xaxis  label "Step"
+@    xaxis  label layout para
+@    xaxis  label place auto
+@    xaxis  label char size 1.000000
+@    xaxis  label font 0
+@    xaxis  label color 1
+@    xaxis  label place normal
+@    xaxis  tick on
+@    xaxis  tick major 500
+@    xaxis  tick minor ticks 1
+@    xaxis  tick default 6
+@    xaxis  tick place rounded true
+@    xaxis  tick in
+@    xaxis  tick major size 1.000000
+@    xaxis  tick major color 1
+@    xaxis  tick major linewidth 1.0
+@    xaxis  tick major linestyle 1
+@    xaxis  tick major grid off
+@    xaxis  tick minor color 1
+@    xaxis  tick minor linewidth 1.0
+@    xaxis  tick minor linestyle 1
+@    xaxis  tick minor grid off
+@    xaxis  tick minor size 0.500000
+@    xaxis  ticklabel on
+@    xaxis  ticklabel format general
+@    xaxis  ticklabel prec 5
+@    xaxis  ticklabel formula ""
+@    xaxis  ticklabel append ""
+@    xaxis  ticklabel prepend ""
+@    xaxis  ticklabel angle 0
+@    xaxis  ticklabel skip 0
+@    xaxis  ticklabel stagger 0
+@    xaxis  ticklabel place normal
+@    xaxis  ticklabel offset auto
+@    xaxis  ticklabel offset 0.000000 , 0.010000
+@    xaxis  ticklabel start type auto
+@    xaxis  ticklabel start 0.000000
+@    xaxis  ticklabel stop type auto
+@    xaxis  ticklabel stop 0.000000
+@    xaxis  ticklabel char size 1.000000
+@    xaxis  ticklabel font 0
+@    xaxis  ticklabel color 1
+@    xaxis  tick place both
+@    xaxis  tick spec type none
+@    yaxis  on
+@    yaxis  type zero false
+@    yaxis  offset 0.000000 , 0.000000
+@    yaxis  bar on
+@    yaxis  bar color 1
+@    yaxis  bar linestyle 1
+@    yaxis  bar linewidth 1.0
+@    yaxis  label "Energy (kcal/mole)"
+@    yaxis  label layout para
+@    yaxis  label place auto
+@    yaxis  label char size 1.000000
+@    yaxis  label font 0
+@    yaxis  label color 1
+@    yaxis  label place normal
+@    yaxis  tick on
+@    yaxis  tick major 5000
+@    yaxis  tick minor ticks 1
+@    yaxis  tick default 6
+@    yaxis  tick place rounded true
+@    yaxis  tick in
+@    yaxis  tick major size 1.000000
+@    yaxis  tick major color 1
+@    yaxis  tick major linewidth 1.0
+@    yaxis  tick major linestyle 1
+@    yaxis  tick major grid off
+@    yaxis  tick minor color 1
+@    yaxis  tick minor linewidth 1.0
+@    yaxis  tick minor linestyle 1
+@    yaxis  tick minor grid off
+@    yaxis  tick minor size 0.500000
+@    yaxis  ticklabel on
+@    yaxis  ticklabel format general
+@    yaxis  ticklabel prec 5
+@    yaxis  ticklabel formula ""
+@    yaxis  ticklabel append ""
+@    yaxis  ticklabel prepend ""
+@    yaxis  ticklabel angle 0
+@    yaxis  ticklabel skip 0
+@    yaxis  ticklabel stagger 0
+@    yaxis  ticklabel place normal
+@    yaxis  ticklabel offset auto
+@    yaxis  ticklabel offset 0.000000 , 0.010000
+@    yaxis  ticklabel start type auto
+@    yaxis  ticklabel start 0.000000
+@    yaxis  ticklabel stop type auto
+@    yaxis  ticklabel stop 0.000000
+@    yaxis  ticklabel char size 1.000000
+@    yaxis  ticklabel font 0
+@    yaxis  ticklabel color 1
+@    yaxis  tick place both
+@    yaxis  tick spec type none
+@    altxaxis  off
+@    altyaxis  off
+@    legend on
+@    legend loctype view
+@    legend 0.85, 0.8
+@    legend box color 1
+@    legend box pattern 1
+@    legend box linewidth 1.0
+@    legend box linestyle 1
+@    legend box fill color 0
+@    legend box fill pattern 1
+@    legend font 0
+@    legend char size 1.000000
+@    legend color 1
+@    legend length 4
+@    legend vgap 1
+@    legend hgap 1
+@    legend invert false
+@    frame type 0
+@    frame linestyle 1
+@    frame linewidth 1.0
+@    frame color 1
+@    frame pattern 1
+@    frame background color 0
+@    frame background pattern 0
+@    s0 hidden false
+@    s0 type xy
+@    s0 symbol 0
+@    s0 symbol size 1.000000
+@    s0 symbol color 1
+@    s0 symbol pattern 1
+@    s0 symbol fill color 1
+@    s0 symbol fill pattern 0
+@    s0 symbol linewidth 1.0
+@    s0 symbol linestyle 1
+@    s0 symbol char 65
+@    s0 symbol char font 0
+@    s0 symbol skip 0
+@    s0 line type 1
+@    s0 line linestyle 1
+@    s0 line linewidth 1.0
+@    s0 line color 1
+@    s0 line pattern 1
+@    s0 baseline type 0
+@    s0 baseline off
+@    s0 dropline off
+@    s0 fill type 0
+@    s0 fill rule 0
+@    s0 fill color 1
+@    s0 fill pattern 1
+@    s0 avalue off
+@    s0 avalue type 2
+@    s0 avalue char size 1.000000
+@    s0 avalue font 0
+@    s0 avalue color 1
+@    s0 avalue rot 0
+@    s0 avalue format general
+@    s0 avalue prec 3
+@    s0 avalue prepend ""
+@    s0 avalue append ""
+@    s0 avalue offset 0.000000 , 0.000000
+@    s0 errorbar on
+@    s0 errorbar place both
+@    s0 errorbar color 1
+@    s0 errorbar pattern 1
+@    s0 errorbar size 1.000000
+@    s0 errorbar linewidth 1.0
+@    s0 errorbar linestyle 1
+@    s0 errorbar riser linewidth 1.0
+@    s0 errorbar riser linestyle 1
+@    s0 errorbar riser clip off
+@    s0 errorbar riser clip length 0.100000
+@    s0 comment "/home/casi/mm-practicum/mini2.dat"
+@    s0 legend  ""
+@target G0.S0
+@type xy
+0 22814.36 "MINI>"
+10 283.03855 "MINI>"
+20 -610.28235 "MINI>"
+30 -685.00044 "MINI>"
+40 -742.50682 "MINI>"
+50 -765.12952 "MINI>"
+60 -781.63864 "MINI>"
+70 -794.01601 "MINI>"
+80 -803.915 "MINI>"
+90 -812.48388 "MINI>"
+100 -819.99909 "MINI>"
+110 -826.2137 "MINI>"
+120 -834.29278 "MINI>"
+130 -839.61713 "MINI>"
+140 -844.85174 "MINI>"
+150 -849.23743 "MINI>"
+160 -853.56788 "MINI>"
+170 -857.46977 "MINI>"
+180 -861.95203 "MINI>"
+190 -864.55795 "MINI>"
+200 -869.02132 "MINI>"
+210 -872.1097 "MINI>"
+220 -875.26225 "MINI>"
+230 -878.37179 "MINI>"
+240 -880.98738 "MINI>"
+250 -883.79678 "MINI>"
+260 -886.3408 "MINI>"
+270 -889.01063 "MINI>"
+280 -891.4545 "MINI>"
+290 -893.93219 "MINI>"
+300 -896.20612 "MINI>"
+310 -899.4098 "MINI>"
+320 -901.99997 "MINI>"
+330 -904.3425 "MINI>"
+340 -906.50539 "MINI>"
+350 -908.73285 "MINI>"
+360 -910.87239 "MINI>"
+370 -912.99947 "MINI>"
+380 -914.94278 "MINI>"
+390 -916.80733 "MINI>"
+400 -919.10997 "MINI>"
+410 -920.7558 "MINI>"
+420 -922.30214 "MINI>"
+430 -923.94135 "MINI>"
+440 -925.26893 "MINI>"
+450 -926.56547 "MINI>"
+460 -927.82442 "MINI>"
+470 -928.92984 "MINI>"
+480 -930.01935 "MINI>"
+490 -931.44334 "MINI>"
+500 -932.44803 "MINI>"
+510 -955.61277 "MINI>"
+520 -965.80622 "MINI>"
+530 -969.58599 "MINI>"
+540 -971.97387 "MINI>"
+550 -977.23135 "MINI>"
+560 -981.31123 "MINI>"
+570 -987.68416 "MINI>"
+580 -995.55877 "MINI>"
+590 -1011.3299 "MINI>"
+600 -1020.4041 "MINI>"
+610 -1027.3887 "MINI>"
+620 -1029.8797 "MINI>"
+630 -1033.9605 "MINI>"
+640 -1035.8621 "MINI>"
+650 -1037.1632 "MINI>"
+660 -1039.2623 "MINI>"
+670 -1041.9153 "MINI>"
+680 -1045.2951 "MINI>"
+690 -1047.3152 "MINI>"
+700 -1047.9968 "MINI>"
+710 -1048.9317 "MINI>"
+720 -1049.8173 "MINI>"
+730 -1051.2063 "MINI>"
+740 -1054.3348 "MINI>"
+750 -1057.092 "MINI>"
+760 -1059.6242 "MINI>"
+770 -1062.181 "MINI>"
+780 -1064.4916 "MINI>"
+790 -1066.447 "MINI>"
+800 -1070.1898 "MINI>"
+810 -1071.3099 "MINI>"
+820 -1071.9545 "MINI>"
+830 -1073.0088 "MINI>"
+840 -1074.3965 "MINI>"
+850 -1076.404 "MINI>"
+860 -1077.7222 "MINI>"
+870 -1078.6048 "MINI>"
+880 -1078.9537 "MINI>"
+890 -1080.3251 "MINI>"
+900 -1081.1228 "MINI>"
+910 -1082.9224 "MINI>"
+920 -1084.4266 "MINI>"
+930 -1088.1925 "MINI>"
+940 -1091.5719 "MINI>"
+950 -1093.6606 "MINI>"
+960 -1094.6805 "MINI>"
+970 -1095.8604 "MINI>"
+980 -1097.8473 "MINI>"
+990 -1099.1668 "MINI>"
+1000 -1103.7552 "MINI>"
+1010 -1118.2295 "MINI>"
+1020 -1129.9623 "MINI>"
+1030 -1133.285 "MINI>"
+1040 -1134.9783 "MINI>"
+1050 -1136.1398 "MINI>"
+1060 -1137.1925 "MINI>"
+1070 -1138.5307 "MINI>"
+1080 -1139.3894 "MINI>"
+1090 -1140.1299 "MINI>"
+1100 -1140.6569 "MINI>"
+1110 -1141.6852 "MINI>"
+1120 -1142.5048 "MINI>"
+1130 -1143.0731 "MINI>"
+1140 -1144.3737 "MINI>"
+1150 -1145.4864 "MINI>"
+1160 -1146.3742 "MINI>"
+1170 -1149.6856 "MINI>"
+1180 -1156.9315 "MINI>"
+1190 -1166.5503 "MINI>"
+1200 -1172.9843 "MINI>"
+1210 -1174.5153 "MINI>"
+1220 -1175.589 "MINI>"
+1230 -1177.5298 "MINI>"
+1240 -1180.5331 "MINI>"
+1250 -1183.389 "MINI>"
+1260 -1186.1268 "MINI>"
+1270 -1187.7554 "MINI>"
+1280 -1189.815 "MINI>"
+1290 -1190.6658 "MINI>"
+1300 -1191.4195 "MINI>"
+1310 -1191.9609 "MINI>"
+1320 -1192.4789 "MINI>"
+1330 -1192.938 "MINI>"
+1340 -1193.3071 "MINI>"
+1350 -1193.4548 "MINI>"
+1360 -1193.6247 "MINI>"
+1370 -1193.7262 "MINI>"
+1380 -1193.8185 "MINI>"
+1390 -1193.8899 "MINI>"
+1400 -1194.1112 "MINI>"
+1410 -1194.2471 "MINI>"
+1420 -1194.2676 "MINI>"
+1430 -1194.4542 "MINI>"
+1440 -1194.5291 "MINI>"
+1450 -1194.5492 "MINI>"
+1460 -1194.5642 "MINI>"
+1470 -1194.576 "MINI>"
+1480 -1194.5936 "MINI>"
+1490 -1194.7443 "MINI>"
+1500 -1194.8009 "MINI>"
+&
