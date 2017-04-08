@@ -455,7 +455,8 @@ File).
 
 >   What effect do the disulfide bridges have on the total energy?
 
-They decrease it slightly:
+They decrease it slightly:^[-1194.80087 and -1230.54878 are the total energies.]
+
 
 ```bash
 $ tail -1 mini2.dat
