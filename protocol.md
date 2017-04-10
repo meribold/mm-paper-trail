@@ -108,7 +108,7 @@ There are five components:
     *   Successively move a discrete amount along the local downhill gradient (the
         steepest descent).
 *   Newton
-    *   TODO.
+    *   **TODO.**
 
 >   Explain how the energy function can be used to obtain the dynamics of a protein
 >   (Molecular Dynamic Simulation).
@@ -252,11 +252,11 @@ None of those were about the sulfur-hydrogen bond, but the last two are:
 
 >   What are the parameters for the sulfur-sulfur bond (SM-SM)?
 
-TODO.
+**TODO.**
 
 >   Which bond is harder to stretch?
 
-TODO.
+**TODO.**
 
 [Running CHARMM]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node13.html
 
@@ -277,7 +277,11 @@ microscopy](http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-intro.pdf#pag
 
 >   How many cysteines?  What are their residue numbers?
 
-6 cysteines with residue numbers 5, 14, 30, 38, 51, and 55.
+6 cysteines with residue numbers 5, 14, 30, 38, 51, and 55:
+
+```bash
+grep CYS 1bpi.pdb
+```
 
 >   What is the resolution of this structure of BPTI?
 
@@ -831,8 +835,20 @@ ATOM      2  H1  TIP3     1    -17.140 -17.760 -20.060  1.00  0.00
 ATOM      3  H2  TIP3     1    -17.295 -15.920 -20.020  1.00  0.00
 ```
 
-Appended `END` to to `box.pdb`.  Adjusted the atom and residue (?) numbers in `box.pdb`
-and minimized the water:
+Appended `END` to to `box.pdb`.  Adjusted the [atom serial numbers][ATOM] and [residue
+sequence numbers][ATOM] in `box.pdb` to start with 1.
+
+Spent two and a half hours to find out that a different version of CHARMM has to be used
+here:
+
+```bash
+$ alias charmm32='/sw/sci/app/charmm_64/c32b1/exec/gnu/charmm'
+```
+
+Minimized the water:
+
+[ATOM]: http://deposit.rcsb.org/adit/docs/pdb_atom_format.html#ATOM
+<!-- [ATOM]: http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html#ATOM -->
 
 <!--
 Main console display active (Tcl8.5.6 / Tk8.5.6)
@@ -846,7 +862,7 @@ atomselect0
 ```bash
 $ git show -q | head -1
 commit f413bb1582bc50742b4cc22464b7dc03daa36f97
-/sw/sci/app/charmm_64/c32b1/exec/gnu/charmm < min-box.inp > min-box.out
+charmm32 < min-box.inp > min-box.out
 ```
 
 Heated the water:
@@ -854,7 +870,7 @@ Heated the water:
 ```bash
 $ git show -q | head -1
 commit e0ab2361584ac7fe89a1c5ffb78fe7af83825c2f
-/sw/sci/app/charmm_64/c32b1/exec/gnu/charmm < heat-box.inp > heat-box.out
+charmm32 < heat-box.inp > heat-box.out
 $ grep 'DYNA>' heat-box.out > heat-box.dat
 $ awk '{print $3,$4}' heat-box.dat > time-total.dat
 $ awk '{print $3,$5}' heat-box.dat > time-kinetic.dat
@@ -870,13 +886,47 @@ $ xmgrace time-temp.dat
 
 >   What could happen, if the `Byres` key word is replaced by `byatoms`?
 
+**TODO.**
+
 #### Equilibration of the water box^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node31.html>]
 
 ```bash
 $ pwd
 /home/student10/practicum/water/equi-box
-$ /sw/sci/app/charmm_64/c32b1/exec/gnu/charmm < equi-box.inp > equi-box.out
+$ charmm32 < equi-box.inp > equi-box.out
+$ git show -q | head -1
+commit 981611e4bb60a72f5a4138d39cc8715b45366369
+$ charmm32 < equi2-box.inp > equi2-box.out
 ```
+
+### Preparation of BPTI^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node32.html>]
+
+### Solvation of BPTI^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node33.html>]
+
+### Minimization of the system^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node34.html>]
+
+## Heating^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node35.html>]
+
+## Equilibration^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node36.html>]
+
+>   Show that your system is stable.
+
+**TODO.**
+
+## Production^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node37.html>]
+
+>   Analyze the RMSD values of the backbone and side chain atoms. 
+
+**TODO.**
+
+>   Analyze the time series of the disulfide bridge Cys-14 and Cys-38 as before. 
+
+**TODO.**
+
+>   Compare the here calculated RMSD values and the time series of side chain atoms with
+>   the ones from the vacuum simulation. 
+
+**TODO.**
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
