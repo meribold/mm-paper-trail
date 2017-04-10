@@ -893,6 +893,8 @@ $ xmgrace time-temp.dat
 ```bash
 $ pwd
 /home/student10/practicum/water/equi-box
+$ git show -q | head -1
+commit 1221a9bd2a437589b55c8f9c811a3af8e95dd8be
 $ charmm32 < equi-box.inp > equi-box.out
 $ git show -q | head -1
 commit 981611e4bb60a72f5a4138d39cc8715b45366369
@@ -902,6 +904,12 @@ $ charmm32 < equi2-box.inp > equi2-box.out
 ### Preparation of BPTI^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node32.html>]
 
 ### Solvation of BPTI^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node33.html>]
+
+```bash
+$ git show -q | head -1
+commit 0b0db04f51a4a2329078e90c1698b64daeb5a0ad
+$ charmm < combine.inp > combine.out
+```
 
 ### Minimization of the system^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node34.html>]
 
