@@ -521,7 +521,7 @@ fluctuations.  These arise because:
 2.  The system isn't in thermodynamic equilibrium: kinetic energy is constantly converted
     into potential energy.
 3.  Potential energy comes not only from temperature but also from physical force fields
-    within the system, which one contributes how much varies as the system's confirmation
+    within the system, which one contributes how much varies as the system's conformation
     changes.
 
 >   What is the relation between the total, potential and kinetic energy?
@@ -793,6 +793,17 @@ $ ./make_Wbox.pl 50 29 22 > box.pdb # x_dim=50, y_dim=29, z_dim=22
 $ head -1 box.pdb
 placed 1008 in box instead of 1101 molecules. Error : 8.425 %
 ```
+
+Density:
+
+\begin{align}
+    & \frac{1008 \cdot 18 \frac{g}{\text{mole}}}
+         {6.022 \cdot 10^{23} \frac{1}{\text{mole}} \cdot 50Å \cdot 29Å \cdot 22Å} \\
+    =\ & \frac{18144 g}
+         {6.022 \cdot 10^{23} \cdot 31900 \cdot 10^{-30} m^3} \\
+    =\ & 0.09445 \cdot 10^7 \frac{g}{m^3} \\
+    =\ & 0.9445 \frac{g}{cm^3}
+\end{align}
 
 #### Periodic boundary conditions^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node30.html>]
 
