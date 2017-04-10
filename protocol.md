@@ -848,6 +848,12 @@ commit f413bb1582bc50742b4cc22464b7dc03daa36f97
 /sw/sci/app/charmm_64/c32b1/exec/gnu/charmm < min-box.inp > min-box.out
 ```
 
+```bash
+$ git show -q | head -1
+commit e0ab2361584ac7fe89a1c5ffb78fe7af83825c2f
+/sw/sci/app/charmm_64/c32b1/exec/gnu/charmm < heat-box.inp > heat-box.out
+```
+
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
