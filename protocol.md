@@ -61,6 +61,11 @@ monofont: Ubuntu Mono
                         XXX             XXX
 ```
 
+```bash
+$ type charmm
+charmm is aliased to `/sw/sci/bin/x86_64-linux/charmm.28'
+```
+
 ## Theoretical Background - Molecular Dynamics simulations^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node1.html>]
 
 ### Time evolution^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node8.html>]
@@ -784,7 +789,13 @@ $ charmm < coor-stat.inp | grep 'coor stat' -A 4
     XMIN =   16.825000 XMAX =   44.009000 XAVE =   28.534252
     YMIN =   -3.790000 YMAX =   23.421000 YAVE =    9.399907
     ZMIN =  -16.222000 ZMAX =   16.720000 ZAVE =    0.529814
-$ ./make_Wbox.pl 50 29 22 > box.pdb # x_dim=50, y_dim=29, z_dim=22
+$ bc <<< '44.009000 - 16.825000'
+27.184000
+$ bc <<< '23.421000 - (-3.790000)'
+27.211000
+$ bc <<< '16.720000 - (-16.222000)'
+32.942000
+$ ./make_Wbox.pl 34 34 39 > box.pdb # x_dim=33, y_dim=33, z_dim=38
 ```
 
 >   What is the density of your water box?
@@ -804,6 +815,8 @@ Density:
     =\ & 0.09445 \cdot 10^7 \frac{g}{m^3} \\
     =\ & 0.9445 \frac{g}{cm^3}
 \end{align}
+
+**FIXME.**
 
 #### Periodic boundary conditions^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node30.html>]
 
