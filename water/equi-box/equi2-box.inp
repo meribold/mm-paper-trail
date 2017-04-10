@@ -10,11 +10,11 @@ open read unit 02 card name ../../par_all27_prot_na.inp
 read para unit 02 card
 close unit 02
 
-open read unit 11 card name ../heat-box.psf
+open read unit 11 card name equi-box.psf
 read psf card unit 11
 close unit 11
 
-open read unit 12 card name ../heat-box.pdb
+open read unit 12 card name equi-box.pdb
 read coor pdb unit 12
 close unit 12
 
@@ -32,9 +32,9 @@ crystal build cutoff 15.0
 image byres xcen 0.0 ycen 0.0 zcen 0.0 sele all end
 Update inbfrq -1 imgfrq 40 ihbfrq 40 cutim 15.0
 
-open write unit 1 card name equi-box.rst
+open write unit 1 card name equi2-box.rst
 
-open read unit 2 card name ../heat-box.rst
+open read unit 2 card name equi-box.rst
 
 ! Heat.
 ! Keywords:
@@ -54,18 +54,18 @@ open read unit 2 card name ../heat-box.rst
 ! firstt: Starting temperature of 0.0 K after minimisation
 ! finalt: Temperature you want to heat up to. Change 
 ! to your temperature
-dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
-    iprfrq 100 ihtfrq 0 ieqfrq 200 teminc 5.0  -
+dyna verlet start nstep 50000 timestep 0.001 eche 50.0 -
+    iprfrq 100 ihtfrq 0 teminc 5.0  -
     nprint 100 iunwri 1 iunrea -1 iuncrd -1 nsavc 100 -
     firstt 300.0 finalt 300.0 -
-    iasors 0 iasvel 1 iscvel 0 ichecw 0 
+    iasors 0 iasvel 1 iscvel 1 ichecw 0
 
 ! Save coordinates.
-open write unit 1 card name equi-box.psf
+open write unit 1 card name equi2-box.psf
 write psf card unit 1
 close unit 1
 
-open write unit 1 card name equi-box.pdb
+open write unit 1 card name equi2-box.pdb
 write coor pdb unit 1
 close unit 1
 
