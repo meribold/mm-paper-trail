@@ -209,26 +209,6 @@ $275\ \frac{\text{kcal}}{\text{mole}\cdot \text{Å}^2}$ and $r_{eq}$ for [equati
 1][node3], which corresponds to `b0`, is $1.325\ \text{Å}$.
 
 [node3]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node3.html
-<!--
-The relevant lines in the topology file are
-
-    BOND CB HB2  SG HG1
-which tells us that a sulfur-hydrogen bond exists, and
-
-    IC CA   CB   SG   HG1   1.5584 113.8700  176.9600  97.1500  1.3341
-which tells us the parameters:
-
-*   `1.5584` is the bond length between the carbon atoms.
-*   `113.8700` is the angle of the carbon-carbon bond relative to the carbon-sulfur bond.
-*   `176.9600` is the torsion angle between the planes defined by the first 3 atoms and
-    atoms 2 to 4.
-
-None of those were about the sulfur-hydrogen bond, but the last two are:
-
-*   `97.1500` is the angle between the last 3 atoms, i.e., between the outer carbon-sulfur
-    bond and the sulfur-hydrogen bond.
-*   `1.3341` is the bond length between the last two atoms: sulfur and hydrogen.
--->
 
 >   What are the parameters for the sulfur-sulfur bond (SM-SM)?
 
