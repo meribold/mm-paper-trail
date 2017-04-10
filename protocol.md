@@ -305,7 +305,7 @@ SSBOND   3 CYS A   30    CYS A   51                          1555   1555  2.02
 >   Why are the hydrogen atoms missing?
 
 <!-- TODO -->
-Recuces visual clutter and they can be inferred from the incomplete structure easily?
+Reduces visual clutter and they can be inferred from the incomplete structure easily?
 
 ### Minimization^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node16.html>]
 
@@ -320,7 +320,7 @@ energy.
 
 *   Minima of the energy landscape correspond to stable conformations.
 *   Should reduce vibrations in the dynamics simulation.
-*   Should get us closer to naturally occuring conformations.
+*   Should get us closer to naturally occurring conformations.
 <!-- http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-mini-nma.pdf#page=16 -->
 
 >   How much would you expect the atomic coordinates to change during the minimization?
