@@ -801,24 +801,28 @@ $ ./make_Wbox.pl 34 34 39 > box.pdb # x_dim=33, y_dim=33, z_dim=38
 >   What is the density of your water box?
 
 ```bash
+$ git show -q | head -1
+commit 184d561e8c0dd8fdf9fc35986b4d40fbf73ca71b
 $ head -1 box.pdb
-placed 1008 in box instead of 1101 molecules. Error : 8.425 %
+placed 1452 in box instead of 1556 molecules. Error : 6.673 %
 ```
 
 Density:
 
 \begin{align}
-    & \frac{1008 \cdot 18 \frac{g}{\text{mole}}}
-         {6.022 \cdot 10^{23} \frac{1}{\text{mole}} \cdot 50Å \cdot 29Å \cdot 22Å} \\
-    =\ & \frac{18144 g}
-         {6.022 \cdot 10^{23} \cdot 31900 \cdot 10^{-30} m^3} \\
-    =\ & 0.09445 \cdot 10^7 \frac{g}{m^3} \\
-    =\ & 0.9445 \frac{g}{cm^3}
+    & \frac{1452 \cdot 18 \frac{g}{\text{mole}}}
+         {6.022 \cdot 10^{23} \frac{1}{\text{mole}} \cdot 34Å \cdot 34Å \cdot 39Å} \\
+    =\ & \frac{26136 g}
+         {6.022 \cdot 10^{23} \cdot 45084 \cdot 10^{-30} m^3} \\
+    =\ & 0.096267 \cdot 10^7 \frac{g}{m^3} \\
+    =\ & 0.96267 \frac{g}{cm^3}
 \end{align}
 
-**FIXME.**
-
 #### Periodic boundary conditions^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node30.html>]
+
+```bash
+/sw/sci/app/charmm_64/c32b1/exec/gnu/charmm < min-box.inp > min-box.out
+```
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
