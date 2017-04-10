@@ -870,6 +870,14 @@ $ xmgrace time-temp.dat
 
 >   What could happen, if the `Byres` key word is replaced by `byatoms`?
 
+#### Equilibration of the water box^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node31.html>]
+
+```bash
+$ pwd
+/home/student10/practicum/water/equi-box
+$ /sw/sci/app/charmm_64/c32b1/exec/gnu/charmm < equi-box.inp > equi-box.out
+```
+
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
