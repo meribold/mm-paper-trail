@@ -820,7 +820,31 @@ Density:
 
 #### Periodic boundary conditions^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node30.html>]
 
+Deleted the first 4 lines from `box.pdb` because they make no sense:
+
 ```bash
+$ git checkout 184d561e8c0dd8fdf9fc35986b4d40fbf73ca71b box.pdb
+$ head -4 box.pdb
+placed 1452 in box instead of 1556 molecules. Error : 6.673 %
+0.00
+ATOM      2  H1  TIP3     1    -17.140 -17.760 -20.060  1.00  0.00
+ATOM      3  H2  TIP3     1    -17.295 -15.920 -20.020  1.00  0.00
+```
+
+Adjusted the atom and residue (?) numbers in `box.pdb`.
+
+<!--
+Main console display active (Tcl8.5.6 / Tk8.5.6)
+(water) 1 % set all [atomselect top all]
+atomselect0
+>Main< (water) 2 % measure center $all
+-1.7850970029830933 -1.533324956893921 -2.964118480682373
+>Main< (water) 3 % >
+-->
+
+```bash
+$ git show -q | head -1
+commit f413bb1582bc50742b4cc22464b7dc03daa36f97
 /sw/sci/app/charmm_64/c32b1/exec/gnu/charmm < min-box.inp > min-box.out
 ```
 
