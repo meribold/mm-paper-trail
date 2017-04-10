@@ -1,32 +1,12 @@
-% [Molecular Modelling][] [Practicum][]  
-  Protocol
+% [Molecular Modelling][] [Practicum][]
 % Lukas Waymann
 
----
-documentclass: scrreprt
-colorlinks: no
-papersize: A4
-subparagraph: yes
-geometry:
-    - margin=1in
-header-includes:
-    - \usepackage{fancyhdr}
-    - \pagestyle{fancy}
-    - \fancyhead[R]{}
-    # From <http://tex.stackexchange.com/a/180400>.
-    - \usepackage{framed}
-    - \usepackage{xcolor}
-    - \let\oldquote=\quote
-    - \let\endoldquote=\endquote
-    - \colorlet{shadecolor}{lightgray}
-    - \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
-monofont: Ubuntu Mono
----
+[Molecular Modelling]: http://www.bisb.uni-bayreuth.de/Lecture/
+[Practicum]: http://www.bisb.uni-bayreuth.de/Lecture/practical/practical.html
 
-<!-- http://tex.stackexchange.com/a/139205 -->
-
-[Molecular modelling]: http://www.bisb.uni-bayreuth.de/Lecture/
-[practicum]: http://www.bisb.uni-bayreuth.de/Lecture/practical/practical.html
+---
+subtitle: Protocol
+...
 
 # CHARMM^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/index.html>]
 

@@ -1,0 +1,21 @@
+---
+documentclass: scrreprt
+colorlinks: no
+papersize: A4
+subparagraph: yes
+geometry:
+    - margin=1in
+header-includes:
+    # See http://tex.stackexchange.com/a/139205.
+    - \usepackage{fancyhdr}
+    - \pagestyle{fancy}
+    - \fancyhead[R]{}
+    # From <http://tex.stackexchange.com/a/180400>.
+    - \usepackage{framed}
+    - \usepackage{xcolor}
+    - \let\oldquote=\quote
+    - \let\endoldquote=\endquote
+    - \colorlet{shadecolor}{lightgray}
+    - \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+monofont: Ubuntu Mono
+...
