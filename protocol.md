@@ -205,8 +205,8 @@ S    HS    275.000     1.3250 ! ALLOW   SUL ION
 ```
 
 Thus, the force constant $K_b$ for [equation 1][node3] is
-$275\ \frac{kcal}{mole\cdot Å^2}$ and $r_{eq}$ for equation 1, which corresponds to `b0`,
-is $1.325\ Å$.
+$275\ \frac{\text{kcal}}{\text{mole}\cdot \text{Å}^2}$ and $r_{eq}$ for [equation
+1][node3], which corresponds to `b0`, is $1.325\ \text{Å}$.
 
 [node3]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node3.html
 <!--
@@ -793,14 +793,14 @@ placed 1452 in box instead of 1556 molecules. Error : 6.673 %
 
 Density:
 
-\begin{align}
+\begin{align*}
     & \frac{1452 \cdot 18 \frac{g}{\text{mole}}}
          {6.022 \cdot 10^{23} \frac{1}{\text{mole}} \cdot 34Å \cdot 34Å \cdot 39Å} \\
     =\ & \frac{26136 g}
          {6.022 \cdot 10^{23} \cdot 45084 \cdot 10^{-30} m^3} \\
     =\ & 0.096267 \cdot 10^7 \frac{g}{m^3} \\
     =\ & 0.96267 \frac{g}{cm^3}
-\end{align}
+\end{align*}
 
 #### Periodic boundary conditions^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node30.html>]
 
