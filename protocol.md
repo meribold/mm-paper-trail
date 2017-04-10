@@ -204,19 +204,26 @@ BONDS
 S    HS    275.000     1.3250 ! ALLOW   SUL ION
 ```
 
-Thus, the force constant $K_b$ for [equation 1][node3] is
-$275\ \frac{\text{kcal}}{\text{mole}\cdot \text{Å}^2}$ and $r_{eq}$ for [equation
-1][node3], which corresponds to `b0`, is $1.325\ \text{Å}$.
+Thus, the force constant K~b~ for [equation 1][node3] is 275
+$\frac{\text{kcal}}{\text{mole}\cdot \text{Å}^2}$ and the equilibrium bond length r~eq~
+for [equation 1][node3], which corresponds to `b0`, is 1.325 Å.
 
 [node3]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node3.html
 
 >   What are the parameters for the sulfur-sulfur bond (SM-SM)?
 
-**TODO.**
+K~b~ is 173 and r~eq~ is 2.029:
+
+```bash
+$ grep -m 1 'SM.*SM' par_all27_prot_lipid.prm
+SM   SM    173.000     2.0290 ! ALLOW   SUL ION
+```
 
 >   Which bond is harder to stretch?
 
-**TODO.**
+Looking at [equation 1][node3] again, we can see that the energy required to stretch a
+bond is directly proportional to its K~b~ value, so the sulfur-hydrogen bond is harder to
+stretch.
 
 [Running CHARMM]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node13.html
 
