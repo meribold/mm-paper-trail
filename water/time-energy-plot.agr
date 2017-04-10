@@ -1,0 +1,1374 @@
+# Grace project file
+#
+@version 50125
+@page size 792, 612
+@page scroll 5%
+@page inout 5%
+@link page off
+@map font 8 to "Courier", "Courier"
+@map font 10 to "Courier-Bold", "Courier-Bold"
+@map font 11 to "Courier-BoldOblique", "Courier-BoldOblique"
+@map font 9 to "Courier-Oblique", "Courier-Oblique"
+@map font 14 to "Courier-Regular", "Courier-Regular"
+@map font 15 to "Dingbats-Regular", "Dingbats-Regular"
+@map font 4 to "Helvetica", "Helvetica"
+@map font 6 to "Helvetica-Bold", "Helvetica-Bold"
+@map font 7 to "Helvetica-BoldOblique", "Helvetica-BoldOblique"
+@map font 5 to "Helvetica-Oblique", "Helvetica-Oblique"
+@map font 20 to "NimbusMonoL-Bold", "NimbusMonoL-Bold"
+@map font 21 to "NimbusMonoL-BoldOblique", "NimbusMonoL-BoldOblique"
+@map font 22 to "NimbusMonoL-Regular", "NimbusMonoL-Regular"
+@map font 23 to "NimbusMonoL-RegularOblique", "NimbusMonoL-RegularOblique"
+@map font 24 to "NimbusRomanNo9L-Medium", "NimbusRomanNo9L-Medium"
+@map font 25 to "NimbusRomanNo9L-MediumItalic", "NimbusRomanNo9L-MediumItalic"
+@map font 26 to "NimbusRomanNo9L-Regular", "NimbusRomanNo9L-Regular"
+@map font 27 to "NimbusRomanNo9L-RegularItalic", "NimbusRomanNo9L-RegularItalic"
+@map font 28 to "NimbusSansL-Bold", "NimbusSansL-Bold"
+@map font 29 to "NimbusSansL-BoldCondensed", "NimbusSansL-BoldCondensed"
+@map font 30 to "NimbusSansL-BoldCondensedItalic", "NimbusSansL-BoldCondensedItalic"
+@map font 31 to "NimbusSansL-BoldItalic", "NimbusSansL-BoldItalic"
+@map font 32 to "NimbusSansL-Regular", "NimbusSansL-Regular"
+@map font 33 to "NimbusSansL-RegularCondensed", "NimbusSansL-RegularCondensed"
+@map font 34 to "NimbusSansL-RegularCondensedItalic", "NimbusSansL-RegularCondensedItalic"
+@map font 35 to "NimbusSansL-RegularItalic", "NimbusSansL-RegularItalic"
+@map font 36 to "StandardSymbolsL-Regular", "StandardSymbolsL-Regular"
+@map font 12 to "Symbol", "Symbol"
+@map font 2 to "Times-Bold", "Times-Bold"
+@map font 3 to "Times-BoldItalic", "Times-BoldItalic"
+@map font 1 to "Times-Italic", "Times-Italic"
+@map font 0 to "Times-Roman", "Times-Roman"
+@map font 42 to "URWBookmanL-DemiBold", "URWBookmanL-DemiBold"
+@map font 43 to "URWBookmanL-DemiBoldItalic", "URWBookmanL-DemiBoldItalic"
+@map font 44 to "URWBookmanL-Light", "URWBookmanL-Light"
+@map font 45 to "URWBookmanL-LightItalic", "URWBookmanL-LightItalic"
+@map font 46 to "URWChanceryL-MediumItalic", "URWChanceryL-MediumItalic"
+@map font 47 to "URWGothicL-Book", "URWGothicL-Book"
+@map font 48 to "URWGothicL-BookOblique", "URWGothicL-BookOblique"
+@map font 49 to "URWGothicL-Demi", "URWGothicL-Demi"
+@map font 50 to "URWGothicL-DemiOblique", "URWGothicL-DemiOblique"
+@map font 51 to "URWPalladioL-Bold", "URWPalladioL-Bold"
+@map font 52 to "URWPalladioL-BoldItalic", "URWPalladioL-BoldItalic"
+@map font 53 to "URWPalladioL-Italic", "URWPalladioL-Italic"
+@map font 54 to "URWPalladioL-Roman", "URWPalladioL-Roman"
+@map font 55 to "Utopia-Bold", "Utopia-Bold"
+@map font 56 to "Utopia-BoldItalic", "Utopia-BoldItalic"
+@map font 57 to "Utopia-Italic", "Utopia-Italic"
+@map font 58 to "Utopia-Regular", "Utopia-Regular"
+@map font 13 to "ZapfDingbats", "ZapfDingbats"
+@map color 0 to (255, 255, 255), "white"
+@map color 1 to (0, 0, 0), "black"
+@map color 2 to (255, 0, 0), "red"
+@map color 3 to (0, 255, 0), "green"
+@map color 4 to (0, 0, 255), "blue"
+@map color 5 to (255, 255, 0), "yellow"
+@map color 6 to (188, 143, 143), "brown"
+@map color 7 to (220, 220, 220), "grey"
+@map color 8 to (148, 0, 211), "violet"
+@map color 9 to (0, 255, 255), "cyan"
+@map color 10 to (255, 0, 255), "magenta"
+@map color 11 to (255, 165, 0), "orange"
+@map color 12 to (114, 33, 188), "indigo"
+@map color 13 to (103, 7, 72), "maroon"
+@map color 14 to (64, 224, 208), "turquoise"
+@map color 15 to (0, 139, 0), "green4"
+@reference date 0
+@date wrap off
+@date wrap year 1950
+@default linewidth 1.0
+@default linestyle 1
+@default color 1
+@default pattern 1
+@default font 0
+@default char size 1.000000
+@default symbol size 1.000000
+@default sformat "%.8g"
+@background color 0
+@page background fill on
+@timestamp off
+@timestamp 0.03, 0.03
+@timestamp color 1
+@timestamp rot 0
+@timestamp font 0
+@timestamp char size 1.000000
+@timestamp def "Mon Apr 10 15:08:17 2017"
+@r0 off
+@link r0 to g0
+@r0 type above
+@r0 linestyle 1
+@r0 linewidth 1.0
+@r0 color 1
+@r0 line 0, 0, 0, 0
+@r1 off
+@link r1 to g0
+@r1 type above
+@r1 linestyle 1
+@r1 linewidth 1.0
+@r1 color 1
+@r1 line 0, 0, 0, 0
+@r2 off
+@link r2 to g0
+@r2 type above
+@r2 linestyle 1
+@r2 linewidth 1.0
+@r2 color 1
+@r2 line 0, 0, 0, 0
+@r3 off
+@link r3 to g0
+@r3 type above
+@r3 linestyle 1
+@r3 linewidth 1.0
+@r3 color 1
+@r3 line 0, 0, 0, 0
+@r4 off
+@link r4 to g0
+@r4 type above
+@r4 linestyle 1
+@r4 linewidth 1.0
+@r4 color 1
+@r4 line 0, 0, 0, 0
+@g0 on
+@g0 hidden false
+@g0 type XY
+@g0 stacked false
+@g0 bar hgap 0.000000
+@g0 fixedpoint off
+@g0 fixedpoint type 0
+@g0 fixedpoint xy 0.000000, 0.000000
+@g0 fixedpoint format general general
+@g0 fixedpoint prec 6, 6
+@with g0
+@    world 0, -30000, 20, 4000
+@    stack world 0, 0, 0, 0
+@    znorm 1
+@    view 0.150000, 0.150000, 1.150000, 0.850000
+@    title "Energy while heating to 300K"
+@    title font 0
+@    title size 1.500000
+@    title color 1
+@    subtitle ""
+@    subtitle font 0
+@    subtitle size 1.000000
+@    subtitle color 1
+@    xaxes scale Normal
+@    yaxes scale Normal
+@    xaxes invert off
+@    yaxes invert off
+@    xaxis  on
+@    xaxis  type zero false
+@    xaxis  offset 0.000000 , 0.000000
+@    xaxis  bar on
+@    xaxis  bar color 1
+@    xaxis  bar linestyle 1
+@    xaxis  bar linewidth 1.0
+@    xaxis  label "Time (ps)"
+@    xaxis  label layout para
+@    xaxis  label place auto
+@    xaxis  label char size 1.000000
+@    xaxis  label font 0
+@    xaxis  label color 1
+@    xaxis  label place normal
+@    xaxis  tick on
+@    xaxis  tick major 5
+@    xaxis  tick minor ticks 1
+@    xaxis  tick default 6
+@    xaxis  tick place rounded true
+@    xaxis  tick in
+@    xaxis  tick major size 1.000000
+@    xaxis  tick major color 1
+@    xaxis  tick major linewidth 1.0
+@    xaxis  tick major linestyle 1
+@    xaxis  tick major grid off
+@    xaxis  tick minor color 1
+@    xaxis  tick minor linewidth 1.0
+@    xaxis  tick minor linestyle 1
+@    xaxis  tick minor grid off
+@    xaxis  tick minor size 0.500000
+@    xaxis  ticklabel on
+@    xaxis  ticklabel format general
+@    xaxis  ticklabel prec 5
+@    xaxis  ticklabel formula ""
+@    xaxis  ticklabel append ""
+@    xaxis  ticklabel prepend ""
+@    xaxis  ticklabel angle 0
+@    xaxis  ticklabel skip 0
+@    xaxis  ticklabel stagger 0
+@    xaxis  ticklabel place normal
+@    xaxis  ticklabel offset auto
+@    xaxis  ticklabel offset 0.000000 , 0.010000
+@    xaxis  ticklabel start type auto
+@    xaxis  ticklabel start 0.000000
+@    xaxis  ticklabel stop type auto
+@    xaxis  ticklabel stop 0.000000
+@    xaxis  ticklabel char size 1.000000
+@    xaxis  ticklabel font 0
+@    xaxis  ticklabel color 1
+@    xaxis  tick place both
+@    xaxis  tick spec type none
+@    yaxis  on
+@    yaxis  type zero false
+@    yaxis  offset 0.000000 , 0.000000
+@    yaxis  bar on
+@    yaxis  bar color 1
+@    yaxis  bar linestyle 1
+@    yaxis  bar linewidth 1.0
+@    yaxis  label "Energy (kcal/mole)"
+@    yaxis  label layout para
+@    yaxis  label place auto
+@    yaxis  label char size 1.000000
+@    yaxis  label font 0
+@    yaxis  label color 1
+@    yaxis  label place normal
+@    yaxis  tick on
+@    yaxis  tick major 5000
+@    yaxis  tick minor ticks 1
+@    yaxis  tick default 6
+@    yaxis  tick place rounded true
+@    yaxis  tick in
+@    yaxis  tick major size 1.000000
+@    yaxis  tick major color 1
+@    yaxis  tick major linewidth 1.0
+@    yaxis  tick major linestyle 1
+@    yaxis  tick major grid off
+@    yaxis  tick minor color 1
+@    yaxis  tick minor linewidth 1.0
+@    yaxis  tick minor linestyle 1
+@    yaxis  tick minor grid off
+@    yaxis  tick minor size 0.500000
+@    yaxis  ticklabel on
+@    yaxis  ticklabel format general
+@    yaxis  ticklabel prec 5
+@    yaxis  ticklabel formula ""
+@    yaxis  ticklabel append ""
+@    yaxis  ticklabel prepend ""
+@    yaxis  ticklabel angle 0
+@    yaxis  ticklabel skip 0
+@    yaxis  ticklabel stagger 0
+@    yaxis  ticklabel place normal
+@    yaxis  ticklabel offset auto
+@    yaxis  ticklabel offset 0.000000 , 0.010000
+@    yaxis  ticklabel start type auto
+@    yaxis  ticklabel start 0.000000
+@    yaxis  ticklabel stop type auto
+@    yaxis  ticklabel stop 0.000000
+@    yaxis  ticklabel char size 1.000000
+@    yaxis  ticklabel font 0
+@    yaxis  ticklabel color 1
+@    yaxis  tick place both
+@    yaxis  tick spec type none
+@    altxaxis  off
+@    altyaxis  off
+@    legend on
+@    legend loctype view
+@    legend 0.85, 0.8
+@    legend box color 1
+@    legend box pattern 1
+@    legend box linewidth 1.0
+@    legend box linestyle 1
+@    legend box fill color 0
+@    legend box fill pattern 1
+@    legend font 0
+@    legend char size 1.000000
+@    legend color 1
+@    legend length 4
+@    legend vgap 1
+@    legend hgap 1
+@    legend invert false
+@    frame type 0
+@    frame linestyle 1
+@    frame linewidth 1.0
+@    frame color 1
+@    frame pattern 1
+@    frame background color 0
+@    frame background pattern 0
+@    s0 hidden false
+@    s0 type xy
+@    s0 symbol 0
+@    s0 symbol size 1.000000
+@    s0 symbol color 1
+@    s0 symbol pattern 1
+@    s0 symbol fill color 1
+@    s0 symbol fill pattern 0
+@    s0 symbol linewidth 1.0
+@    s0 symbol linestyle 1
+@    s0 symbol char 65
+@    s0 symbol char font 0
+@    s0 symbol skip 0
+@    s0 line type 1
+@    s0 line linestyle 1
+@    s0 line linewidth 1.0
+@    s0 line color 1
+@    s0 line pattern 1
+@    s0 baseline type 0
+@    s0 baseline off
+@    s0 dropline off
+@    s0 fill type 0
+@    s0 fill rule 0
+@    s0 fill color 1
+@    s0 fill pattern 1
+@    s0 avalue off
+@    s0 avalue type 2
+@    s0 avalue char size 1.000000
+@    s0 avalue font 0
+@    s0 avalue color 1
+@    s0 avalue rot 0
+@    s0 avalue format general
+@    s0 avalue prec 3
+@    s0 avalue prepend ""
+@    s0 avalue append ""
+@    s0 avalue offset 0.000000 , 0.000000
+@    s0 errorbar on
+@    s0 errorbar place both
+@    s0 errorbar color 1
+@    s0 errorbar pattern 1
+@    s0 errorbar size 1.000000
+@    s0 errorbar linewidth 1.0
+@    s0 errorbar linestyle 1
+@    s0 errorbar riser linewidth 1.0
+@    s0 errorbar riser linestyle 1
+@    s0 errorbar riser clip off
+@    s0 errorbar riser clip length 0.100000
+@    s0 comment "time-total.dat"
+@    s0 legend  "Total"
+@    s1 hidden false
+@    s1 type xy
+@    s1 symbol 0
+@    s1 symbol size 1.000000
+@    s1 symbol color 2
+@    s1 symbol pattern 1
+@    s1 symbol fill color 2
+@    s1 symbol fill pattern 0
+@    s1 symbol linewidth 1.0
+@    s1 symbol linestyle 1
+@    s1 symbol char 65
+@    s1 symbol char font 0
+@    s1 symbol skip 0
+@    s1 line type 1
+@    s1 line linestyle 1
+@    s1 line linewidth 1.0
+@    s1 line color 2
+@    s1 line pattern 1
+@    s1 baseline type 0
+@    s1 baseline off
+@    s1 dropline off
+@    s1 fill type 0
+@    s1 fill rule 0
+@    s1 fill color 1
+@    s1 fill pattern 1
+@    s1 avalue off
+@    s1 avalue type 2
+@    s1 avalue char size 1.000000
+@    s1 avalue font 0
+@    s1 avalue color 1
+@    s1 avalue rot 0
+@    s1 avalue format general
+@    s1 avalue prec 3
+@    s1 avalue prepend ""
+@    s1 avalue append ""
+@    s1 avalue offset 0.000000 , 0.000000
+@    s1 errorbar on
+@    s1 errorbar place both
+@    s1 errorbar color 2
+@    s1 errorbar pattern 1
+@    s1 errorbar size 1.000000
+@    s1 errorbar linewidth 1.0
+@    s1 errorbar linestyle 1
+@    s1 errorbar riser linewidth 1.0
+@    s1 errorbar riser linestyle 1
+@    s1 errorbar riser clip off
+@    s1 errorbar riser clip length 0.100000
+@    s1 comment "time-kinetic.dat"
+@    s1 legend  "Kinetic"
+@    s2 hidden false
+@    s2 type xy
+@    s2 symbol 0
+@    s2 symbol size 1.000000
+@    s2 symbol color 3
+@    s2 symbol pattern 1
+@    s2 symbol fill color 3
+@    s2 symbol fill pattern 0
+@    s2 symbol linewidth 1.0
+@    s2 symbol linestyle 1
+@    s2 symbol char 65
+@    s2 symbol char font 0
+@    s2 symbol skip 0
+@    s2 line type 1
+@    s2 line linestyle 1
+@    s2 line linewidth 1.0
+@    s2 line color 3
+@    s2 line pattern 1
+@    s2 baseline type 0
+@    s2 baseline off
+@    s2 dropline off
+@    s2 fill type 0
+@    s2 fill rule 0
+@    s2 fill color 1
+@    s2 fill pattern 1
+@    s2 avalue off
+@    s2 avalue type 2
+@    s2 avalue char size 1.000000
+@    s2 avalue font 0
+@    s2 avalue color 1
+@    s2 avalue rot 0
+@    s2 avalue format general
+@    s2 avalue prec 3
+@    s2 avalue prepend ""
+@    s2 avalue append ""
+@    s2 avalue offset 0.000000 , 0.000000
+@    s2 errorbar on
+@    s2 errorbar place both
+@    s2 errorbar color 3
+@    s2 errorbar pattern 1
+@    s2 errorbar size 1.000000
+@    s2 errorbar linewidth 1.0
+@    s2 errorbar linestyle 1
+@    s2 errorbar riser linewidth 1.0
+@    s2 errorbar riser linestyle 1
+@    s2 errorbar riser clip off
+@    s2 errorbar riser clip length 0.100000
+@    s2 comment "time-potential.dat"
+@    s2 legend  "Potential"
+@target G0.S0
+@type xy
+0 -20034.555
+0.08 -20034.57
+0.08 -19891.002
+0.16 -19890.294
+0.16 -19877.836
+0.24 -19878.188
+0.24 -19773.355
+0.32 -19772.606
+0.32 -19684.76
+0.4 -19684.901
+0.4 -19565.065
+0.48 -19564.428
+0.48 -19441.246
+0.56 -19441.118
+0.56 -19312.742
+0.64 -19312.285
+0.64 -19185.191
+0.72 -19184.945
+0.72 -19055.923
+0.8 -19055.546
+0.8 -18923.061
+0.88 -18922.723
+0.88 -18795.915
+0.96 -18795.616
+0.96 -18664.804
+1.04 -18664.303
+1.04 -18529.53
+1.12 -18529.349
+1.12 -18414.742
+1.2 -18414.446
+1.2 -18278.609
+1.28 -18278.163
+1.28 -18148.087
+1.36 -18147.828
+1.36 -18035.325
+1.44 -18034.998
+1.44 -17889.821
+1.52 -17889.391
+1.52 -17752.567
+1.6 -17752.239
+1.6 -17629.75
+1.68 -17629.443
+1.68 -17477.313
+1.76 -17476.815
+1.76 -17367.562
+1.84 -17367.532
+1.84 -17235.765
+1.92 -17234.952
+1.92 -17077.732
+2 -17077.668
+2 -16930.734
+2.08 -16930.047
+2.08 -16771.864
+2.16 -16771.505
+2.16 -16614.844
+2.24 -16614.495
+2.24 -16494.382
+2.32 -16493.77
+2.32 -16341.264
+2.4 -16341.158
+2.4 -16210.009
+2.48 -16209.379
+2.48 -16042.004
+2.56 -16041.483
+2.56 -15897.713
+2.64 -15897.281
+2.64 -15759.893
+2.72 -15759.525
+2.72 -15618.258
+2.8 -15617.52
+2.8 -15492.076
+2.88 -15491.79
+2.88 -15328.782
+2.96 -15328.49
+2.96 -15165.228
+3.04 -15164.163
+3.04 -15005.278
+3.12 -15005.115
+3.12 -14834.856
+3.2 -14833.847
+3.2 -14652.614
+3.28 -14652.588
+3.28 -14527.497
+3.36 -14526.411
+3.36 -14365.677
+3.44 -14365.537
+3.44 -14191.123
+3.52 -14190.13
+3.52 -14040.801
+3.6 -14039.853
+3.6 -13859.548
+3.68 -13858.609
+3.68 -13695.972
+3.76 -13695.975
+3.76 -13516.814
+3.84 -13515.83
+3.84 -13333.622
+3.92 -13333.015
+3.92 -13134.121
+4 -13132.821
+4 -12960.32
+4.08 -12959.89
+4.08 -12779.514
+4.16 -12778.632
+4.16 -12601.831
+4.24 -12601.057
+4.24 -12408.022
+4.32 -12407.471
+4.32 -12211.315
+4.4 -12209.774
+4.4 -11989.668
+4.48 -11989.044
+4.48 -11796.262
+4.56 -11795.699
+4.56 -11621.97
+4.64 -11621.73
+4.64 -11411.09
+4.72 -11409.069
+4.72 -11258.56
+4.8 -11257.587
+4.8 -11115.564
+4.88 -11115.233
+4.88 -10958.281
+4.96 -10957.362
+5.04 -10958.303
+5.12 -10957.114
+5.2 -10957.193
+5.28 -10958.562
+5.36 -10958.516
+5.44 -10958.974
+5.52 -10958.983
+5.6 -10960.08
+5.68 -10957.009
+5.76 -10959.619
+5.84 -10957.314
+5.92 -10960.669
+6 -10960.728
+6.08 -10958.95
+6.16 -10958.621
+6.24 -10957.679
+6.32 -10959.897
+6.4 -10959.702
+6.48 -10960.423
+6.56 -10961.822
+6.64 -10958.965
+6.72 -10960.978
+6.8 -10959.13
+6.88 -10960.781
+6.96 -10961.692
+7.04 -10958.211
+7.12 -10961.416
+7.2 -10961.247
+7.28 -10961.605
+7.36 -10960.608
+7.44 -10960.501
+7.52 -10961.364
+7.6 -10961.091
+7.68 -10962.378
+7.76 -10962.674
+7.84 -10961.438
+7.92 -10961.281
+8 -10962.055
+8.08 -10962.49
+8.16 -10963.3
+8.24 -10961.824
+8.32 -10963.053
+8.4 -10962.283
+8.48 -10962.539
+8.56 -10962.153
+8.64 -10962.223
+8.72 -10961.5
+8.8 -10962.672
+8.88 -10961.423
+8.96 -10963.47
+9.04 -10962.845
+9.12 -10963.272
+9.2 -10962.805
+9.28 -10963.924
+9.36 -10963.247
+9.44 -10963.367
+9.52 -10963.341
+9.6 -10963.184
+9.68 -10964.028
+9.76 -10963.037
+9.84 -10964.434
+9.92 -10962.416
+10 -10963.748
+10.08 -10962.703
+10.16 -10964.634
+10.24 -10965.735
+10.32 -10964.423
+10.4 -10965.269
+10.48 -10966.165
+10.56 -10963.694
+10.64 -10963.614
+10.72 -10966.647
+10.8 -10964.883
+10.88 -10964.11
+10.96 -10966.149
+11.04 -10966.577
+11.12 -10965.714
+11.2 -10963.281
+11.28 -10966.69
+11.36 -10965.951
+11.44 -10966.563
+11.52 -10967.084
+11.6 -10965.183
+11.68 -10967.874
+11.76 -10966.23
+11.84 -10965.38
+11.92 -10966.476
+12 -10963.584
+12.08 -10968.601
+12.16 -10966.728
+12.24 -10966.365
+12.32 -10966.241
+12.4 -10968.259
+12.48 -10966.287
+12.56 -10967.017
+12.64 -10964.53
+12.72 -10967.911
+12.8 -10965.549
+12.88 -10966
+12.96 -10967.602
+13.04 -10967.057
+13.12 -10967.821
+13.2 -10966.689
+13.28 -10967.42
+13.36 -10966.777
+13.44 -10970.02
+13.52 -10965.411
+13.6 -10970.054
+13.68 -10966.37
+13.76 -10972.844
+13.84 -10965.916
+13.92 -10970.231
+14 -10965.813
+14.08 -10968.381
+14.16 -10968.767
+14.24 -10965.967
+14.32 -10969.864
+14.4 -10966.749
+14.48 -10967.999
+14.56 -10968.107
+14.64 -10969.956
+14.72 -10968.267
+14.8 -10968.297
+14.88 -10969.437
+14.96 -10966.574
+15.04 -10967.934
+15.12 -10968.924
+15.2 -10971.293
+15.28 -10967.063
+15.36 -10973.895
+15.44 -10963.442
+15.52 -10971.539
+15.6 -10965.732
+15.68 -10970.4
+15.76 -10967.126
+15.84 -10970.023
+15.92 -10969.338
+16 -10969.034
+16.08 -10968.033
+16.16 -10971.098
+16.24 -10970.249
+16.32 -10970.133
+16.4 -10971.183
+16.48 -10969.935
+16.56 -10969.936
+16.64 -10970.345
+16.72 -10968.438
+16.8 -10970.817
+16.88 -10968.976
+16.96 -10970.119
+17.04 -10970.926
+17.12 -10968.367
+17.2 -10970.888
+17.28 -10969.758
+17.36 -10971.612
+17.44 -10967.317
+17.52 -10969.872
+17.6 -10968.611
+17.68 -10971.528
+17.76 -10967.136
+17.84 -10970.809
+17.92 -10972.176
+18 -10968.228
+18.08 -10971.078
+18.16 -10970.917
+18.24 -10970.641
+18.32 -10972.739
+18.4 -10969.202
+18.48 -10970.18
+18.56 -10971.317
+18.64 -10967.049
+18.72 -10971.153
+18.8 -10969.778
+18.88 -10970.73
+18.96 -10970.569
+19.04 -10969.864
+19.12 -10970.156
+19.2 -10968.978
+19.28 -10969.476
+19.36 -10971.789
+19.44 -10970.62
+19.52 -10970.564
+19.6 -10972.247
+19.68 -10971.203
+19.76 -10973.012
+19.84 -10969.957
+19.92 -10969.289
+20 -10970.395
+&
+@target G0.S1
+@type xy
+0 0
+0.08 2.39814
+0.08 145.96589
+0.16 83.78859
+0.16 96.24658
+0.24 88.38275
+0.24 193.21564
+0.32 131.62727
+0.32 219.47324
+0.4 175.77242
+0.4 295.60789
+0.48 239.80618
+0.48 362.98882
+0.56 303.29788
+0.56 431.67377
+0.64 364.64133
+0.64 491.73579
+0.72 430.93238
+0.72 559.95427
+0.8 506.65276
+0.8 639.1381
+0.88 568.14687
+0.88 694.95468
+0.96 617.93811
+0.96 748.74946
+1.04 708.63889
+1.04 843.41213
+1.12 768.00006
+1.12 882.60657
+1.2 807.56822
+1.2 943.40541
+1.28 892.07427
+1.28 1022.1508
+1.36 966.82898
+1.36 1079.3318
+1.44 993.0474
+1.44 1138.2237
+1.52 1112.7298
+1.52 1249.5539
+1.6 1144.9973
+1.6 1267.4855
+1.68 1206.8822
+1.68 1359.0117
+1.76 1303.7263
+1.76 1412.9788
+1.84 1335.9706
+1.84 1467.7379
+1.92 1383.7816
+1.92 1541.002
+2 1422.5065
+2 1569.44
+2.08 1528.1035
+2.08 1686.2863
+2.16 1626.8827
+2.16 1783.5438
+2.24 1632.4346
+2.24 1752.5469
+2.32 1687.9979
+2.32 1840.5046
+2.4 1789.1182
+2.4 1920.267
+2.48 1843.5831
+2.48 2010.9585
+2.56 1912.3515
+2.56 2056.1218
+2.64 2001.8384
+2.64 2139.2266
+2.72 2025.5193
+2.72 2166.7865
+2.8 2121.4221
+2.8 2246.8655
+2.88 2116.3083
+2.88 2279.3159
+2.96 2252.2003
+2.96 2415.4624
+3.04 2285.3182
+3.04 2444.2041
+3.12 2332.0997
+3.12 2502.3585
+3.2 2425.2195
+3.2 2606.4528
+3.28 2512.8241
+3.28 2637.9145
+3.36 2520.0078
+3.36 2680.7424
+3.44 2613.6589
+3.44 2788.0727
+3.52 2682.2403
+3.52 2831.5694
+3.6 2698.4453
+3.6 2878.7508
+3.68 2755.5057
+3.68 2918.1428
+3.76 2857.2677
+3.76 3036.4285
+3.84 2910.2475
+3.84 3092.4554
+3.92 2947.2482
+3.92 3146.1418
+4 3030.8829
+4 3203.3842
+4.08 3053.5853
+4.08 3233.9618
+4.16 3168.963
+4.16 3345.7642
+4.24 3169.8603
+4.24 3362.8959
+4.32 3277.2357
+4.32 3473.3917
+4.4 3287.9054
+4.4 3508.0108
+4.48 3406.1856
+4.48 3598.9676
+4.56 3447.7406
+4.56 3621.4698
+4.64 3578.214
+4.64 3788.8535
+4.72 3688.3968
+4.72 3838.9052
+4.8 3686.046
+4.8 3828.0687
+4.88 3717.5873
+4.88 3874.5388
+4.96 3784.9744
+5.04 3786.4313
+5.12 3705.9584
+5.2 3739.626
+5.28 3768.9287
+5.36 3739.0685
+5.44 3808.8047
+5.52 3769.8227
+5.6 3722.5639
+5.68 3692.7192
+5.76 3747.1826
+5.84 3695.2301
+5.92 3722.5631
+6 3759.221
+6.08 3741.2465
+6.16 3722.5113
+6.24 3699.2363
+6.32 3772.3752
+6.4 3683.9111
+6.48 3661.8665
+6.56 3759.7363
+6.64 3686.3829
+6.72 3684.2483
+6.8 3666.1278
+6.88 3709.9454
+6.96 3717.2597
+7.04 3645.8153
+7.12 3708.2072
+7.2 3681.147
+7.28 3721.034
+7.36 3807.8718
+7.44 3764.3613
+7.52 3707.4638
+7.6 3777.5923
+7.68 3725.3956
+7.76 3707.6576
+7.84 3729.5473
+7.92 3764.5081
+8 3749.359
+8.08 3712.9516
+8.16 3747.0648
+8.24 3793.2728
+8.32 3664.9564
+8.4 3708.2515
+8.48 3717.1646
+8.56 3676.3219
+8.64 3691.4079
+8.72 3730.6257
+8.8 3743.5005
+8.88 3653.124
+8.96 3754.6032
+9.04 3734.9101
+9.12 3767.3816
+9.2 3745.3166
+9.28 3676.2155
+9.36 3712.184
+9.44 3759.8146
+9.52 3786.0701
+9.6 3747.4627
+9.68 3745.4185
+9.76 3723.4661
+9.84 3787.0547
+9.92 3721.3106
+10 3713.9168
+10.08 3698.298
+10.16 3711.6579
+10.24 3746.9238
+10.32 3703.1441
+10.4 3758.1159
+10.48 3702.0938
+10.56 3681.795
+10.64 3727.9647
+10.72 3823.3984
+10.8 3715.3238
+10.88 3768.9369
+10.96 3699.4408
+11.04 3765.0667
+11.12 3792.3433
+11.2 3825.9785
+11.28 3820.5234
+11.36 3793.3186
+11.44 3757.9288
+11.52 3813.8931
+11.6 3766.8063
+11.68 3745.3284
+11.76 3788.689
+11.84 3760.1298
+11.92 3710.8011
+12 3726.3262
+12.08 3819.719
+12.16 3766.975
+12.24 3739.3352
+12.32 3726.708
+12.4 3822.6157
+12.48 3716.7904
+12.56 3802.2766
+12.64 3746.2192
+12.72 3790.8024
+12.8 3819.6374
+12.88 3771.6396
+12.96 3732.6524
+13.04 3777.1123
+13.12 3781.8271
+13.2 3773.8903
+13.28 3791.1467
+13.36 3788.5731
+13.44 3761.9652
+13.52 3779.4799
+13.6 3774.9332
+13.68 3724.5408
+13.76 3793.2501
+13.84 3751.698
+13.92 3839.6938
+14 3786.9532
+14.08 3842.8831
+14.16 3840.0528
+14.24 3738.9427
+14.32 3780.7414
+14.4 3819.7136
+14.48 3766.6505
+14.56 3744.3089
+14.64 3768.0933
+14.72 3760.0629
+14.8 3774.5762
+14.88 3807.9744
+14.96 3765.024
+15.04 3823.8986
+15.12 3802.7729
+15.2 3797.4094
+15.28 3798.8027
+15.36 3880.5925
+15.44 3778.8595
+15.52 3836.9679
+15.6 3746.1358
+15.68 3852.2216
+15.76 3809.4119
+15.84 3808.4924
+15.92 3826.251
+16 3777.6282
+16.08 3746.9797
+16.16 3787.5356
+16.24 3823.9677
+16.32 3812.7784
+16.4 3816.8264
+16.48 3714.6931
+16.56 3771.7444
+16.64 3845.7216
+16.72 3757.0209
+16.8 3804.4096
+16.88 3807.9974
+16.96 3816.6041
+17.04 3777.2966
+17.12 3787.5924
+17.2 3846.7172
+17.28 3832.5841
+17.36 3829.1468
+17.44 3826.0129
+17.52 3759.586
+17.6 3751.2792
+17.68 3840.743
+17.76 3758.6082
+17.84 3781.2874
+17.92 3833.7703
+18 3769.8973
+18.08 3744.5001
+18.16 3780.7344
+18.24 3819.5009
+18.32 3870.5414
+18.4 3804.6879
+18.48 3805.8211
+18.56 3838.1249
+18.64 3786.2779
+18.72 3858.3173
+18.8 3784.5238
+18.88 3818.2642
+18.96 3847.0748
+19.04 3848.1578
+19.12 3864.955
+19.2 3746.7459
+19.28 3749.7887
+19.36 3868.6817
+19.44 3848.9733
+19.52 3797.3736
+19.6 3822.1281
+19.68 3849.6389
+19.76 3867.8938
+19.84 3868.8195
+19.92 3787.1724
+20 3786.8686
+&
+@target G0.S2
+@type xy
+0 -20034.555
+0.08 -20036.968
+0.08 -20036.968
+0.16 -19974.083
+0.16 -19974.083
+0.24 -19966.57
+0.24 -19966.57
+0.32 -19904.234
+0.32 -19904.234
+0.4 -19860.673
+0.4 -19860.673
+0.48 -19804.234
+0.48 -19804.234
+0.56 -19744.416
+0.56 -19744.416
+0.64 -19676.926
+0.64 -19676.926
+0.72 -19615.878
+0.72 -19615.878
+0.8 -19562.199
+0.8 -19562.199
+0.88 -19490.87
+0.88 -19490.87
+0.96 -19413.554
+0.96 -19413.554
+1.04 -19372.942
+1.04 -19372.942
+1.12 -19297.349
+1.12 -19297.349
+1.2 -19222.014
+1.2 -19222.014
+1.28 -19170.237
+1.28 -19170.237
+1.36 -19114.657
+1.36 -19114.657
+1.44 -19028.045
+1.44 -19028.045
+1.52 -19002.121
+1.52 -19002.121
+1.6 -18897.236
+1.6 -18897.236
+1.68 -18836.325
+1.68 -18836.325
+1.76 -18780.541
+1.76 -18780.541
+1.84 -18703.503
+1.84 -18703.503
+1.92 -18618.733
+1.92 -18618.733
+2 -18500.175
+2 -18500.175
+2.08 -18458.15
+2.08 -18458.15
+2.16 -18398.388
+2.16 -18398.388
+2.24 -18246.929
+2.24 -18246.929
+2.32 -18181.768
+2.32 -18181.768
+2.4 -18130.276
+2.4 -18130.276
+2.48 -18052.962
+2.48 -18052.962
+2.56 -17953.835
+2.56 -17953.835
+2.64 -17899.12
+2.64 -17899.12
+2.72 -17785.045
+2.72 -17785.045
+2.8 -17738.942
+2.8 -17738.942
+2.88 -17608.098
+2.88 -17608.098
+2.96 -17580.69
+2.96 -17580.69
+3.04 -17449.482
+3.04 -17449.482
+3.12 -17337.215
+3.12 -17337.215
+3.2 -17259.067
+3.2 -17259.067
+3.28 -17165.412
+3.28 -17165.412
+3.36 -17046.419
+3.36 -17046.419
+3.44 -16979.196
+3.44 -16979.196
+3.52 -16872.37
+3.52 -16872.37
+3.6 -16738.299
+3.6 -16738.299
+3.68 -16614.115
+3.68 -16614.115
+3.76 -16553.243
+3.76 -16553.243
+3.84 -16426.078
+3.84 -16426.078
+3.92 -16280.263
+3.92 -16280.263
+4 -16163.704
+4 -16163.704
+4.08 -16013.476
+4.08 -16013.476
+4.16 -15947.595
+4.16 -15947.595
+4.24 -15770.918
+4.24 -15770.918
+4.32 -15684.707
+4.32 -15684.707
+4.4 -15497.679
+4.4 -15497.679
+4.48 -15395.229
+4.48 -15395.229
+4.56 -15243.44
+4.56 -15243.44
+4.64 -15199.944
+4.64 -15199.944
+4.72 -15097.465
+4.72 -15097.465
+4.8 -14943.633
+4.8 -14943.633
+4.88 -14832.82
+4.88 -14832.82
+4.96 -14742.337
+5.04 -14744.735
+5.12 -14663.072
+5.2 -14696.819
+5.28 -14727.491
+5.36 -14697.585
+5.44 -14767.779
+5.52 -14728.806
+5.6 -14682.643
+5.68 -14649.728
+5.76 -14706.802
+5.84 -14652.544
+5.92 -14683.232
+6 -14719.949
+6.08 -14700.196
+6.16 -14681.132
+6.24 -14656.916
+6.32 -14732.272
+6.4 -14643.614
+6.48 -14622.29
+6.56 -14721.559
+6.64 -14645.348
+6.72 -14645.226
+6.8 -14625.258
+6.88 -14670.726
+6.96 -14678.951
+7.04 -14604.026
+7.12 -14669.623
+7.2 -14642.394
+7.28 -14682.639
+7.36 -14768.48
+7.44 -14724.862
+7.52 -14668.828
+7.6 -14738.683
+7.68 -14687.774
+7.76 -14670.331
+7.84 -14690.985
+7.92 -14725.789
+8 -14711.414
+8.08 -14675.441
+8.16 -14710.364
+8.24 -14755.097
+8.32 -14628.01
+8.4 -14670.534
+8.48 -14679.703
+8.56 -14638.475
+8.64 -14653.631
+8.72 -14692.126
+8.8 -14706.172
+8.88 -14614.547
+8.96 -14718.073
+9.04 -14697.755
+9.12 -14730.653
+9.2 -14708.122
+9.28 -14640.139
+9.36 -14675.431
+9.44 -14723.182
+9.52 -14749.411
+9.6 -14710.647
+9.68 -14709.446
+9.76 -14686.503
+9.84 -14751.488
+9.92 -14683.727
+10 -14677.665
+10.08 -14661.001
+10.16 -14676.292
+10.24 -14712.659
+10.32 -14667.567
+10.4 -14723.385
+10.48 -14668.259
+10.56 -14645.489
+10.64 -14691.579
+10.72 -14790.046
+10.8 -14680.207
+10.88 -14733.047
+10.96 -14665.589
+11.04 -14731.644
+11.12 -14758.058
+11.2 -14789.26
+11.28 -14787.213
+11.36 -14759.269
+11.44 -14724.492
+11.52 -14780.977
+11.6 -14731.989
+11.68 -14713.202
+11.76 -14754.919
+11.84 -14725.51
+11.92 -14677.278
+12 -14689.911
+12.08 -14788.32
+12.16 -14733.703
+12.24 -14705.7
+12.32 -14692.949
+12.4 -14790.874
+12.48 -14683.077
+12.56 -14769.293
+12.64 -14710.749
+12.72 -14758.714
+12.8 -14785.186
+12.88 -14737.64
+12.96 -14700.254
+13.04 -14744.169
+13.12 -14749.648
+13.2 -14740.579
+13.28 -14758.567
+13.36 -14755.35
+13.44 -14731.985
+13.52 -14744.891
+13.6 -14744.987
+13.68 -14690.91
+13.76 -14766.094
+13.84 -14717.614
+13.92 -14809.925
+14 -14752.766
+14.08 -14811.264
+14.16 -14808.82
+14.24 -14704.91
+14.32 -14750.605
+14.4 -14786.463
+14.48 -14734.649
+14.56 -14712.416
+14.64 -14738.049
+14.72 -14728.33
+14.8 -14742.873
+14.88 -14777.411
+14.96 -14731.598
+15.04 -14791.832
+15.12 -14771.697
+15.2 -14768.703
+15.28 -14765.866
+15.36 -14854.488
+15.44 -14742.301
+15.52 -14808.507
+15.6 -14711.867
+15.68 -14822.621
+15.76 -14776.538
+15.84 -14778.515
+15.92 -14795.589
+16 -14746.662
+16.08 -14715.013
+16.16 -14758.633
+16.24 -14794.216
+16.32 -14782.911
+16.4 -14788.009
+16.48 -14684.628
+16.56 -14741.68
+16.64 -14816.066
+16.72 -14725.459
+16.8 -14775.227
+16.88 -14776.974
+16.96 -14786.723
+17.04 -14748.222
+17.12 -14755.959
+17.2 -14817.605
+17.28 -14802.342
+17.36 -14800.759
+17.44 -14793.33
+17.52 -14729.458
+17.6 -14719.891
+17.68 -14812.271
+17.76 -14725.744
+17.84 -14752.096
+17.92 -14805.947
+18 -14738.125
+18.08 -14715.578
+18.16 -14751.651
+18.24 -14790.142
+18.32 -14843.281
+18.4 -14773.89
+18.48 -14776.001
+18.56 -14809.442
+18.64 -14753.327
+18.72 -14829.471
+18.8 -14754.302
+18.88 -14788.995
+18.96 -14817.643
+19.04 -14818.022
+19.12 -14835.111
+19.2 -14715.724
+19.28 -14719.265
+19.36 -14840.471
+19.44 -14819.593
+19.52 -14767.938
+19.6 -14794.375
+19.68 -14820.841
+19.76 -14840.906
+19.84 -14838.777
+19.92 -14756.462
+20 -14757.264
+&

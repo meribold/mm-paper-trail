@@ -831,7 +831,8 @@ ATOM      2  H1  TIP3     1    -17.140 -17.760 -20.060  1.00  0.00
 ATOM      3  H2  TIP3     1    -17.295 -15.920 -20.020  1.00  0.00
 ```
 
-Adjusted the atom and residue (?) numbers in `box.pdb` and minimized the water:
+Appended `END` to to `box.pdb`.  Adjusted the atom and residue (?) numbers in `box.pdb`
+and minimized the water:
 
 <!--
 Main console display active (Tcl8.5.6 / Tk8.5.6)
@@ -854,7 +855,20 @@ Heated the water:
 $ git show -q | head -1
 commit e0ab2361584ac7fe89a1c5ffb78fe7af83825c2f
 /sw/sci/app/charmm_64/c32b1/exec/gnu/charmm < heat-box.inp > heat-box.out
+$ grep 'DYNA>' heat-box.out > heat-box.dat
+$ awk '{print $3,$4}' heat-box.dat > time-total.dat
+$ awk '{print $3,$5}' heat-box.dat > time-kinetic.dat
+$ awk '{print $3,$6}' heat-box.dat > time-potential.dat
+$ awk '{print $3,$7}' heat-box.dat > time-temp.dat
+$ xmgrace time-total.dat time-kinetic.dat time-potential.dat 
+$ xmgrace time-temp.dat
 ```
+
+![Energies](water/time-energy-plot.png)\ 
+
+![Temperatures](water/time-temp-plot.png)\ 
+
+>   What could happen, if the `Byres` key word is replaced by `byatoms`?
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
