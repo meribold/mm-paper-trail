@@ -31,7 +31,7 @@ close unit 12
 ! Define a crystal.
 crystal defi ortho 34.0 34.0 39.0 90. 90. 90.
 crystal build cutoff 15.0
-image byres xcen -2.0 ycen -2.0 zcen -2.0 sele all end
+image byres xcen 0.0 ycen 0.0 zcen 0.0 sele all end
 Update inbfrq -1 imgfrq 40 ihbfrq 40 cutim 15.0
 
 ! Minimize.
