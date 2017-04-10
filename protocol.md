@@ -831,7 +831,7 @@ ATOM      2  H1  TIP3     1    -17.140 -17.760 -20.060  1.00  0.00
 ATOM      3  H2  TIP3     1    -17.295 -15.920 -20.020  1.00  0.00
 ```
 
-Adjusted the atom and residue (?) numbers in `box.pdb`.
+Adjusted the atom and residue (?) numbers in `box.pdb` and minimized the water:
 
 <!--
 Main console display active (Tcl8.5.6 / Tk8.5.6)
@@ -847,6 +847,8 @@ $ git show -q | head -1
 commit f413bb1582bc50742b4cc22464b7dc03daa36f97
 /sw/sci/app/charmm_64/c32b1/exec/gnu/charmm < min-box.inp > min-box.out
 ```
+
+Heated the water:
 
 ```bash
 $ git show -q | head -1
