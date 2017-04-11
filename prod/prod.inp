@@ -219,8 +219,4 @@ close unit 1
 
 stop
 
-
-
-
-
-
+! vim: ft=charmm cms=!%s
