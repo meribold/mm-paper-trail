@@ -13,7 +13,7 @@ open read card unit 21 name ../../equi2.psf
 read psf card unit 21
 close unit 21
 
-open read unit 3 card name ../../equi.pdb
+open read unit 3 card name ../../equi2.pdb
 read coor pdb unit 3
 
 ! Use the same .crd file as in prot-rms.charmm.inp 
