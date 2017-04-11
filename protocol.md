@@ -50,12 +50,6 @@ charmm is aliased to `/sw/sci/bin/x86_64-linux/charmm.28'
 
 ### Time evolution^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node8.html>]
 
-<!--
-#### The Verlet algorithm
-
-<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html>
--->
-
 #### The Verlet algorithm[^node9]
 
 **Questions and answers.**
@@ -1023,7 +1017,7 @@ state than can actually occur in reality.
 >   List those titratable sites of myoglobin with pK½-values in the physiological range
 >   (pH5 to 9).
 >
->   *   Display their titration curves using xmgrace.
+>   *   Display their titration curves using `xmgrace`.
 >
 >   *   When you look at curves.out you will realise that collect_curves.pl does not
 >       output protonation probabilities if they are 1 or 0. Please don't bother about
