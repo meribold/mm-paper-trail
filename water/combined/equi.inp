@@ -54,7 +54,7 @@ open write unit 1 card name equi.rst
 open read unit 2 card name heat.rst
 
 ! Write a trajectory file.
-open write unit 3 name heat.dcd
+open write unit 3 name equi.dcd
 
 ! Keywords:
 ! start (restart): defines whether you start a new simulation or continue 
