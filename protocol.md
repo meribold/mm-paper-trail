@@ -981,17 +981,41 @@ $ ln -s ~/practicum/mcti/src/mcti ~/bin/
 
 >   What is MEAD, and what is its purpose?
 
-MEAD is a collection of C++ programs for modeling the electrostatics of molecules.
+*   MEAD is a software distribution for modeling the electrostatics of molecules.  The
+    electrostatic potential is computed based on a linearized Poisson-Boltzmann equation.
+
+*   It includes four C++ programs implemented using the MEAD object library, the program
+    `redti` which doesn't use it, and the library itself.
+
+*   It can compute binding constants, pKa values, solvation energies, and other
+    parameters.
 
 >   Shortly explain what you did to get the executables.
 
 Download and compile source code.
 
->   What does multiflex do? Limit your explanation to single-conformer calculations.
->
+>   What does multiflex do?  Limit your explanation to single-conformer calculations.
+
+"Multiflex does the electrostatic part of a titration calculation for a multi-site
+titrating molecule."[^MEADME]  For single-conformer
+calculations, it assumes a rigid molecule.
+
+[^MEADME]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
+
 >   *   What information is contained in the different input files?
->
->   *   What is the histidine tautomerism problem mentioned in the myoglobin README file?
+
+**TODO.**
+
+>   *   What is the histidine tautomerism problem mentioned in the myoglobin
+>       README[^myoglobin README] file?
+
+[^myoglobin MEADME]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
+
+Various tautomers are represented with a single structure and pretend that each histidine
+has two binding sites.  In reality, each tautomer has one binding site.
+
+The problem is that this enables a "doubly deprotonated", which doesn't correspond to any
+state than can actually occur in reality.
 
 >   Shortly list the different steps required to characterise the titration behaviour of
 >   myoglobin.
