@@ -1,78 +1,65 @@
-* Combines the heated, equilibrated water box with BPTI.
+* Minimizes BPTI inside the water box.
 
 BOMBlev 0
 
 open read unit 10 card name ../../top_all27_prot_na.inp
-read RTF unit 10 card
+! open read unit 10 card name ../../top_all27_prot_lipid.rtf
+! open read unit 10 card name /home/foerster/top.inp
+read rtf unit 10 card
 close unit 10
 
 open read unit 02 card name ../../par_all27_prot_na.inp
+! open read unit 02 card name ../../par_all27_prot_lipid.prm
+! open read unit 02 card name /home/foerster/par.inp
 read para unit 02 card
 close unit 02
 
-!open read unit 11 card name equi2-box.psf
-!read psf card unit 11
-!close unit 11
+open read unit 11 card name combined.psf
+read psf card unit 11
+close unit 11
 
-!open read unit 11 card name ../../1bpi-disu.psf
-!read psf card unit 11
-!close unit 11
+! open read unit 12 card name combined.pdb
+! read coor pdb unit 12
+! close unit 12
 
-open read unit 12 card name ../../protres.pdb
-read sequ pdb unit 12
-generate PRTA first nter last cter setup
-rewind unit 12
-read coor pdb unit 12
-close unit 12
-
-open read unit 12 card name ../../water.pdb
-read sequ pdb unit 12
-generate TIP3 setup nodihedral noangle
-rewind unit 12
-read coor pdb unit 12
-close unit 12
-
-! Center the protein at the origin, but don't rotate it.
-coordinate orient norot
-
-open read unit 12 card name equi2-box.pdb
-read sequ pdb unit 12
-generate WATR setup nodihedral noangle
-rewind unit 12
-read coor pdb unit 12 !append
+open read unit 12 card name combined.crd
+read coor card unit 12
 close unit 12
 
 print coor
 
 ! If necessary, generate missing coordinates.
-ic fill pres
-ic parameters
-ic build
+! ic fill pres
+! ic parameters
+! ic build
 
 ! If necessary, generate hydrogens.
-coord init sele type h* end
-hbuild
+! coord init sele type h* end
+! hbuild
 
 ! Define a crystal.
-!crystal defi ortho 34.0 34.0 39.0 90. 90. 90.
-!crystal build cutoff 15.0
-!image byres xcen 0.0 ycen 0.0 zcen 0.0 sele all end
-!Update inbfrq -1 imgfrq 40 ihbfrq 40 cutim 15.0
-
-dele atom sele .byres. (segid WATR .and. -
-(.not. segid WATR) .around. 2.8 ) end
+crystal defi ortho 34.0 34.0 39.0 90. 90. 90.
+crystal build cutoff 15.0
+image byres xcen 0.0 ycen 0.0 zcen 0.0 sele all end
+update inbfrq -1 imgfrq 40 ihbfrq 40 cutim 15.0
 
 ! Minimize.
-!MINI sd   nstep 500 nprint 10
-!MINI abnr nstep 1000 nprint 10 
+mini sd   nstep 500 nprint 10
+mini abnr nstep 1000 nprint 10 
 
 ! Save coordinates.
-open write unit 1 card name combined.psf
+open write unit 1 card name combined-min.psf
 write psf card unit 1
 close unit 1
 
-open write unit 1 card name combined.pdb
+open write unit 1 card name combined-min.pdb
 write coor pdb unit 1
 close unit 1
 
+open write unit 1 card name combined-min.crd
+write coor card unit 1
+close unit 1
+
 stop
+
+! vim: ft=charmm cms=!%s
