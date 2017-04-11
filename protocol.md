@@ -853,7 +853,9 @@ $ xmgrace time-temp.dat
 
 >   What could happen, if the `Byres` key word is replaced by `byatoms`?
 
-**TODO.**
+The `byatoms` keyword "[will not work if there are any bonds][charmm image]".
+
+[charmm image]: https://www.charmm.org/charmm/documentation/by-version/c40b1/params/doc/images/#Centering
 
 #### Equilibration of the water box^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node31.html>]
 
