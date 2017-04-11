@@ -883,6 +883,13 @@ $ charmm < combine.inp > combine.out
 
 ### Minimization of the system^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node34.html>]
 
+```bash
+$ git show -q | head -1
+commit aab6f378da722191b6c968d61d3a32d4e53d3f11
+$ # XXX: use CHARMM 32!
+$ charmm32 < min.inp > min.out
+```
+
 ## Heating^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node35.html>]
 
 ## Equilibration^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node36.html>]
