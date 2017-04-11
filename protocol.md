@@ -981,7 +981,7 @@ $ ln -s ~/practicum/mcti/src/mcti ~/bin/
 *   It includes four C++ programs implemented using the MEAD object library, the program
     `redti` which doesn't use it, and the library itself.
 
-*   It can compute binding constants, pKa values, solvation energies, and other
+*   It can compute binding constants, pK~a~ values, solvation energies, and other
     parameters.
 
 >   Shortly explain what you did to get the executables.
@@ -1001,9 +1001,9 @@ calculations, it assumes a rigid molecule.
 **TODO.**
 
 >   *   What is the histidine tautomerism problem mentioned in the myoglobin
->       README[^myoglobin README] file?
+>       README[^myoglobin-README] file?
 
-[^myoglobin MEADME]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
+[^myoglobin-README]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
 
 Various tautomers are represented with a single structure and pretend that each histidine
 has two binding sites.  In reality, each tautomer has one binding site.
