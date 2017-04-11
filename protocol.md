@@ -888,7 +888,10 @@ $ git show -q | head -1
 commit aab6f378da722191b6c968d61d3a32d4e53d3f11
 $ # XXX: use CHARMM 32!
 $ charmm32 < min.inp > min.out
+$ vmd combined-min.pdb 
 ```
+
+![Minimized BPTI in water box](water/combined/bpti-box.png)
 
 ## Heating^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node35.html>]
 
