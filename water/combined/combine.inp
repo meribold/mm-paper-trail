@@ -3,10 +3,12 @@
 BOMBlev 0
 
 open read unit 10 card name ../../top_all27_prot_na.inp
+! open read unit 10 card name /home/foerster/top.inp
 read RTF unit 10 card
 close unit 10
 
 open read unit 02 card name ../../par_all27_prot_na.inp
+! open read unit 02 card name /home/foerster/par.inp
 read para unit 02 card
 close unit 02
 
@@ -53,6 +55,10 @@ ic build
 coord init sele type h* end
 hbuild
 
+PATCH DISU PRTA 51 PRTA 30
+PATCH DISU PRTA 5 PRTA 55
+PATCH DISU PRTA 38 PRTA 14
+
 ! Define a crystal.
 !crystal defi ortho 34.0 34.0 39.0 90. 90. 90.
 !crystal build cutoff 15.0
@@ -75,4 +81,10 @@ open write unit 1 card name combined.pdb
 write coor pdb unit 1
 close unit 1
 
+open write unit 1 card name combined.crd
+write coor card unit 1
+close unit 1
+
 stop
+
+! vim: ft=charmm cms=!%s

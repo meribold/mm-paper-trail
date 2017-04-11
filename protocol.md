@@ -877,6 +877,7 @@ $ charmm32 < equi2-box.inp > equi2-box.out
 ```bash
 $ git show -q | head -1
 commit 0b0db04f51a4a2329078e90c1698b64daeb5a0ad
+$ # XXX: use CHARMM 28!
 $ charmm < combine.inp > combine.out
 ```
 

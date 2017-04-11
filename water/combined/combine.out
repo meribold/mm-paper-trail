@@ -4,7 +4,7 @@
        Copyright(c) 1984,1992  President and Fellows of Harvard College
                               All Rights Reserved
       Current operating system: Linux-4.4.0-71-generic(x86_64)@krusty.fronte
-                 Created on  4/10/17 at 18:11:38 by user: student10   
+                 Created on  4/11/17 at 10:34:17 by user: student10   
 
             Maximum number of ATOMS:    240480, and RESidues:       72000
             Current HEAP size:        10240000, and STACK size:   2000000
@@ -22,6 +22,7 @@
  VOPEN> Attempting to open::../../top_all27_prot_na.inp::
  OPNLGU> Unit 10 opened for READONLY access to ../../top_all27_prot_na.inp
   
+ CHARMM>    ! open read unit 10 card name /home/foerster/top.inp
  CHARMM>    read RTF unit 10 card
  MAINIO> Residue topology file being read from unit  10.
  TITLE> *>>>>>> COMBINED CHARMM ALL-HYDROGEN TOPOLOGY FILE FOR <<<<<<<<<
@@ -66,6 +67,7 @@
  VOPEN> Attempting to open::../../par_all27_prot_na.inp::
  OPNLGU> Unit  2 opened for READONLY access to ../../par_all27_prot_na.inp
   
+ CHARMM>    ! open read unit 02 card name /home/foerster/par.inp
  CHARMM>    read para unit 02 card
 
           PARAMETER FILE BEING READ FROM UNIT  2
@@ -12042,6 +12044,67 @@
   
  CHARMM>     
   
+ CHARMM>    PATCH DISU PRTA 51 PRTA 30
+ ATOM  PRTA 51   CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+ ATOM  PRTA 30   CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+
+ Message from MAPIC: Atom numbers are changed.
+ DELTIC:    2 bonds deleted
+ DELTIC:    2 angles deleted
+ DELTIC:    6 dihedrals deleted
+ DELTIC:    2 donors deleted
+ DUPLICATE ACCEPTOR FOUND FOR  PRTA 58   ALA  O   
+ ACCEPTOR ANTECEDENT  PRTA 58   ALA  C    REMOVED.
+ ACCEPTOR ANTECEDENT  PRTA 58   ALA  C    REMOVED.
+ DUPLICATE ENTRY REMOVED.
+ DELTIC:    1 acceptors deleted
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        3   Number of residues   =     1513
+         Number of atoms         =     5261   Number of groups     =     1728
+         Number of bonds         =     5273   Number of angles     =     3082
+         Number of dihedrals     =     2389   Number of impropers  =      142
+         Number of HB acceptors  =     1534   Number of HB donors  =      118
+         Number of NB exclusions =        0   Total charge =    6.00000
+  
+ CHARMM>    PATCH DISU PRTA 5 PRTA 55
+ ATOM  PRTA 5    CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+ ATOM  PRTA 55   CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+
+ Message from MAPIC: Atom numbers are changed.
+ DELTIC:    2 bonds deleted
+ DELTIC:    2 angles deleted
+ DELTIC:    6 dihedrals deleted
+ DELTIC:    2 donors deleted
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        3   Number of residues   =     1513
+         Number of atoms         =     5259   Number of groups     =     1728
+         Number of bonds         =     5272   Number of angles     =     3082
+         Number of dihedrals     =     2390   Number of impropers  =      142
+         Number of HB acceptors  =     1534   Number of HB donors  =      116
+         Number of NB exclusions =        0   Total charge =    6.00000
+  
+ CHARMM>    PATCH DISU PRTA 38 PRTA 14
+ ATOM  PRTA 38   CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+ ATOM  PRTA 14   CYS  HG1  AND ALL REFERENCES TO IT DELETED.
+
+ Message from MAPIC: Atom numbers are changed.
+ DELTIC:    2 bonds deleted
+ DELTIC:    2 angles deleted
+ DELTIC:    6 dihedrals deleted
+ DELTIC:    2 donors deleted
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        3   Number of residues   =     1513
+         Number of atoms         =     5257   Number of groups     =     1728
+         Number of bonds         =     5271   Number of angles     =     3082
+         Number of dihedrals     =     2391   Number of impropers  =      142
+         Number of HB acceptors  =     1534   Number of HB donors  =      114
+         Number of NB exclusions =        0   Total charge =    6.00000
+  
+ CHARMM>     
+  
  CHARMM>    ! Define a crystal.
  CHARMM>    !crystal defi ortho 34.0 34.0 39.0 90. 90. 90.
  CHARMM>    !crystal build cutoff 15.0
@@ -12051,25 +12114,21 @@
   
  CHARMM>    dele atom sele .byres. (segid WATR .and. -
  CHARMM>    (.not. segid WATR) .around. 2.8 ) end
- SELRPN>   1368 atoms have been selected out of   5263
+ SELRPN>   1365 atoms have been selected out of   5257
 
  Message from MAPIC: Atom numbers are changed.
 
- Message from MAPIC:   456 residues deleted.
- DELTIC: 1368 bonds deleted
- DELTIC:  456 angles deleted
- DUPLICATE ACCEPTOR FOUND FOR  PRTA 58   ALA  O   
- ACCEPTOR ANTECEDENT  PRTA 58   ALA  C    REMOVED.
- ACCEPTOR ANTECEDENT  PRTA 58   ALA  C    REMOVED.
- DUPLICATE ENTRY REMOVED.
- DELTIC:  457 acceptors deleted
+ Message from MAPIC:   455 residues deleted.
+ DELTIC: 1365 bonds deleted
+ DELTIC:  455 angles deleted
+ DELTIC:  455 acceptors deleted
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =        3   Number of residues   =     1057
-         Number of atoms         =     3895   Number of groups     =     1272
-         Number of bonds         =     3906   Number of angles     =     2626
-         Number of dihedrals     =     2388   Number of impropers  =      142
-         Number of HB acceptors  =     1078   Number of HB donors  =      120
+         Number of segments      =        3   Number of residues   =     1058
+         Number of atoms         =     3892   Number of groups     =     1273
+         Number of bonds         =     3906   Number of angles     =     2627
+         Number of dihedrals     =     2391   Number of impropers  =      142
+         Number of HB acceptors  =     1079   Number of HB donors  =      114
          Number of NB exclusions =        0   Total charge =    6.00000
   
  CHARMM>     
@@ -12106,9 +12165,23 @@
   
  CHARMM>     
   
+ CHARMM>    open write unit 1 card name combined.crd
+ VOPEN> Attempting to open::combined.crd::
+ OPNLGU> Unit  1 opened for WRITE access to combined.crd
+  
+ CHARMM>    write coor card unit 1
+ RDTITL> CLOSE UNIT 1
+ RDTITL> No title read.
+ VCLOSE: Closing unit    1 with status "KEEP"
+  
+ CHARMM>    close unit 1
+ CLOLGU>  *****  WARNING  ***** Attempt to close unit that was not open.
+  
+ CHARMM>     
+  
  CHARMM>    stop
 $$$$$$  New timer profile $$$$$
- Total time              6.22000 Other:    0.00000
+ Total time              6.27600 Other:    0.00000
 
                     NORMAL TERMINATION BY NORMAL STOP
                     MAXIMUM STACK SPACE USED IS  156694
@@ -12121,5 +12194,5 @@ $$$$$$  New timer profile $$$$$
             PRINHP> ADDRESS:         1 LENGTH:  10240000 NEXT:         0
 
                     $$$$$ JOB ACCOUNTING INFORMATION $$$$$
-                     ELAPSED TIME:     6.26  SECONDS 
-                         CPU TIME:     6.20  SECONDS 
+                     ELAPSED TIME:     6.33  SECONDS 
+                         CPU TIME:     6.26  SECONDS 
