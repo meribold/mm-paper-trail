@@ -930,6 +930,38 @@ $ ln -s ~/practicum/mead/mead-2.2.8a/apps/multiflex/multiflex ~/bin/
 $ ln -s ~/practicum/mcti/src/mcti ~/bin/
 ```
 
+## Installation and introduction to MEAD and mcti^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/installation_MBexample/installation_MBexample.html>]
+
+>   What is MEAD, and what is its purpose?
+
+>   Shortly explain what you did to get the executables.
+
+>   What does multiflex do? Limit your explanation to single-conformer calculations.
+>
+>   *   What information is contained in the different input files?
+>
+>   *   What is the histidine tautomerism problem mentioned in the myoglobin README file?
+
+>   Shortly list the different steps required to characterise the titration behaviour of
+>   myoglobin.
+
+>   List those titratable sites of myoglobin with pK½-values in the physiological range
+>   (pH5 to 9).
+>
+>   *   Display their titration curves using xmgrace.
+>
+>   *   When you look at curves.out you will realise that collect_curves.pl does not
+>       output protonation probabilities if they are 1 or 0. Please don't bother about
+>       this feature.
+
+>   Try to understand what the different columns in the histidine sections of 'curves.out' represent.
+>
+>   *   What is the predominant protonation and/or tautomer state of His24 and His119 at
+>       pH2 and pH10?
+>
+>   *   Can you give a structural reason for their behaviour? Don't bother about the
+>       rather colourful representation of the pqr-file in rasmol.
+
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
