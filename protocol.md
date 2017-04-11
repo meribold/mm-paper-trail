@@ -943,7 +943,13 @@ $ charmm32 < prod.inp > prod.out
 
 >   Analyze the RMSD values of the backbone and side chain atoms. 
 
-**TODO.**
+```bash
+$ pwd
+/home/student10/practicum/water/combined/prod
+$ mkdir ana
+$ cp ../../../prod/ana/*.inp ana/
+$ cd ana
+```
 
 >   Analyze the time series of the disulfide bridge Cys-14 and Cys-38 as before. 
 
