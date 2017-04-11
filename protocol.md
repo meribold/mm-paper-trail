@@ -892,6 +892,13 @@ $ charmm32 < min.inp > min.out
 
 ## Heating^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node35.html>]
 
+```bash
+$ git show -q | head -1
+commit 3f89aaeb6bcaf844d2542f6d9f052c19bd7e405b
+$ # XXX: use CHARMM 32!
+$ charmm32 < heat.inp > heat.out
+```
+
 ## Equilibration^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node36.html>]
 
 >   Show that your system is stable.
