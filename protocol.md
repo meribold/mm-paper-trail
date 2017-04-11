@@ -904,11 +904,29 @@ $ charmm32 < heat.inp > heat.out
 
 ## Equilibration^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node36.html>]
 
+```bash
+$ git show -q | head -1
+commit bf9fece3411fc1560d4f440cc4596ea3015c2e30
+$ # XXX: use CHARMM 32!
+$ charmm32 < equi.inp > equi.out
+$ git show -q | head -1
+commit 93614bc5bf9afe991d334c16bd19fed9a5a2e4a5
+$ # XXX: use CHARMM 32!
+$ charmm32 < equi2.inp > equi2.out
+```
+
 >   Show that your system is stable.
 
 **TODO.**
 
 ## Production^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node37.html>]
+
+```bash
+$ git show -q | head -1
+commit 9cc3576779d8d71dd3f57c1b331bf2f990f0a7ba
+$ # XXX: use CHARMM 32!
+$ charmm32 < prod.inp > prod.out
+```
 
 >   Analyze the RMSD values of the backbone and side chain atoms. 
 
