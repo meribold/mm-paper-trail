@@ -965,7 +965,11 @@ $ ln -s ~/practicum/mcti/src/mcti ~/bin/
 
 >   What is MEAD, and what is its purpose?
 
+MEAD is a collection of C++ programs for modeling the electrostatics of molecules.
+
 >   Shortly explain what you did to get the executables.
+
+Download and compile source code.
 
 >   What does multiflex do? Limit your explanation to single-conformer calculations.
 >
