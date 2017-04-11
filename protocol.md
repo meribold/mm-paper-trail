@@ -949,7 +949,17 @@ $ pwd
 $ mkdir ana
 $ cp ../../../prod/ana/*.inp ana/
 $ cd ana
+$ charmm32 < prot-rms.charmm.inp > prot-rms.charmm.out
+$ charmm32 < bbone-rms.charmm.inp > bbone-rms.charmm.out
+$ charmm32 < schain-rms.charmm.inp > schain-rms.charmm.out
+$ xmgrace prot-rms.dat bbone-rms.dat schain-rms.dat
 ```
+
+![RMSD](water/combined/prod/ana/rmsd-plot.png)\ 
+
+For reference, the RMSD values at 300K without water again:
+
+![RMSD (300K)](prod/ana/rmsd-plot.png)\ 
 
 >   Analyze the time series of the disulfide bridge Cys-14 and Cys-38 as before. 
 
