@@ -905,19 +905,32 @@ $ charmm32 < heat.inp > heat.out
 ## Equilibration^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node36.html>]
 
 ```bash
+$ pwd
+/home/student10/practicum/water/combined
 $ git show -q | head -1
 commit bf9fece3411fc1560d4f440cc4596ea3015c2e30
 $ # XXX: use CHARMM 32!
-$ charmm32 < equi.inp > equi.out
+$ charmm32 < equi.inp > equi.out # first equilibration
 $ git show -q | head -1
 commit 93614bc5bf9afe991d334c16bd19fed9a5a2e4a5
 $ # XXX: use CHARMM 32!
-$ charmm32 < equi2.inp > equi2.out
+$ charmm32 < equi2.inp > equi2.out # second equilibration
 ```
 
 >   Show that your system is stable.
 
-**TODO.**
+```bash
+$ grep 'DYNA>' equi2.out > equi2.dat
+$ awk '{print $3,$4}' equi2.dat > time-total.dat
+$ awk '{print $3,$5}' equi2.dat > time-kinetic.dat
+$ awk '{print $3,$6}' equi2.dat > time-potential.dat
+$ awk '{print $3,$7}' equi2.dat > time-temp.dat
+$ xmgrace time-total.dat time-kinetic.dat time-potential.dat
+```
+
+![Energies](water/combined/time-energy-plot.png)\ 
+
+Looks pretty stable.
 
 ## Production^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node37.html>]
 
