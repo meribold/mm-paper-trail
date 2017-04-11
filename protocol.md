@@ -766,7 +766,7 @@ $ bc <<< '23.421000 - (-3.790000)'
 27.211000
 $ bc <<< '16.720000 - (-16.222000)'
 32.942000
-$ ./make_Wbox.pl 34 34 39 > box.pdb # x_dim=33, y_dim=33, z_dim=38
+$ ./make_Wbox.pl 34 34 39 > box.pdb # x_dim=34, y_dim=34, z_dim=39
 ```
 
 >   What is the density of your water box?
