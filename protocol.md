@@ -923,6 +923,13 @@ $ charmm32 < heat.inp > heat.out
 
 **TODO.**
 
+# MEAD^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/index.html>]
+
+```bash
+$ ln -s ~/practicum/mead/mead-2.2.8a/apps/multiflex/multiflex ~/bin/
+$ ln -s ~/practicum/mcti/src/mcti ~/bin/
+```
+
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
