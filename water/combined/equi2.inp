@@ -14,7 +14,7 @@ open read unit 02 card name ../../par_all27_prot_na.inp
 read para unit 02 card
 close unit 02
 
-open read unit 11 card name heated.psf
+open read unit 11 card name equi.psf
 read psf card unit 11
 close unit 11
 
@@ -22,7 +22,7 @@ close unit 11
 ! read coor pdb unit 12
 ! close unit 12
 
-open read unit 12 card name heated.crd
+open read unit 12 card name equi.crd
 read coor card unit 12
 close unit 12
 
@@ -48,13 +48,13 @@ update inbfrq -1 imgfrq 40 ihbfrq 40 cutim 15.0
 ! mini abnr nstep 1000 nprint 10 
 
 ! Write a restart file, I guess.
-open write unit 1 card name equi.rst
+open write unit 1 card name equi2.rst
 
 !! Continue from the previous simulation, I guess.
-open read unit 2 card name heat.rst
+open read unit 2 card name equi.rst
 
 ! Write a trajectory file.
-open write unit 3 name heat.dcd
+open write unit 3 name equi2.dcd
 
 ! Keywords:
 ! start (restart): defines whether you start a new simulation or continue 
@@ -73,11 +73,11 @@ open write unit 3 name heat.dcd
 ! firstt: Starting temperature of 0.0 K after minimisation
 ! finalt: Temperature you want to heat up to. Change 
 ! to your temperature
-dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
+dyna verlet start nstep 50000 timestep 0.001 eche 50.0 -
     iprfrq 60 ihtfrq 0 ieqfrq 200 teminc 1.0  -
     nprint 60 iunwri 1 iunrea 2 iuncrd 3 nsavc 60 -
     firstt 300.0 finalt 300.0 -
-    iasors 0 iasvel 1 iscvel 0 ichecw 0 
+    iasors 0 iasvel 1 iscvel 1 ichecw 0 
 
 ! Second equilibration.
 !dyna verlet start nstep 50000 timestep 0.001 eche 50.0 -
@@ -87,15 +87,15 @@ dyna verlet start nstep 20000 timestep 0.001 eche 50.0 -
     !iasors 0 iasvel 1 iscvel 0 ichecw 0 
 
 ! Save coordinates.
-open write unit 1 card name equi.psf
+open write unit 1 card name equi2.psf
 write psf card unit 1
 close unit 1
 
-open write unit 1 card name equi.pdb
+open write unit 1 card name equi2.pdb
 write coor pdb unit 1
 close unit 1
 
-open write unit 1 card name equi.crd
+open write unit 1 card name equi2.crd
 write coor card unit 1
 close unit 1
 
