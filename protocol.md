@@ -812,7 +812,7 @@ ATOM      2  H1  TIP3     1    -17.140 -17.760 -20.060  1.00  0.00
 ATOM      3  H2  TIP3     1    -17.295 -15.920 -20.020  1.00  0.00
 ```
 
-Appended `END` to to `box.pdb`.  Adjusted the [atom serial numbers][ATOM] and [residue
+Appended `END` to `box.pdb`.  Adjusted the [atom serial numbers][ATOM] and [residue
 sequence numbers][ATOM] in `box.pdb` to start with 1.
 
 Spent two and a half hours to find out that a different version of CHARMM has to be used
@@ -1055,8 +1055,8 @@ Multiflex "takes `MolName.pqr`, `MolName.ogm`, `MolName.mgm`, `MolName.sites` an
 Various tautomers are represented with a single structure and pretend that each histidine
 has two binding sites.  In reality, each tautomer has one binding site.
 
-The problem is that this enables a "doubly deprotonated", which doesn't correspond to any
-state than can actually occur in reality.
+The problem is that this enables a "doubly deprotonated" state, which doesn't correspond
+to any state than can actually occur in reality.
 
 >   Shortly list the different steps required to characterise the titration behaviour of
 >   myoglobin.
@@ -1125,7 +1125,8 @@ pK(1/2) for HIS-116      =    6.351
 
 OK.
 
->   Try to understand what the different columns in the histidine sections of 'curves.out' represent.
+>   Try to understand what the different columns in the histidine sections of 'curves.out'
+>   represent.
 
 The columns give percentages of how prevalent each of the three possible tautomers are for
 a given histidine titration site.
