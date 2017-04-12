@@ -1,0 +1,142 @@
+========================================================================
+mcti:   A program to calculate the titration behavior of a
+	large number of interacting residues in a protein.
+========================================================================
+Program mcti calculates, as a function of pH, the average protonation
+for a set of interacting residues in a protein by using a Monte Carlo
+sampling of the protonation states.  Details of the method and applications
+can be found in Proc. Nat. Acad. Sci. (USA), 88, 5804-5808 (July 1991).
+
+To get started you need to:
+	1. IMPORTANT:  Because random number generators vary from machine 
+	    to machine, it will be necessary to replace calls to
+	    the random number seed function and generator function
+	    in order to use your local random number generator.  
+	    Modify the calls to the random number seed and generator
+	    functions to call your local random number generator.
+	2. redefine the FOR variable in makefile to be your local compiler
+	3. make: compiles the program (you can do this by hand for
+	    non-UNIX systems)
+	4. runmc: a shell script to run the program (this can also
+	    be done by hand for non-UNIX systems).
+
+List of files:
+------------------------------------------------------------------------------
+README			this file
+sample.pkint		sample input file, the 'C' or 'A' column is for
+			Cationic/Anionic site (i.e., acidic residues
+			should have an 'A' in this column)
+sample.interactions	sample input file
+sample.output		sample output
+sample.log		log file with intermediate resuls and timing
+runmc			shell script to run program
+makefile		a makefile to compile mcti
+monti.f			the main program
+mc.f			Subroutine to carry out monte carlo sampling
+			for 1 pH value.
+mcsubs.f		Miscellaneous subroutines.
+get_pairs.f		identifies strongly coupled sites
+pair_flip.f		Subroutine for 2-site transitions to improve sampling.
+step.f			Carries out 1 Monte Carlo step.
+reduce.f		reduces the set of "titrating" sites by fixing
+			the protonation of sites that haven't changed much
+			(see below)
+------------------------------------------------------------------------------
+************************ INPUT FILES **********************************
+- sample.pkint is a formatted file containing
+the residues and their intrinsic pKa's (the pKa the residue
+has when all other titrating sites are in their neutral state).
+The format is (f10.5,1x,a1,1x,a3,2x,i4): the first entry is the 
+intrinsic pKa; the second entry identifies the site as either 
+anionic (A- + H+ => AH) or cationic (A + H+ => AH+);  the third and
+fourth entries are the residue's name and number.
+- sample.g is a file containing site-site interactions between
+the titrating sites.  The file is read in free-format.  The first
+two entries are the residue numbers and the third entry is
+their interaction.  The file is twice as long as it needs to be
+(i.e., there are identical interactions for i,j and j,i).
+The units of the interaction is e*e/Angtrom, where e is the magnitude
+of the electronic charge).
+*************************** OPTIONS ******************************************
+I have numbered the lines of the shell script to describe the input options:
+ 1) mcti <<EOF >sample.out
+ 2) sample.pkint
+ 3) sample.g
+ 4) 500
+ 5) 1000
+ 6) 7.0
+ 7) 7.0
+ 8) 1.0
+ 9) 2.0
+10) 0.000001
+11) 0
+12) 1
+13) sample.log
+14) EOF
+
+Definitions:
+ 1) command line
+ 2) input file for intrinsic pKa's
+ 3) input file for site-site interactions
+ 4) nfull: Number of full Monte Carlo steps  (see below)
+ 5) nreduced: Number of reduced Monte Carlo steps  (see below)
+ 6) starting pH value
+ 7) ending pH value
+ 8) pH increment
+ 9) redmc_toler: minimum interaction for pairing of sites (see below)
+10) cutoff for reduced Monte Carlo (see below)
+11) random number seed: 0="random" starting seed derived from
+a system call for the date. Any other integer here will be used
+for the seed value for the random number generator.
+12) Flag for running Monte Carlo on a reduced set of sites
+    (0=full Monte Carlo only; 1=reduced Monte Carlo)
+**************************************************************************
+2-site Transitions:
+To improve sampling efficiency, simultaneous two-site transitions
+are allowed for pairs of strongly interacting sites.  
+"Strong" is defined by item #9 (pair cutoff) in the script above.
+The pair cutoff is in pK units, and if sites have an interaction
+greater than this value, they are considered a strongly-interacting
+pair. Changes of pair protonation states are attempted, on average,
+as often as single-site transitions.
+**************************************************************************
+Full and Reduced Monte Carlo:
+The full Monte Carlo sampling is the sampling described in the PNAS paper.  
+Reduced Monte Carlo sampling is an approximation scheme to improve speed.
+If you have no need for faster calculations set item #12 (the reduced
+monte carlo flag) to 0, and forget about the rest of this section.
+If you want to speed things up, used reduced monte carlo.
+The idea is simple.  First, run Monte Carlo on the full system.
+Then, after nfull monte carlo steps,  calculate the average
+protonation for each residue.  If the protonation is 
+close to 0 or 1 for a site (where close" is defined as within 
+redmc_toler of either 0 or 1), then the protonation state of that
+residue is held fixed.  All the fixed residues are now part of the
+non-titrating part of the protein.  For the non-fixed residues,
+the Monte Carlo sampling will continue, with the the 
+influence of the fixed sites as an external field.
+Item # 12 in the script above specifies how the sampling should be
+done:  0=standard full monte carlo for (item #4) Monte Carlo steps.
+1=standard full monte carlo for (item #4) Monte Carlo steps, followed
+by (item #5) Monte Carlo steps on a reduced set of sites.
+Sites are held fixed if their average protonation as calculated
+by the full monte carlo is within (item #10) of 0 or one.
+The results of the full monte carlo are written to the log file
+and the reduced monte carlo results are written to the output file.
+The two results should be compared to insure that the approximation
+introduced does not significantly change the average protonation
+of any site.
+**************************************************************************
+
+I hope you find the program useful.  If you have any questions, suggestions,
+bug reports, etc.  please send them along to
+	pberoza@ucsd.edu  or pberoza.ucsd.bitnet
+
+Also, if you would email me a couple lines describing the application 
+of this program to your research, I would appreciate it.
+
+Good luck,
+Paul Beroza
+UCSD, Physics Dept.
+(619)534-8789
+
