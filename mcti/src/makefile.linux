@@ -1,0 +1,9 @@
+FOR = pgf77 -O 
+OBJS = mcti.o mc.o mcsubs.o step.o pair_flip.o get_pairs.o reduce.o \
+	get_triples.o triple_flip.o
+SRCS = mcti.f mc.f mcsubs.f step.f pair_flip.f get_pairs.f reduce.f \
+	get_triples.f triple_flip.f
+
+mcti: $(OBJS)
+	$(FOR) -o redox-mcti $(OBJS)
+

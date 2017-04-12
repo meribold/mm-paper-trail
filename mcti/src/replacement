@@ -1,0 +1,66 @@
+Es wurde drand48 und seed48 gegen srand und rand ausgetauscht in den folgenden files:
+
+[ullmann@Debye] 142 (~/BEROZA): grep rand48 *
+mcsubs.f:       real*8 drand48
+mcsubs.f:         if (drand48() .gt. 0.5d0) then
+mcsubs.f:      real*8 drand48
+mcsubs.f:         iflip = int((maxsite * drand48()) + 1)
+mcsubs.f:         else if (exp(- (beta * de)) .gt. drand48()) then
+pair_flip.f:    real*8 de, drand48
+pair_flip.f:       newprot(i) = int(2*drand48())
+pair_flip.f:    elseif (exp(-beta*de) .gt. drand48()) then
+step.f:      real*8 drand48
+step.f:         iflip = int(((maxsite + npairs)* drand48()) + 1)
+step.f:            else if (exp(- (beta * de)) .gt. drand48()) then
+
+
+[ullmann@Waller] 177 (~/BEROZA): grep seed *
+mcti.f:C            % iseed                     # if 0, then seed "randomly" 
+mcti.f: integer iseed   ! rn gen. seed
+mcti.f:                 ! used to seed random number generator
+mcti.f: read(5,*) iseed   ! if 0, then seed "randomly"
+mcti.f:c        ...seed random number generator
+mcti.f: if (iseed .eq. 0) then
+mcti.f:    iseed = time(%VAL(0))    !%VAL because time is c
+mcti.f:        write(12,*) 'SEED: ', iseed
+mcti.f:        call seed48(iseed)              ! seed random number
+readme.beroza:      the random number seed function and generator function
+readme.beroza:      Modify the calls to the random number seed and generator
+readme.beroza:11) random number seed: 0="random" starting seed derived from
+readme.beroza:for the seed value for the random number generator.
+run_mcti:0              ! r.n. seed (0 = auto)
+
+
+Man-pages:
+NAME
+     rand, irand, srand - random number generator
+
+SYNOPSIS
+     integer iseed, i, irand
+     double precision x, rand
+
+     call srand(iseed)
+
+     i = irand( )
+
+     x = rand( )
+
+DESCRIPTION
+     Irand generates successive pseudo-random integers in the range from 0 to
+     2**15-1.  rand generates pseudo-random numbers distributed in [0, 1.0].
+     Srand uses its integer argument to re-initialize the seed for successive
+     invocations of irand and rand.
+
+SEE ALSO
+     rand(3C).
+
+
+ORIGIN
+     AT&T V.3
+
+
+
+
+
+
+
