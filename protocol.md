@@ -1083,9 +1083,9 @@ steps.
     Creates `curves.out` from the output of `mcti`, which contains data for creating
     various plots:
 
-    *   titration curves
-    *   pkhalf and Hill plot information
-    *   tautomerism curves
+    *   Titration curves
+    *   pK~$\frac12$~ and Hill plot information
+    *   Tautomerism curves
 
 5.      grep 'pK(1/2)' curves.out > pkhalf.out
 
@@ -1094,29 +1094,71 @@ steps.
 >   List those titratable sites of myoglobin with pK~½~ values in the physiological range
 >   (pH 5 to 9).
 
-    $ grep '[5-8]\.' pkhalf.out
-    pK(1/2) for ASP-141      =    5.272
-    pK(1/2) for NTval-1      =    6.289
-    pK(1/2) for CTgly-153    =    7.156
-    pK(1/2) for HIS-12       =    5.489
-    pK(1/2) for HIS-36       =    6.375
-    pK(1/2) for HIS-81       =    7.027
-    pK(1/2) for HIS-97       =    6.984
-    pK(1/2) for HIS-116      =    6.351
+```bash
+$ grep '[5-8]\.' pkhalf.out
+pK(1/2) for ASP-141      =    5.272
+pK(1/2) for NTval-1      =    6.289
+pK(1/2) for CTgly-153    =    7.156
+pK(1/2) for HIS-12       =    5.489
+pK(1/2) for HIS-36       =    6.375
+pK(1/2) for HIS-81       =    7.027
+pK(1/2) for HIS-97       =    6.984
+pK(1/2) for HIS-116      =    6.351
+```
 
 >   *   Display their titration curves using `xmgrace`.
->
->   *   When you look at curves.out you will realise that collect_curves.pl does not
->       output protonation probabilities if they are 1 or 0. Please don't bother about
+
+![Titration curves](myoglobin/Titration_curves.png)\ 
+
+>   *   When you look at `curves.out` you will realise that `collect_curves.pl` does not
+>       output protonation probabilities if they are 1 or 0.  Please don't bother about
 >       this feature.
+
+OK.
 
 >   Try to understand what the different columns in the histidine sections of 'curves.out' represent.
 >
 >   *   What is the predominant protonation and/or tautomer state of His24 and His119 at
 >       pH2 and pH10?
->
+
+Table: His24
+
+| pH | Both protonated | Delta tautomer | Epsilon tautomer |
+|----+-----------------+----------------+------------------|
+| 2  | 0%              | 100%           | 0%               |
+| 10 | 0%              | 100%           | 0%               |
+
+Table: His119
+
+| pH | Both protonated | Delta tautomer | Epsilon tautomer |
+|----+-----------------+----------------+------------------|
+| 2  | 91.22%          | 1.62%          | 7.17%            |
+| 10 | 0%              | 0%             | 100%             |
+
+<!-- "Delta tautomer" means the Histidine is protonated at the delta position only. -->
+
 >   *   Can you give a structural reason for their behaviour? Don't bother about the
 >       rather colourful representation of the pqr-file in rasmol.
+
+A hydrogen bridge can form between the epsilon Nitrogen of His24 and the epsilon Nitrogen
+of His119.  This makes it unlikely for both positions to be protonated at the same time.
+
+<!--
+His119 is eventually mostly protonated when lowering the pH.  His24 is not.  This may be
+because it is further inside the molecule, i.e., better isolated from the surrounding
+hydrogen cores.
+-->
+
+## Titration behaviour of cytochrome c^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/cytc/cytc.html>]
+
+>   Comment on the exceptions from the list of standard titratable residues in cytochrome
+>   c .
+
+>   Shortly list what changes you made to the different scripts as copied from the
+>   myoglobin example, and why you made them.
+
+>   As for myoglobin, plot the titration curves of sites with pK½ between pH5 and 9. In
+>   addition, plot the titration curves of the haem propionates.
 
 [^MEADME]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
 [^myoglobin-README]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
