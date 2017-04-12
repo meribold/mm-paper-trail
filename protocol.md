@@ -1089,7 +1089,8 @@ steps.
 
 5.      grep 'pK(1/2)' curves.out > pkhalf.out
 
-    *   Extracts the $\text{pK}_\frac12$ values from `curves.out`.
+    *   Extracts the pK~$\frac12$~ values from `curves.out`.  The pK~$\frac12$~ is the pH
+        value at which the protonation of a titration site is 0.5.
 
 >   List those titratable sites of myoglobin with pK~½~ values in the physiological range
 >   (pH 5 to 9).
