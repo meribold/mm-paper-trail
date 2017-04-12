@@ -1117,9 +1117,19 @@ pK(1/2) for HIS-116      =    6.351
 OK.
 
 >   Try to understand what the different columns in the histidine sections of 'curves.out' represent.
->
+
+The columns give percentages of how prevalent each of the three possible tautomers are for
+a given histidine titration site.
+
+*   `prot.`: fully protonated (HSP/HIP).
+*   `del-taut.`: "delta tautomer", only the delta position (nitrogen) is protonated
+    (HSD/HID).
+*   `eps-taut.`: "epsilon tautomer", only the epsilon position is protonated (HSE/HIE).
+
+![Source: <http://docs.htmd.org/img/histidines.png>](http://docs.htmd.org/img/histidines.png)
+
 >   *   What is the predominant protonation and/or tautomer state of His24 and His119 at
->       pH2 and pH10?
+>       pH 2 and pH 10?
 
 Table: His24
 
@@ -1135,13 +1145,12 @@ Table: His119
 | 2  | 91.22%          | 1.62%          | 7.17%            |
 | 10 | 0%              | 0%             | 100%             |
 
-<!-- "Delta tautomer" means the Histidine is protonated at the delta position only. -->
-
 >   *   Can you give a structural reason for their behaviour? Don't bother about the
 >       rather colourful representation of the pqr-file in rasmol.
 
 A hydrogen bridge can form between the epsilon Nitrogen of His24 and the epsilon Nitrogen
-of His119.  This makes it unlikely for both positions to be protonated at the same time.
+of His119.  This makes it unfavorable for both positions to be protonated at the same
+time.
 
 <!--
 His119 is eventually mostly protonated when lowering the pH.  His24 is not.  This may be
@@ -1157,8 +1166,8 @@ hydrogen cores.
 >   Shortly list what changes you made to the different scripts as copied from the
 >   myoglobin example, and why you made them.
 
->   As for myoglobin, plot the titration curves of sites with pK½ between pH5 and 9. In
->   addition, plot the titration curves of the haem propionates.
+>   As for myoglobin, plot the titration curves of sites with pK~$\frac12$~ between pH 5
+>   and 9.  In addition, plot the titration curves of the haem propionates.
 
 [^MEADME]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
 [^myoglobin-README]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
