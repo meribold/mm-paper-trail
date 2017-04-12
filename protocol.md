@@ -1177,8 +1177,18 @@ One histidine can not be titrated because of the iron of the haem group.
 >   Shortly list what changes you made to the different scripts as copied from the
 >   myoglobin example, and why you made them.
 
->   As for myoglobin, plot the titration curves of sites with pK~$\frac12$~ between pH 5
->   and 9.  In addition, plot the titration curves of the haem propionates.
+<!-- pandoc -v | grep diff -->
+
+```bash
+$ diff --suppress-common-lines myoglobin/run_mol_multimead.sh \
+  max-cytc/run_mol_multimead.sh 
+```
+```diff
+6c6
+<   for taut in del eps del1 del2 del3 del4 del5 del6 del7 del8 del9 del10 del11
+---
+>   for taut in del eps del1 del2
+```
 
 ![Titration curves](cytc/titration_curves_cytc_with_prop.png)\ 
 
