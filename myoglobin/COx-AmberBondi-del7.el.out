@@ -1,0 +1,85 @@
+Starting multiflex for molecule named COx-AmberBondi
+using the following physical conditions:
+Exterior dielectric constant, espext = 80
+Solvent probe radius, solrad = 1.4
+Ion exclusion layer thickness, sterln = 2
+Temperature, T = 300
+Ionic strength, ionicstr = 0.1
+Hueckel factor (epsext*kappasq) = 0.843035
+Debye length 1/kappa = 9.74142
+ln(10) * kBolt * T = 0.00413391
+kBolt = 5.98444e-06
+conconv = 0.000602214
+econv = 331.842
+Bohr radius = 0.529177
+Proton Charge = 1
+
+Dielectric constant for molecular interior = 4
+No blab level set (so no blabbing)
+For molecule using finite difference method with lattice levels:
+                   Centering Style   grid dimension    spacing
+Coarsest level: ON_GEOM_CENT 81 1
+Finest level:   ON_CENT_OF_INTR 81 0.25
+
+For model compounds using finite difference method with lattice levels:
+                   Centering Style   grid dimension    spacing
+Coarsest level: ON_GEOM_CENT 61 1
+Finest level:   ON_CENT_OF_INTR 61 0.25
+
+Site-site interaction symmetry check:
+1 2   4.035128e-04 4.019274e-04   dev = 3.936807e-03
+1 3   1.742485e-05 1.738289e-05   dev = 2.411088e-03
+1 4   4.654746e-06 4.649988e-06   dev = 1.022710e-03
+1 5   4.295636e-05 4.288968e-05   dev = 1.553406e-03
+1 6   1.220315e-04 1.220597e-04   dev = 2.308955e-04
+1 7   1.268145e-04 1.266802e-04   dev = 1.059700e-03
+1 8   1.470133e-05 1.470142e-05   dev = 6.310188e-06
+1 9   6.873759e-05 6.868395e-05   dev = 7.806398e-04
+1 10   1.987405e-04 1.987470e-04   dev = 3.280233e-05
+1 11   8.367419e-04 8.255410e-04   dev = 1.347653e-02
+2 3   2.472442e-04 2.473065e-04   dev = 2.519915e-04
+2 4   9.366131e-05 9.382107e-05   dev = 1.704170e-03
+2 5   1.012780e-03 1.012826e-03   dev = 4.494299e-05
+2 6   7.067346e-05 7.074912e-05   dev = 1.070023e-03
+2 7   3.984742e-04 3.984706e-04   dev = 9.056775e-06
+2 8   2.134052e-04 2.134299e-04   dev = 1.155739e-04
+2 9   1.275543e-03 1.288665e-03   dev = 1.023455e-02
+2 10   7.481909e-04 7.507067e-04   dev = 3.356858e-03
+2 11   1.223854e-02 1.227311e-02   dev = 2.820984e-03
+3 4   1.058491e-04 1.058568e-04   dev = 7.258569e-05
+3 5   4.628291e-04 4.627789e-04   dev = 1.084152e-04
+3 6   1.528888e-05 1.528371e-05   dev = 3.385402e-04
+3 7   1.342831e-04 1.342079e-04   dev = 5.603082e-04
+3 8   2.476781e-04 2.476087e-04   dev = 2.801752e-04
+3 9   8.636346e-04 8.703125e-04   dev = 7.702512e-03
+3 10   2.729362e-04 2.730127e-04   dev = 2.802972e-04
+3 11   1.073011e-04 1.073319e-04   dev = 2.864510e-04
+4 5   7.501562e-04 7.451455e-04   dev = 6.701990e-03
+4 6   4.018403e-06 4.034465e-06   dev = 3.989283e-03
+4 7   2.362953e-05 2.362625e-05   dev = 1.386497e-04
+4 8   3.295392e-04 3.293411e-04   dev = 6.014412e-04
+4 9   5.941964e-05 5.930879e-05   dev = 1.867151e-03
+4 10   1.390951e-05 1.386956e-05   dev = 2.876824e-03
+4 11   2.822065e-05 2.811731e-05   dev = 3.668396e-03
+5 6   5.533013e-05 5.543795e-05   dev = 1.946814e-03
+5 7   4.056304e-04 4.056575e-04   dev = 6.658143e-05
+5 8   2.970953e-03 2.945527e-03   dev = 8.595303e-03
+5 9   3.253515e-04 3.253431e-04   dev = 2.576294e-05
+5 10   8.458691e-05 8.460210e-05   dev = 1.795885e-04
+5 11   2.403349e-04 2.403367e-04   dev = 7.507986e-06
+6 7   1.951027e-03 1.939896e-03   dev = 5.721907e-03
+6 8   3.970595e-05 3.968436e-05   dev = 5.439305e-04
+6 9   1.746842e-05 1.749309e-05   dev = 1.411112e-03
+6 10   2.025743e-05 2.027976e-05   dev = 1.101790e-03
+6 11   4.764106e-05 4.765781e-05   dev = 3.516627e-04
+7 8   3.220377e-04 3.221242e-04   dev = 2.685554e-04
+7 9   1.312071e-04 1.312703e-04   dev = 4.811138e-04
+7 10   1.000159e-04 1.000968e-04   dev = 8.084854e-04
+7 11   1.993089e-04 1.993860e-04   dev = 3.865231e-04
+8 9   9.035268e-05 9.036987e-05   dev = 1.901900e-04
+8 10   2.744447e-05 2.742533e-05   dev = 6.975637e-04
+8 11   6.026172e-05 6.026321e-05   dev = 2.469088e-05
+9 10   1.442317e-03 1.451277e-03   dev = 6.193328e-03
+9 11   7.505747e-04 7.506369e-04   dev = 8.282081e-05
+10 11   1.248590e-03 1.210103e-03   dev = 3.130680e-02
+Site site interactions have now been symmetrized.
