@@ -1,5 +1,5 @@
 % [Molecular Modelling][] [Practicum][]
-% Lukas Waymann
+% Lukas Waymann; Andreas Benndorf; Maximilian David; Johannes Kohnert
 
 [Molecular Modelling]: http://www.bisb.uni-bayreuth.de/Lecture/
 [Practicum]: http://www.bisb.uni-bayreuth.de/Lecture/practical/practical.html
@@ -1029,7 +1029,12 @@ Multiflex "takes `MolName.pqr`, `MolName.ogm`, `MolName.mgm`, `MolName.sites` an
 
 *   `MolName.ogm` and `MolName.mgm`
 
-    **TODO.**
+    Specifies grid calculation parameters.  Lines have the format
+
+        centering  grid_dimension  grid_spacing
+
+    Lines should specify consecutively finer parameters (smaller values for
+    `grid_spacing`).
 
 *   `MolName.sites`
 
@@ -1162,13 +1167,17 @@ hydrogen cores.
 ## Titration behaviour of cytochrome c^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/cytc/cytc.html>]
 
 >   Comment on the exceptions from the list of standard titratable residues in cytochrome
->   c .
+>   c.
+
+One histidine can not be titrated because of the iron of the haem group.
 
 >   Shortly list what changes you made to the different scripts as copied from the
 >   myoglobin example, and why you made them.
 
 >   As for myoglobin, plot the titration curves of sites with pK~$\frac12$~ between pH 5
 >   and 9.  In addition, plot the titration curves of the haem propionates.
+
+![Titration curves](cytc/titration_curves_cytc_with_prop.png)\ 
 
 [^MEADME]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
 [^myoglobin-README]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
