@@ -742,6 +742,15 @@ cell re-enter on the opposite side.
 
 #### Generation of the water box^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node29.html>]
 
+<!--
+Notes.
+
+*   To read to .psf files, use the `append` keyword.
+*   Center the water and the protein when combining.
+*   Our water box was too small, it should 40x40x46.  The size is somehow related to the
+    crystal cutoff, which is 15?
+-->
+
 ```bash
 $ pwd
 /home/student10/practicum/water
@@ -761,6 +770,13 @@ $ bc <<< '23.421000 - (-3.790000)'
 $ bc <<< '16.720000 - (-16.222000)'
 32.942000
 $ ./make_Wbox.pl 34 34 39 > box.pdb # x_dim=34, y_dim=34, z_dim=39
+```
+
+Update: later we randomly found out that we should call `make_Wbox.pl` without redirecting
+its output:
+
+```bash
+$ ./make_Wbox.pl 34 34 39
 ```
 
 >   What is the density of your water box?
@@ -981,8 +997,10 @@ $ ln -s ~/practicum/mcti/src/mcti ~/bin/
 *   It includes four C++ programs implemented using the MEAD object library, the program
     `redti` which doesn't use it, and the library itself.
 
-*   It can compute binding constants, pK~a~ values, solvation energies, and other
+*   It can compute binding constants, [pK~a~][] values, solvation energies, and other
     parameters.
+
+[pK~a~]: https://en.wikipedia.org/wiki/Acid_dissociation_constant
 
 >   Shortly explain what you did to get the executables.
 
@@ -994,16 +1012,37 @@ Download and compile source code.
 titrating molecule."[^MEADME]  For single-conformer
 calculations, it assumes a rigid molecule.
 
-[^MEADME]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
-
 >   *   What information is contained in the different input files?
 
-**TODO.**
+Multiflex "takes `MolName.pqr`, `MolName.ogm`, `MolName.mgm`, `MolName.sites` and
+`MolName.st` files as inputs".[^MEADME]
+
+*   `MolName.pqr`
+    *   Similar to PDB files, but replaces the occupancy and B-factor columns with atomic
+        charge and radii, respectively.
+    *   Unlike in real PDB files, tokens have to be separated by whitespace.
+    *   Everything but `ATOM` and `HETATM` lines are ignored, and there is no distinction
+        between the two.
+    *   Lines are tokenized like this:
+
+            ignored ignored atname resname resnum x y z charge radius chainid
+
+*   `MolName.ogm` and `MolName.mgm`
+
+    **TODO.**
+
+*   `MolName.sites`
+
+    Specifies binding sites (residue numbers) that can be titrated.
+
+        resnum  site_type chainid
+
+*   `MolName.st`
+
+    Specifies additional parameters for each `site_type` that appears in `MolName.sites`.
 
 >   *   What is the histidine tautomerism problem mentioned in the myoglobin
->       README[^myoglobin-README] file?
-
-[^myoglobin-README]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
+>       `README`[^myoglobin-README] file?
 
 Various tautomers are represented with a single structure and pretend that each histidine
 has two binding sites.  In reality, each tautomer has one binding site.
@@ -1014,9 +1053,57 @@ state than can actually occur in reality.
 >   Shortly list the different steps required to characterise the titration behaviour of
 >   myoglobin.
 
->   List those titratable sites of myoglobin with pK½-values in the physiological range
->   (pH5 to 9).
->
+The titration of myoglobin performed by the `master.sh` script can be divided into 5
+steps.
+
+1.  Run `multiflex`:
+
+        ./run_mol_multimead.sh COx-AmberBondi
+
+    For each tautomer, calculates the intrinsic pK~a~ values of the titratable binding
+    sites specified in the `COx-AmberBondi.sites.del*` files and writes them to
+    correspondingly named `*.pkint` files (e.g. `COx-AmberBondi-del.pkint` and
+    `COx-AmberBondi-del1.pkint`).  Debugging output is written to `*.el.out` files.  `.*g`
+    files contain site-site interactions.
+
+2.      ./make-global.pl COx-AmberBondi
+
+    Merges the `COx-AmberBondi-del*.pkint` and `COx-AmberBondi-*.g` files of the various
+    tautomers, solving the tautomerism problem.
+
+    Writes `COx-AmberBondi.global.pkint` and `COx-AmberBondi.global.g`, which `mcti` can
+    read.
+
+3.      ./runmcti.sh COx-AmberBondi
+
+    Runs `mcti`, creating `mcti.log.global` and `mcti.out.global`.
+
+4.      ./collect-curves.pl mcti.out.global > curves.out
+
+    Creates `curves.out` from the output of `mcti`, which contains data for creating
+    various plots:
+
+    *   titration curves
+    *   pkhalf and Hill plot information
+    *   tautomerism curves
+
+5.      grep 'pK(1/2)' curves.out > pkhalf.out
+
+    *   Extracts the $\text{pK}_\frac12$ values from `curves.out`.
+
+>   List those titratable sites of myoglobin with pK~½~ values in the physiological range
+>   (pH 5 to 9).
+
+    $ grep '[5-8]\.' pkhalf.out
+    pK(1/2) for ASP-141      =    5.272
+    pK(1/2) for NTval-1      =    6.289
+    pK(1/2) for CTgly-153    =    7.156
+    pK(1/2) for HIS-12       =    5.489
+    pK(1/2) for HIS-36       =    6.375
+    pK(1/2) for HIS-81       =    7.027
+    pK(1/2) for HIS-97       =    6.984
+    pK(1/2) for HIS-116      =    6.351
+
 >   *   Display their titration curves using `xmgrace`.
 >
 >   *   When you look at curves.out you will realise that collect_curves.pl does not
@@ -1030,6 +1117,9 @@ state than can actually occur in reality.
 >
 >   *   Can you give a structural reason for their behaviour? Don't bother about the
 >       rather colourful representation of the pqr-file in rasmol.
+
+[^MEADME]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
+[^myoglobin-README]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
 
 [^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
 
