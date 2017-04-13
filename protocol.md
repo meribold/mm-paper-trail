@@ -1,5 +1,8 @@
 % [Molecular Modelling][] [Practicum][]
-% Lukas Waymann; Andreas Benndorf; Maximilian David; Johannes Kohnert
+% Lukas Waymann
+  Andreas Benndorf
+  Maximilian David
+  Johannes Kohnert
 
 [Molecular Modelling]: http://www.bisb.uni-bayreuth.de/Lecture/
 [Practicum]: http://www.bisb.uni-bayreuth.de/Lecture/practical/practical.html
