@@ -1186,14 +1186,15 @@ hydrogen cores.
 >   Comment on the exceptions from the list of standard titratable residues in cytochrome
 >   c.
 
-One histidine can not be titrated because of the iron of the haem group.
+One histidine can not be titrated because of the iron of the haem group:
 
 >   Shortly list what changes you made to the different scripts as copied from the
 >   myoglobin example, and why you made them.
 
 <!-- pandoc -v | grep diff -->
 
-There are fewer Histidines.
+There are only two Histidines, so there are four combinations of tautomers (`del`, `eps`,
+`del1` and `del2`).
 
 ```bash
 $ diff --suppress-common-lines {myoglobin,max-cytc}/run_mol_multimead.sh
@@ -1204,6 +1205,8 @@ $ diff --suppress-common-lines {myoglobin,max-cytc}/run_mol_multimead.sh
 ---
 >   for taut in del eps del1 del2
 ```
+
+There are 40 non-histidine titration sites (`$nw`) and 2 histidines (`$nhis`):
 
 ```bash
 $ diff --suppress-common-lines {myoglobin,max-cytc}/make-globals.pl 
@@ -1222,6 +1225,9 @@ $ diff --suppress-common-lines {myoglobin,max-cytc}/make-globals.pl
 ---
 > $nhis = 2;
 ```
+
+These are just the changes [specified in the
+script](http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/cytc/cytc.html):
 
 ```bash
 $ diff --suppress-common-lines {myoglobin,max-cytc}/runmcti.sh
