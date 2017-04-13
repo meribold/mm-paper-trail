@@ -82,7 +82,15 @@ There are five components:
     *   Successively move a discrete amount along the local downhill gradient (the
         steepest descent).
 *   Newton
-    *   **TODO.**
+    *   Start with an initial guess.
+        *   Approximate the function by its tangent.
+        *   Calculate the intercept of the tangent line and use it as the new
+            approximation (the coordinates such that the energy is 0).
+        *   Iterate.
+<!--
+TODO: my explanation doesn't really match this:
+<http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-mini-nma.pdf#page=12>
+-->
 
 >   Explain how the energy function can be used to obtain the dynamics of a protein
 >   (Molecular Dynamic Simulation).
@@ -456,7 +464,7 @@ $ charmm < int-energy.inp
 
 The one with `resid` 62.
 
-*   $-31.30 \frac{kcal}{mole}$.
+*   $-31.30 \frac{\text{kcal}}{\text{mole}}$.
 
 ## Heating^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node19.html>]
 
@@ -500,14 +508,19 @@ Plus.
 
 >   Calculate the RMSD between the hot and the cold protein.
 
+<!--
+This fixes the table header from appearing twice in the PDF output for some reason
+-->
+\   
+
+Table: RMSDs
+
 | Temperature | RMSD   |
 |-------------+--------|
 | 250K        | 1.5662 |
 | 273K        | 1.5662 |
 | 300K        | 1.3909 |
 | 400K        | 1.3019 |
-
-Table: RMSDs
 
 >   Compare the hot with the cold protein structure.
 
@@ -687,11 +700,11 @@ $ awk '{print $1"    "$4}' correl.dat > time-cssc.dat
 >   What is the average value and standard deviation of the S-S distance, the C-S-S angle,
 >   and the C-S-S-C dihedral angle? How may these values be interpreted ?
 
-|                  | Average           | SD           |
-|------------------+-------------------+--------------|
-| S-S distance     | 2.03466044  Å     | 0.0365230212 |
-| C-S-S angle      | 104.76354781 deg  | 3.6009645854 |
-| C-S-S-C dihedral | 104.729799352 deg | 7.8910220214 |
+|                  | Average    | SD       |
+|------------------+------------+----------|
+| S-S distance     | 2.0347 Å   | 0.036523 |
+| C-S-S angle      | 104.76 deg | 3.6010   |
+| C-S-S-C dihedral | 104.73 deg | 7.8910   |
 
 Table: Averages and SDs of disulfide bridge properties
 
@@ -1180,9 +1193,10 @@ One histidine can not be titrated because of the iron of the haem group.
 
 <!-- pandoc -v | grep diff -->
 
+There are fewer Histidines.
+
 ```bash
-$ diff --suppress-common-lines myoglobin/run_mol_multimead.sh \
-  max-cytc/run_mol_multimead.sh 
+$ diff --suppress-common-lines {myoglobin,max-cytc}/run_mol_multimead.sh
 ```
 ```diff
 6c6
@@ -1191,12 +1205,60 @@ $ diff --suppress-common-lines myoglobin/run_mol_multimead.sh \
 >   for taut in del eps del1 del2
 ```
 
+```bash
+$ diff --suppress-common-lines {myoglobin,max-cytc}/make-globals.pl 
+```
+```diff
+27c27
+<   $nw = 50;
+---
+>   $nw = 40;
+30c30
+<   $nw = 51;
+---
+>   $nw = 40;
+32c32
+< $nhis = 11;
+---
+> $nhis = 2;
+```
+
+```bash
+$ diff --suppress-common-lines {myoglobin,max-cytc}/runmcti.sh
+```
+```diff
+8c8
+< 1000      ! number of full MC steps
+---
+> 20000     ! number of full MC steps
+10,11c10,11
+< -4.0      ! starting pH
+< 15.0      ! final pH
+---
+> 0.0       ! starting pH
+> 14.0      ! final pH
+16c16
+< 1     ! 0=full, 1=reduced m.c.
+---
+> 0     ! 0=full, 1=reduced m.c.>
+```
+
+```bash
+$ diff -s {myoglobin,max-cytc}/collect-curves.pl
+```
+```
+Files myoglobin/collect-curves.pl and max-cytc/collect-curves.pl are identical
+```
+
+>   As for myoglobin, plot the titration curves of sites with pK~$\frac12$~ between pH 5
+>   and 9.  In addition, plot the titration curves of the haem propionates.
+
 ![Titration curves](cytc/titration_curves_cytc_with_prop.png)\ 
 
 [^MEADME]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
 [^myoglobin-README]: [mead/mead-2.2.8a/README](mead/mead-2.2.8a/README)
 
-[^node9]: http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html
+[^node9]: <http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html>
 
 [1BPI]: http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI
 
