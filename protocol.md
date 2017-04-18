@@ -703,13 +703,13 @@ $ awk '{print $1"    "$4}' correl.dat > time-cssc.dat
 >   What is the average value and standard deviation of the S-S distance, the C-S-S angle,
 >   and the C-S-S-C dihedral angle? How may these values be interpreted ?
 
+Table: Averages and SDs of disulfide bridge properties
+
 |                  | Average    | SD       |
 |------------------+------------+----------|
 | S-S distance     | 2.0347 Å   | 0.036523 |
 | C-S-S angle      | 104.76 deg | 3.6010   |
 | C-S-S-C dihedral | 104.73 deg | 7.8910   |
-
-Table: Averages and SDs of disulfide bridge properties
 
 >   Why is the standard derivation `S-S` < `C-S-S` < `C-S-S-C`?
 
@@ -1013,7 +1013,29 @@ $ awk '{print $1,$4}' correl.dat > time-cssc.dat
 >   Compare the here calculated RMSD values and the time series of side chain atoms with
 >   the ones from the vacuum simulation. 
 
-**TODO.**
+**RMSD values.**
+
+Compared to the simulation in vacuum:
+
+*   The RMSD values of the protein in water are higher on average and somewhat increase
+    with simulation time.
+*   The RMSDs of the backbone are still smaller than those of the whole protein and those
+    of the side chains bigger, and the differences between the three curves increased.
+
+**Time series.**
+
+Table: Averages and SDs of disulfide bridge properties
+
+|                  | Average    | SD       | Av. with water | SD w. water |
+|------------------+------------+----------+----------------+-------------|
+| S-S distance     | 2.0347 Å   | 0.036523 | 2.0266 Å       | 0.045279    |
+| C-S-S angle      | 104.76 deg | 3.6010   | 103.48 deg     | 3.7379      |
+| C-S-S-C dihedral | 104.73 deg | 7.8910   | 93.79 deg      | 9.6838      |
+
+*   The S-S distances and C-S-S angles in vacuum and water are almost identical.  The
+    C-S-S-C torsion angle is smaller in water.
+*   All the SDs are slightly higher in the simulation with water compared to the one in
+    vacuum.
 
 # MEAD^[<http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/index.html>]
 
