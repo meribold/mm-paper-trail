@@ -990,6 +990,11 @@ For reference, the RMSD values at 300K without water again:
 Found out our water box was too small and redid everything up to this point with one of
 size 40x40x46 Å^3^.
 
+```bash
+$ cd ana2
+$ cp ~student8/Documents/CharmmCourse/dyna/WaterBox/combined/combined_production.* .
+```
+
 >   Analyze the time series of the disulfide bridge Cys-14 and Cys-38 as before. 
 
 **TODO.**

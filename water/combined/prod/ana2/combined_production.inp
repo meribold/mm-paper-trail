@@ -1,0 +1,85 @@
+* Minimizes BPTI inside the water box.
+
+BOMBlev 0
+
+open read unit 10 card name ../../top_all27_prot_na.inp
+! open read unit 10 card name ../../top_all27_prot_lipid.rtf
+! open read unit 10 card name /home/foerster/top.inp
+read rtf unit 10 card
+close unit 10
+
+open read unit 02 card name ../../par_all27_prot_na.inp
+! open read unit 02 card name ../../par_all27_prot_lipid.prm
+! open read unit 02 card name /home/foerster/par.inp
+read para unit 02 card
+close unit 02
+
+open read unit 11 card name combined_equi_2.psf
+read psf card unit 11
+close unit 11
+
+! open read unit 12 card name combined_equi_2.pdb
+! read coor pdb unit 12
+! close unit 12
+
+open read unit 12 card name combined_equi_2.crd
+read coor card unit 12
+close unit 12
+
+!print coor
+
+! If necessary, generate missing coordinates.
+! ic fill pres
+! ic parameters
+! ic build
+
+! If necessary, generate hydrogens.
+! coord init sele type h* end
+! hbuild
+
+! Define a crystal.
+crystal defi ortho 40.0 40.0 46.0 90. 90. 90.
+crystal build cutoff 15.0
+image byres xcen 0.0 ycen 0.0 zcen 0.0 sele all end
+update inbfrq -1 imgfrq 40 ihbfrq 40 cutim 15.0
+
+! Minimize.
+!mini sd   nstep 500 nprint 10
+!mini abnr nstep 1000 nprint 10 
+
+
+
+!! Charmm offers the possibility to write a restart file in case you 
+!! want to continue the simulation.
+ open write unit 1 card name combined_production.rst
+
+!! In case you continue a previous simulation.    
+ open read unit 2 card name combined_equi_2.rst
+
+
+open write unit 3 name combined_production.dcd
+
+dyna verlet start nstep 50000 tstep 0.001 eche 50.0 -
+    iprfrq 1000 ihtfrq 0 teminc 0.0  -
+    nprint 100 iunwri 1 iunrea 2 iuncrd 3 nsavc 100 -
+    firstt 300.0 finalt 300.0 -
+    iasors 0 iasvel 1 iscvel 1 ichecw 0 
+
+
+
+! Save coordinates.
+open write unit 1 card name combined_production.psf
+write psf card unit 1
+close unit 1
+
+open write unit 1 card name combined_production.pdb
+write coor pdb unit 1
+close unit 1
+
+open write unit 1 card name combined_production.crd
+write coor card unit 1
+close unit 1
+
+stop
+
+! vim: ft=charmm cms=!%s
