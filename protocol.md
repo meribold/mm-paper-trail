@@ -688,7 +688,7 @@ The side chains are more flexible.  See the GIF at 400K.
 ```bash
 $ git show -q | head -1
 commit 54b354a04fa01d1e35b362d96e4a04cb8d15d4c4
-$ charmm < correl.charmm.inp  > correl.charmm.out
+$ charmm < correl.charmm.inp > correl.charmm.out
 $ awk '{print $1"    "$2}' correl.dat > time-ss.dat
 $ awk '{print $1"    "$3}' correl.dat > time-css.dat
 $ awk '{print $1"    "$4}' correl.dat > time-cssc.dat
@@ -997,7 +997,18 @@ $ cp ~student8/Documents/CharmmCourse/dyna/WaterBox/combined/combined_production
 
 >   Analyze the time series of the disulfide bridge Cys-14 and Cys-38 as before. 
 
-**TODO.**
+```bash
+$ charmm32 < correl.charmm.inp > correl.charmm.out
+$ awk '{print $1,$2}' correl.dat > time-ss.dat
+$ awk '{print $1,$3}' correl.dat > time-css.dat
+$ awk '{print $1,$4}' correl.dat > time-cssc.dat
+```
+
+![S-S distance](water/combined/prod/ana2/time-ss-plot.png)\ 
+
+![C-S-S angle](water/combined/prod/ana2/time-css-plot.png)\ 
+
+![C-S-S-C dihedral](water/combined/prod/ana2/time-cssc-plot.png)\ 
 
 >   Compare the here calculated RMSD values and the time series of side chain atoms with
 >   the ones from the vacuum simulation. 

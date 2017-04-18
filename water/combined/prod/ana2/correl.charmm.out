@@ -1,0 +1,405 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+                   (CHARMM) - Developmental Version 32b1     August 15, 2005   
+       Copyright(c) 1984-2001  President and Fellows of Harvard College
+                              All Rights Reserved
+      Current operating system: Linux-4.4.0-72-generic(x86_64)@krusty.fronte
+                 Created on  4/18/17 at  9:48:56 by user: student10   
+
+            Maximum number of ATOMS:    360720, and RESidues:       90180
+            Current HEAP size:       240000000, and STACK size:  10000000
+
+ RDTITL> * THIS CHARMM COMMAND FILE USES A PRECALCULATED MOLECULAR DYNAMICS
+ RDTITL> * TRAJECTORY FILE AND ANALYIZES IT WITH THE CHARMM CORRELATION
+ RDTITL> * (CORREL) COMMANDS.
+ RDTITL> * ...
+ RDTITL> *
+  
+ CHARMM>    bomlev -1
+  
+ CHARMM>    open read unit 1 card name ../../../../top_all27_prot_na.inp
+ VOPEN> Attempting to open::../../../../top_all27_prot_na.inp::
+ OPNLGU> Unit  1 opened for READONLY access to ../../../../top_all27_prot_na.inp
+  
+ CHARMM>    read rtf card unit 1
+ MAINIO> Residue topology file being read from unit   1.
+ TITLE> *>>>>>> COMBINED CHARMM ALL-HYDROGEN TOPOLOGY FILE FOR <<<<<<<<<
+ TITLE> *>>>>>>> CHARMM22 PROTEINS AND CHARMM27 NUCLEIC ACIDS <<<<<<<<<<
+ TITLE> *FROM
+ TITLE> *>>>> CHARMM22 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>> AUGUST 1999 <<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> *>>>>>>> DIRECT COMMENTS TO ALEXANDER D. MACKERELL JR. <<<<<<<<<
+ TITLE> *>>>>>> 410-706-7442 OR EMAIL: ALEX,MMIRIS.AB.UMD.EDU  <<<<<<<<<
+ TITLE> *AND
+ TITLE> *  \\\\ CHARMM27 ALL-HYDROGEN NUCLEIC ACID TOPOLOGY FILE ////
+ TITLE> *  \\\\\\\\\\\\\\\\\\ DEVELOPMENTAL ////////////////////////
+ TITLE> *        ALEXANDER D. MACKERELL JR. AND NICOLAS FOLOPPE
+ TITLE> *                        AUGUST 1999
+ TITLE> *     ALL COMMENTS TO ADM JR.  EMAIL: ALEX,MMIRIS.AB.UMD.EDU
+ TITLE> *                 TELEPHONE: 410-706-7442
+ TITLE> * .
+ TITLE> * CHANGES: GMU JULY 2002
+ TITLE> *          ILE CD --> ILE CD1 AND ALSO ASSOCIATED HYDROGENS (PDB CONVENTION)
+ TITLE> *          CTER OT1, OT2 --> OXT, O (PDB CONVENTION)
+ TITLE> *          NTER HT* --> H* (PDB CONVENTION)
+ TITLE> *          HSP --> HIS
+ TITLE> *          NADP ---> NAP (PDB CONVENTION)
+ TITLE> *          COPY TIP --> HOH (PDB CONVENTION)
+ TITLE> *          MOVE CAL --> CA
+ TITLE> *          ADDED TYPES NO, ON FOR NO2*          BACKBONE HN --> H (PDB CONVENTION)
+ TITLE> *
+ **** WARNING from RTFRDR **** The total charge of the residue, CYSR,  -0.0700000,
+ does not equal the expected charge,   0.0000000.
+*** WARNING **** residue HSD  already exists (old one deleted)
+          RESI HSD          0.00
+*** WARNING **** residue DUM  already exists (old one deleted)
+          RESI DUM       0.00
+ There were   3 warning(s) from RTFRDR.
+  
+ CHARMM>    close unit 1
+ VCLOSE: Closing unit    1 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    open read unit 20 card name ../../../../par_all27_prot_na.inp
+ VOPEN> Attempting to open::../../../../par_all27_prot_na.inp::
+ OPNLGU> Unit 20 opened for READONLY access to ../../../../par_all27_prot_na.inp
+  
+ CHARMM>    read param card unit 20
+
+          PARAMETER FILE BEING READ FROM UNIT 20
+ TITLE> *>>>>>> COMBINED CHARMM ALL-HYDROGEN PARAMETER FILE FOR <<<<<<<<<
+ TITLE> *>>>>>>> CHARMM22 PROTEINS AND CHARMM27 NUCLEIC ACIDS <<<<<<<<<<
+ TITLE> *FROM
+ TITLE> *>>>> CHARMM22 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>> AUGUST 1999 <<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> *>>>>>>> DIRECT COMMENTS TO ALEXANDER D. MACKERELL JR. <<<<<<<<<
+ TITLE> *>>>>>> 410-706-7442 OR EMAIL: ALEX,MMIRIS.AB.UMD.EDU  <<<<<<<<<
+ TITLE> *AND
+ TITLE> *  \\\\ CHARMM27 ALL-HYDROGEN NUCLEIC ACID PARAMETER FILE ////
+ TITLE> *  \\\\\\\\\\\\\\\\\\ DEVELOPMENTAL ////////////////////////
+ TITLE> *       ALEXANDER D. MACKERELL JR. AND NICOLAS FOLOPPE
+ TITLE> *                       AUGUST 1999
+ TITLE> *    ALL COMMENTS TO ADM JR.  EMAIL: ALEX,MMIRIS.AB.UMD.EDU
+ TITLE> *            TELEPHONE: 410-706-7442
+ TITLE> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    close unit 20
+ VCLOSE: Closing unit   20 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    open read card unit 21 name combined_production.psf
+ VOPEN> Attempting to open::combined_production.psf::
+ OPNLGU> Unit 21 opened for READONLY access to combined_production.psf
+  
+ CHARMM>    read psf card unit 21
+ MAINIO> Protein structure file being read from unit  21.
+ TITLE>  * MINIMIZES BPTI INSIDE THE WATER BOX.
+ TITLE>  *  DATE:     4/13/17     14:10: 6      CREATED BY USER: student8
+ TITLE>  *
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        3   Number of residues   =     1991
+         Number of atoms         =     6691   Number of groups     =     2206
+         Number of bonds         =     6705   Number of angles     =     3560
+         Number of dihedrals     =     2391   Number of impropers  =      142
+         Number of cross-terms   =        0
+         Number of HB acceptors  =     2012   Number of HB donors  =      114
+         Number of NB exclusions =        0   Total charge =    6.00000
+  
+ CHARMM>    close unit 21
+ VCLOSE: Closing unit   21 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    open read unit 3 card name combined_production.pdb
+ VOPEN> Attempting to open::combined_production.pdb::
+ OPNLGU> Unit  3 opened for READONLY access to combined_production.pdb
+  
+ CHARMM>    read coor pdb unit 3
+          SPATIAL COORDINATES BEING READ FROM UNIT  3
+ TITLE>   MINIMIZES BPTI INSIDE THE WATER BOX.
+ TITLE>    DATE:     4/13/17     14:10: 6      CREATED BY USER: STUDENT8
+ TITLE>  *
+
+ ** WARNING ** For atom in coordinate file, the residue type does not match that (RESN) in the PSF:    1 PSF= ARG  INPUT= TIP3
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  905 IRES=    1 RESID=1    RES=TIP3 ATOM=OH2 
+
+ ** WARNING ** For atom in coordinate file, the residue type does not match that (RESN) in the PSF:    1 PSF= ARG  INPUT= TIP3
+
+ ** WARNING ** For atom in coordinate file, the residue type does not match that (RESN) in the PSF:    1 PSF= ARG  INPUT= TIP3
+
+ ** WARNING ** For atom in coordinate file, the residue type does not match that (RESN) in the PSF:    2 PSF= PRO  INPUT= TIP3
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  908 IRES=    2 RESID=2    RES=TIP3 ATOM=OH2 
+
+ ** WARNING ** For atom in coordinate file, the residue type does not match that (RESN) in the PSF:    2 PSF= PRO  INPUT= TIP3
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  909 IRES=    2 RESID=2    RES=TIP3 ATOM=H1  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  910 IRES=    2 RESID=2    RES=TIP3 ATOM=H2  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  911 IRES=    3 RESID=3    RES=TIP3 ATOM=OH2 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  912 IRES=    3 RESID=3    RES=TIP3 ATOM=H1  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  913 IRES=    3 RESID=3    RES=TIP3 ATOM=H2  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  914 IRES=    4 RESID=4    RES=TIP3 ATOM=OH2 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  915 IRES=    4 RESID=4    RES=TIP3 ATOM=H1  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  916 IRES=    4 RESID=4    RES=TIP3 ATOM=H2  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  917 IRES=    5 RESID=5    RES=TIP3 ATOM=OH2 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  918 IRES=    5 RESID=5    RES=TIP3 ATOM=H1  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  919 IRES=    5 RESID=5    RES=TIP3 ATOM=H2  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  920 IRES=    6 RESID=6    RES=TIP3 ATOM=OH2 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  921 IRES=    6 RESID=6    RES=TIP3 ATOM=H1  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  922 IRES=    6 RESID=6    RES=TIP3 ATOM=H2  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  923 IRES=    7 RESID=7    RES=TIP3 ATOM=OH2 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  924 IRES=    7 RESID=7    RES=TIP3 ATOM=H1  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=  925 IRES=    7 RESID=7    RES=TIP3 ATOM=H2  
+
+ ** WARNING ** For atom in coordinate file, could not find residue in PSF, and is thus ignored:
+
+  SEGID=TIP3 RESID=1992 RESNAME= TIP3 TYPE= OH2 
+ *** LEVEL  1 WARNING *** BOMLEV IS   -1
+
+ ** WARNING ** For atom in coordinate file, could not find residue in PSF, and is thus ignored:
+
+  SEGID=TIP3 RESID=1992 RESNAME= TIP3 TYPE= H1  
+ *** LEVEL  1 WARNING *** BOMLEV IS   -1
+
+ ** WARNING ** For atom in coordinate file, could not find residue in PSF, and is thus ignored:
+
+  SEGID=TIP3 RESID=1992 RESNAME= TIP3 TYPE= H2  
+ *** LEVEL  1 WARNING *** BOMLEV IS   -1
+
+ ** WARNING ** For atom in coordinate file, could not find residue in PSF, and is thus ignored:
+
+  SEGID=TIP3 RESID=1993 RESNAME= TIP3 TYPE= OH2 
+ *** LEVEL  1 WARNING *** BOMLEV IS   -1
+ ** WARNING ** After reading, there are no coordinates for selected atom:   920    68 TIP3 OH2 
+ ** WARNING ** After reading, there are no coordinates for selected atom:   921    68 TIP3 H1  
+ ** WARNING ** After reading, there are no coordinates for selected atom:   922    68 TIP3 H2  
+ ** WARNING ** After reading, there are no coordinates for selected atom:   962    82 TIP3 OH2 
+ ** WARNING ** After reading, there are no coordinates for selected atom:   963    82 TIP3 H1  
+ ** WARNING ** After reading, there are no coordinates for selected atom:   964    82 TIP3 H2  
+ ** WARNING ** After reading, there are no coordinates for selected atom:   983    89 TIP3 OH2 
+ ** WARNING ** After reading, there are no coordinates for selected atom:   984    89 TIP3 H1  
+ ** WARNING ** After reading, there are no coordinates for selected atom:   985    89 TIP3 H2  
+ ** WARNING ** After reading, there are no coordinates for selected atom:   989    91 TIP3 OH2 
+
+ ** A total of  1131 selected atoms have no coordinates
+
+ ** A total of  151 warnings were encountered during coordinate reading **
+
+ ** WARNING ** Coordinates were overwritten for    11 atoms.
+
+ ** MESSAGE **   969 atoms in coordinate file were outside the specified sequence range.
+ *** LEVEL  2 WARNING *** BOMLEV IS   -1
+
+ ** WARNING **   153 atoms in coordinates file had a sequence mismatch.
+ *** LEVEL  0 WARNING *** BOMLEV IS   -1
+  
+ CHARMM>     
+  
+ CHARMM>    ! Choose the same coordinates as for prot-rms.charmm.inp
+ CHARMM>    !open read card unit 3 name .crd
+ CHARMM>    !read coor card unit 3
+ CHARMM>     
+  
+ CHARMM>    ! read in the trajectory file
+ CHARMM>    open read unit 1 file name combined_production.dcd
+ VOPEN> Attempting to open::combined_production.dcd::
+ OPNLGU> Unit  1 opened for READONLY access to combined_production.dcd
+  
+ CHARMM>    trajectory iread 1 nread 1 skip 100
+ TRAJ: INITIATING READ OF A TRAJECTORY, OPTIONS;
+    FIRSTU =   1 NUNIT =   1 SKIP =   100
+  
+ CHARMM>     
+  
+ CHARMM>    ! Enter the correlation facility; specify a maximum of
+ CHARMM>    ! 500 dynamics coordinate files and a maximum of 4
+ CHARMM>    ! time series (1 for the dihedral + 1 for distance + 1 for angle)
+ CHARMM>    ! The following correl will allocate memory for the time series.
+ CHARMM>     
+  
+ CHARMM>    CORREL MAXTIM 500 MAXSERIES 10 MAXATOMS 30
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  SHIFt    VATOm    VSWItch 
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found   8331 exclusions and   2347 interactions(1-4)
+ <MAKGRP> found    818 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR  1922670 ATOM PAIRS AND        0 GROUP PAIRS
+ NBONDA>>  Maximum group spatial extent (12A) exceeded.
+   Size is       13.63 Angstroms and starts with atom:       1
+   Please check group boundary definitions.
+ == PRIMARY == SPACE FOR  2884025 ATOM PAIRS AND        0 GROUP PAIRS
+ NBONDA>>  Maximum group spatial extent (12A) exceeded.
+   Size is       13.63 Angstroms and starts with atom:       1
+   Please check group boundary definitions.
+
+ General atom nonbond list generation found:
+  2305167 ATOM PAIRS WERE FOUND FOR ATOM LIST
+    91574 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+  
+ CORREL>     
+  
+ CORREL>    ! Time series for the correlation in the disulfide bridge between
+ CORREL>    ! CYS 14 - CYS 38 of S-S distance, C-S-S angle,
+ CORREL>    ! C-S-S-C dihedral angle
+ CORREL>     
+  
+ CORREL>     
+  
+ CORREL>    ENTER SSDI DIST PRTA 14 SG PRTA 38 SG GEOMETRY
+  
+ CORREL>    ENTER CSSA ANGL PRTA 14 CB PRTA 14 SG PRTA 38 SG GEOMETRY
+  
+ CORREL>    ENTER CSSC DIHE PRTA 14 CB PRTA 14 SG PRTA 38 SG PRTA 38 CB GEOMETRY
+  
+ CORREL>     
+  
+ CORREL>    ! Fill the time series with data from the dynamics
+ CORREL>    ! trajectory
+ CORREL>     
+  
+ CORREL>    TRAJECTORY FIRSTU 1 NUNIT 1 skip 100
+ The following time series will be filled:
+                    SSDI
+                    CSSA
+                    CSSC
+
+
+
+ READING TRAJECTORY FROM UNIT   1
+   NUMBER OF COORDINATE SETS IN FILE:     500
+   NUMBER OF PREVIOUS DYNAMICS STEPS:     100
+   FREQUENCY FOR SAVING COORDINATES:      100
+   NUMBER OF STEPS FOR CREATION RUN:    50000
+
+ TITLE>  * MINIMIZES BPTI INSIDE THE WATER BOX.
+ TITLE>  *  DATE:     4/13/17     12:48:28      CREATED BY USER: student8
+ TITLE>  *
+ *****  WARNING  ***** BEGIN=       0 Was not specified. It has been set to:     100
+
+  500 CORD RECORDS READ FROM   1 UNITS STARTING WITH UNIT   1
+ RUNNING FROM STEP     100 TO    50000 SKIPPING  100 STEPS BETWEEN RECORDS
+ Time step was  2.0454830E-02 AKMA time units.
+    1 Series "SSDI"  Average =       2.026623  rms Fluctuation =       0.045234
+    2 Series "CSSA"  Average =     103.477619  rms Fluctuation =       3.734151
+    3 Series "CSSC"  Average =      93.793661  rms Fluctuation =       9.674149
+  
+ CORREL>     
+  
+ CORREL>    ! Report on statistics
+ CORREL>     
+  
+ CORREL>    SHOW ALL
+ NSER:   3
+ NAMES:      SSDI        CSSA        CSSC
+ TOTALS:          500         500         500
+ AVERAGE:    2.026623  103.477619   93.793661
+ FLUCT:      0.045234    3.734151    9.674149
+ VECCOD:            1           1           1
+ CLASS:      DIST        ANGL        DIHE
+ VELCOD:            0           0           0
+ SKIP:            100         100         100
+ DELTA:      0.001000    0.001000    0.001000
+ OFFST:      0.100000    0.100000    0.100000
+ GECOD:             1           1           1
+ VALUE:      0.000000    0.000000    1.000000
+ Atom pointers for all time series:
+ SERPT:     1     4     8
+ SERNQ:     1     1     1
+ QAT  :   208   592     1   205   208   592     1   205   208   592
+          589     1
+  
+ CORREL>     
+  
+ CORREL>     
+  
+ CORREL>    ! The following command will write the correlation data of
+ CORREL>    ! time series to an external file "correl.dat"
+ CORREL>     
+  
+ CORREL>     
+  
+ CORREL>    OPEN WRITE UNIT 22 CARD NAME correl.dat
+ VOPEN> Attempting to open::correl.dat::
+ OPNLGU> Unit 22 opened for WRITE access to correl.dat
+  
+ CORREL>     
+  
+ CORREL>    WRITE ALL UNIT 22 DUMB TIME
+ RDTITL> *
+ RDTITL> No title read.
+ VCLOSE: Closing unit   22 with status "KEEP"
+  
+ CORREL>     
+  
+ CORREL>    END
+  
+ CHARMM>     
+  
+ CHARMM>    STOP
+ VCLOSE: Closing unit    1 with status "KEEP"
+ VCLOSE: Closing unit    3 with status "KEEP"
+$$$$$$  New timer profile $$$$$
+ Total time              0.41173 Other:    0.00000
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    MAXIMUM STACK SPACE USED IS  120794
+                    STACK CURRENTLY IN USE IS         0
+                    MOST SEVERE WARNING WAS AT LEVEL  0
+                    HEAP PRINTOUT-  HEAP SIZE 240000000
+                    SPACE CURRENTLY IN USE IS     53530
+                    MAXIMUM SPACE USED IS       3114234
+                    FREE LIST
+            PRINHP> ADDRESS:         1 LENGTH: 239945930 NEXT: 239999461
+            PRINHP> ADDRESS: 239999461 LENGTH:       540 NEXT:         0
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     0.41  SECONDS 
+                         CPU TIME:     0.00  SECONDS 
