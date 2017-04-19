@@ -673,8 +673,6 @@ $ cp /home/student10/practicum/andi/CharmmCourse/dyna/RMSD_400K.png .
 
 *   At 400K, the RMSDs are bigger.
 
-![foo](http://www.reactiongifs.com/wp-content/uploads/2013/10/tim-and-eric-mind-blown.gif)\ 
-
 >   Which parts of the protein are more flexible? Use the vmd movie mode.
 
 The side chains are more flexible.  See the GIF at 400K.
