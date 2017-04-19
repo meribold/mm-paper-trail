@@ -1,0 +1,1253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Lukas Waymann" />
+  <meta name="author" content="Andreas Benndorf" />
+  <meta name="author" content="Maximilian David" />
+  <meta name="author" content="Johannes Kohnert" />
+  <title>Molecular Modelling Practicum</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title"><a href="http://www.bisb.uni-bayreuth.de/Lecture/">Molecular Modelling</a> <a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/practical.html">Practicum</a></h1>
+<h1 class="subtitle">Protocol</h1>
+<h2 class="author">Lukas Waymann</h2>
+<h2 class="author">Andreas Benndorf</h2>
+<h2 class="author">Maximilian David</h2>
+<h2 class="author">Johannes Kohnert</h2>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#charmm">CHARMM</a><ul>
+<li><a href="#theoretical-background---molecular-dynamics-simulations">Theoretical Background - Molecular Dynamics simulations</a><ul>
+<li><a href="#time-evolution">Time evolution</a><ul>
+<li><a href="#the-verlet-algorithmnode9">The Verlet algorithm</a></li>
+</ul></li>
+<li><a href="#running-charmm"><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node13.html">Running CHARMM</a></a></li>
+</ul></li>
+<li><a href="#initialization">Initialization</a><ul>
+<li><a href="#structure-preparation">Structure preparation</a></li>
+<li><a href="#minimization">Minimization</a></li>
+<li><a href="#changing-the-topology-of-a-protein">Changing the topology of a protein</a></li>
+<li><a href="#interaction-energies">Interaction Energies</a></li>
+</ul></li>
+<li><a href="#heating">Heating</a></li>
+<li><a href="#equilibration">Equilibration</a><ul>
+<li><a href="#equilibration-with-rescaling-velocities">Equilibration with rescaling velocities</a></li>
+<li><a href="#equilibration-without-rescaling-velocities">Equilibration without rescaling velocities</a></li>
+</ul></li>
+<li><a href="#production">Production</a><ul>
+<li><a href="#analysis-of-trajectories">Analysis of Trajectories</a></li>
+</ul></li>
+<li><a href="#theoretical-background---solvation">Theoretical Background - Solvation</a></li>
+<li><a href="#parallel-computing">Parallel Computing</a></li>
+<li><a href="#initialization-1">Initialization</a><ul>
+<li><a href="#preparation-of-the-water-box">Preparation of the water box</a><ul>
+<li><a href="#generation-of-the-water-box">Generation of the water box</a></li>
+<li><a href="#periodic-boundary-conditions">Periodic boundary conditions</a></li>
+<li><a href="#equilibration-of-the-water-box">Equilibration of the water box</a></li>
+</ul></li>
+<li><a href="#preparation-of-bpti">Preparation of BPTI</a></li>
+<li><a href="#solvation-of-bpti">Solvation of BPTI</a></li>
+<li><a href="#minimization-of-the-system">Minimization of the system</a></li>
+</ul></li>
+<li><a href="#heating-1">Heating</a></li>
+<li><a href="#equilibration-1">Equilibration</a></li>
+<li><a href="#production-1">Production</a></li>
+</ul></li>
+<li><a href="#mead">MEAD</a><ul>
+<li><a href="#installation-and-introduction-to-mead-and-mcti">Installation and introduction to MEAD and mcti</a></li>
+<li><a href="#titration-behaviour-of-cytochrome-c">Titration behaviour of cytochrome c</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="charmm">CHARMM<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></h1>
+<pre><code>                            /---------\
+                           /           \
+                          /             \
+                         /               \
+                         !  XXXX   XXXX  !
+                         !  XXXX   XXXX  !
+                         !  XXX     XXX  !
+                         !       X       !
+                          --\   XXX   /--
+                           ! !  XXX  ! !
+                           ! !       ! !
+                           ! I I I I I !
+                           !  I I I I  !
+                            \         /
+                             --     --
+                               \---/
+                        XXX             XXX
+                       XXXX             XXXX
+                       XXXXX           XXXXX
+                          XXX         XXX
+                            XXX     XXX
+                               XXXXX
+                              XXX XXX
+                            XXX     XXX
+                          XXX         XXX
+                       XXXXX           XXXXX
+                       XXXX             XXXX
+                        XXX             XXX</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="bu">type</span> charmm
+<span class="ex">charmm</span> is aliased to <span class="kw">`</span><span class="ex">/sw/sci/bin/x86_64-linux/charmm.28</span><span class="st">&#39;</span></code></pre></div>
+<h2 id="theoretical-background---molecular-dynamics-simulations">Theoretical Background - Molecular Dynamics simulations<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></h2>
+<h3 id="time-evolution">Time evolution<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></h3>
+<h4 id="the-verlet-algorithmnode9">The Verlet algorithm<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></h4>
+<p><strong>Questions and answers.</strong></p>
+<blockquote>
+<p>Explain briefly the components of a typical energy function.</p>
+</blockquote>
+<p>There are five components:</p>
+<ul>
+<li><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node3.html">Bond stretching</a>
+<ul>
+<li>Represents covalent bonds between atoms.</li>
+<li>Energy is based on the deviation from the ideal distance between atoms.</li>
+<li>Usually sufficient to use harmonic approximation.</li>
+</ul></li>
+<li><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node4.html">Angle bending</a>
+<ul>
+<li>Energy resulting from the angle between any two atoms bound to the same atom.</li>
+</ul></li>
+<li><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node5.html">Torsion angles</a>
+<ul>
+<li>Rotation of atom groups around a given bond.</li>
+</ul></li>
+<li><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node6.html">Van-der-Walls terms</a>
+<ul>
+<li>Forces not based on covalent or ionic bonds.</li>
+<li>Can be approximated by a Lennard-Jones 12-6 potential.</li>
+</ul></li>
+<li><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node7.html">Electrostatic term</a>
+<ul>
+<li>Non-bonded interactions.</li>
+<li>Number of terms is <span class="math inline">\(O(n^2)\)</span> for <span class="math inline">\(n\)</span> atoms.</li>
+<li>Cutoff distance can be used to bound computational complexity.</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Explain the basic ideas underlying the Steepest Descent and Newton Raphson algorithms.</p>
+</blockquote>
+<ul>
+<li>Steepest Descent
+<ul>
+<li>Finds a local minimum.</li>
+<li>Start with some coordinates on the energy landscape.</li>
+<li>Successively move a discrete amount along the local downhill gradient (the steepest descent).</li>
+</ul></li>
+<li>Newton
+<ul>
+<li>Start with an initial guess.
+<ul>
+<li>Approximate the function by its tangent.</li>
+<li>Calculate the intercept of the tangent line and use it as the new approximation (the coordinates such that the energy is 0).</li>
+<li>Iterate. <!--
+TODO: my explanation doesn't really match this:
+<http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-mini-nma.pdf#page=12>
+--></li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Explain how the energy function can be used to obtain the dynamics of a protein (Molecular Dynamic Simulation).</p>
+</blockquote>
+<ul>
+<li>The force exerted on an any atom can be obtained by taking the derivative of the energy function.</li>
+<li>Newton's second law gives us accelerations.</li>
+<li>Numerical integration can be used to get approximate trajectories.</li>
+</ul>
+<blockquote>
+<p>A typical MD Simulation protocol follows four steps: Initialization, Heating, Equilibration and Production. What is done in these steps and why is that necessary?</p>
+</blockquote>
+<p>After getting a file describing the structure of a molecule (for example from the <a href="http://www.rcsb.org/pdb">Protein Data Bank</a>), these steps may be performed:</p>
+<ul>
+<li>Initialization<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>
+<ul>
+<li>Add missing hydrogen atoms.</li>
+<li>Split the structure into connected segments (partition the <a href="https://en.wikipedia.org/wiki/Protein_Data_Bank_(file_format)">.pdb</a> file into several ones).</li>
+<li>Adjust atom names to match those found in the <a href="top_all27_prot_lipid.rtf">topology file</a>.
+<ul>
+<li>Edit one or the other file.</li>
+</ul></li>
+<li>Add non-standard covalent bonds.</li>
+<li>Add water.</li>
+<li>Molecule's initial coordinates cause high energies and forces.</li>
+</ul></li>
+</ul>
+<ul>
+<li><p>Heating</p>
+<ul>
+<li>The molecule should have a realistic temperature (based on its natural environment).</li>
+</ul></li>
+<li><p>Equilibration</p>
+<ul>
+<li>The atoms' velocities are rescaled until the system is thermodynamic equilibrium, while keeping the temperature constant.</li>
+<li>This ensures that the temperature won't change when simulating the system.</li>
+</ul></li>
+<li><p>Production</p>
+<ul>
+<li>This is the actual simulation.</li>
+<li>The observed trajectories are analysed; for example to learn about the molecules flexibility.</li>
+</ul></li>
+</ul>
+<h3 id="running-charmm"><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node13.html">Running CHARMM</a></h3>
+<blockquote>
+<p>Explain briefly which informations are stored in the parameter and topology file.</p>
+</blockquote>
+<ul>
+<li><a href="par_all27_prot_lipid.prm">Parameter file</a>
+<ul>
+<li>Bond force constants and equilibrium geometries.</li>
+<li>Binding angles.</li>
+<li>Dihedral angles (torsion angles).</li>
+<li>All other numerical constants needed to evaluate forces and energies.</li>
+<li>We use <code>/sw/sci/app/charmm/c32b1/toppar/par_all27_prot_lipid.prm</code>.</li>
+</ul></li>
+<li><a href="top_all27_prot_lipid.rtf">Topology file</a>
+<ul>
+<li>Definitions of biomolecules.
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Structural_formula">Structural formuae</a>.</li>
+<li>Atom types.</li>
+</ul></li>
+<li>We use <code>/sw/sci/app/charmm/c32b1/toppar/top_all27_prot_lipid.rtf</code>.</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Explain briefly what atom types are and why they are needed?</p>
+</blockquote>
+<ul>
+<li>Different sets of parameters have to be used to simulate, e.g., a hydrogen atom bonded to a carbon atom and one bonded to oxygen.</li>
+<li>This is called the chemical environment and represented by <em>atom types</em>.</li>
+<li>Each atom can have different types to model its chemical environment.</li>
+</ul>
+<blockquote>
+<p>How many atom types are there in an alanine residue?</p>
+</blockquote>
+<p>The definition of the alanine residue in the <a href="top_all27_prot_lipid.rtf">topology file</a> is</p>
+<pre><code>...
+GROUP
+ATOM CB   CT3    -0.27
+ATOM HB1  HA      0.09
+ATOM HB2  HA      0.09
+ATOM HB3  HA      0.09
+GROUP
+...</code></pre>
+<p>Thus, there are two atom types: <code>CT3</code> and <code>HA</code>.</p>
+<blockquote>
+<p>What is the partial charge of the hydrogen (HS/HG1) atom and the sulfur atom (S/SG)?</p>
+</blockquote>
+<p>In the <a href="top_all27_prot_lipid.rtf">topology file</a> we find:</p>
+<pre><code>RESI CYS          0.00
+...
+ATOM SG   S      -0.23
+ATOM HG1  HS      0.16
+...</code></pre>
+<p>Knowing that &quot;[t]he numerical value [...] defines the partial charge&quot;<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a>, we see that the sought after values are <code>0.16</code> and <code>-0.23</code>, respectively.</p>
+<blockquote>
+<p>What are the parameters for the sulfur-hydrogen bond (S-HS)?</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">grep</span> BONDS -A 7 par_all27_prot_lipid.prm<span class="kw">;</span> <span class="fu">grep</span> <span class="st">&#39;^S.*HS&#39;</span> par_all27_prot_lipid.prm
+<span class="ex">BONDS</span>
+!
+!<span class="ex">V</span>(bond) = <span class="ex">Kb</span>(b - b0)<span class="ex">**2</span>
+!
+!<span class="ex">Kb</span>: kcal/mole/A**2
+!<span class="ex">b0</span>: A
+!
+!<span class="ex">atom</span> type Kb          b0
+<span class="ex">S</span>    HS    275.000     1.3250 ! ALLOW   SUL ION</code></pre></div>
+<p>Thus, the force constant K<sub>b</sub> for <a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node3.html">equation 1</a> is 275 <span class="math inline">\(\frac{\text{kcal}}{\text{mole}\cdot \text{Å}^2}\)</span> and the equilibrium bond length r<sub>eq</sub> for <a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node3.html">equation 1</a>, which corresponds to <code>b0</code>, is 1.325 Å.</p>
+<blockquote>
+<p>What are the parameters for the sulfur-sulfur bond (SM-SM)?</p>
+</blockquote>
+<p>K<sub>b</sub> is 173 and r<sub>eq</sub> is 2.029:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">grep</span> -m 1 <span class="st">&#39;SM.*SM&#39;</span> par_all27_prot_lipid.prm
+<span class="ex">SM</span>   SM    173.000     2.0290 ! ALLOW   SUL ION</code></pre></div>
+<blockquote>
+<p>Which bond is harder to stretch?</p>
+</blockquote>
+<p>Looking at <a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node3.html">equation 1</a> again, we can see that the energy required to stretch a bond is directly proportional to its K<sub>b</sub> value, so the sulfur-hydrogen bond is harder to stretch.</p>
+<h2 id="initialization">Initialization<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a></h2>
+<h3 id="structure-preparation">Structure preparation<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a></h3>
+<p><strong>Questions and answers.</strong></p>
+<blockquote>
+<p>Which method was used to determine the structure <code>1BPI.pdb</code> experimentally?</p>
+</blockquote>
+<p><a href="http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI">X-ray diffraction</a>.</p>
+<blockquote>
+<p>Are there other methods to determine experimentally the structure of a protein?</p>
+</blockquote>
+<p>Other methods include <a href="http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-intro.pdf#page=23">NMR spectroscopy and electron microscopy</a>.</p>
+<blockquote>
+<p>How many cysteines? What are their residue numbers?</p>
+</blockquote>
+<p>6 cysteines with residue numbers 5, 14, 30, 38, 51, and 55:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">grep</span> CYS 1bpi.pdb</code></pre></div>
+<blockquote>
+<p>What is the resolution of this structure of BPTI?</p>
+</blockquote>
+<p><a href="http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI">1.09 Å</a>.</p>
+<blockquote>
+<p>Are there disulfide-bridges in BPTI?</p>
+</blockquote>
+<p>Yes:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">grep</span> <span class="st">&#39;^SSBOND&#39;</span> 1bpi.pdb
+<span class="ex">SSBOND</span>   1 CYS A    5    CYS A   55                          1555   1555  2.01
+<span class="ex">SSBOND</span>   2 CYS A   14    CYS A   38                          1555   1555  2.03
+<span class="ex">SSBOND</span>   3 CYS A   30    CYS A   51                          1555   1555  2.02</code></pre></div>
+<blockquote>
+<p>Which temperature was used for the measurements?</p>
+</blockquote>
+<p><a href="http://www.rcsb.org/pdb/explore/explore.do?structureId=1BPI">125 K</a>.</p>
+<blockquote>
+<p>Why are the hydrogen atoms missing?</p>
+</blockquote>
+<!-- TODO -->
+<p>Reduces visual clutter and they can be inferred from the incomplete structure easily?</p>
+<h3 id="minimization">Minimization<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a></h3>
+<p><strong>Questions and answers.</strong></p>
+<blockquote>
+<p>Why are there high-energy interactions in the crystal structure?</p>
+</blockquote>
+<p>The molecule may not be in the ideal conformation with respect to minimizing the internal energy.</p>
+<blockquote>
+<p>Why do they have to be removed?</p>
+</blockquote>
+<ul>
+<li>Minima of the energy landscape correspond to stable conformations.</li>
+<li>Should reduce vibrations in the dynamics simulation.</li>
+<li>Should get us closer to naturally occurring conformations. <!-- http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-mini-nma.pdf#page=16 --></li>
+</ul>
+<blockquote>
+<p>How much would you expect the atomic coordinates to change during the minimization?</p>
+</blockquote>
+<ul>
+<li>Depends on how close the conformation of the downloaded molecule structure is to an energy minimum.</li>
+<li>Having removed the external water may cause considerable changes.</li>
+</ul>
+<!-- http://pandoc.org/MANUAL.html#ending-a-list -->
+<p><strong>Steps performed:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Copied (one of) the example input script(s) (<code>6b30b77</code>):</p>
+<pre><code>$ cp /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/example.inp .</code></pre></li>
+<li>CHARMM failed to run with the provided parameter and topology files. Apparently they are incompatible to the version we use. <code>f21042d</code> adds compatible versions of both files called <code>par_all27_prot_na.inp</code> and <code>top_all27_prot_na.inp</code>, respectively.</li>
+<li>Modified <code>example.inp</code>.</li>
+<li><p>Ran:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">charmm</span> <span class="op">&lt;</span> example.inp <span class="op">&gt;</span> charmm.out
+$ <span class="fu">grep</span> <span class="st">&#39;MINI&gt;&#39;</span> charmm.out <span class="op">&gt;</span> mini.dat
+$ <span class="fu">cat</span> mini.dat
+<span class="ex">MINI</span><span class="op">&gt;</span>        0  22814.35962      0.00000    503.70666      0.02000
+<span class="ex">MINI</span><span class="op">&gt;</span>       10    283.03855  22531.32107     94.21325      0.02150
+<span class="ex">MINI</span><span class="op">&gt;</span>       20   -610.28235    893.32089      6.14155      0.00401
+<span class="ex">MINI</span><span class="op">&gt;</span>       30   -685.00044     74.71810      6.92729      0.00431
+<span class="ex">MINI</span><span class="op">&gt;</span>       40   -742.50682     57.50638      1.95547      0.00193
+<span class="ex">MINI</span><span class="op">&gt;</span>       50   -765.12952     22.62270      0.95290      0.00087
+<span class="ex">MINI</span><span class="op">&gt;</span>        0   -765.12952     22.62270      0.95290      0.00000
+<span class="ex">MINI</span><span class="op">&gt;</span>       10   -854.10369     88.97418      1.13469      0.04783
+<span class="ex">MINI</span><span class="op">&gt;</span>       20   -895.41981     41.31612      1.06149      0.04633
+<span class="ex">MINI</span><span class="op">&gt;</span>       30   -911.70797     16.28816      0.68017      0.02692
+<span class="ex">MINI</span><span class="op">&gt;</span>       40   -919.90921      8.20124      0.64534      0.02607
+<span class="ex">MINI</span><span class="op">&gt;</span>       50   -927.86086      7.95165      1.20517      0.03741</code></pre></div></li>
+<li><p>Edited the step numbers in <code>mini.dat</code> to get a continuous plot (and removed the first line from ABNR minimization):</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">cat</span> mini.dat
+<span class="ex">MINI</span><span class="op">&gt;</span>        0  22814.35962      0.00000    503.70666      0.02000
+<span class="ex">MINI</span><span class="op">&gt;</span>       10    283.03855  22531.32107     94.21325      0.02150
+<span class="ex">MINI</span><span class="op">&gt;</span>       20   -610.28235    893.32089      6.14155      0.00401
+<span class="ex">MINI</span><span class="op">&gt;</span>       30   -685.00044     74.71810      6.92729      0.00431
+<span class="ex">MINI</span><span class="op">&gt;</span>       40   -742.50682     57.50638      1.95547      0.00193
+<span class="ex">MINI</span><span class="op">&gt;</span>       50   -765.12952     22.62270      0.95290      0.00087
+<span class="ex">MINI</span><span class="op">&gt;</span>       60   -854.10369     88.97418      1.13469      0.04783
+<span class="ex">MINI</span><span class="op">&gt;</span>       70   -895.41981     41.31612      1.06149      0.04633
+<span class="ex">MINI</span><span class="op">&gt;</span>       80   -911.70797     16.28816      0.68017      0.02692
+<span class="ex">MINI</span><span class="op">&gt;</span>       90   -919.90921      8.20124      0.64534      0.02607
+<span class="ex">MINI</span><span class="op">&gt;</span>      100   -927.86086      7.95165      1.20517      0.03741</code></pre></div></li>
+<li><p>Plotted <code>mini.dat</code> with Grace:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">xmgrace</span> mini.dat</code></pre></div>
+<p><img src="mini.png" alt="Energy minimization 1" /> </p></li>
+<li><p>Increased the number of minimization steps in <code>example.inp</code> to 500 <a href="http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-mini-nma.pdf#page=10">SD</a> and 1000 ABNR (<code>78072be</code>), ran CHARMM again, <code>grep</code>ed its output, adjusted the step numbers, and plotted with Grace:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">charmm</span> <span class="op">&lt;</span> example.inp <span class="op">&gt;</span> charmm-more-steps.out
+$ <span class="fu">grep</span> <span class="st">&#39;MINI&gt;&#39;</span> charmm-more-steps.out <span class="op">&gt;</span> mini2.dat
+$ <span class="co"># Edit step numbers in mini2.dat</span>
+$ <span class="ex">xmgrace</span> mini2.dat</code></pre></div>
+<p><img src="mini2.png" alt="Energy minimization 2" /> </p></li>
+</ol>
+<!-- http://pandoc.org/MANUAL.html#ending-a-list -->
+<p><strong>Questions and answers.</strong></p>
+<blockquote>
+<p>Has the energy converged?</p>
+</blockquote>
+<p>Yes.</p>
+<blockquote>
+<p>Compare the tow [sic] energy minimizations using XMGRACE.</p>
+</blockquote>
+<p>See the plots above. Minimizing with more steps still reduced the energy considerably.</p>
+<blockquote>
+<p>Examine the pdb file before and after energy minimization using vmd before and after energy minimization. Notice any differences?</p>
+</blockquote>
+<ul>
+<li>Hydrogen atoms were added by CHARMM.</li>
+<li>The conformation changed considerably.</li>
+<li>See the image below for the minimized molecule (with hydrogens atoms hidden) alongside the not minimized one.</li>
+</ul>
+<div class="figure">
+<img src="vmd-before-after.png" alt="Comparison of 1BPI before and after energy minimization" />
+<p class="caption">Comparison of 1BPI before and after energy minimization</p>
+</div>
+<blockquote>
+<p>Calculate the RMSD using vmd or check the CHARMM output file for the RMSD. How does it compare to the resolution of your crystal? What does RMSD mean? Why is the RMSD used to examine structures?</p>
+</blockquote>
+<p>The RMSD is about 1.98 <!-- Exact value: 1.9818568887848576 -->. That's roughly twice the resolution of the crystal. RMSD stands for root-mean-square deviation; it serves as a one-number metric for how much the structure changed.</p>
+<blockquote>
+<p>What is the largest gradient during any of the minimizations?</p>
+</blockquote>
+<p>The largest gradient occurs during the first 10 steps in both minimizations. It's about <span class="math inline">\(2253 \frac{kcal}{mole}\)</span> per step for both.</p>
+<blockquote>
+<p>Plot the van-der-Waals and the electrostatic energy against the minimization steps (<code>grep 'MINI EXTERN&gt;' name.out &gt; name.dat</code>; look in the CHARMM output for the corresponding columns.). Compare the change of these energies to the change of the total energy during the minimization.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">grep</span> <span class="st">&#39;MINI EXTERN&gt;&#39;</span> charmm-more-steps.out <span class="op">&gt;</span> mini-extern.dat
+$ <span class="co"># Merge the lines of mini2.dat and mini-extern.dat (after deleting line 52),</span>
+$ <span class="co"># and select 4 columns: step number, total energy, van der Waals energy, and</span>
+$ <span class="co"># electrostatic energy:</span>
+$ <span class="ex">paste</span> mini2.dat <span class="op">&lt;(</span><span class="fu">sed</span> 52d mini-extern.dat<span class="op">)</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">&#39;{print $2,$3,$9,$10}&#39;</span> <span class="op">&gt;</span> mini-merged.dat
+$ <span class="ex">xmgrace</span></code></pre></div>
+<p><img src="mini-merged-plot.png" alt="Energy minimization 3" /> </p>
+<h3 id="changing-the-topology-of-a-protein">Changing the topology of a protein<a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a></h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">charmm</span> <span class="op">&lt;</span> example.inp <span class="op">&gt;</span> charm-disu.out
+$ <span class="fu">grep</span> <span class="st">&#39;MINI&gt;&#39;</span> charm-disu.out <span class="op">&gt;</span> mini-disu.dat</code></pre></div>
+<p><strong>Questions and answers.</strong></p>
+<blockquote>
+<p>Look in data/top.inp for the PATCH DISU. What does it do?</p>
+</blockquote>
+<p>The <code>patch disu</code> command adds disulfide bridges. It modifies the PSF (Protein Structure File).</p>
+<blockquote>
+<p>What effect do the disulfide bridges have on the total energy?</p>
+</blockquote>
+<p>They decrease it slightly:<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">tail</span> -1 mini2.dat
+<span class="ex">MINI</span><span class="op">&gt;</span>     1500  -1194.80087      0.05653      0.04954      0.00167
+$ <span class="fu">tail</span> -1 mini-disu.dat
+<span class="ex">MINI</span><span class="op">&gt;</span>     1500  -1230.54878      0.04196      0.04417      0.00175</code></pre></div>
+<blockquote>
+<p>Can you explain this effect? (It might be helpful to compare the energy decomposition, the van-der-Waals and electrostatic energy, for the minimization with and without disulfide-bridges)</p>
+</blockquote>
+<p>The disulfide bridges stabilize the molecule.</p>
+<h3 id="interaction-energies">Interaction Energies<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a></h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">charmm</span> <span class="op">&lt;</span> int-energy.inp</code></pre></div>
+<blockquote>
+<p>Explain what the <code>sele</code> (select) and the <code>sele .not.</code> command selects.</p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li>The 3 atoms of one of the H<sub>2</sub>O molecules.</li>
+<li>All other atoms.</li>
+</ol>
+<blockquote>
+<p>Which water molecule has the most favorable interaction energy?</p>
+</blockquote>
+<p>The one with <code>resid</code> 62.</p>
+<ul>
+<li><span class="math inline">\(-31.30 \frac{\text{kcal}}{\text{mole}}\)</span>.</li>
+</ul>
+<h2 id="heating">Heating<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a></h2>
+<ul>
+<li>Create <code>dyna/</code> and copy files (02380b8 and d4ef929).</li>
+<li><code>$ cd dyna</code></li>
+<li>Edit <code>dyna/heat.inp</code> (f7d4fee).</li>
+<li><code>$ charmm &lt; heat.inp  &gt; heat.out</code></li>
+<li><code>$ grep 'DYNA&gt;' heat.out &gt; heat.dat</code></li>
+<li><div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$4}&#39;</span> heat.dat <span class="op">&gt;</span> time-total.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$5}&#39;</span> heat.dat <span class="op">&gt;</span> time-kinetic.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$6}&#39;</span> heat.dat <span class="op">&gt;</span> time-potential.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$7}&#39;</span> heat.dat <span class="op">&gt;</span> time-temp.dat</code></pre></div></li>
+</ul>
+<blockquote>
+<p>Plot the total, potential and kinetic energy and the temperature versus simulation time (Remark: use <code>grep 'DYNA&gt;' name.out &gt; name.dat</code>).</p>
+</blockquote>
+<p><img src="dyna/time-energy-plot.png" alt="Energies" /> </p>
+<p><img src="dyna/time-temp-plot.png" alt="Temperatures" /> </p>
+<p>The results for heating 250K, 273K and 400K are very similar.</p>
+<blockquote>
+<p>Explain the shape of the temperature curve.</p>
+</blockquote>
+<p>The curve is roughly linear until reaching 300K (as expected) but has lots of small fluctuations. These arise because:</p>
+<ol style="list-style-type: decimal">
+<li>The system is heated in discrete steps.</li>
+<li>The system isn't in thermodynamic equilibrium: kinetic energy is constantly converted into potential energy.</li>
+<li>Potential energy comes not only from temperature but also from physical force fields within the system, which one contributes how much varies as the system's conformation changes.</li>
+</ol>
+<blockquote>
+<p>What is the relation between the total, potential and kinetic energy?</p>
+</blockquote>
+<p>Plus.</p>
+<blockquote>
+<p>Calculate the RMSD between the hot and the cold protein.</p>
+</blockquote>
+<!--
+This fixes the table header from appearing twice in the PDF output for some reason
+-->
+<p> </p>
+<table>
+<caption>RMSDs</caption>
+<thead>
+<tr class="header">
+<th>Temperature</th>
+<th>RMSD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>250K</td>
+<td>1.5662</td>
+</tr>
+<tr class="even">
+<td>273K</td>
+<td>1.5662</td>
+</tr>
+<tr class="odd">
+<td>300K</td>
+<td>1.3909</td>
+</tr>
+<tr class="even">
+<td>400K</td>
+<td>1.3019</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Compare the hot with the cold protein structure.</p>
+</blockquote>
+<p>The structure changed slightly. Some residues turned.</p>
+<h2 id="equilibration">Equilibration<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a></h2>
+<h3 id="equilibration-with-rescaling-velocities">Equilibration with rescaling velocities<a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a></h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="bu">pwd</span>
+<span class="ex">/home/student10/practicum/equi</span>
+$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> 77220dd5f078a4bba7cb9330a27416abb647dbe4
+$ <span class="ex">charmm</span> <span class="op">&lt;</span> equi.inp <span class="op">&gt;</span> equi.out
+$ <span class="fu">grep</span> <span class="st">&#39;DYNA&gt;&#39;</span> equi.out <span class="op">&gt;</span> equi.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$4}&#39;</span> equi.dat <span class="op">&gt;</span> time-total.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$5}&#39;</span> equi.dat <span class="op">&gt;</span> time-kinetic.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$6}&#39;</span> equi.dat <span class="op">&gt;</span> time-potential.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$7}&#39;</span> equi.dat <span class="op">&gt;</span> time-temp.dat</code></pre></div>
+<blockquote>
+<p>Plot the total, potential and kinetic energy and the temperature versus simulation time.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">xmgrace</span> time-total.dat time-kinetic.dat time-potential.dat
+$ <span class="ex">xmgrace</span> time-temp.dat</code></pre></div>
+<p>These are the results for heating to 300K.</p>
+<p><img src="equi/time-energy-plot.png" alt="Energies" /> </p>
+<p><img src="equi/time-temp-plot.png" alt="Temperatures" /> </p>
+<blockquote>
+<p>Are temperature and energy stable?</p>
+</blockquote>
+<p>Yes, mostly.</p>
+<h3 id="equilibration-without-rescaling-velocities">Equilibration without rescaling velocities<a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a></h3>
+<ul>
+<li>Copied the required files to <code>equi2</code>.</li>
+<li>Modified the input script.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="bu">pwd</span>
+<span class="ex">/home/student10/practicum/equi2</span>
+$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> 3ff307b006f9fd1035aadfe6d566b72068c24bfa
+$ <span class="ex">charmm</span> <span class="op">&lt;</span> equi2.inp <span class="op">&gt;</span> equi2.out
+$ <span class="fu">grep</span> <span class="st">&#39;DYNA&gt;&#39;</span> equi2.out <span class="op">&gt;</span> equi2.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$4}&#39;</span> equi2.dat <span class="op">&gt;</span> time-total.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$5}&#39;</span> equi2.dat <span class="op">&gt;</span> time-kinetic.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$6}&#39;</span> equi2.dat <span class="op">&gt;</span> time-potential.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$7}&#39;</span> equi2.dat <span class="op">&gt;</span> time-temp.dat</code></pre></div>
+<blockquote>
+<p>Why are the two equilibration steps necessary?</p>
+</blockquote>
+<p>The second step ensures that the temperature won't change when simulating the system.</p>
+<blockquote>
+<p>Plot the total, potential and kinetic energy and the temperature versus simulation time.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">xmgrace</span> time-total.dat time-kinetic.dat time-potential.dat
+$ <span class="ex">xmgrace</span> time-temp.dat</code></pre></div>
+<p><img src="equi2/time-energy-plot.png" alt="Energies" /> </p>
+<p><img src="equi2/time-temp-plot.png" alt="Temperatures" /> </p>
+<blockquote>
+<p>Are temperature and energy stable?</p>
+</blockquote>
+<p>Yeah, I guess.</p>
+<h2 id="production">Production<a href="#fn17" class="footnoteRef" id="fnref17"><sup>17</sup></a></h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="bu">pwd</span>
+<span class="ex">/home/student10/practicum/prod</span>
+$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> b64037a75fa7c09fea240e909be4a2a71dceb096
+$ <span class="ex">charmm</span> <span class="op">&lt;</span> prod.inp <span class="op">&gt;</span> prod.out
+$ <span class="fu">grep</span> <span class="st">&#39;DYNA&gt;&#39;</span> prod.out <span class="op">&gt;</span> prod.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$4}&#39;</span> prod.dat <span class="op">&gt;</span> time-total.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$5}&#39;</span> prod.dat <span class="op">&gt;</span> time-kinetic.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$6}&#39;</span> prod.dat <span class="op">&gt;</span> time-potential.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3&quot;    &quot;$7}&#39;</span> prod.dat <span class="op">&gt;</span> time-temp.dat</code></pre></div>
+<blockquote>
+<p>Analyze the output from the final run as before, i.e., plot total, potential and kinetic energy, and temperature versus time.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">xmgrace</span> time-total.dat time-kinetic.dat time-potential.dat
+$ <span class="ex">xmgrace</span> time-temp.dat</code></pre></div>
+<p><img src="prod/time-energy-plot.png" alt="Energies" /> </p>
+<p><img src="prod/time-temp-plot.png" alt="Temperatures" /> </p>
+<blockquote>
+<p>Was the system stable during the entire run?</p>
+</blockquote>
+<p>Yes.</p>
+<h3 id="analysis-of-trajectories">Analysis of Trajectories<a href="#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a></h3>
+<p>Copied provided input scripts:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="bu">pwd</span>
+<span class="ex">/home/student10/practicum/prod</span>
+$ <span class="fu">mkdir</span> ana
+$ <span class="fu">cp</span> /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/dyna/*.inp ana/</code></pre></div>
+<blockquote>
+<p>Plot out all time series vs time. The output files will consist of: column 1 = trajectory time steps, column 2 = RMSD.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">charmm</span> <span class="op">&lt;</span> prot-rms.charmm.inp <span class="op">&gt;</span> prot-rms.charmm.out
+$ <span class="ex">charmm</span> <span class="op">&lt;</span> bbone-rms.charmm.inp <span class="op">&gt;</span> bbone-rms.charmm.out
+$ <span class="ex">charmm</span> <span class="op">&lt;</span> schain-rms.charmm.inp <span class="op">&gt;</span> schain-rms.charmm.out
+$ <span class="ex">xmgrace</span> prot-rms.dat bbone-rms.dat schain-rms.dat</code></pre></div>
+<p><img src="prod/ana/rmsd-plot.png" alt="RMSD (300K)" /> </p>
+<blockquote>
+<p>How do the RMSD of the backbone and sidechains compare to the RMSD of the whole protein?</p>
+</blockquote>
+<ul>
+<li>The RMSDs of the backbone are smaller than those of the whole protein.</li>
+<li>The RMSDs of the side chains are bigger than those of the whole protein.</li>
+</ul>
+<blockquote>
+<p>Compare with the results of the other students. How do the results vary with temperature?</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">cp</span> /home/student10/practicum/andi/CharmmCourse/dyna/RMSD_400K.png .</code></pre></div>
+<p><img src="prod/ana/RMSD_400K.png" alt="RMSD (400K)" /> </p>
+<ul>
+<li>At 400K, the RMSDs are bigger.</li>
+</ul>
+<p><img src="http://www.reactiongifs.com/wp-content/uploads/2013/10/tim-and-eric-mind-blown.gif" alt="foo" /> </p>
+<blockquote>
+<p>Which parts of the protein are more flexible? Use the vmd movie mode.</p>
+</blockquote>
+<p>The side chains are more flexible. See the GIF at 400K.</p>
+<div class="figure">
+<img src="prod/ana/Trajectories_400K_2.gif" alt="GIF at 400K" />
+<p class="caption">GIF at 400K</p>
+</div>
+<blockquote>
+<p>Plot out all time series vs time. The output files will consist of: column 1 = simulation time (in ps), column 2 = time series of S-S distance, column 3 = time series of C-S-S angle, column 4 = time series of C-S-S-C dihedral.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> 54b354a04fa01d1e35b362d96e4a04cb8d15d4c4
+$ <span class="ex">charmm</span> <span class="op">&lt;</span> correl.charmm.inp <span class="op">&gt;</span> correl.charmm.out
+$ <span class="fu">awk</span> <span class="st">&#39;{print $1&quot;    &quot;$2}&#39;</span> correl.dat <span class="op">&gt;</span> time-ss.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $1&quot;    &quot;$3}&#39;</span> correl.dat <span class="op">&gt;</span> time-css.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $1&quot;    &quot;$4}&#39;</span> correl.dat <span class="op">&gt;</span> time-cssc.dat</code></pre></div>
+<p><img src="prod/ana/time-ss-plot.png" alt="S-S distance" /> </p>
+<p><img src="prod/ana/time-css-plot.png" alt="C-S-S angle" /> </p>
+<p><img src="prod/ana/time-cssc-plot.png" alt="C-S-S-C dihedral" /> </p>
+<blockquote>
+<p>What is the average value and standard deviation of the S-S distance, the C-S-S angle, and the C-S-S-C dihedral angle? How may these values be interpreted ?</p>
+</blockquote>
+<table>
+<caption>Averages and SDs of disulfide bridge properties</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th>Average</th>
+<th>SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S-S distance</td>
+<td>2.0347 Å</td>
+<td>0.036523</td>
+</tr>
+<tr class="even">
+<td>C-S-S angle</td>
+<td>104.76 deg</td>
+<td>3.6010</td>
+</tr>
+<tr class="odd">
+<td>C-S-S-C dihedral</td>
+<td>104.73 deg</td>
+<td>7.8910</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Why is the standard derivation <code>S-S</code> &lt; <code>C-S-S</code> &lt; <code>C-S-S-C</code>?</p>
+</blockquote>
+<p>The length of the disulfide bridge is not very flexible. Binding angles are more flexible. Dihedrals (rotation of atom groups around a bond) are even more flexible.</p>
+<h2 id="theoretical-background---solvation">Theoretical Background - Solvation<a href="#fn19" class="footnoteRef" id="fnref19"><sup>19</sup></a></h2>
+<blockquote>
+<p>Explain the different water models (implicit and explicit).</p>
+</blockquote>
+<p>Implicit:</p>
+<ul>
+<li>Approximate forces caused by water without actually simulating individual H<sub>2</sub>O molecules.</li>
+</ul>
+<p>Explicit:</p>
+<ul>
+<li>Simulate water molecules.</li>
+</ul>
+<!-- <http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-md.pdf#page=20> -->
+<blockquote>
+<p>What are the advantages and disadvantages of the two water models?</p>
+</blockquote>
+<p>Implicit:</p>
+<ul>
+<li>Cheap but less accurate.</li>
+</ul>
+<p>Explicit:</p>
+<ul>
+<li>Accurate but expensive.</li>
+</ul>
+<blockquote>
+<p>What means periodic boundaries?</p>
+</blockquote>
+<p>Define a <em>periodic cell</em> surrounded by copies of itself. Atoms leaving one side of the cell re-enter on the opposite side.</p>
+<h2 id="parallel-computing">Parallel Computing<a href="#fn20" class="footnoteRef" id="fnref20"><sup>20</sup></a></h2>
+<!-- x4 doesn't exist anymore -->
+<!-- x3, x5, x2 -->
+<h2 id="initialization-1">Initialization<a href="#fn21" class="footnoteRef" id="fnref21"><sup>21</sup></a></h2>
+<h3 id="preparation-of-the-water-box">Preparation of the water box<a href="#fn22" class="footnoteRef" id="fnref22"><sup>22</sup></a></h3>
+<h4 id="generation-of-the-water-box">Generation of the water box<a href="#fn23" class="footnoteRef" id="fnref23"><sup>23</sup></a></h4>
+<!--
+Notes.
+
+*   To read to .psf files, use the `append` keyword.
+*   Center the water and the protein when combining.
+*   Our water box was too small, it should 40x40x46.  The size is somehow related to the
+    crystal cutoff, which is 15?
+-->
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="bu">pwd</span>
+<span class="ex">/home/student10/practicum/water</span>
+$ <span class="fu">cp</span> /home/ullmann/Lecture16/PraktMolmod/CharmmCourse/inputs/make_Wbox.pl .
+$ <span class="fu">cp</span> ../min-disu.pdb .
+$ <span class="co"># Created `coor-stat.inp`.</span>
+$ <span class="ex">charmm</span> <span class="op">&lt;</span> coor-stat.inp <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;coor stat&#39;</span> -A 4
+ <span class="ex">CHARMM</span><span class="op">&gt;</span>    coor stat
+ <span class="ex">STATISTICS</span> FOR  904 SELECTED ATOMS:
+    <span class="ex">XMIN</span> =   16.825000 XMAX =   44.009000 XAVE =   28.534252
+    <span class="ex">YMIN</span> =   -3.790000 YMAX =   23.421000 YAVE =    9.399907
+    <span class="ex">ZMIN</span> =  -16.222000 ZMAX =   16.720000 ZAVE =    0.529814
+$ <span class="fu">bc</span> <span class="op">&lt;&lt;&lt;</span> <span class="st">&#39;44.009000 - 16.825000&#39;</span>
+<span class="ex">27.184000</span>
+$ <span class="fu">bc</span> <span class="op">&lt;&lt;&lt;</span> <span class="st">&#39;23.421000 - (-3.790000)&#39;</span>
+<span class="ex">27.211000</span>
+$ <span class="fu">bc</span> <span class="op">&lt;&lt;&lt;</span> <span class="st">&#39;16.720000 - (-16.222000)&#39;</span>
+<span class="ex">32.942000</span>
+$ <span class="ex">./make_Wbox.pl</span> 34 34 39 <span class="op">&gt;</span> box.pdb <span class="co"># x_dim=34, y_dim=34, z_dim=39</span></code></pre></div>
+<p>Update: later we randomly found out that we should call <code>make_Wbox.pl</code> without redirecting its output:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">./make_Wbox.pl</span> 34 34 39</code></pre></div>
+<blockquote>
+<p>What is the density of your water box?</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> 184d561e8c0dd8fdf9fc35986b4d40fbf73ca71b
+$ <span class="fu">head</span> -1 box.pdb
+<span class="ex">placed</span> 1452 in box instead of 1556 molecules. Error : 6.673 %</code></pre></div>
+<p>Density:</p>
+<span class="math display">\[\begin{align*}
+    &amp; \frac{1452 \cdot 18 \frac{g}{\text{mole}}}
+         {6.022 \cdot 10^{23} \frac{1}{\text{mole}} \cdot 34Å \cdot 34Å \cdot 39Å} \\
+    =\ &amp; \frac{26136 g}
+         {6.022 \cdot 10^{23} \cdot 45084 \cdot 10^{-30} m^3} \\
+    =\ &amp; 0.096267 \cdot 10^7 \frac{g}{m^3} \\
+    =\ &amp; 0.96267 \frac{g}{cm^3}
+\end{align*}\]</span>
+<h4 id="periodic-boundary-conditions">Periodic boundary conditions<a href="#fn24" class="footnoteRef" id="fnref24"><sup>24</sup></a></h4>
+<p>Deleted the first 4 lines from <code>box.pdb</code> because they make no sense:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">git</span> checkout 184d561e8c0dd8fdf9fc35986b4d40fbf73ca71b box.pdb
+$ <span class="fu">head</span> -4 box.pdb
+<span class="ex">placed</span> 1452 in box instead of 1556 molecules. Error : 6.673 %
+<span class="ex">0.00</span>
+<span class="ex">ATOM</span>      2  H1  TIP3     1    -17.140 -17.760 -20.060  1.00  0.00
+<span class="ex">ATOM</span>      3  H2  TIP3     1    -17.295 -15.920 -20.020  1.00  0.00</code></pre></div>
+<p>Appended <code>END</code> to <code>box.pdb</code>. Adjusted the <a href="http://deposit.rcsb.org/adit/docs/pdb_atom_format.html#ATOM">atom serial numbers</a> and <a href="http://deposit.rcsb.org/adit/docs/pdb_atom_format.html#ATOM">residue sequence numbers</a> in <code>box.pdb</code> to start with 1.</p>
+<p>Spent two and a half hours to find out that a different version of CHARMM has to be used here:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="bu">alias</span> charmm32=<span class="st">&#39;/sw/sci/app/charmm_64/c32b1/exec/gnu/charmm&#39;</span></code></pre></div>
+<p>Minimized the water:</p>
+<!-- [ATOM]: http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html#ATOM -->
+<!--
+Main console display active (Tcl8.5.6 / Tk8.5.6)
+(water) 1 % set all [atomselect top all]
+atomselect0
+>Main< (water) 2 % measure center $all
+-1.7850970029830933 -1.533324956893921 -2.964118480682373
+>Main< (water) 3 % >
+-->
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> f413bb1582bc50742b4cc22464b7dc03daa36f97
+<span class="ex">charmm32</span> <span class="op">&lt;</span> min-box.inp <span class="op">&gt;</span> min-box.out</code></pre></div>
+<p>Heated the water:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> e0ab2361584ac7fe89a1c5ffb78fe7af83825c2f
+<span class="ex">charmm32</span> <span class="op">&lt;</span> heat-box.inp <span class="op">&gt;</span> heat-box.out
+$ <span class="fu">grep</span> <span class="st">&#39;DYNA&gt;&#39;</span> heat-box.out <span class="op">&gt;</span> heat-box.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3,$4}&#39;</span> heat-box.dat <span class="op">&gt;</span> time-total.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3,$5}&#39;</span> heat-box.dat <span class="op">&gt;</span> time-kinetic.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3,$6}&#39;</span> heat-box.dat <span class="op">&gt;</span> time-potential.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3,$7}&#39;</span> heat-box.dat <span class="op">&gt;</span> time-temp.dat
+$ <span class="ex">xmgrace</span> time-total.dat time-kinetic.dat time-potential.dat 
+$ <span class="ex">xmgrace</span> time-temp.dat</code></pre></div>
+<p><img src="water/time-energy-plot.png" alt="Energies" /> </p>
+<p><img src="water/time-temp-plot.png" alt="Temperatures" /> </p>
+<blockquote>
+<p>What could happen, if the <code>Byres</code> key word is replaced by <code>byatoms</code>?</p>
+</blockquote>
+<p>The <code>byatoms</code> keyword &quot;<a href="https://www.charmm.org/charmm/documentation/by-version/c40b1/params/doc/images/#Centering">will not work if there are any bonds</a>&quot;.</p>
+<h4 id="equilibration-of-the-water-box">Equilibration of the water box<a href="#fn25" class="footnoteRef" id="fnref25"><sup>25</sup></a></h4>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="bu">pwd</span>
+<span class="ex">/home/student10/practicum/water/equi-box</span>
+$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> 1221a9bd2a437589b55c8f9c811a3af8e95dd8be
+$ <span class="ex">charmm32</span> <span class="op">&lt;</span> equi-box.inp <span class="op">&gt;</span> equi-box.out
+$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> 981611e4bb60a72f5a4138d39cc8715b45366369
+$ <span class="ex">charmm32</span> <span class="op">&lt;</span> equi2-box.inp <span class="op">&gt;</span> equi2-box.out</code></pre></div>
+<h3 id="preparation-of-bpti">Preparation of BPTI<a href="#fn26" class="footnoteRef" id="fnref26"><sup>26</sup></a></h3>
+<h3 id="solvation-of-bpti">Solvation of BPTI<a href="#fn27" class="footnoteRef" id="fnref27"><sup>27</sup></a></h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> 0b0db04f51a4a2329078e90c1698b64daeb5a0ad
+$ <span class="co"># XXX: use CHARMM 28!</span>
+$ <span class="ex">charmm</span> <span class="op">&lt;</span> combine.inp <span class="op">&gt;</span> combine.out</code></pre></div>
+<h3 id="minimization-of-the-system">Minimization of the system<a href="#fn28" class="footnoteRef" id="fnref28"><sup>28</sup></a></h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> aab6f378da722191b6c968d61d3a32d4e53d3f11
+$ <span class="co"># XXX: use CHARMM 32!</span>
+$ <span class="ex">charmm32</span> <span class="op">&lt;</span> min.inp <span class="op">&gt;</span> min.out
+$ <span class="ex">vmd</span> combined-min.pdb </code></pre></div>
+<div class="figure">
+<img src="water/combined/bpti-box.png" alt="Minimized BPTI in water box" />
+<p class="caption">Minimized BPTI in water box</p>
+</div>
+<h2 id="heating-1">Heating<a href="#fn29" class="footnoteRef" id="fnref29"><sup>29</sup></a></h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> 3f89aaeb6bcaf844d2542f6d9f052c19bd7e405b
+$ <span class="co"># XXX: use CHARMM 32!</span>
+$ <span class="ex">charmm32</span> <span class="op">&lt;</span> heat.inp <span class="op">&gt;</span> heat.out</code></pre></div>
+<h2 id="equilibration-1">Equilibration<a href="#fn30" class="footnoteRef" id="fnref30"><sup>30</sup></a></h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="bu">pwd</span>
+<span class="ex">/home/student10/practicum/water/combined</span>
+$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> bf9fece3411fc1560d4f440cc4596ea3015c2e30
+$ <span class="co"># XXX: use CHARMM 32!</span>
+$ <span class="ex">charmm32</span> <span class="op">&lt;</span> equi.inp <span class="op">&gt;</span> equi.out <span class="co"># first equilibration</span>
+$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> 93614bc5bf9afe991d334c16bd19fed9a5a2e4a5
+$ <span class="co"># XXX: use CHARMM 32!</span>
+$ <span class="ex">charmm32</span> <span class="op">&lt;</span> equi2.inp <span class="op">&gt;</span> equi2.out <span class="co"># second equilibration</span></code></pre></div>
+<blockquote>
+<p>Show that your system is stable.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">grep</span> <span class="st">&#39;DYNA&gt;&#39;</span> equi2.out <span class="op">&gt;</span> equi2.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3,$4}&#39;</span> equi2.dat <span class="op">&gt;</span> time-total.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3,$5}&#39;</span> equi2.dat <span class="op">&gt;</span> time-kinetic.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3,$6}&#39;</span> equi2.dat <span class="op">&gt;</span> time-potential.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $3,$7}&#39;</span> equi2.dat <span class="op">&gt;</span> time-temp.dat
+$ <span class="ex">xmgrace</span> time-total.dat time-kinetic.dat time-potential.dat</code></pre></div>
+<p><img src="water/combined/time-energy-plot.png" alt="Energies" /> </p>
+<p>Looks pretty stable.</p>
+<h2 id="production-1">Production<a href="#fn31" class="footnoteRef" id="fnref31"><sup>31</sup></a></h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">git</span> show -q <span class="kw">|</span> <span class="fu">head</span> -1
+<span class="ex">commit</span> 9cc3576779d8d71dd3f57c1b331bf2f990f0a7ba
+$ <span class="co"># XXX: use CHARMM 32!</span>
+$ <span class="ex">charmm32</span> <span class="op">&lt;</span> prod.inp <span class="op">&gt;</span> prod.out</code></pre></div>
+<blockquote>
+<p>Analyze the RMSD values of the backbone and side chain atoms.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="bu">pwd</span>
+<span class="ex">/home/student10/practicum/water/combined/prod</span>
+$ <span class="fu">mkdir</span> ana
+$ <span class="fu">cp</span> ../../../prod/ana/*.inp ana/
+$ <span class="bu">cd</span> ana
+$ <span class="ex">charmm32</span> <span class="op">&lt;</span> prot-rms.charmm.inp <span class="op">&gt;</span> prot-rms.charmm.out
+$ <span class="ex">charmm32</span> <span class="op">&lt;</span> bbone-rms.charmm.inp <span class="op">&gt;</span> bbone-rms.charmm.out
+$ <span class="ex">charmm32</span> <span class="op">&lt;</span> schain-rms.charmm.inp <span class="op">&gt;</span> schain-rms.charmm.out
+$ <span class="ex">xmgrace</span> prot-rms.dat bbone-rms.dat schain-rms.dat</code></pre></div>
+<p><img src="water/combined/prod/ana/rmsd-plot.png" alt="RMSD" /> </p>
+<p>For reference, the RMSD values at 300K without water again:</p>
+<p><img src="prod/ana/rmsd-plot.png" alt="RMSD (300K)" /> </p>
+<p>Found out our water box was too small and redid everything up to this point with one of size 40x40x46 Å<sup>3</sup>.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="bu">cd</span> ana2
+$ <span class="fu">cp</span> ~student8/Documents/CharmmCourse/dyna/WaterBox/combined/combined_production.* .</code></pre></div>
+<blockquote>
+<p>Analyze the time series of the disulfide bridge Cys-14 and Cys-38 as before.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">charmm32</span> <span class="op">&lt;</span> correl.charmm.inp <span class="op">&gt;</span> correl.charmm.out
+$ <span class="fu">awk</span> <span class="st">&#39;{print $1,$2}&#39;</span> correl.dat <span class="op">&gt;</span> time-ss.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $1,$3}&#39;</span> correl.dat <span class="op">&gt;</span> time-css.dat
+$ <span class="fu">awk</span> <span class="st">&#39;{print $1,$4}&#39;</span> correl.dat <span class="op">&gt;</span> time-cssc.dat</code></pre></div>
+<p><img src="water/combined/prod/ana2/time-ss-plot.png" alt="S-S distance" /> </p>
+<p><img src="water/combined/prod/ana2/time-css-plot.png" alt="C-S-S angle" /> </p>
+<p><img src="water/combined/prod/ana2/time-cssc-plot.png" alt="C-S-S-C dihedral" /> </p>
+<blockquote>
+<p>Compare the here calculated RMSD values and the time series of side chain atoms with the ones from the vacuum simulation.</p>
+</blockquote>
+<p><strong>RMSD values.</strong></p>
+<p>Compared to the simulation in vacuum:</p>
+<ul>
+<li>The RMSD values of the protein in water are higher on average and somewhat increase with simulation time.</li>
+<li>The RMSDs of the backbone are still smaller than those of the whole protein and those of the side chains bigger, and the differences between the three curves increased.</li>
+</ul>
+<p><strong>Time series.</strong></p>
+<table>
+<caption>Averages and SDs of disulfide bridge properties</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th>Average</th>
+<th>SD</th>
+<th>Av. with water</th>
+<th>SD w. water</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S-S distance</td>
+<td>2.0347 Å</td>
+<td>0.036523</td>
+<td>2.0266 Å</td>
+<td>0.045279</td>
+</tr>
+<tr class="even">
+<td>C-S-S angle</td>
+<td>104.76 deg</td>
+<td>3.6010</td>
+<td>103.48 deg</td>
+<td>3.7379</td>
+</tr>
+<tr class="odd">
+<td>C-S-S-C dihedral</td>
+<td>104.73 deg</td>
+<td>7.8910</td>
+<td>93.79 deg</td>
+<td>9.6838</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The S-S distances and C-S-S angles in vacuum and water are almost identical. The C-S-S-C torsion angle is smaller in water.</li>
+<li>All the SDs are slightly higher in the simulation with water compared to the one in vacuum.</li>
+</ul>
+<h1 id="mead">MEAD<a href="#fn32" class="footnoteRef" id="fnref32"><sup>32</sup></a></h1>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">ln</span> -s ~/practicum/mead/mead-2.2.8a/apps/multiflex/multiflex ~/bin/
+$ <span class="fu">ln</span> -s ~/practicum/mcti/src/mcti ~/bin/</code></pre></div>
+<h2 id="installation-and-introduction-to-mead-and-mcti">Installation and introduction to MEAD and mcti<a href="#fn33" class="footnoteRef" id="fnref33"><sup>33</sup></a></h2>
+<blockquote>
+<p>What is MEAD, and what is its purpose?</p>
+</blockquote>
+<ul>
+<li><p>MEAD is a software distribution for modeling the electrostatics of molecules. The electrostatic potential is computed based on a linearized Poisson-Boltzmann equation.</p></li>
+<li><p>It includes four C++ programs implemented using the MEAD object library, the program <code>redti</code> which doesn't use it, and the library itself.</p></li>
+<li><p>It can compute binding constants, <a href="https://en.wikipedia.org/wiki/Acid_dissociation_constant">pK<sub>a</sub></a> values, solvation energies, and other parameters.</p></li>
+</ul>
+<blockquote>
+<p>Shortly explain what you did to get the executables.</p>
+</blockquote>
+<p>Download and compile source code.</p>
+<blockquote>
+<p>What does multiflex do? Limit your explanation to single-conformer calculations.</p>
+</blockquote>
+<p>&quot;Multiflex does the electrostatic part of a titration calculation for a multi-site titrating molecule.&quot;<a href="#fn34" class="footnoteRef" id="fnref34"><sup>34</sup></a> For single-conformer calculations, it assumes a rigid molecule.</p>
+<blockquote>
+<ul>
+<li>What information is contained in the different input files?</li>
+</ul>
+</blockquote>
+<p>Multiflex &quot;takes <code>MolName.pqr</code>, <code>MolName.ogm</code>, <code>MolName.mgm</code>, <code>MolName.sites</code> and <code>MolName.st</code> files as inputs&quot;.<a href="#fn35" class="footnoteRef" id="fnref35"><sup>35</sup></a></p>
+<ul>
+<li><code>MolName.pqr</code>
+<ul>
+<li>Similar to PDB files, but replaces the occupancy and B-factor columns with atomic charge and radii, respectively.</li>
+<li>Unlike in real PDB files, tokens have to be separated by whitespace.</li>
+<li>Everything but <code>ATOM</code> and <code>HETATM</code> lines are ignored, and there is no distinction between the two.</li>
+<li><p>Lines are tokenized like this:</p>
+<pre><code>ignored ignored atname resname resnum x y z charge radius chainid</code></pre></li>
+</ul></li>
+<li><p><code>MolName.ogm</code> and <code>MolName.mgm</code></p>
+<p>Specifies grid calculation parameters. Lines have the format</p>
+<pre><code>centering  grid_dimension  grid_spacing</code></pre>
+<p>Lines should specify consecutively finer parameters (smaller values for <code>grid_spacing</code>).</p></li>
+<li><p><code>MolName.sites</code></p>
+<p>Specifies binding sites (residue numbers) that can be titrated.</p>
+<pre><code>resnum  site_type chainid</code></pre></li>
+<li><p><code>MolName.st</code></p>
+<p>Specifies additional parameters for each <code>site_type</code> that appears in <code>MolName.sites</code>.</p></li>
+</ul>
+<blockquote>
+<ul>
+<li>What is the histidine tautomerism problem mentioned in the myoglobin <code>README</code><a href="#fn36" class="footnoteRef" id="fnref36"><sup>36</sup></a> file?</li>
+</ul>
+</blockquote>
+<p>Various tautomers are represented with a single structure and pretend that each histidine has two binding sites. In reality, each tautomer has one binding site.</p>
+<p>The problem is that this enables a &quot;doubly deprotonated&quot; state, which doesn't correspond to any state than can actually occur in reality.</p>
+<blockquote>
+<p>Shortly list the different steps required to characterise the titration behaviour of myoglobin.</p>
+</blockquote>
+<p>The titration of myoglobin performed by the <code>master.sh</code> script can be divided into 5 steps.</p>
+<ol style="list-style-type: decimal">
+<li><p>Run <code>multiflex</code>:</p>
+<pre><code>./run_mol_multimead.sh COx-AmberBondi</code></pre>
+<p>For each tautomer, calculates the intrinsic pK<sub>a</sub> values of the titratable binding sites specified in the <code>COx-AmberBondi.sites.del*</code> files and writes them to correspondingly named <code>*.pkint</code> files (e.g. <code>COx-AmberBondi-del.pkint</code> and <code>COx-AmberBondi-del1.pkint</code>). Debugging output is written to <code>*.el.out</code> files. <code>.*g</code> files contain site-site interactions.</p></li>
+<li><pre><code>./make-global.pl COx-AmberBondi</code></pre>
+<p>Merges the <code>COx-AmberBondi-del*.pkint</code> and <code>COx-AmberBondi-*.g</code> files of the various tautomers, solving the tautomerism problem.</p>
+<p>Writes <code>COx-AmberBondi.global.pkint</code> and <code>COx-AmberBondi.global.g</code>, which <code>mcti</code> can read.</p></li>
+<li><pre><code>./runmcti.sh COx-AmberBondi</code></pre>
+<p>Runs <code>mcti</code>, creating <code>mcti.log.global</code> and <code>mcti.out.global</code>.</p></li>
+<li><pre><code>./collect-curves.pl mcti.out.global &gt; curves.out</code></pre>
+<p>Creates <code>curves.out</code> from the output of <code>mcti</code>, which contains data for creating various plots:</p>
+<ul>
+<li>Titration curves</li>
+<li>pK<sub><span class="math inline">\(\frac12\)</span></sub> and Hill plot information</li>
+<li>Tautomerism curves</li>
+</ul></li>
+<li><pre><code>grep &#39;pK(1/2)&#39; curves.out &gt; pkhalf.out</code></pre>
+<ul>
+<li>Extracts the pK<sub><span class="math inline">\(\frac12\)</span></sub> values from <code>curves.out</code>. The pK<sub><span class="math inline">\(\frac12\)</span></sub> is the pH value at which the protonation of a titration site is 0.5.</li>
+</ul></li>
+</ol>
+<blockquote>
+<p>List those titratable sites of myoglobin with pK<sub>½</sub> values in the physiological range (pH 5 to 9).</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">grep</span> <span class="st">&#39;[5-8]\.&#39;</span> pkhalf.out
+<span class="ex">pK</span>(1/2) <span class="kw">for</span> <span class="ex">ASP-141</span>      =    5.272
+<span class="ex">pK</span>(1/2) <span class="kw">for</span> <span class="ex">NTval-1</span>      =    6.289
+<span class="ex">pK</span>(1/2) <span class="kw">for</span> <span class="ex">CTgly-153</span>    =    7.156
+<span class="ex">pK</span>(1/2) <span class="kw">for</span> <span class="ex">HIS-12</span>       =    5.489
+<span class="ex">pK</span>(1/2) <span class="kw">for</span> <span class="ex">HIS-36</span>       =    6.375
+<span class="ex">pK</span>(1/2) <span class="kw">for</span> <span class="ex">HIS-81</span>       =    7.027
+<span class="ex">pK</span>(1/2) <span class="kw">for</span> <span class="ex">HIS-97</span>       =    6.984
+<span class="ex">pK</span>(1/2) <span class="kw">for</span> <span class="ex">HIS-116</span>      =    6.351</code></pre></div>
+<blockquote>
+<ul>
+<li>Display their titration curves using <code>xmgrace</code>.</li>
+</ul>
+</blockquote>
+<p><img src="myoglobin/Titration_curves.png" alt="Titration curves" /> </p>
+<blockquote>
+<ul>
+<li>When you look at <code>curves.out</code> you will realise that <code>collect_curves.pl</code> does not output protonation probabilities if they are 1 or 0. Please don't bother about this feature.</li>
+</ul>
+</blockquote>
+<p>OK.</p>
+<blockquote>
+<p>Try to understand what the different columns in the histidine sections of 'curves.out' represent.</p>
+</blockquote>
+<p>The columns give percentages of how prevalent each of the three possible tautomers are for a given histidine titration site.</p>
+<ul>
+<li><code>prot.</code>: fully protonated (HSP/HIP).</li>
+<li><code>del-taut.</code>: &quot;delta tautomer&quot;, only the delta position (nitrogen) is protonated (HSD/HID).</li>
+<li><code>eps-taut.</code>: &quot;epsilon tautomer&quot;, only the epsilon position is protonated (HSE/HIE).</li>
+</ul>
+<div class="figure">
+<img src="http://docs.htmd.org/img/histidines.png" alt="Source: http://docs.htmd.org/img/histidines.png" />
+<p class="caption">Source: <a href="http://docs.htmd.org/img/histidines.png" class="uri">http://docs.htmd.org/img/histidines.png</a></p>
+</div>
+<blockquote>
+<ul>
+<li>What is the predominant protonation and/or tautomer state of His24 and His119 at pH 2 and pH 10?</li>
+</ul>
+</blockquote>
+<table>
+<caption>His24</caption>
+<thead>
+<tr class="header">
+<th>pH</th>
+<th>Both protonated</th>
+<th>Delta tautomer</th>
+<th>Epsilon tautomer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>0%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>0%</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>His119</caption>
+<thead>
+<tr class="header">
+<th>pH</th>
+<th>Both protonated</th>
+<th>Delta tautomer</th>
+<th>Epsilon tautomer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>91.22%</td>
+<td>1.62%</td>
+<td>7.17%</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>0%</td>
+<td>0%</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li>Can you give a structural reason for their behaviour? Don't bother about the rather colourful representation of the pqr-file in rasmol.</li>
+</ul>
+</blockquote>
+<p>A hydrogen bridge can form between the epsilon Nitrogen of His24 and the epsilon Nitrogen of His119. This makes it unfavorable for both positions to be protonated at the same time.</p>
+<!--
+His119 is eventually mostly protonated when lowering the pH.  His24 is not.  This may be
+because it is further inside the molecule, i.e., better isolated from the surrounding
+hydrogen cores.
+-->
+<h2 id="titration-behaviour-of-cytochrome-c">Titration behaviour of cytochrome c<a href="#fn37" class="footnoteRef" id="fnref37"><sup>37</sup></a></h2>
+<blockquote>
+<p>Comment on the exceptions from the list of standard titratable residues in cytochrome c.</p>
+</blockquote>
+<p>One histidine can not be titrated because of the iron of the haem group:</p>
+<blockquote>
+<p>Shortly list what changes you made to the different scripts as copied from the myoglobin example, and why you made them.</p>
+</blockquote>
+<!-- pandoc -v | grep diff -->
+<p>There are only two Histidines, so there are four combinations of tautomers (<code>del</code>, <code>eps</code>, <code>del1</code> and <code>del2</code>).</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">diff</span> --suppress-common-lines <span class="dt">{myoglobin,max-cytc}</span>/run_mol_multimead.sh</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode diff"><code class="sourceCode diff"><span class="dt">6c6</span>
+<span class="st">&lt;   for taut in del eps del1 del2 del3 del4 del5 del6 del7 del8 del9 del10 del11</span>
+<span class="kw">---</span>
+<span class="va">&gt;   for taut in del eps del1 del2</span></code></pre></div>
+<p>There are 40 non-histidine titration sites (<code>$nw</code>) and 2 histidines (<code>$nhis</code>):</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">diff</span> --suppress-common-lines <span class="dt">{myoglobin,max-cytc}</span>/make-globals.pl </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode diff"><code class="sourceCode diff"><span class="dt">27c27</span>
+<span class="st">&lt;   $nw = 50;</span>
+<span class="kw">---</span>
+<span class="va">&gt;   $nw = 40;</span>
+<span class="dt">30c30</span>
+<span class="st">&lt;   $nw = 51;</span>
+<span class="kw">---</span>
+<span class="va">&gt;   $nw = 40;</span>
+<span class="dt">32c32</span>
+<span class="st">&lt; $nhis = 11;</span>
+<span class="kw">---</span>
+<span class="va">&gt; $nhis = 2;</span></code></pre></div>
+<p>These are just the changes <a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/cytc/cytc.html">specified in the script</a>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">diff</span> --suppress-common-lines <span class="dt">{myoglobin,max-cytc}</span>/runmcti.sh</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode diff"><code class="sourceCode diff"><span class="dt">8c8</span>
+<span class="st">&lt; 1000      ! number of full MC steps</span>
+<span class="kw">---</span>
+<span class="va">&gt; 20000     ! number of full MC steps</span>
+<span class="dt">10,11c10,11</span>
+<span class="st">&lt; -4.0      ! starting pH</span>
+<span class="st">&lt; 15.0      ! final pH</span>
+<span class="kw">---</span>
+<span class="va">&gt; 0.0       ! starting pH</span>
+<span class="va">&gt; 14.0      ! final pH</span>
+<span class="dt">16c16</span>
+<span class="st">&lt; 1     ! 0=full, 1=reduced m.c.</span>
+<span class="kw">---</span>
+<span class="va">&gt; 0     ! 0=full, 1=reduced m.c.&gt;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">diff</span> -s <span class="dt">{myoglobin,max-cytc}</span>/collect-curves.pl</code></pre></div>
+<pre><code>Files myoglobin/collect-curves.pl and max-cytc/collect-curves.pl are identical</code></pre>
+<blockquote>
+<p>As for myoglobin, plot the titration curves of sites with pK<sub><span class="math inline">\(\frac12\)</span></sub> between pH 5 and 9. In addition, plot the titration curves of the haem propionates.</p>
+</blockquote>
+<p><img src="cytc/titration_curves_cytc_with_prop.png" alt="Titration curves" /> </p>
+<!-- vim: set tw=90 sts=-1 sw=4 et spell: -->
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/index.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/index.html</a><a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node1.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node1.html</a><a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node8.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node8.html</a><a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node9.html</a><a href="#fnref4">↩</a></p></li>
+<li id="fn5"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-md.pdf#page=19" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/Slides/lecture-md.pdf#page=19</a><a href="#fnref5">↩</a></p></li>
+<li id="fn6"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node11.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node11.html</a><a href="#fnref6">↩</a></p></li>
+<li id="fn7"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node14.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node14.html</a><a href="#fnref7">↩</a></p></li>
+<li id="fn8"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node15.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node15.html</a><a href="#fnref8">↩</a></p></li>
+<li id="fn9"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node16.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node16.html</a><a href="#fnref9">↩</a></p></li>
+<li id="fn10"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node17.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node17.html</a><a href="#fnref10">↩</a></p></li>
+<li id="fn11"><p>-1194.80087 and -1230.54878 are the total energies.<a href="#fnref11">↩</a></p></li>
+<li id="fn12"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node18.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node18.html</a><a href="#fnref12">↩</a></p></li>
+<li id="fn13"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node19.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node19.html</a><a href="#fnref13">↩</a></p></li>
+<li id="fn14"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node20.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node20.html</a><a href="#fnref14">↩</a></p></li>
+<li id="fn15"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node21.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node21.html</a><a href="#fnref15">↩</a></p></li>
+<li id="fn16"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node22.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node22.html</a><a href="#fnref16">↩</a></p></li>
+<li id="fn17"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node23.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node23.html</a><a href="#fnref17">↩</a></p></li>
+<li id="fn18"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node24.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node24.html</a><a href="#fnref18">↩</a></p></li>
+<li id="fn19"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node25.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node25.html</a><a href="#fnref19">↩</a></p></li>
+<li id="fn20"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node26.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node26.html</a><a href="#fnref20">↩</a></p></li>
+<li id="fn21"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node27.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node27.html</a><a href="#fnref21">↩</a></p></li>
+<li id="fn22"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node28.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node28.html</a><a href="#fnref22">↩</a></p></li>
+<li id="fn23"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node29.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node29.html</a><a href="#fnref23">↩</a></p></li>
+<li id="fn24"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node30.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node30.html</a><a href="#fnref24">↩</a></p></li>
+<li id="fn25"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node31.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node31.html</a><a href="#fnref25">↩</a></p></li>
+<li id="fn26"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node32.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node32.html</a><a href="#fnref26">↩</a></p></li>
+<li id="fn27"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node33.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node33.html</a><a href="#fnref27">↩</a></p></li>
+<li id="fn28"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node34.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node34.html</a><a href="#fnref28">↩</a></p></li>
+<li id="fn29"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node35.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node35.html</a><a href="#fnref29">↩</a></p></li>
+<li id="fn30"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node36.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node36.html</a><a href="#fnref30">↩</a></p></li>
+<li id="fn31"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node37.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/CharmmCourse/Skript/node37.html</a><a href="#fnref31">↩</a></p></li>
+<li id="fn32"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/index.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/index.html</a><a href="#fnref32">↩</a></p></li>
+<li id="fn33"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/installation_MBexample/installation_MBexample.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/installation_MBexample/installation_MBexample.html</a><a href="#fnref33">↩</a></p></li>
+<li id="fn34"><p><a href="mead/mead-2.2.8a/README" class="uri">mead/mead-2.2.8a/README</a><a href="#fnref34">↩</a></p></li>
+<li id="fn35"><p><a href="mead/mead-2.2.8a/README" class="uri">mead/mead-2.2.8a/README</a><a href="#fnref35">↩</a></p></li>
+<li id="fn36"><p><a href="mead/mead-2.2.8a/README" class="uri">mead/mead-2.2.8a/README</a><a href="#fnref36">↩</a></p></li>
+<li id="fn37"><p><a href="http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/cytc/cytc.html" class="uri">http://www.bisb.uni-bayreuth.de/Lecture/practical/MeadCourse/cytc/cytc.html</a><a href="#fnref37">↩</a></p></li>
+</ol>
+</div>
+</body>
+</html>
